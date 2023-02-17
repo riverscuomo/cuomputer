@@ -1,5 +1,6 @@
 # Cuomputer [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 The bot for my discord server.
+https://discord.gg/mr-rivers-neighborhood
 Obviously there are many tokens and secrets in this repo, so I'm not sure how useful it will be to anyone else. But, ideally, others could figure out how to help me improve it or make improvements themselves.
 
 ## Installation: set up venv on each computer
