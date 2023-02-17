@@ -1,0 +1,1616 @@
+﻿Rivers Interviews Transcribed
+
+
+Instructions for transcripts (per Rivers):
+* separate each conversation with an extra space.
+* Use proper punctuation, including commas and quotation marks.
+* no speaker names
+* Put each quote on a separate line.
+* Use double quotation marks at the beginning and end of each line, but don’t use double
+* quotation marks anywhere else.
+* Use single quotation marks inside a line to indicate a speaker is quoting someone.
+* Put an open bracket on the first line [
+* Put a close bracket on the last line ]
+* Brackets within an article are fine to leave as is.
+* Thank you.
+
+
+Example:
+[
+"how are you?",
+"i am good.",
+"that is good to hear.",
+"thank you",
+"you are welcome."
+]
+Just like that. Nothing else.
+
+
+To avoid duplication, please identify the article by (either a link to the interview or publication +
+title) you’re transcribing here—don’t list it with the transcription itself: Note an interview as
+complete by adding "FIXED" to it (see list of interviews for examples).
+
+
+List of Interviews
+2020 July Q Magazine "At Home With Everyone" - FIXED
+2020 June Guitar Player Magazine "Unchained" - FIXED
+2019 March 1 Rivers Cuomo on his data-driven approach, Billboard - FIXED
+2019 Rolling Stone India - FIXED
+2017 November Vulture Lifehacks
+https://www.vulture.com/2017/11/weezer-rivers-cuomo-interview-lifehacks-pacific-daydream.htm - FIXED
+2017 May-June The Improper Bostonian, "Notes from the Weezer Frontman"
+2010 September 16 Rolling Stone, Rivers Cuomo Q&A
+2010 (Aug/Sept?) Rolling Stone, Rock Star Weekend Promotion special feature
+2010 August 10 SPIN SPOTLIGHT Q&A: Rivers Cuomo of Weezer
+2006 June Alt Rocker Finds Inner Peace
+https://www.beliefnet.com/entertainment/music/2006/06/alt-rocker-finds-inner-peace.aspx.
+2006 May 6 AIM Conversation with ‘boo AIM hates me,’ - FIXED
+2006 April 28 Harvard Crimson: Rivers’ End, the Directors Cut - FIXED
+2006 February Rivers answers questions from Blender readers - FIXED
+2005 November 1 Guitar.com (Rivers speaks first) - FIXED
+2005 June 9 LA Weekly - FIXED
+2002 May, 1 CDNOW Interview - FIXED
+2002 April 9 EW.com interview
+2002 Jan 11 Kyle and Jason from Weezon.com interview Rivers (Rivers speaks first) - FIXED
+2002 January 10 Jason and Ridd from Weezon.com interview Rivers - FIXED
+2001 December Kyle from Weezon.com interviews Rivers - FIXED
+2001 (sometime) Mean Magazine Interview - FIXED
+2001 (early) CDNOW interview - FIXED
+1996 ABC Recovery interview with Rivers Cuomo https://www.weezerpedia.com/wiki/ABC_Recovery_interview_with_Rivers_Cuomo_-_1996
+
+
+
+
+First interview starts here.
+[
+“That Weezer sketch was SNL’s most talked-about moment in months. What did you make of it?”
+“They really nailed it, right? I still can’t believe it. It can’t be that big of an audience that would appreciate
+such a specific little niche as the Weezer fandom.”
+“At one point in the scene, Leslie Jones says, ‘Weezer died when Matt Sharp left.’ Then Matt Damon
+retorts, ‘Weezer didn’t start until Scott Shriner got there.’ Care to comment?”
+“It’s so deep, man! Who even knows what they’re talking about? I’m totally honored, but I hope people
+weren’t changing the channel.”
+“The sketch did capture something about the intense loyalty that some fans have to specific parts of your
+band’s history. Why do you think that is?”
+“I wish I knew. It’s almost worthy of an academic study to figure out what’s going on in the psyche of
+these few hundred thousand people. I feel like it must come back to something in the four of us, or
+something in me — some character flaw or some quirk of my personality.”
+“Maybe it’s just that Weezer appeals to nerds — like the arguments about which Star Trek series is best.”
+“In our case, we’re real people, not fictional characters, so there’s nothing to argue about. But I like that. I
+would add that nerds also like to catalog and collect things and notice the tiny differences from one
+product to the next. It makes sense, because I’m a nerd.”
+“Your cover of ‘Africa’ became Weezer’s biggest hit ever on alternative radio. Did that surprise you?”
+“Yes! We didn’t send it to any radio stations as a single. We had another song that we were planning on
+coming out two weeks later. But ‘Africa’ exploded on its own, and we had to stand on the sidelines with
+everyone else and watch as it won the game.”
+“The idea to cover that song started as a joke that a fan tweeted. Are you going to try for any more
+meme-based hits?”
+“I mean, I just don’t think there’s another ‘Africa’ out there. It’s a one of a kind phenomenon. But we’ll
+definitely be listening to random teenage girl fans in Ohio on Twitter from now on, I’ll tell you that.”
+“If you win Best Rock Album this year, it will be only the second time Weezer have taken home a
+Grammy, after Best Music Video in 2009. Did it bother you that you got no love from the Recording
+Academy back in the Nineties?”
+“I don’t think I even knew what the Grammys were. Grammys, Oscars, Tonys — I had no idea what was
+what, and we were so critically reviled that it never occurred to us that we would win anything.”
+“You’re up against Greta Van Fleet, Fall Out Boy, Alice in Chains and Ghost this year. Do you like any of
+those bands?”
+“Greta Van Fleet has a song that’s incredible — so incredible that I thought it was a cover song. So I
+looked it up on Wikipedia and was surprised to learn that it’s actually theirs. They’re such a bullseye for
+the category, too. They stand for rock & roll, and Weezer from day one has always been an awkward fit
+for the rock category, as much as we love it.”
+“Speaking of critical backlash, Greta Van Fleet have run into some of their own. Do you identify with
+them?”
+“I’m guessing they get criticized for being extremely derivative, and we didn’t get that one. Although
+someone did call us Stone Temple Pixies. I remember that from a local paper on our first tour. That really
+hurt.”
+“What else have you enjoyed listening to lately?”
+“I made a Spotify playlist that updates automatically every day based on an algorithm that I wrote. That’s
+what I listen to all the time. I really like the 1975 — it reminds me of the Eighties.”
+“Did you say you wrote an algorithm?”
+“I enrolled in Harvard’s Intro to Computer Science online course about three years ago. It’s pretty much
+taken over my life. I’ve written all kinds of programs to help me with creativity, and also to help optimize
+the bus routing on the next tour.”
+“What’s it been like working with producer Dave Sitek, of TV on the Radio, on Weezer’s new album?”
+“It’s so cool. Dave is close to our age, but he’s from the completely other side of the alternative Nineties.
+His point of reference is more Beck and the Beastie Boys, which is so different from where I was coming
+from with the Nirvana and Smashing Pumpkins side of altrock.
+I’m stoked.”
+]
+
+
+REJECT:
+["This is your third album in three years. Will you keep up that pace?",
+"I'm actually working two albums ahead. This morning, I finished Album Nine, then we started Album 10.
+On Hurley (Album Eight), we gravitated toward stuff that was a little dark and twisted, with lyrics that
+have to do with the passage of time. I was playing new songs for Album 10, and our producer said, ‘This
+is totally different- this sounds very youthful, like you're 16 and you're going to 7-Eleven to get a Slurpee.’
+",
+"Have you ever worked so far in advance?",
+"No, I don't think so. We're cheating a little bit, because Album Nine is really a collection of songs that
+didn't make it onto any of our seven Geffen records, so I spent two weeks in the studio adding bridges or
+rewriting a verse here or there. It's a totally unique record, it has stuff going all the way back to the Blue
+Album. It's stuff that was either too poppy, too heavy-metal or too weird to make it onto any of our
+records. It's called Death to False Metal. You worked with Ryan Adams, Linda Perry and No Doubt's
+Tony Kanal on Hurley.",
+"Why have you started using co-writers?’,
+"I've pretty much been banned from talking about co-writers. If I talk about it at all, it becomes the story,
+and that's not a helpful story.",
+"That makes it hard to talk about how the songs came together.",
+"I agree!",
+"How did Michael Cera come to play and sing on ‘Hang On’?",
+"I saw him on Letterman talking about having done a weeklong Vipassana meditation retreat. I was
+talking to him about that, and I said, ‘Why don't you come to the studio?’ He's a very proficient guitar
+player and an amazing actor. I was very impressed with him in Scott Pilgrim.",
+"Beck wrote songs for that movie, but you would've been a good choice too."
+"I was at the premiere, and the first thing I did when the lights came on was go to the director and say,
+‘Why didn't you call me to do that?’ ",
+"Your Yo Gabba Gabba! song ‘All My Friends Are Insects’ makes me want to hear a kids' record
+from you.",
+"Everything I say to my daughter, I sing, so I just have to set up a mic and press "record," because it's like
+we live in a musical. I could easily get an album out of that, just out of our day-to-day interactions.",
+"Does Green Day's Broadway success make you want to write for the stage?",
+"I love musical theater, but if I were to get involved in a production at some point, I'd want to start from
+scratch rather than do a best-of- Weezer musical.",
+"What's your current take on Pinkerton?",
+"To me, it's a totally brilliant album, so personal, there's such a strong vision, and it was a real joy to go
+back and crack open the sessions and listen to the tracks one by one and gain inspiration from that. It
+seems like it's really stuck in people's minds that I disowned or disavowed the record, and I'm not sure
+where that came from.",
+"In 2001, you said the album was "hideous" and a "hugely painful mistake.",
+"That's what's so great about it! I didn't mean "hideous" in a negative way. I would that say
+"it's a hideous record in many ways - it's ugly and dark and twisted and embarrassing. Anyway, in 2001
+and 2002, I said a lot of inflammatory things.",
+"Like calling your fans ‘little bitches’?",
+"Exactly. I had a way with words then, and I'm still facing the consequences."],
+["Would you say that Hurley is more or less personal than Raditude?",
+"I think people are going to hear it as a lot more personal than a lot of what we've done. I don't like to
+compare because so often I'll write something personal and people will think it's really cheesy and fake.",
+"What’s an example?",
+"Um, ‘Beverly Hills’ is a perfect example. It's a very sincere, very literal complaint about my loneliness
+and wanting to be more successful socially and to get married and be part of the musical celebrity
+establishment in L.A. A lot of people say it's cheesy or that I'm making fun of Beverly Hills lifestyle or
+something like that. To me, it's one of the most personal songs I've ever written.",
+"Did that take you by surprise when that happened?",
+"No. The time I was most surprised was when we put out our first record. I thought we were going to be
+taken very seriously, ‘Undone- The Sweater Song’ was a song about depression, and then everyone said
+we were this funny geek band and I was so shocked and disappointed. Ever since then, I have come to
+expect that; there is this disconnect between me and a lot of casual listeners. Some people get it and some
+people will never get it.",
+"You're really screaming and pushing your voice on the new record…",
+"Yeah. I visualize really weird scenes that have nothing to do with the lyrics necessarily... I remember in
+‘Trainwrecks,’ near the end of the second bridge... I can't remember exactly what it was, but it involved a
+forest gnome and a broad sword and it really brought out this amazing quality in my voice…",
+"What's "Where's My Sex" about?",
+"I can't remember if it was my 2-year-old daughter who said it, or my wife said it, or my wife told me that
+my daughter said it... One of them accidentally said, ‘Where's My Sex?’ instead of ‘Where's my socks?’
+She couldn't find her socks. And when I heard her say, ‘Where's my sex?’ | just thought, ‘There's a cool
+song title right there.’ So I went and started writing like crazy and wrote out all the lyrics. First I just
+wrote it so the song was all about trying to find your socks... how terrible it is when you're not wearing
+socks. Then I went back and changed a few letters in the words and now it's a completely different
+animal.",
+"That's a pretty cool song-writing trick.",
+"Yeah, that was fun. Also, ‘Smart Girls’ was another thing like that- it was originally ‘Hot Girls’ about
+how frustrating it is to have all these amazingly hot girls tweeting at me, and it was so frustrating because
+I'm not in that life-stage anymore where I can do anything about it. So I wrote this song, ‘Hot Girls,’ that
+ultimately ended feeling too macho or something. So we just changed it to ‘Smart Girls’ and then every
+other lyric stayed the
+same and it's a really cheesy song about girls, but changing that one word makes it completely different
+and interesting... That reminds me of ‘Back in the U.S.S.R.’ by The Beatles. They changed the setting and
+it becomes cool... Sometimes songs take on a life of their own and you have to follow it."],
+["So how’s it going? How was the tour?" , "It went really well. I’m coming back to playing with a totally
+different mind state than I’ve ever had before. So it’s been a real learning experience figuring out who I
+am, how I want to be onstage. It’s been really fun. " , "You mean different from when you were touring
+Maladroit? " , "Yeah. Every time you come back it’s different. I feel very calm and concentrated [these
+days], — I can get into the zone a lot more easily, and stay there a lot more easily. And not get knocked
+off by negative thoughts — you know, the inner critic telling you that that note was flat, or that lyric’s no
+good, you’re a faker — those sorts of things. I shut that guy out a lot better now. That’s the goal of any
+performer or athlete or artist — to just concentrate on what you’re doing and not analyze it too much. " ,
+"I can see that in terms of the songwriting process, but I imagine that when you’re onstage the smoke and
+crowd and noise would drown that out more than when it’s just you alone with your guitar. " , "It’s more
+extreme having the crowd there. When you’re on, you’re really on, you’re really excited, and you feel
+everyone’s watching you and giving you their energy. But then if the critic gets the upper hand, it’s like
+the crowd takes sides with the critic, and that voice gets so loud it can be unbearable. You can look out in
+the crowd and just happen to see the one person that looks like they’re not having a good time, and then
+your inner critic will latch onto that image and magnify it and shove it in your face. And then you forget
+about what you’re trying to do. You forget about the music you’re trying to make. And the enemy has
+overpowered you." , "Do you think those bad voices are just some weird evolutionary flaw in the way our
+brains are structured? " , "You know, that’s a very interesting question, and up till a year or two ago I
+definitely would have pondered it. But now, I don’t really care. All I know is that it’s a maladaptive
+behavior to think like that, and I don’t want to think like that anymore, and I’m just going to stop. " , "Is it
+the same thing when you write songs? " , "Yeah, it’s the same thing when you’re writing songs, it’s the
+same thing when you’re giving an interview and you think, Did I just say something stupid? That critic’s
+gotta go. He’s not helping! " , "Do you ever fear if you totally let him go you’ll have no standards of
+quality? " , "I remember having fears like that maybe when I started the meditation. So I went into the
+practice not being convinced — it was just a trial. But I gave it a sincere shot when I started, and I
+immediately noticed that my ability to concentrate when I was singing or writing or playing a guitar solo
+was a little bit better. And it sounded a little bit better, and it wasn’t just me that thought that; it was the
+people around me. With each step I take I see that my ability to perform gets a little better. So until it
+starts getting worse, I’m going to keep moving forward. " , "One fear I have is that if I totally open up my
+creativity I’ll be blown away by what might come out, and lose my sense of who I am. " , "[Long pause.]
+Blown away. Well, that actually sounds kinda cool! [Laughs.] But those creative moments never last all
+that long! Even at your best the creative moments are still kind of fleeting. But even if that happened, it
+sounds kind of cool to me. " , "I heard you didn’t like that Rolling Stone article — was there anything you
+wanted to say about that? " , "I don’t remember. I always loved the L.A. Weekly. I totally looked up to it
+when Weezer was starting out and I always wanted to be in it, and they always totally ignored us! They
+never gave us any credit. I thought it would be cool to do this story — I think I was probably still upset
+about the Rolling Stone article at the time.
+It’s strange, too, because during the interview it seemed like the writer was really empathetic, and she said
+things to my manager like "The interview went really great; he’s not weird at all." And then I read the
+article, and I was totally shocked. It was just another one of those Rivers is . . . what’s the phrase she
+used? Mentally deranged. One of those "Rivers is crazy" articles. I was really hurt on a personal level. " ,
+"Maybe the editors thought, it has to be splashy and catchy and blah blah blah. " , "Right. I totally
+understand that. And you know what, they’re probably right, too. The article she wrote is probably far
+more interesting to most people than the truth. So I understand. [Laughs.] However, I have to go on and
+live the rest of my life now with people thinking I’m nuts. And my mom reads that, my grandparents read
+that. And it’s not the truth. So I think it’s wrong. " , " On the other hand, it’s hard as a journalist not to
+focus on that — you’ve always written about struggling with your brain. And you actually sing on this
+album, "I’m so obviously insane." " , "[Laughs.] That’s true. [Pause.] All right, you got me. [Laughs.] But
+I’m not, like, really insane! " , "This is something you may have to deal with for the rest of your life —
+people seem to find you interesting. " , "I’m not! I’m sitting here at my grandparents’ house, sharing
+family stories and going for walks, stuff like that. I think you people are the weird ones. " , "You people? "
+, "Yeah. Meaning everyone else. I’m the normal one. " , "With the Green Album, the conventional wisdom
+was — and I think you even said this — that you were going into the math of songwriting, and didn’t
+want to be known personally in your music. With this album, it seems like you are really revealing
+yourself emotionally — is that true? " , "Yeah. On a song like "Hash Pipe," I definitely did not sit down
+and say, All right, what am I feeling now, what am I thinking, how can I express this with music or lyrics?
+I just took a couple shots of tequila and started rocking out. Whereas on Make Believe I just kept digging
+deeper and deeper to figure out how I felt about things, and I wouldn’t rest until I’d captured it in a song.
+And there were a lot of false starts. " , "What about "Hold Me"? How did you write that song? " , "I really
+love that one. I . . . [laughs] I hesitate to tell the story of some of these songs, because it’ll just perpetuate
+the Rivers-is-crazy myth. But you know, at times I’ve resorted to pretty extreme methods to inspire
+myself. But I think it’s something anyone would do if they felt like they had to write a really powerful,
+emotional song on demand. Anyone would resort to extreme experiments — no, I don’t even want to talk
+about it. [Laughs.] " , "I don’t want to cartoonize you, but I think all the songwriters that read this might
+feel some recognition in knowing what you do to write. It’s not that unique that people do weird things to
+get the bad voices to go to sleep. " , "Yeah — that’s the key. I think the important thing as an artist is to
+reach a really extreme state of concentration where you’re just one with whatever you’re creating, and the
+inner critic is utterly silent, can’t get a word in. Artists have discovered countless ways to reach that state
+of extreme concentration through extreme emotions like anger or sadness. Other artists have resorted to
+taking drugs to shut out the critic. And two years ago I was still resorting to those extreme methods when
+I wrote that song, and I was self-consciously experimenting with ways to enter those states of mind. That
+particular experiment involved fasting. I think I just hadn’t eaten in 24 hours or something like that. I felt
+really sad [laughs], and I really pitied myself, and I felt a lot of loss, and of course I was really hungry. I
+think because of low blood sugar, whatever extraneous mental activity I usually have kind of quieted
+down, so I entered into this very concentrated state of extreme longing, and started playing that song. And
+that music made me feel really good. The reason I hesitate to describe that is because I don’t advocate
+those kinds of experiments. It’s crazy, and it can’t be sustained. If you’re relying on extreme emotions,
+you just become a wreck, and it’s tough for other people to live with you. And it’s just not a good life.
+Who wants to be constantly cultivating anger and sadness? Not me. Same thing with drugs. After a while
+you build up a tolerance to them, and you start having to take more to reach the same level of inspiration.
+It’s just a bad road to go down. " , "Same with alcohol — it works for a while, and then it just doesn’t
+work the same way. " , "Yeah, it can’t be sustained. But all that led me to discovering meditation. Which
+is just the exercise of concentrating your mind. You’re not relying on any emotion, you’re not relying on a
+drug, you’re not relying on fasting, you’re not relying on locking yourself in a closet for a week. And
+when it’s time to concentrate and write a song, you can do that. You can go to the depths, real deep, and
+go quickly and stay there and dig out some real inspiration. " , "In the past, you had some disdain for what
+you did as compared to other forms of music. Do you still hold classical music above rock or pop? " ,
+"When I was in my mid-20s, after we put out the Blue Album, I had a huge inferiority complex about
+being a rock musician. I thought my songs were really simplistic and silly, and I wanted to write complex,
+intense, beautiful music. That’s why I went to Harvard — to learn how to be a classical composer. And I
+started studying it, and I realized that I didn’t really like any contemporary classical music. And I very
+quickly started missing being in the band, and I wanted to go back to that. And since then I’ve gotten a
+greater appreciation for what pop artists do. Yeah, the music isn’t necessarily as involved, but the art itself
+is so much more multifaceted than just music — it involves lyric writing, collaborating with other
+musicians, some improvisation, and the art of overseeing the persona of the band and who you are, how
+you act and dress, how you move onstage. All of these things are integrated into a very multifaceted art
+that moves a lot of people and is important, and relevant to our culture in a way that serious classical
+music isn’t right now. I do have a lot of appreciation for what pop artists do now, and see that they can
+have an important and beneficial effect on the world. " , "Rock music has been around for a while now,
+and the quantum leaps of its invention happened decades ago. The majority of rock music now is about
+individuals like yourself adding your own twist on forms that are pre-existing. Do you ever feel cheated
+that you didn’t get to be there when somebody decided to take the chords to "Louie Louie" and turn them
+into a rock & roll song? " , "I did! I used to feel cheated, ’cause it seemed like in the ’60s those musicians
+and songwriters inherited this vast wealth of opportunities musically. There were so many doors to be
+opened, and they opened them all really quickly. It must have been a very exciting time. We come up in
+the early ’90s, and music and culture is so fragmented and decadent in so many ways — so many things
+have already been done, and so many resources have already been exploited, and it was frustrating and
+confusing at first. But really what it means is we just have a different task set before us. And it’s
+challenging and rewarding in a completely different way. I feel like maybe Weezer’s job is to look back on
+what’s happened musically over the decades and try to make sense of it all, and tie it together as best we
+can. And not worry so much about being innovative and breaking new ground. " , "Do the other guys have
+a greater role in the creation of the music now than people seem to think? " , "Yeah, the general
+conception is that I’m the genius-slash-tyrant that dictates to everyone what they’re supposed to do, and
+that’s totally not the truth. Starting on Pinkerton, for sure, there was a lot of collaboration there, but then
+on Maladroit — although the songwriting on my part wasn’t great — the other guys’ contributions as far
+as background vocals, countermelodies, guitar lines and stuff like that were really outstanding, and they
+just picked up where they left off on Make Believe. They bring influences from all over the musical map.
+There’s hardly any need for me to give direction. The problem is that some journalists get so fixated on
+me that when they call the other guys to do an interview, they don’t think to ask them about their
+contributions. They ask for weird stories about me. If I were them, I would get irritated. I can’t blame
+them for sniping at me sometimes in their interviews, because I think the world does not give them
+enough credit. I know, because I’m on the inside. I see what they bring to the albums. Another way they
+contribute is by giving me guidance. I’d be lost without them; they’re really my anchor. Sometimes if I’m
+in the studio for a long time I’ll completely lose my perspective. They have to sit me down and say, What
+are you doing? That sounds really stupid! And I’ll say, Yeah, I guess you’re right. And a Weezer album is
+born. " , "I think Pat [Wilson] is a grossly underappreciated drummer. " , "It’s ridiculous. He’s the most
+amazing musician. He’s so subtle and so understated that the average person doesn’t realize how
+important he is to this band. But there have been times over the years when Pat wasn’t available, or I
+wanted to play with someone else, and we got someone else for some rehearsals or something. We played
+with some of the best drummers in the world, supposedly, and it always felt horrible. Anyone except for
+Pat — it just doesn’t feel like Weezer. " , "Do you ever give yourself songwriting assignments? " , "Rick
+[Rubin] actually gave me some assignments over the past couple years. Like he said, Write a Billy Joel or
+Elton John type of song, and I just took that to mean, write a song on the piano. And that was part of the
+inspiration for "Haunt You Every Day," which closes the album. And he said, Write a song with the beat
+from "Pour Some Sugar on Me" by Def Leppard, and that was part of the inspiration for "Beverly Hills."
+He told Tom Petty the same thing, and Tom Petty wrote "It’s Good To Be King." " , "Oh, that’s funny.
+When I hear "Beverly Hills," I get "The Joker" by Steve Miller in my head. " , "Yeah yeah yeah! That was
+the other example he gave us. " , "Speaking of which, "Surf Wax America" reminds me of a Cure song. " ,
+"No — I remember thinking, this is way too close to something else, there’s no way I can get away with
+this. But at the time we were nobodies; we didn’t have a record. I thought, no one’s going to sue us. I
+can’t remember what the song was, which is probably for the best. " , " I think it was "Caterpillar" — it
+has a keyboard line that’s similar. " , "Oh! Maybe that’s what it is! I wasn’t aware it was the Cure — you
+may be exactly right. But you know what, it’s also one of those piano pieces by Erik Satie, the Trois
+Gymnopedies. " , "Oh my gosh, you’re right! " , "And you know what, in a few years someone else is
+going to use it, and that’s cool. " , "At one point during the recording of Make Believe, you said you were
+working with Rick Rubin in a sort of removed way, where you would send him CDs of songs and he
+would text-message you back or something. " , "Yeah, I hung out with him a lot in the first phase when I
+was just writing, and we would watch music DVDs together and listen to records and talk about music,
+and he was just really pushing me to dig as deep as I could and write some lyrics that would be interpreted
+by the average person as being sincere, whereas a lot of our older records he thought were perceived as
+being kind of jokey and ironic. And then in the second phase, we got together with the band in a rehearsal
+studio, and he was just like one of the guys in the band throwing out ideas — also, doing his best to
+improve the communication between us and making sure everyone felt safe to voice their opinions, and
+that we would try anything. And then in the third phase we actually got in the studio . . . I would bring
+him a CD every week, and he’d listen and give some input or send me text messages. Through the whole
+process we were texting each other like crazy, which I think he does so he can have several records going
+on at once, just texting like a madman. It sounds kind of dubious, but it really works. He made a huge
+difference in this recording and in the band. " , "And he had you guys in group counseling. " , "Yeah, well,
+I guess the idea came from him, but we were all very excited to try it. [The counselor] was called a
+communication coach. She just taught us some techniques for talking to each other in a more
+compassionate way, and also listening in a more compassionate way. Communication is difficult, and
+we’re still working on it, but I think we all feel much more comfortable now voicing our opinions. We
+have band meetings every show day. Before sound check, we get together for a half hour or 45 minutes
+and talk about whatever. To me it seems like everyone’s super happy. " , "That kind of thing, and maybe
+even the meditation thing, also sound like training for a relationship. " , "Yeah, for one thing, I have
+complete confidence in my ability to be faithful now, ’cause if I can be with no one for two years, then I
+can certainly be committed to one person. And because of the meditation, I’m so used to watching these
+feelings of dissatisfaction or anger or longing or sadness come up inside of me, and then pass away, that
+now I know when I find a woman to be with, I’m not going to blame her for those feelings. ’Cause I know
+it’s just junk inside of me. " , "Who is your musical hero? " , "Pat. ’Cause I’ve been playing with him
+since we were 21, and just about whenever I’ve been making music, he’s been right there next to me. My
+style has really evolved around him. And he just has that heavy-yet-sensitive touch that I really admire.
+And emulate. " , "Do you mean musically or personally or both? " , "It’s reflected in everything he does.
+But you can really hear it in the way he plays. He has a lot of power, but it’s never harsh. It’s always
+sensitive, and dynamic, and it’s always expressive in a subtle way. And I see that in everything he does,
+whether it’s juggling a soccer ball or rapping. " , "A few years ago you said you wanted to make a
+rap-metal album. You do some rapping on "Beverly Hills," but what happened with that? " , "I kind of feel
+like that’s what we did — in the approach of writing vocal parts that are much more lyric-oriented. I
+would just write out a bunch of words and start singing ’em without worrying about where the melody
+was going. It’s more about the rhythm of the words, and you can hear it on "Beverly Hills" or "Across the
+Sea" on Pinkerton or "El Scorcho" or even on "Buddy Holly," and that’s what I mean when I say
+rap-metal. " , "Do you have a working definition of love? Or what it means to be in love? " , "The feeling
+of wanting to give something expecting nothing in return. That’s the kind of love I strive for. " , "Do you
+do good deeds knowing no one will ever know about it? " , " [Laughs.] I try to. I want to do nothing but
+good deeds. " , "Any good deed you’re particularly proud of? " , " There’s no point in gloating about it,
+even in a secret inner way, because you lose the benefit of having done the good deed! " , " You live in a
+one-room place, right? " , " I’m living in a guest house right by the ArcLight — it’s one room, but it’s
+really nice, and it’s a loft. " , " And you don’t have a car? " , " No. First of all, I’m hardly ever in L.A., but
+when I am, everything I need to do is within walking distance of my apartment. And we have [an
+assistant] who can drive me, or one of the other guys in the band. But there’s no real reason to have a car.
+It’s not ’cause I’m some weird ascetic freak — there’s just no need. If I end up in a situation where I need
+a car, I’ll get one! [Laughs.] " , " Has living in the city, in L.A. specifically, affected you at all creatively? "
+, " I suspect that L.A. has had a really good influence on me musically. When I was a teenager living in
+upstate Connecticut, I was on a real bad trip musically, stuff that hardly anyone could relate to. Then I
+moved to L.A., and pretty quickly I figured out how to make music that would have a broader appeal and
+mean something to a lot of people. Then I went back to Boston and wrote Pinkerton, which didn’t have as
+broad an appeal. It has the sound of someone who’s not really in touch with other people, and I don’t
+know if that’s good. It also sounds very much like a winter album, which I don’t know if I would make in
+L.A. So I like L.A. " , "This friend of mine said that novelists tend to rewrite the same story over the
+course of their careers. What’s your story? " , " There’s themes I’ve noticed, like feeling guilty and beating
+myself up and saying I’m sorry, being alone . . . it’s starting to feel a little bit old to me. [Laughs.] I don’t
+think I can really write a new kind of song until there’s some big changes in my life. That’s why I’m kind
+of excited and curious to see what might happen to me if I find somebody. What if I can’t write the "I’m
+shy and lonely" song anymore? It’ll be something else. It’s exciting. "
+]
+['Hi, it's Rivers. " , " Hi Rivers, how are things in Dallas today? " , " Good. We played Houston and Austin
+and today in Dallas. It's going well. " , " Are these your own shows?" , " We're co-headlining with the Foo
+Fighters." , " So how long have you been touring on this album?
+" , " We've been touring since April. We've been to Japan and Europe a couple of times, and around the
+States a couple of times." , " The new album is getting some airplay, congrats on that. Do you mostly
+come to the band with the songs? " , " Yeah, that's how it worked out this time. We spent some time in
+pre-production moving parts around and coming up with background parts. Some of the songs I demo on
+my own, and in those cases they're pretty much arranged by the time the band gets to them." , " Do you
+have a home studio?" , " No. We rented a room at SIR in Hollywood, and I had a whole band set up in
+there. So I could just jump from instrument to instrument. And we had a Pro Tools rig. Somebody set that
+up and did a lot of the work, but sometimes I would ask him to walk out of the room and I would fiddle
+with it myself. But I'm not very proficient with it myself." , " There's a big learning curve there. " , " Yeah,
+it's brutal. " , " Are you proficient on the drums and other instruments? " , " Yeah, I'm good enough to
+make a demo. And actually at these shows I play drums on one song, and our drummer Pat comes out and
+plays guitar and sings. It's on 'Photograph' from the Green album. " , " So do you have any new guitar toys
+you're playing around with this time? " , " Yeah, I'm using the talkbox on 'Beverly Hills.' " , " It sounds
+real Frampton-like. Is that what you intended, or is it just that a talkbox always sounds Frampton-like? " ,
+" Well, I'm not even really familiar with Frampton, so that wasn't my intention, but everybody says that.
+That's fine, whatever. At first it felt very strange to play it, but now I'm really enjoying it. It feels very
+natural. " , " What brand do you have? " , " I don't even know. It says Talkbox on it. " , " Are you not
+really a gear head? " , " Not really. My role in the band has been to be a foundation. My guitar sound is
+like a basic canvas on which the other guitar player adds interesting color. He has a lot more in terms of
+gear. " , " What do you play through live? " , " I'm using Diesel heads. My guitar tech found them. They
+sound really good. " , " And what kind of guitar are you playing these days? " , " A Gibson SG. " , " Is
+there anything you've done to the guitar? " , " No, the guitar is standard, but we invented a box called the
+'De-Bigulator' which is just a little switch that turns down the volume - or the current, I don't even know
+what it is - going to the amp. So it's like I'm quickly turning down my volume knob, but all I have to do is
+step on this switch. That's how I go from dirty to clean. " , " Your tech built this, it didn't come with the
+amp? " , " No. I told him what I wanted to accomplish. His name is Bobby Schneck, he's been with us for
+a long time. He's a real integral part of what we do. And actually he plays guitar on stage with us on some
+songs. He also was teching for Green Day for awhile, and he also played for them. " , " Is he on stage or
+off stage when he's playing? " , " He comes out on stage and rock out with us. " , " Cool. Do you use any
+other effects? " , " The only other effect pedal I use is the Boss Super Distortion. And we tune down a
+half-step. " , " What guitar do you play at home? " , " I have a Gibson J-45 acoustic. I do a lot of writing
+on that. " , " Do you do a lot of writing year round, or do you wait until the band is gearing up for an
+album? " , " I guess I write at home a lot. " , " And when you're working on a tune, do you try to make it
+happen all in one sitting, or do you sometimes let songs sit for a few weeks, then come back to it? " , "
+I've tried all different ways. On the songs that made it to the album, there were substantial revisions to
+most songs. But generally I manage to write a complete song in one sitting, and if there are revisions, they
+come later. " , " Did your producer, Rick Rubin, ask for a lot of revisions? " , " Yeah. I would send him a
+song, and he would send me a page saying, the verse is great, the chorus isn't so great, try again - that sort
+of thing. " , " Does Rick play music? " , " No he doesn't, and it's very strange. He's an incredibly musical
+person, but he doesn't play. " , " So his advice is really coming from a listener standpoint. " , " Yeah.
+There's a lot of innocence about it. There's no player ego involved at all. It's just like average listener
+advice. " , " Is he demanding when he asks for a change, or is he laid back? " , " He's massively laid back.
+But he's always very clear, and open and honest about what he thinks. He'll tell you if something is not
+great, and he'll leave it up to you about what you want to do about it. It's a really inspiring way to work.
+He's a great partner for me. " , " And he did pre-production in a studio with the full band, right? " , " Yeah,
+that's one of his main priorities. He's getting everybody involved at that stage. And he made it so that it
+was only the four of us and him at that stage. No one else was allowed in the room. He did whatever he
+could to make everyone feel safe so that they could all contribute, whatever crazy ideas they had, they felt
+safe to shout them out, and we'd try it. And then we'd all vote and collaborate. The whole process was
+very dynamic. " , " Can you explain to our younger readers, when you're working with somebody like
+Rick Rubin in a pre-production scenario like this, what is pre-production like. What does a pro producer
+make you do - did he have you running through tunes over and over and over again? " , " Yes, absolutely.
+It could be painful. I think especially Pat, our drummer, didn't enjoy the experience. But I think we all feel
+like it was incredibly valuable, and really it's one of the big differences in the quality of this album
+compared to the album before, on which we didn't do much pre-production. " , " In a situation like that,
+you're really analyzing the song down to the second, aren't you? Every beat has to be in the right place.
+That's kind of what he's pointing out to you, correct? " , " Yeah, absolutely. " , " That's pretty cool as a
+learning experience. It's sort of like you write an album, and then this guy takes you to college on it. It's
+like a whole semester's worth of thought on those songs. " , " Absolutely. It was a great experience. " , "
+So when you're working on these tunes on your own at home, are you recording into a cassette recorder, a
+home studio - what do you do to keep these tunes in your mind? " , " Nowadays I record directly into my
+lap top. I've got a $25 microphone from Radio Shack. I plug it into my computer and record into a
+program called Vegas. It's really easy to use, much easier than Pro Tools. " , " Vegas is Sony's video
+editing software. Why are you using that instead of their Acid recording program? " , " I don't know.
+Somehow, I think our web guy had it because he makes videos of us. So I learned it, and now I'm kind of
+stuck with it. " , " Who is the girl singing backups on 'Beverly Hills'? " , " Her name is Stephanie Eitel.
+" , " That part sticks out, was that Rubin's idea? " , " No, that was actually my idea. At first I was going to
+sing it myself, but then I thought, 'Let's have some girl do this.' " , " Is she saying, 'Can you hear me?' " , "
+No, she's saying, 'Gimme, Gimme.' " , " So what are you doing about that track on the road, is it on a
+track? " , " No, the other guys have to sing it. In my opinion it doesn't sound that great. " , " She probably
+did it better. " , " I think so. " , " When I listen to your whole albums, there are some songs which are
+more straight-forward and simple, such as 'Beverly Hills,' and then songs like 'We Are All On Drugs,'
+there's more guitar riffing going on - the track is more intricate. Why are there these differences between
+songs? What leads you in one direction or the other? " , " I don't think about it too much. I think one of
+the differences is that we didn't spend a lot of time working out 'Beverly Hills.' It was one of the last
+songs. I wrote it very quickly; we recorded it very quickly. I think if we had time to play with it longer we
+would have had time to come up with some riffs over it. A lot of times that's the job of the other guitar
+player. That's him you hear riffing around on 'We Are All On Drugs.' " , " So how is it you chose 'Beverly
+Hills' to be the lead off track? " , " I didn't. " , " Was it a label decision? " , " Label and management.
+Everyone voted pretty much, and it seemed like the clear consensus was 'Beverly Hills.' And it's done
+extremely well at radio. " , " Oh yeah, I'm hearing it all the time. " , " You can't complain " , " No you
+can't, not at all. So do you have any tips or suggestions for kids out there with a band, trying to get
+noticed. How do they get their band from a local club level to being noticed by a major label? " , " I think
+moving from the back woods of Connecticut to Los Angeles was extremely helpful (to me) as far as
+getting a label deal. But, I don't know " , " Did you play a lot of shows before you got signed? " , " It
+seemed like it. We played probably 50 or 60 shows before the labels started coming and it was clear that
+we were going to get a deal. That was over nine months to a year. It seemed like it was taking forever. We
+were playing the same songs that eventually became hits, and we were wondering 'Why isn't anybody
+interested in us? These other bands are getting signed, why aren't we?' " , " But it all worked out. A lot of
+bands - especially if they're in a part of the country where there are not a lot of original music clubs - they
+play one or two shows a month, and wonder why aren't we getting anywhere. But if you want to be in a
+really tight band, you need to be playing live a lot more than that. And with a lot of the celebrities who
+I've interviewed over the years were the people in their community who were playing like three nights a
+week, as opposed to once a month. " , " Yeah, it's really crucial. It helps you figure out who you are, and
+what your style is. " , " Did you start out playing covers? " , " Yeah, I grew up playing covers. My first
+band was an all Kiss cover band. And then I did another band that was playing a variety of '80s metal:
+Judas Priest and Iron Maiden and Metallica, Yngvie. " , " Were you playing those leads? " , " I was trying.
+And then ever after putting out my own records I've gotten together with guys to cover bands, and I
+remember one show I did that was all Nirvana stuff. And another show was all Oasis songs. And I'm
+always just covering songs by myself, learning them and playing them on acoustic for the fun of it. And I
+think it influences how I write. " , " By learning some new progression you hadn't thought of before? " , "
+Yeah, and the melodic and lyrical patterns. Just to get them in my brain, my sub-conscious so that when I
+go to write they just start popping out automatically. " , " Was there anything in particular on this album
+that you allowed to enter your brain and influence you that way? " , " Yeah. Rick was very particular
+about what recommended I listen to. " , " Really? What did he say? " , " Three things: 1) John Lennon, 2)
+Neil Young, and 3) Trent Reznor. So I listened to those three artists over and over again. " , " And learned
+some of their songs? " , " Yeah. I learned songs and listened to them. " , " What tunes did you learn? " , " I
+remember learning a song called 'Alabama' by Neil Young. I learned so many John Lennon songs. " , "
+Were you previously a Lennon or Beatles fan? " , " Yeah. But what I did was put only the John Lennon
+songs in a playlist in my computer. So it wasn't exactly like listening to the Beatles, it was only the
+Lennon stuff. And it had a very different effect. " , " Solo and Beatles Lennon tunes? " , " Some of the solo
+stuff; mostly Beatles songs. I don't know if I learned any Nine Inch Nails songs, because they're not really
+guitar songs. " , " When you were doing the '80s metal stuff, were you at that time - or do you now
+consider yourself - a fairly capable lead guitar player? " , " Yeah, I spent a lot of time practicing technique
+- scales and arpeggios and all that stuff, with a metronome. I was definitely on the technically capable
+side. But shortly after getting to L.A. I started getting into different aspects of music - the songwriting and
+singing things. And at that time I stopped practicing guitar techniques, so I'm definitely not the shredder I
+once was. I'm capable enough to play anything I need to play in this band. " , " What was it about moving
+to Los Angeles that changed your playing? " , " I moved in '89. I went to L.A. with the intention of
+becoming a huge rock star who played Yngvie Malmsteen type music (laughs). When I got to L.A. I
+started to perform in clubs, and I got a job at Tower Records (on Sunset Blvd.) and started meeting other
+musicians and other music people, and I started to realize that most people don't really care about guitar
+technique. They're more interested in songwriting and singing. And working at Tower Records, they play
+music in there 8 hours a day, through my whole shift, every day. And they weren't playing Yngvie, they
+were playing Sonic Youth and the Pixies, and all these classic rock and pop records. And I just heard that
+stuff over and over every day - against my will initially. But eventually it really had an influence on me
+and I got more interested in songwriting and singing. " , " And the rest is history! Well Rivers, thank you
+so much for your time, and enjoy the road! " , " Thanks Adam. "]
+["When have you been at Harvard, exactly? " , " I transferred in as a second-semester sophomore in the
+fall of ’95. " , " And you were there for the semester after that, the spring semester of ’96? " , " Yeah. " , "
+Were you there for fall semester of ’96? " , " No. "Pinkerton" came out on September 24th, and we toured
+that fall. And then I came back at the end of January. " , " Okay, and you were there for that semester. " , "
+Yeah. " , " Okay, and then in fall of ’97, you came back to Cambridge, but you didn’t attend? " , " Right. I
+backed out at the last second. " , " So that was it for a while, and then you came back in Fall of 2004? " , "
+Right. " , " What do you think your favorite course has been, since you’ve been here? " , " So many. Music
+51 immediately comes to mind, with John Stewart. " , " Why? " , " I feel like I got a lot out of that class
+that is gonna stick with me for the rest of my life, just because he stresses learning through experience so
+much. Everything we learned, we learned on the keyboard and we practiced over and over. So, all those
+little chord progressions and voice leadings—they’re in my bones, as well as my ear. So, I just feel that I
+got a tremendous amount out of that class. " , " Do you think a lot of that went into specific aspects of
+your music that weren’t there on the Blue Album? " , " Well, I think one thing I got out of the class, one
+specific thing, was maybe an even greater attention to counterpoint, which is having one melody move in
+a different direction and a different way than another melody. And in pop or rock music, that’s expressed
+mostly in the contrast between the vocal melody and then the bassline or the chord progression. A lot of
+rock music doesn’t pay much attention to that—a lot of times, the guitar line and the vocal line move
+together But some rock musicians—myself, included—really try to have there be a counterpoint there.
+And I was really into that on "Pinkerton". So, that could be an influence from Music 51. " , " Are there
+any professors you’ve had a close relationship with? " , " Yeah, I had a very close relationship with my
+Expos teacher, Naomi Steven. We were very close throughout my first year at Harvard, and we’d have
+lunch all the time and just talk for hours. At that time, I was working on the "Pinkerton" songs a lot, so I
+feel like she was, in a way, a collaborator and an influence. " , " Which Expos class was it, out of
+curiosity? " , " I think it was just called "The Essay," Expos 17. Yeah, she was involved in that whole
+process. " , " So, would you go to her with lyrics you’d been working on, and she’d critique? " , " No, it
+wasn’t like that. It was more like, I would discuss with her the emotional and romantic situations in my
+life, and we’d also talk about ways to express that in art, and what ways other artists have expressed that.
+[pause] I can’t be too specific, because it involves other people’s private lives. But one example is, in
+"Pinkerton", in "El Scorcho," two lines in the song are actually taken from someone else’s essay in my
+Expos class. Because at one point, we had to do a little workshop thing, and we each got assigned to
+review someone else’s essay. So, I reviewed this one person’s essay, and I liked some of the lines in it, so I
+took them and used them in the song. " , " Can you tell us which lines? " , " Well, if you look at the
+printed lyrics, two of them have quotes around them, so those are the ones. " , " Have you told the person?
+" , " Oh, yeah. " , " And they’re cool with that? " , " Mm-hm. Yeah. They were at the time. There’s
+actually a whole lot more drama behind the whole thing, but I just can’t get into it. " , " Behind the whole
+album, or just that particular song, or the Expos? " , " All of it. " , " Are there any physical spots on
+campus that have particular significance for you? " , " I think this cafeteria. Yeah. I obviously eat here
+three times a day and take long meals and just hang out with people, and this is like, this is where I live,
+apart from my room, which is where I do all my work. So, I have a lot of great memories here. " , " How
+about from previous times when you were here, before you were living on campus? " , " Well, I didn’t live
+on campus. " , " So, you didn’t spend much time on campus? You’d just go to class and then commute
+back home? " , " Yeah. Sometimes, I’d hang out if I had a break between classes. " , " But the campus
+wasn’t terribly significant for you, physically, at that point? " , " Well, it was, but I don’t remember one
+place in particular that was significant. " , " What surprised you most about your experiences at Harvard? "
+, " I was very surprised at how friendly people are, and at how outgoing and nice and good-mannered
+people are. I guess, growing up, I just assumed people would be kind of snobby here. And I was amazed
+when people would just come up to me and start talking. They just seemed very unpretentious. " , " So,
+when you were coming here, were you hoping for people to be pretentious? Or were you expecting that?
+You had your pick of schools to go to, so if you expected people to be like that… " , " I think that, before I
+came here, I was thinking that I wasn’t gonna have any social life at all, and I didn’t care. That wasn’t
+why I was coming here, so it didn’t matter to me. " , " Is there anything that’s been disappointing for you
+about Harvard? " , " [Long pause] Like everyone else, I feel like there’s a lot of things that I would have
+loved to have done while I was here, but I just didn’t have time. And so, there’s a feeling of, "Aw, man, if
+only I had another semester..." " , " Like, classes you’d want to take? " , " Classes I wanna take, or
+extracurricular activities, or musicals, or the choir. " , " Actually, I wanted to get to that—I read
+somewhere that you auditioned for a choir when you first got here. What was that like, and what
+happened? " , " I think there’s this one general audition you take, and they tell you which choir you’ve
+gotten into, and I had my heart set on Collegium Musicum, which is just, like, the standard choir, but it’s
+pretty good. Whereas the other one is just, like, they let any joker in. And I…I didn’t get into the good
+choir. " , " So, I assume that was a disappointment " , " Yeah, I was disappointed, because I’ve always
+loved singing in choirs. I’ve been in them ever since 8th grade. I was in the Connecticut All-State Choir in
+High School, and obviously, I sing for a living. " , " Right—you’d think they’d let you in, automatically. "
+, " Well, they didn’t know who I was, which was good. Because I’d want to be let in on the merits of my
+singing, not reputation. " , " Are there other extracurriculars you did end up doing? " , " I don’t think so.
+When I was here in the ’90s, I was really busy outside of school, playing music with local Boston
+musicians. I have a lot of friends in bands around here, and I was going out to clubs and that sort of thing.
+And this time, I spend a lot of time on meditation, and that seems to keep me occupied. " , " Is there any
+part of the Harvard life that you really wish you’d been a part of? You said musicals—would you have
+wanted to do theater here? " , " Yeah. If…Yeah, I get stage fright, though, so I don’t know if I could have
+pulled it off. And I can’t dance. But yeah, it would have been great to be in a musical. I was in "Grease" in
+high school. " , " Right, you were Johnny Casino. Have you gone to any musical performances on
+campus? Do you have friends that you go see performances of? " , " Yeah, I have friends in C-Sharp, and I
+think they’re great. I really love those songs. If there was one group I would join, that would be it. But, I
+don’t speak Chinese, so it would be tough. " , " How has this semester differed from Fall 2004? " , " Yeah,
+I’m really different, and I think the main difference is I’m engaged. And, in 2004, I was looking for
+somebody. So, I seem to be less concerned with meeting people this time. Like, I’m happy to meet people
+and hang out and have fun, but I don’t feel, like, extremely driven to do it. So, a lot of times, people will
+send me emails—"Hey, there’s this party, we’re going out to this club, you should come," and I just kinda
+say, "Enh." I gotta stay in, do work. Because I feel content already. " , " So, wait, when you were here in
+Fall 2004, were you dating? Were you going on dates with students? " , " I wasn’t dating, but I was just…I
+was…I definitely had my eyes open. But, I don’t think I technically went on any dates. But, you know, I’d
+have dinner in the dining hall here. " , " Typical date for a college student—eating in the dining hall. " , "
+Yeah. " , " What’s an average day in your life like, these days? " , " It’s really simple. I get up at 6 and
+meditate for an hour, and then, throughout the rest of the day, I’m either in class, or I’m in my room
+studying, or I’m in the dining hall. And then, I meditate again at 5:30. " , " Do you meditate with anyone?
+" , " It’s just by myself. But, once a week, I go to a group sitting. " , " Is it students? " , " It’s not students.
+Although, there is one guy in Cabot, who has taken a Vipassana course. I don’t know him. " , " Have you
+been writing at all, in terms of prose or songs, while you’ve been at Harvard this semester? " , " Yeah,
+before Spring Break, I was working on some songs, but since I got back, I haven’t had time. " , " How do
+you make friends here? Do people come up to you? Do you actively seek people out? " , " Yeah, it’s
+great—that’s the best part about being famous, is that people want to get to know me, so all I have to do is
+sit down, and then people come up to me and introduce themselves, and I make friends, and then I meet
+their friends. It seems like I have a very happy and comfortable social life, which is something I never had
+when I was younger. " , " Are there any awkward situations you've been in, where people have tried to be
+your friend, but have been too nosy, or you haven't gotten along with them and had to avoid them? " , "
+No. I mean, sometimes people are a little nervous or awkward at first, but once they calm down, then
+they're generally pretty interesting and intelligent people here. " , " How close do you feel to the friends
+you've made here? Do you plan to keep in contact with them after you graduate, or are they just fun
+people to be acquaintances with while you're here, and then you're going to go back to your LA friends
+and your bandmates? " , " [Long pause] I don't know. I guess that'd be a good question for any graduating
+student. I guess I'm totally open to it, and my friends will know how to get in touch with me. " , " So, do
+you discuss your life's work with people here? Do people know that you're "Rivers?" Or are you just
+Rivers? " , " Well, I don't know what people know, unless they tell me. " , " But, among your friends, does
+your life's work come up a lot, or do you just talk about school? " , " I think people feel comfortable
+asking me about anything, but my nature is a listener, rather than a talker, so I think we usually end up
+talking about their lives. But I'm totally open to talk about anything. " , " Have there been any instances
+when somebody's asked a question that's too personal, and you've had to deflect? " , " I think I used to not
+want to talk about the band sometimes. Not because it was personal, but because it was a source of
+anxiety and tension for me, and when I came here, I wanted to leave it behind and take a break from it and
+focus on something else for a while. So, when someone brought it up, it would be painful for me. But
+now, I'm relaxed about it. It doesn't bother me. " , " In your initial days at Harvard, you sounded conflicted
+[about your anonymity at Harvard]. Which was the more dominant emotion? Feeling isolated, or feeling
+glad to be isolated? " , " [Laughs] I think I was probably…[Pause] Thinking back on it, I can see how silly
+I was, but, ultimately, I think I was happy that I was isolated and going through tough times, and in pain. "
+, " Happy to be in pain? " , " Yeah. " , " Both mental and physical, right? You were in a leg brace at the
+time—what was that like? " , " It was literally like having, I think, about seven arrows lodged into your
+legbone, and then having to walk around with them lodged in like that for thirteen months, with only
+Advil. " , " Was it only Advil? Were you taking other painkillers? " , " I think the first two months, I had
+Demerol, but, they warned me to get off that. " , " Do you think that affected either your experiences at
+Harvard or your songwriting at the time, or was it just another cherry on the top of all the pain you were
+going through? " , " Well, I think physical pain, long-lasting physical pain like that, can really sweeten a
+work of art. So, I think it did have a big impact on that second album. And it affected me in school,
+because I was far less comfortable getting to know new people. I looked strange, and I was handicapped. "
+, " Was that what the line in "The Good Life" is about? Having to walk with a cane? " , " Yeah. " , " I
+always thought that was a metaphor. You speak about your time working on "Pinkerton" that your pain
+sweetened the process of making a work of art— " , " Not sweeten the process. Sweeten the result.
+[Laughs] " , " Do you look back on the days when you were working on the second half of "Pinkerton"
+with a certain kind of wistfulness for that pain? " , " No. Not at all. " , " But how do you balance the fact
+that you feel that the process sucked, but that the end result was, as you say, a sweet work of art? Do you
+still have to go through that kind of pain, in order to produce something? " , " [Long pause] Ah…no, no I
+don't think…I don't think you have to suffer. But, at the same time, I don't think you can be indulgent,
+either. You can't just load yourself with pleasures. " , " Sort of a middle path? " , " Yeah. I think…my
+theory is that…detachment will yield the best results. " , " From both pain and pleasure? " , " Yeah, and
+ah…I want to…I think the only way to gague this hypothesis is to look at the music it results in. If you
+like the sound of "Pinkerton" better than what I'll come up with in a more detached state of mind, then
+you should conclude that, yeah, suffering is necessary to produce good works of art, but that may not be
+the case for everyone. I mean, it's one of our least successful records, in a way. " , " So, do you think you
+succeeded in being more detached in the songwriting for, say, "Make Believe"? " , " Well, I was moving in
+that direction. I started moving in that direction. But still, the song "Hold Me," for example—I was
+putting myself through difficulties. " , " Intentionally how? " , " In that case, I was fasting. It was that
+similar kind of physical pain and suffering that lent a certain sweetness to that song. " , " But, at that time,
+you'd started meditating, no? " , " No, that was right before I started meditating. " , " So, the work that
+you've been doing right now—do you think you're getting closer to that detachment? " , " Mm-hm. " , "
+But when you say "detachment," do you mean detachment from your personality? " , " No, I mean
+detachment from the pleasant or unpleasant sensations of my body. " , " So, purely physical? " , " Well,
+the body and the mind are interrelated. " , " But one of the accusations that's been made is that, since The
+Green Album, your song topics have become less and less vividly about personal experiences. Do you
+agree with that assessment, or is that just in the ear of the beholder? " , " No, I would agree with that, for
+the most part. The Green Album and Maladroit were, very intentionally, not about me. Not about what
+was going on in my life, at least in a conscious way. " , " And "Make Believe"? " , " It's more about me
+again. But not so much about the details of my life. I would try to write about the experiences of my life in
+a more universal way; using more universal language, so it probably still doesn't feel as personal as
+"Pinkerton". " , " Getting back to "Pinkerton"—would it be at all appropriate to call "Pinkerton" "The
+Harvard Album"? " , " Well, the first four songs were not written here. "Tired of Sex"—that's an LA song.
+" , " From back in the Zoom days? " , " No, it was written in LA, after the Blue Album was recorded, but
+before it was released, at the time when Weezer was becoming kind of popular in the LA clubs. But we
+didn't have an album out yet. "Getchoo" was written in Connecticut. "Why Bother" was written in LA.
+And what's the other…? Oh, right, "No Other One." That was actually written in Long Island. " , " But
+then, the subsequent six… " , " Yeah, the other six songs are very much Harvard. They definitely feel born
+of this atmosphere here. " , " Do you feel that, if you hadn't come to Harvard, you would have ended up
+putting out "Songs From The Black Hole"? " , " No, that was scrapped before I got to Harvard. " , " I
+guess, then, more generally—do you feel that your experiences at Harvard in 1995 and 1996 changed the
+direction of the album? Was it going to be a different album, and then being here shifted that? " , "
+Absolutely. Yeah, the people I met, the experiences I had that year. " , " Do you think it would have been a
+more—and I hate this word—"upbeat" album, if you hadn't come to Harvard? " , " No, I think wherever I
+was, I would have ended up in a similar emotional space, probably. " , " So, getting to the songs—could
+you tell me about the experiences that led you to write "El Scorcho"? " , " Yeah, I'd love to tell you all the
+juicy details, but I…I'm not concerned for my own privacy, but for someone else. I know she doesn't want
+anyone to know anything. So I can't say anything. " , " Do you keep in contact with her about it? " , "
+[Pause] I try. " , " Is that still painful? " , " Um…I want everyone to get along and to be happy, and so I do
+everything I can to make that happen, but if it doesn't happen, I'm not gonna cry about it. " , " Well, not so
+much interpersonally, but for you specifically—when you play "El Scorcho," does it hurt to remember
+those periods? " , " No. " , " How did you move on from that? Was it just time, or was there a point when
+you said, "You know what? Half-Japanese girls don't bother me, anymore"? " , " Um…Well, the
+overriding emotion in that experience, and in that aspect of my personality, I think, is guilt. That was the
+main source of pain, was a feeling of guilt. That's what that album is about. I think, yeah, ultimately, I just
+have to forgive myself, and try to be happy and peaceful now. " , " So, have you forgiven yourself? " , " I
+think to a large extent, yeah. " , " Obviously, "Pink Triangle" seems to be about a different girl—are the
+six songs about just those two, or were there a number of girls that you were romantically intertwined
+with? " , " Yeah, ah—that was a different girl. I think that was the one I noticed first, when I got here in
+‘95. We weren't exactly "intertwined"—it's just, I saw her in class and I had a crush on her. And I think we
+were hardly even talking. And actually, that's the best phase of a relationship to write songs—before you
+even really know anything about the person! Actually, I don't know that. Because now that I'm in a serious
+relationship, I guess I'll find some things to write about. " , " Have you been writing about your fiancee? "
+, " Lately? No. " , " Really? " , " Yeah, no I seem to be interested in all kinds of things, but not that, so far.
+" , " But most of your oeuvre, being modern pop-rock, is largely about girls and romance. So, what are
+you writing about, now, if not that? " , " Well that's interesting, because I think the same way about
+myself—that I primarily write songs about girls. But, when you think about it, think about the songs that
+people really know—think about "The Sweater Song". That's not about a girl. " , " It's not? How is that
+not about a girl? " , " What does it have to do with a girl? It's got nothing to do with a girl! " , " Everybody
+interprets it that way! You know, "If you want to destroy my sweater, hold this thread as I walk away"… "
+, " Is there a girl mentioned? " , " No. I guess it's just implied? " , " No. It's about, at least in my mind
+when I wrote it, it's about existential despair. It has nothing to do with a girl. " , " I guess "My Name Is
+Jonas" has nothing to do with a girl. " , " "Say It Ain't So" isn't about a girl. "Hash Pipe" isn't about a girl.
+"Buddy Holly" is about a girl, but it was a platonic thing. "Island in the Sun" isn't about a girl… " , " It's
+not? " , " Nuh-uh! " , " I guess this is all just up for interpretation. " , " "Beverly Hills" isn't about a girl.
+"Perfect Situation" is about a girl. " , " That's true. "We Are All On Drugs" isn't about a girl. " , " No. " , "
+"Keep Fishing"—is that about a girl? " , " I don't know! It's just—I don't know what I was saying. Maybe
+it was? " , " So, I guess you're just left with the last six songs on "Pinkerton" and a few others " , " Well,
+sure, there are album tracks, and B-sides. " , " Okay, so getting back to the original question: What are
+some of the topics that you're writing about, now, in that case? " , " I'm working on a song called "Pig,"
+which, ah, follows the life of a pig, from when it's just a little piglet on the farm, playing with other
+animals, to a point where it's grown up and married and has kids, but then it eventually [laughs], it gets
+slaughtered! " , " Hopefully, this isn't semi-autobiographical? " , " Not intentionally, no. And ah, but he's
+singing to the farmer at the end of the song. He's forgiving him. As he's going to be slaughtered. " , "
+That's very appropriate for Easter, I suppose. " , " [Laughs] " , " So, have you written any songs for your
+fiancée? " , " I have in the past. I wouldn't say "for" her, but about her, about us. " , " When did you meet.
+Was it while you were at Harvard? " , " Yeah. Er… " , " Or was it when you were not at Harvard, but
+doing solo shows in Boston? " , " Yeah, I think it was that fall of ’97. " , " So, you've met, but you've only
+recently gotten engaged. Did you guys lose touch between then? " , " We were friends for many years, and
+then she moved back to Japan. " , " Is she Japanese, by birth? " , " Yeah. She lives in Japan. " , " Tokyo?
+Kyoto? " , " Actually, a small city in Southern Japan. " , " She's not the "Across the Sea" girl, is she? " , "
+No. Well, I don't think so. " , " So, why did she end up at this Rivers Cuomo solo show back in ’97? " , "
+Well, I assume she wanted to see me perform! " , " But what was she doing in Boston? " , " Oh, she was
+studying at a language school in Boston. " , " So, do you ever run songs by her? Use her as a pre-critic? " ,
+" [Long pause] Um…no, no I don't think I have. I think I'd be too shy to play something for her. " , " Is it
+that you think she'd be too critical? " , " Um…[pause]…I don't know. I just don't like performing! " , " So,
+you'd never do a campus performance? A coffee house? " , " I thought about it. I went to the coffee house
+here a few times, and I came close to going up there, but…I just…I don't like feeling nervous! " , " Why
+do you still feel nervous, after all these years? Are you nervous of being judged? When you're about to go
+on stage, what is the little devil on Rivers Cuomo's shoulder saying to him? " , " Ah…[long pause] I don't
+even really know. I guess I haven't analyzed it that much, but, it's just like a physical feeling of fear. It's
+the fight-or-flight response. Whatever those chemicals are, they just start pumping through my system,
+and I don't like it. It's not comfortable. " , " What's more nerve-wracking—an exam, or a show? " , " The
+most nerve-wracking experience is an oral presentation in class. And right under that would be doing
+"Saturday Night Live" or "David Letterman." One of those shows. " , " So, does meditation help that fear?
+" , " It's supposed to help that, for certain, but this particular kind of meditation, instead of repressing all
+your pain, it brings it up to the surface. So, you're incredibly aware of it. And, by doing that, you slowly
+purify it, and you're free from it forever. Not all meditations work like that. Most just repress the pain. So,
+maybe I just haven't progressed far enough to where that fear has been dissolved, but I'm definitely more
+aware of it than ever. " , " That's not the image people have of meditation—we usually think of sitting in a
+lotus position and clearing your mind of questions. " , " That's the opposite of Vipassana. " , " So, what's
+the basic task of Vipassana? " , " Observe physical sensations with equanimity. " , " When you say you
+bring the pain to the surface, are you supposed to think about everything that makes you uncomfortable? "
+, " No, you don’t force it. It just happens. And, again, you’re not focusing on the level of thought, so
+much, but more on the level of sensations. How your body is reacting. You just observe that. " , " Are
+there any particular fears you’ve managed to rid yourself of with Vipassana? " , " I think most all of my
+pain has been attenuated. My fear and sadness and anxiety and anger—all of those things have
+diminished, noticeably. " , " And you started Vipassana in 2003? Rick Rubin introduced it to you? " , "
+Well, Rick introduced me to meditation, and then I discovered this particular technique on my own, just
+by doing Internet research. " , " Are there a lot of Vipassana practicers in the Boston area? " , " I think
+there’s about 200-something people on the Yahoo! news group for Vipassana in the Boston area. " , " Do
+you know of any fans or friends of yours who have started Vipassana because of your experiences with it?
+" , " My mom! " , " Now, your mom was involved with Eastern healing techniques since way back, right?
+I mean, you were raised on an ashram… " , " Yeah, so it’s not that much of a jump for her. But my
+fiancee’s gonna do a course on it with me this summer. " , " Well, she’ll be your wife by that point! " , "
+Yeah! " , " So, you’re getting married in LA? " , " Mm-hm. " , " And you’re going to live in LA? " , "
+Mm-hm. " , " Do you ever plan to come back to the Harvard campus? Will you come back for your 25th
+reunion? " , " I might? The sad thing is that, each time I come back, it’s changed. So many of my friends
+are gone, and I feel like I don’t belong, and then slowly, I get to know people again, and I feel great. But I
+suspect that, in a few years, if I come back, everyone will be gone! " , " So, would you say that your main
+connection with Harvard is to the people, not the institution? Would you ever want to come back to the
+campus and revisit old ghosts and memories, or would it not mean anything to you because the people are
+gone? " , " No, I would. I’d definitely like to walk through and remember experiences I’ve had. That can
+be…heavy. But, at the same time, I don’t want to develop that ego of knowing I’m a Harvard graduate.
+That’s not where I wanna go. " , " So, if one of your main concerns is with ego, why did you decide to
+come back to Harvard? Do your friends, your bandmates, your fiancée look at you differently because
+they know that you go to Harvard? " , " Yeah. I think that there’s a lot of baggage attached to the Harvard
+name. I can’t deny that there was some trace of wanting to puff up my own ego in coming here. And I just
+hope that wasn’t the only reason. I hope I had some purer motives, too. " , " Why did you decide to come
+back in 2004? " , " I always have a tough time with "why" questions. There are probably several reasons
+for coming back in 2004. One of them was definitely wanting to find somebody. " , " So, you weren’t
+involved with your fiancée at that point? " , " Right. " , " She was living in Japan at the time? " , " Yeah.
+You know, I wonder if I was engaged at that point, maybe I wouldn’t have come back to school. " , " So, it
+wasn’t particularly out of a desire to finish your degree? " , " Well, that was there, too. A desire to finish
+what I started, and also just a level of learning. A desire to take a break from music. " , " You’d been going
+at it for about three years straight at that point, right? " , " Yeah. It was a lot of work. " , " So, school’s a
+break for you? " , " Yeah, it’s always felt like a break. " , " You started out as a Music concentrator, but
+then you switched to English. I’m surprised to hear you say you had such a powerful experience with one
+of your music classes—I’d assumed you left Music as a concentration because you were frustrated with
+your classes. If you weren’t frustrated with them, why did you switch? " , " I…[long pause]…I felt like I
+didn’t really know how to play an instrument. " , " What do you mean? " , " Many of the other people in
+the Music department are prodigies at the piano or the violin or something like that, and then they go into
+composition in a modern style. Back then, it was 20th Century style—but not anymore, I guess. [laughs]
+So, I’ll just say "Modern Style." But I didn’t know how to play those instruments, and I wasn’t really
+familiar with modern Classical music, and the little I heard wasn’t appealing to me. I originally got into
+studying music more because of the music of the 18th and 19th centuries. So, at that time, I didn’t really
+see a place for me in Music. And, I felt like, although I haven’t been playing a serious musical instrument
+for all my life, I have been working on English. I’ve been in English classes, reading, thinking critically,
+and so that’s something I kind of have a lot of training in, and I’m relatively good at it, so I decided to do
+that. " , " In your interview with the New York Times a few months ago, there was a quote, and I have a
+feeling that it was taken out of context— " , " It was. " , " Which, the one about saying— " , " What I’m
+"best at." " , " Right. What were you trying to say, with that? " , " Well, the question she asked was, "At
+school, what is your best subject?" And, taken out of context, it makes it seem like I’m disregarding
+anything I’ve done with the band, which, to me, I mean, it’s obvious that it’s been much more valuable to
+me. The musical work I’ve done, more than anything I’ve written for an English class. " , " What’s been
+your favorite English class? " , " Oh, wow. Well, I loved Creative Nonfiction Writing with Kyoko Mori. I
+loved Shakespeare with Gordon Teskey. And I’m really getting a lot out of my classes, this semester, with
+Lynn Festa. I find them really challenging. " , " What classes are they? " , " "Sex and Sensibility in the
+Enlightenment," and "Travel Literature of the 18th Century." I feel like my brain is being stretched in new
+directions, and it’s painful, but I think it’s a great experience. " , " Are the classes affecting your
+songwriting? "Pinkerton" had a lot of Puccini in it, so do you find that you want to write about travel
+literature by Voltaire, now? " , " [Laughs] I haven’t done enough writing lately to know how it’s
+influenced me. I’m sure that it will influence me, as everything does. I can say that, ah, we’re reading a
+book—"Colonial Slave Society"—and a lot of the descriptions of the treatment of the slaves in this book
+are very moving, and it’s very likely that that could result in a song that’s an observation of the
+slave-master relationship. I was thinking maybe, like the structure of that Cat Stevens song, "Father and
+Son"—do you know it? He sings two different characters: in the low octave, he sings the voice of the
+father, and then he jumps up an octave and sings the voice of the son. So, I could do that same thing with
+the slave and master. " , " That would be an unexpected turn for Weezer. " , " But, you know, sometimes,
+I’ll write a song about a specific situation…you know, like "The Sweater Song"—I’m writing about
+existential despair, and everyone takes it another way, that I’m singing about a girl. So, if I write about
+slave and master, it may come out in a way that doesn’t seem like a dramatic shift for us. It might seem
+like, "Oh, he’s just writing another girl song." " , " There is a stereotype about you, that you have a certain
+affinity, both in friendship and romance, for Asian girls. Do you feel that you’ve gotten any understanding
+of that here? Or with your fiancée? I think you even wrote a blog entry recently about having finally
+"found your half-Japanese girl"… " , " Oh, what I meant was, maybe I’m gonna have a half-Japanese
+daughter, because my fiancée is Japanese. I forget what the line was. What did I say? " , " I have it here,
+somewhere. I was being a bit of a MySpace stalker on your blog, I guess… " , " Well, that’s what it’s there
+for! " , " Here it is: "Perhaps someday I’ll have a girl. A half-Japanese girl." " , " No, yeah I was talking
+about my daughter. " , " But it’s interesting that you chose to phrase it that way… " , " Yeah, I wanted it to
+be ambiguous. " , " So, that brings us back to the question: What is this fascination with women of Asian
+descent? " , " [Laughs] No idea. " , " You haven’t come to any conclusions about that? " , " No. " , " Do
+you ever worry that people think of you as a fetishist? " , " Um…[pause]…I guess I don’t know what
+people think about me, and I guess I don’t worry about it that much. If somebody said something, that’d
+be different. It never occurs me to dwell on what other people might be thinking. " , " But you’ve said in
+the past that it’s still difficult for you to deal with written criticism. So, it’s only hard for you to deal with
+it when people actually voice criticism? " , " I guess it would bother me if I knew what people were
+thinking, but yeah, I guess that’s accurate. " , " So, you don’t sit in your room, paranoid, thinking about
+what Harvard kids think about you? " , " [Laughs] I don’t think so! Too much homework! " , " Do you
+have any security protocols that Harvard sets up for you? " , " I don’t know. I never requested anything,
+but I think they labeled me as some kind of "special person." If you look me up on a computer in their
+system, it probably says something like, "Don’t give out any information on this guy." " , " Were you ever
+approached and asked if you wanted security? " , " No. " , " So, you’re walking to a seminar, you’re
+running late, and someone walks up to you and asks for an autograph. What do you do? " , " Well, if it’s
+something I can take care of in a few seconds, then I’ll take care of it. But, if they want a significant
+amount of time, I say, "Shoot me an email, I gotta run to class right now." " , " How often do you respond
+to emails and Facebook messages? " , " Less and less. In 2004, I responded to everyone. No matter who it
+was, or how many emails I would get, I would respond to everybody. " , " That must have been
+enormously time-consuming. " , " Well, you know, it probably couldn’t have taken more than a half-hour
+every day. Just, do it all at once. But, this semester, I’ve kinda stopped doing that. " , " Just because you’re
+not looking for somebody anymore? " , " I think so. I just…enh. Which is pretty selfish, I guess. " , "
+You’ve made your AOL screenname available on Facebook, and you’re online quite a bit. What do you do
+when you’re online? Do you actually chat, or does it automatically come online when you turn the
+computer on? " , " No, I don’t have it set to turn on automatically. So, when I have it on, it’s because I’ve
+chosen consciously to be online. It’s usually set to where I’m not visible to anybody except my Buddy
+List. So, the reason you’re seeing me is because you’re on my Buddy List. " , " I’m honored. So, is that
+how you keep in contact with your fiancée? " , " No. We talk on Skype. But AIM is mostly for my friends
+at school. Mostly for my friends in Cabot, actually. " , " Do you feel uncomfortable with people coming to
+your room? " , " I think, this semester, maybe only once or twice, somebody’s come to my room. But it’s
+not really a great place to hang out. I mostly hang out in the cafeteria. A lot. " , " How do you think your
+MySpace blog has affected your life and your privacy? Are you speaking genuinely? Do you run through
+drafts and edit them? " , " It’s really tricky, because I’m not only exposing my life to the public, but I’m
+also exposing the lives of the guys in the band and everyone around me on tour. So, I have a general rule
+that I don’t wanna say anything that is gonna bum anyone out. So, I just make sure that, sometimes I have
+to revise a blog several times before I post it. Sometimes, I’ll even run it by the other guys, and if it makes
+them feel bad in any way, then I have to revise it. " , " So, if you’re going through revisions, why bother
+keeping a blog? " , " [Laughs] There you go with the "why" questions, again! " , " Sorry—but it’s sort of a
+big question, isn’t it? That’s where you announced that you were engaged, you put your Harvard
+application essays up there…obviously, you put some personal stuff up there. So, does something happen,
+and you just say, "I wanna write about that?" " , " I think there are several layers of motivation, again. One
+of them is kind of a flirtation, a way to meet girls, a way to find somebody. It’ll be interesting to see if I
+continue writing blogs, now that I’m engaged. I think I’ve written once since I got engaged. But then,
+also, it’s just like a way to put out songs and get positive feedback from people. A feeling of approval and
+praise, and feeling like you’re communicating your innermost self to people. " , " Do you feel that you
+express things on your blog that you can’t express in song? " , " The new songs are actually, kind of
+"bloggy." " , " How so? " , " More personal details, and just a lot more information. Just a lot more
+detailed information. " , " Do people’s responses to your blog posts make you realize what you were really
+trying to say in the entry? " , " Oh yeah, all the time. " , " Can you think of any particular instances? " , "
+Well, there’s one, I think, called "The Man," writing about Scott. I don’t remember the anecdote, but I was
+in a situation with Pat and Scott, and I was trying to say how great Scott was in how he handled this
+situation, and what people took away from it was, "Wow, what a dick Pat is!" And I realized that I’d been
+using Pat as a foil to Scott, and I had to smooth that out, somehow. The blog is like a big workshop. " , "
+How so? " , " Well, like, in Creative Nonfiction Writing with Kyoko Mori, I’d have to bring in my essay,
+and then everyone would read it and write their critiques, and then we’d all discuss it, and that’s kind of
+what’s happening with the blog. " , " What did you write about in the class? " , " I wrote an essay about
+my experience with celibacy, and then I wrote one essay about my ex-girlfriend, and by the time I ended
+up revising them, they were two completely different essays. " , " That was because of comments? " , "
+Somewhat. I mean, it’s such a painful experience that I basically decided to scrap those essays and start
+over. " , " So, you’re trying to rid yourself of pain, but it sounds like this was a really powerful experience
+because of the pain that you went through. Do you feel like you still want to stick a knife into yourself,
+emotionally? " , " No! No more knives! " , " Not metaphorical or physical? So what do you do to motivate
+yourself to write, now? " , " Well, you’d be surprised. As you become more detached from your inner
+pain, then you have so much mental energy and sense of freedom and love of experimentation and all
+your routines, and methods just dissolve away, and it’s just fun. " , " Do you have a quota for
+yourself—"I’m gonna write a song each week," or something? " , " No, nothing like that at all. Just, when
+it happens, it happens. I started a new song, called "East Coast or West Coast." " , " That sounds
+significant! Who wins—East Coast or West Coast? " , " Well, I don’t make it clear in the song. But, the
+West Coast did end up winning. When I was in my last meditation course, I was obsessing about "Where
+do I want to live—East Coast or West Coast?" And so many thoughts would come up about either coast,
+and I said, "Hey, I should write a song about that." So, what it’s gonna be, is I’m gonna be in the center
+speaker, wondering what I should do. Then, Brian’s gonna be in the left speaker, arguing on behalf of the
+West Coast, and Scott will be on the right, arguing on behalf of the East Coast. And we’ll all just be
+singing and rapping to each other. " , " Have you been feeling more comfortable with your bandmates,
+lately? There were well-documented periods of tension. " , " Well, it’s just like any other family. We’re
+really close, and none of us are perfectly enlightened beings, so sometimes there’s tension, but it’s sooo
+much better than it used to be. I mean, in the early days, we were really young, and suddenly, we were
+successful, and we all developed egos, and it was really difficult, but you know—how were we supposed
+to know how to handle all that? Over time, we’ve just gotten so much more comfortable with each other.
+They’re going to be my groomsmen at the wedding. " , " Who’s the Best Man? " , " My brother. " , "
+Leaves? " , " Yeah. " , " Along those lines, I have to point out—the Rivers who is talking to me right now
+doesn’t sound like the Rivers who, posting on the Weezer message board circa 2002, said, "Is anyone in
+here man enough to admit that "Only in Dreams" is boring? That the vocals are contrived? That the lyrics
+are GAY as hell? GAY! GAY! GAY! DISNEYGAY!" " , " [Laughs] That’s so great that you remember
+that! It’s amazing that that information’s still out there! " , " Well, it was in the unauthorized biography,
+"Rivers’ Edge"—have you seen it? " , " Oh, right. I heard that it wasn’t very accurate. " , " Have you tried
+to suppress it? " , " No, I just didn’t want to participate in it, but apart from that, there’s nothing I can do
+to stop it. " , " So, the Rivers that I’m talking to now doesn’t sound like the Rivers who would be
+combative with fans or interviewers in the past. Do you feel like you’ve changed, or have you put on a
+mask? " , " I feel like, in my core, I’m pretty consistent. But, in different times in my life, I go through
+different phases. I guess it’s like trying different approaches to life, and seeing what works. " , " So, it’s
+like trying something and seeing whether it sticks? " , " Yeah, and I’m making it sound like it’s a
+conscious thing, but I don’t think it is. It’s more like, just, I feel an instinct to read certain books and try
+different social techniques, mental techniques with myself. Some phases have been pretty painful, not just
+for myself, but for people around me. " , " Do you feel any sort of kinship with alterna-rock peers like
+Stephen Malkmus and Beck, who, like you are getting married and having kids? " , " I guess I’m not very
+aware of what other people are doing, but I can say that, within my band, that’s what’s happening. Scott
+just got married and they’re trying to have kids. Pat and his wife just had a kid. And yeah, my friends
+around me, children and wives. " , " Did you feel pressure to say, "I need to get married—Here’s a girl,
+let’s do this" ? " , " I don’t know if it was pressure, but it definitely seems like marriage and babies are
+kind of contagious. It seems like it’s happening all of a sudden to a bunch of us. An example—2002, I
+went to the World Cup with my good friends, Justin, Todd, and Ivan. Justin had a girlfriend at the time,
+but the rest of us were totally single, going out on the town, the whole deal. Justin certainly wasn’t
+married, either. But this world cup, we’re basically all gonna be married, and Justin’s gonna have a kid.
+Just in for years—bam. " , " I guess that’s what happens in your mid-30s. You described in your blog that
+you view your decision to get married as something close to choosing a lifestyle, rather than being swept
+up with emotion. Is that still how you feel? Do you have doubts? " , " I think I’ve been skeptical of violent
+passion for a long time. I think "Pinkerton" is about that, a lot—seeing how, every time I’ve felt really
+passionate for someone, as soon as I "acquire" them, or feel like I’ve acquired them, the passion goes
+away. That’s how that album concludes, and I just don’t feel secure in that, for a life. I want to build my
+life on something more stable. " , " But I assume you do feel romantic affection for your fiancée? How
+would you characterize your relationship? Do you have to justify it? " , " You know, so far, no one’s really
+asked me about it. This is the first time. I don’t think anyone’s asked me about it. " , " I guess I only know
+about it from your blog posts. " , " I don’t have enough perpective on those posts, yet, but I feel like that
+was, in a way, me breaking off this long flirtation I’ve had with Weezer fan-girls. " , " Like, that was you
+declaring, "It’s over, folks?" " , " It was in a very gradual way. Post by post, I’d reveal a little bit more.
+Like, "Alright, it’s kinda looking like something’s gonna happen! If you wanna try to stop me, now’s your
+last chance!" That sort of thing. " , " But do you feel that your relationship with your fiancée is based
+largely on trying to get rid of that past? " , " It’s a very instinctual thing. I just feel like I reached a very
+calm and stable place within myself, relatively speaking, and suddenly, this instinct came up that she’s the
+one. " , " And she felt similarly? " , " I wouldn’t say she felt similarly. " , " Did you have to convince her?
+" , " Well, at that point, I started calling her again, and going to see her, and I think we both had to take it
+step by step and make sure that it was, indeed, right. But I think that with each step we took, it just felt
+more right. " , " When did you get engaged? " , " Right before Christmas. " , " And was that in Japan. " , "
+In Japan, yes. " , " Now, you’re saying you want to break away from Weezer fan-girls, but wasn’t she a
+Weezer fan-girl? What was she doing at this solo concert back in 1997? " , " I presume she was a Weezer
+fan, yeah. " , " So, she hasn’t talked about that? " , " Well, I know she was a Weezer fan, and I presume
+that’s why she was there. " , " So, has that dynamic ever interfered with your relationship? " , "
+Thankfully, I haven’t thought along those lines very much. I just kind of forget how we met, and she’s just
+my woman. And I just don’t even really question it. I suppose, if I wanted to torture myself, I could!
+[Laughs] " , " If Rivers, as of graduation, could go back in time and talk to Rivers, as of matriculation,
+what would he say to that other Rivers? " , " "Meditate. Everything else will take care of itself." " , " Has
+Harvard humbled you or made you more self-assured? " , " It’s humbled me, massively. Yeah. But,
+self-assurance isn’t so essential, once you’ve really been humbled. There’s not as much to be assured
+about. " , " That’s interesting, because copies of your grade transcripts are online, and you were getting all
+A’s, at least in the ’90s. So, obviously, if you’re on par with other students, how has Harvard humbled
+you? " , " Well…[pause]…hmm. I don’t know that I am intellectually on par with everyone. I have gotten
+really good grades, but, perhaps, like a lot of people here, I feel that I’m not…[laughs]…I’m not as smart
+as everyone else. I’m just constantly amazed at how smart everyone is, and how articulate they are, and
+how insightful…it’s very humbling. " , " In interviews from 1995, you were reluctant to say what school
+you went to. Why? " , " I was probably worried that people would think I was showing off by saying "I go
+to Harvard" in an interview. " , " Did you decide to come here on a whim? " , " Not really. I was in
+community college when Weezer was playing, and I intended to transfer to UC-Berkeley. " , " And you
+got accepted there, right? " , " Right. And as soon as we took off, I became very uncomfortable with that
+lifestyle, and I had these really intense fantasies of going to an East Coast college, an Ivy League college,
+and getting married and settling down there and living a really quiet life, an intellectual life, and being as
+anti-rock as I could. " , " Do you feel that you’ve accomplished part of that goal? " , " Yeah, I think a lot of
+the good parts of that fantasy have become a reality for me, and so far, I haven’t had to leave behind the
+good parts of the rock life, either. So, Weezer was touring through Boston, and I came and just walked
+through the campus in what must’ve been, like, ’94, and I just picked up an application. I just felt like,
+"Man, I gotta get in!" " , " You also used to say that you liked the anonymity. Did people really not know
+who you were, when you were here in the ’90s? I mean, The Blue Album was pretty big, and you had the
+"Rivers Cuomo glasses" and everything—you must have been kind of hard to miss. " , " You know, it’s
+hard for people of your age, I think, to remember at that time, but even though Weezer was popular and
+had a very successful album, I wasn’t singled out as a celebrity. We were kind of a faceless band. I mean,
+you point out the glasses, but I didn’t wear the glasses in the "Buddy Holly" video, and I didn’t wear them
+on the cover of the album, either. Only in the "Say It Ain’t So" video. So, I walk into Harvard with pretty
+long hair and a really long, bushy beard, glasses, and walking around with a cane. And, on top of that fact,
+our album was not successful with college kids—it was successful with ten-year-olds! " , " Really? " , "
+Yeah. Kids loved it. But college kids didn’t. It’s interesting, because the same thing is happening now. The
+people who loved "Beverly Hills" are primarily younger kids. " , " That makes sense, given that people of
+my class were about 10 when the "Buddy Holly" video came out, and by the time you guys started to
+resurface, we were all on our way to college, so we thought of it as "college rock." " , " Yeah. " , " One
+last question—You’ve talked in a lot of interviews, and in this interview, and in your blog, about being
+frustrated with yourself, frustrated that you are frustrated with yourself, frustrated about trying to achieve
+perfection…these sound like very typical Harvard traits. " , " [Laughs] " , " Do you feel like a Harvard
+man, because of that? Do you feel like you fit in here, as you leave this place? " , " Yeah, I really do.
+Especially my friends here in Cabot. I feel a real bond with them. I think we have a lot in common. I see a
+lot of similar traits—people are really hard on themselves here, and they could definitely stand to ease up
+on themselves a little bit. " , " So, do you plan to come back? If you’re touring Boston, will you just come
+back to the campus? " , " Oh, I definitely will. But I suspect that no one will notice me."]
+["Were you surprised by the response to the shows you did last summer? " , "We were totally astonished.
+The first few shows we booked were just these tiny little clubs, like 100 people or something; we were
+afraid no one would come or people would laugh and throw things. Those did well, so we did the Warped
+Tour; then we were sure people were gonna throw things at us, 'cause we're not a punk band. But everyone
+loved us there, and the whole rest of the summer sold out. Now this Yahoo! tour is selling like crazy. We
+keep getting surprised. " , " Were you concerned about whether Weezer would survive without Matt? " , "
+Yes, I can't believe we ever survived without him. But those doubts came at a time when there were just a
+million other doubts, anyway. Your brain is always searching for reasons to doubt yourself; I'm pretty
+experienced with that, and I don't let it stop me from moving forward. Although Weezer is my first
+professional band, I've been in bands since I was 13. I've had my best friends quit on me and overcame
+that, and eventually made it. I remember one time as a kid, man, my 15-year-old pal quit on me, and I
+thought, 'Now I'm never gonna make it.' But you do move on. " , " It seems surprising that you'd suffer
+from a lack of confidence. " , " Well, maybe confidence is the wrong word. Maybe I'm not lacking
+confidence. I just wasn't feeling exactly what I wanted to say at the time, artistically; part of the time I was
+in school, and part of the time I wasn't doing anything. So I just kept waiting and trying and trying and
+hoping that I would really feel something." , " Did you graduate from Harvard? " , " I didn't graduate. I
+did three years. That was one of the decisions that I made; I knew that at least I was sure I really wanted
+to concentrate on writing songs and facing this business. And to do that, I knew I had to get out of school
+and concentrate on it. " , " How was life in the Ivy League?" , " I loved it. It was totally fun. That was
+definitely the smartest group of people I've ever been around, and motivated and hard-working. It was
+incredible. I was expecting people to be more kind of stuck up and intellectually snooty, but everyone was
+really down to earth and well mannered and outgoing." , " How did your classmates relate to you, since
+they were probably pretty familiar with your music?" , " Geez, it's so long ago ... I think everyone gave me
+space. They didn't harass me about it at all. I was way more insecure about it going in than I should have
+been, I think, plus the fact that everyone is so into their own trip and working so hard, and they all have
+such high hopes for themselves. And there are so many other celebrity types there, too, in their own fields,
+so I didn't stand out as much. " , " What would happen when you were at a party or in a bar, and one of
+your songs would come on? " , " That sucks. I'd try to leave as quickly as possible. I don't know, I
+probably just put my head down and tried to fade into the woodwork. " , " You played some new songs on
+the road last summer. Will those be on the new album, and what do the rest of the new songs sound like? "
+, " Well, the stuff we played on that summer tour has long been replaced by other songs. I just wake up in
+the morning and write a song everyday, and throw out the old ones. I guess it sounds pretty much exactly
+like our other records; it's kind of heavy pop music. " , " Do you have a particular songwriting method? " ,
+" That's something I became very interested in myself over the last few years. I tried a million different
+ways and took copious notes on the results of each method. I think, for me, it's probably best to start out
+with a little something on guitar, and then a melody and then some lyrics. But definitely you've got to
+have some restraint when you're starting out with a guitar riff so the following steps can have some life to
+them as well. That's why it helps to write in the morning, when you're all mellow; if you're super-excited
+about something, you write this insane riff that has no room for melody. So I found that if you keep taking
+these small little steps as you're writing and arranging, and rehearsing, it builds and builds and builds into
+a nice, heavy song that's not too over the top. " , " How much do the songs tend to change between their
+conception and the finished product? " , " I guess it's kind of like the difference between a sketch and a
+finished painting, maybe; all the proportions are the same, but you just fill in all the details and flesh it out.
+It's still the same song. " , " What kind of input are you looking for from the other guys at this point? " , "
+First of all, not to screw it up, not to overplay or get in the way -- but then, also, to give a solid
+performance and just put in that bit of personality that really makes it three-dimensional. I never coax or
+coach; we just play and it happens. In fact, if I start giving suggestions I always wind up regretting it and
+screwing things up. We've done so many songs now that we don't have to think about it too much; we just
+play it, and it happens. " , " How did you decide on Ric Ocasek, who you've worked with before, to
+produce?" , " Well, we made a big list of producers that we might want to work with, and we just realized
+he's the only candidate. We know him, we trust him, we like him. " , " You're 30 now. Was it traumatic
+hitting that landmark age?" , " I didn't pay much attention, really. I love getting older, though. I just feel
+like I have more control over the universe -- or my small corner of it, at least."]
+["How are you today? ","Good." , " Are you tired or are you awake?" , " I'm awake, headed towards tired.
+I've had a pretty hectic day, but I'm feeling good." , " What have you been doing today that's worn you
+out?" , " I don't know really, but it seems to take up a lot of energy." , " Well why don't you tell me what
+you've been doing today so that people know what one of your days is like." , " Just dealing with stress on
+about 50 different fronts at once. All having to do with tying up loose ends of the record and preparing for
+all the promotion we're gonna have to do. That means finishing up artwork for the record and the single,
+and finishing up the music on the album as well. Picking the songs, picking the order, running to the
+studio to make some last-minute changes, 'cause I'm never satisfied. And then dealing with a conference
+call with the person from the record company, my manager, and the head of MTV. Everyone's screaming
+at me that we chose the wrong first single and then me screaming back that they're all crazy." , " What's
+wrong with the single?" , " Well, it's insane. That's their objection to it. And it's very un-Weezer." , "
+Insane in what way?" , " Well, it's a song about being a teenage transvestite drug addict prostitute. And for
+some reason they all have a problem with that." , " Do you have the final say on what the single is, or can
+they overrule you and just be like, 'You're an idiot, this is what we're doing?'" , " I basically have final say
+on everything in the Weezer universe. Except, I definitely litesn to other people's advice on things,
+especially in regards to singles. Because when we turned in the first album I thought I knew everything
+about everything and I said, 'Whatever you people do, don't put out 'Buddy Holly' or 'The Sweater Song'
+as singles.' And eventually they talked me out of it and I was proven terribly wrong." , " So are you
+thinking that maybe they're right on this one, too?" , " Yeah, well when you're caught up in an argument,
+sometimes you are unable to doubt from the back of your head that maybe they're right. 'Cause when
+you're angry all you really hear is yourself. And that's kind of what today was like." , " And when you say
+it is an un-Weezer-like song, is that lyrically or musically?" , " Both. In every possible way it's
+un-Weezer-like." , " I was reading an article about The Guitar Institute in Los Angeles, and it said that
+someone in Weezer went to The Guitar Institute." , " When I first moved here, I was enrolled in that
+school. But I never actually went. In fact, I was expelled." , " Why were you expelled?" , " Because I
+never went. Basically it was a cover so I could tell my parents I was coming out here to go to 'school', so
+they would pay my rent for a little while." , " You didn't even hang out at The Guitar Institute or
+anything?" , " No. I never went there." , " And did your parents have to pay tuition for it?" , " [pause] It
+was a very irresponsible thing to do. And I highly recommend it for anyone who is desperately
+ambitious." , " You know, one of the selling points the school uses is that you went there." , " That I went
+there? Like, my name?" , " I don't remember if they used your name specifically, but when they list the
+famous people who went there, they say one of the members of Weezer went there." , " Well, I can't speak
+for the other members, but I can say I never actually went there, although I was enrolled. I don't have a
+diploma or anything like that, because I was expelled." , " Is it true that your band's name is a reflection of
+your love of Ween and Geezer Butler of Black Sabbath?" , " No, I never heard that one." , " Is Rivers
+Cuomo your real name or your punk name?" , " Rivers Cuomo is the name I was given at birth." , " It's not
+like Jello Biafra. combing your love of Mario Cuomo and River Phoenix?" , " [laughs] I never heard that
+one either. The flaw in that theory is that I think River and I were born in the same year. So my parents
+couldn't really have named me after him." , " Are they hippies, your parents?" , " Yeah, they were. What's
+interesting is that I have a brother named Leaves, and I believe he [River Phoenix] had a brother named
+Leaf." , " And what do your parents do now?" , " They're ex-hippies." , " Do they still live on the east
+coast?" , " Yeah." , " And what do they do?" , " Well, it depends on what you mean by my parents." , "
+OK. Who did you grow up with?" , " I grew up with my mom and my ex-stepfather." , " And are you
+close to them still?" , " Um...reasonably close, but drifting further every day." , " You're not writing any
+Eminem-style songs about your mom, though?" , " He totally disses his mom, right?" , " He talks about
+killing her. And she's suing him." , " Oh. I don't have any songs about killing my mom yet." , " Why are
+you drifting from your mom further and further?" , " I don't know, I guess it's just part of growing up. We
+used to be very close." , " Does she like your music?" , " Does she like my music? I think, ironically, that
+the older I get, the more she likes my music. Like when I was a teenager, of course she hated my music,
+because it was all like Slayer. She hated that stuff. But, I think she's really gonna like my new record. It's
+very mom-friendly. Except for the song about the teenage transvestite drug addict prostitute." , " Have you
+ever known any transvestite prostitutes?" , " No, I have no idea where that song came from." , " You didn't
+do any research, like you and Eddie Murphy going out?" , " No, I picked one of the few times I tried to
+write a song when I was totally drunk. I'd had a lot of tequilla, and then I started writing a song and it
+came out like that." , " Can you explain why it takes you so long to put out albums? Is that something
+everyone's asking you?" , " Actually, I hadn't heard that particular question yet. This one took a long time
+for a million reasons. I had to get my confidence back. Basically I had to wait to have some kind of
+conviction about what I wanted to say to the world. And now it's being tied up by a million technical
+problems and record company problems. The second album didn't take a long time to come out. We were
+busy that whole time touring...and then the first record took 23 years to put out, but I think that's the
+average for a first album." , " Knowing the tentativeness for rock stardom, do you worry that it was a
+mistake waiting this long to put out your third record?" , " I don't think we really pay attention to the
+whole rock star thing. We're happy as long as we can keep making records around the world and keep
+playing our songs." , " Right, but there's bands who were highly touted, and then suddenly...like, Peter
+Tork is suddenly playing in tiny coffeehouses." , " Wait, who's Peter Tork?" , " Peter Tork from the
+Monkees." , " Oh, right. I think we avoided that whole trap." , " So you weren't thinking about that the
+whole time, like, 'What if suddenlt no one cares about us anymore and we're playing for 10 people
+again?'" , " I think we just always assumed that no one cared about us." , " Did you write all songs on the
+new album?" , " Yeah." , " Do you think at all about your own cultural significance, or how people
+perceive you as you're writing songs?" , " I try not to think at all, really." , " Because a lot of people talk
+about the difference between the first and second record..." , " Honestly, I wasn't thinking about anything.
+I was just writing whatever sounded cool." , " So you weren't thinking, 'People think we're too pop, I've
+gotta make a harder rocking statement this time.'" , " No, of course not. Whenever I've consciously set out
+to create a certain type of song, it always comes out sounding contrived. The only way that I can do it, is
+just forget about everything and write what I hear." , " After the first record you went back to college
+right?" , " I've kinda been going back and forth between college and bands since I was 13." , " You were
+going to college when you were 13?" , " Well, I mean between school and bands. I was going to college
+when I was 16, though." , " And what did you end up going back to study after the first record?" , " It's
+always just been general education. I've taken a 101 class in every possible field." , " And you never
+picked a major or anything?" , " No." , " So you never got your college diploma?" , " No, I'm like two
+semesters shy of actually getting a diploma." , " You can get a diploma in general education from
+Harvard?" , " No, I can probably get a diploma in anything from Harvard, because I've studied just about
+everything there." , " Did you worry about, when you were going to college, that this would make you too
+smart to play rock and rool? Like, David Lee Roth and Gene Simmons, they never would stop to go back
+to college in the middle of their careers." , " Um...I don't...I don't really feel like I was getting smarter." , "
+Why did you decide to college instead of hanging at home reading books and playing in a band?" , " I
+actually didn't put a lot of thought into it, it's just like sitting in the van every day on tour, and then we
+came into Boston to play, and I was just walking around town and I walked through Harvard and I was
+just like, 'This is a really cool place.' So I picked up an application, filled it out, and that was it. I didn't put
+a lot of thought into it." , " What was your essay about?" , " My essay was about how boring it was to tour
+in a rock band. It's just one of the most embarrassing things I've ever committed to paper, and I hope no
+one ever reads it. I was a very unhappy person at the time, very frustrated, and I vented all my frustration
+in this application essay." , " And it worked! Were your parents pushing you, saying the rock thing is
+foolish, it's time to go back to college?" , " No, my mom was saying it's foolish to quit being a rock star,
+she wanted me to stay out of college!" , " Really? So you were still rebelling by going to college instead
+of being in a band?" , " Exactly." , " Now, talking to a couple young ladies about doing this interview, they
+all started talking to me about how cute your band is." , " How cute our band is?" , " Yeah, which I didn't
+expect, being a man, and someone who is attracted to women, I didn't look at you guys and go, 'Man,
+they're cute.' But apparently, the ladies think you're cute. And they want to know which members of
+Weezer have girlfriends." , " Well, I'm not cute. And that's what kinda confuses people, because usually
+it's the lead singer who's supposed to be attractive." , " They thought that everyone in Weezer was cute." ,
+" Well, they're wrong. But the other guys are very attractive, and I think that's why we do have some
+ladies in the crowd every night." , " Who's the cutest Weezer?" , " That depends on who you ask." , " In
+your opinion." , " I'm not really attracted to any of them. But I think the younger girls prefer Brian, and
+the older rock chicks prefer Mikey, and the dorky young guys prefer me." , " Do you manage to go home
+with a lot of fellas on tour? Or are they just hitting on you?" , " I don't think they're into me in that way." ,
+" Oh, I thought that's what you were saying. So, you don't have a girlfriend?" , " No, I just got a girlfriend
+actually. It's my first girlfriend in 10 years. I haven't had a girlfriend since I was 19, I think." , " Is it
+because you're shy in general?" , " That certainly plays a part, but I'd day the circumstances in my life did
+not lend themselves to forming any kind of lasting relationship." , " So now that you have a girlfriend, do
+you have tour privleges, or are you supposed to be true to her?" , " I don't think that part of the deal has
+been negotiated yet. It's a very recent agreement." , " And what do you think you're going to do? There are
+lots of females who are gonna read this and wonder, 'Should I hit on Rivers or not?'" , " I haven't so much
+as kissed one groupie in the last four or five years, so I don't see why I would suddenly start doing it now
+that I have a girlfriend." , " Did Weezer have a lot of groupie action before that, on the first tour?" , " It's
+tough for me to speak for the other guys, so I'll only speak for myself. The first two years of touring I had
+no groupie action at all. Maybe that's not true; I think like the second show we ever played, before we
+even had a hit song on the radio, I got together with a girl for one night, and I felt guilty. And I didn't do it
+again for the next two years." , " Why did you feel guilty? Wasn't that something you were thinking about
+when you were a young man, thinking about being in KISS?" , " Yeah, of course, that was the prime
+motivation, that's what I was looking forward to. And then I had the opportunity and I just froze. And then
+we put the second album out and I was committed to overcoming that repressed part of myself, and I went
+probably a little too far in the other way." , " What happened?" , " Well, I probably just went a little too
+crazy, and everyone got pissed at me." , " Because you were having too many groupie experiences?" , "
+Yeah, basically. I guess." , " And why were they pissed at you? What was the craziest thing you did that
+pissed them off?" , " Well, I'm trying to bury that part of my life, so I don't want to revisit it too much in
+the press. There's plenty of rumors going around that aren't true, but some of them are." , " You wanna tell
+one rumor that's not true?" , " Well, anything about me with underage girls is not true." , " What about the
+threesomes and everything?" , " Threesomes is an underestimate." , " What's a legitimate estimate?" , "
+Like I said, I prefer to move on with my life and not piss people off anymore." , " Are there any songs
+about that on the new record?" , " No, this is a very sweet and innocent record. Apart from that song about
+the teenage transvestite drug addict prostitute, that is our first single." , " It seems that after that first tour
+you should've felt better about being cute, or attractive." , " I don't think any girl was ever with me
+because I was cute, it was more because I was famous." , " Did you know that was the only reason, that
+they weren't interested in you..." , " Yeah, I could tell." , " Was that a bummer?" , " It's pretty emotional
+unsatisfying." , " Why did you get braces?" , " I would think the reason is obvious." , " Was it to look
+cuter? Shane McGowan never got braces. Barbra Streisand never got her nose fixed. Was it medically
+necessary, or was it cosmetically necessary?" , " I don't think anyone ever commented that my teeth
+weren't straight, it was more the teeth in the back of my mouth, I have a thing for symmetry and for good
+form, and when something needs to be straightened out, I go ahead and do it." , " How long were the
+braces on?" , " I'm still wearing them. I have Invisiliners now." , " I read that you didn't want to do any
+appearances until the braces were off." , " I got those metal things off after about a year, and I have these
+plastic things in that I can actually remove if I ever had to go on TV again." , " You didn't think it would
+be extra cool to get like, the gold braces, or the colored braces? You didn't think to create this whole new
+fashion with the braces?" , " I think I already looked fucked up enough." , " Have you ever gone to a
+shrink?" , " Once." , " How long did you go to him for?" , " Probably about 45 minutes. I think I was 16,
+and he was a total loser. He had his fly down through the whole process without realizing it. It was
+difficult to take him seriously." , " You never thought about seeing a shrink again, even when you were
+really depressed?" , " Never. I wouldn't be able to get over the feeling that I was smarter and more
+perceptive than any shrink."]
+["What led you to send a 'Maladroit' sampler to journalists and radio stations without submitting the
+album to your label? " , "
+We hadn't talked to the label in four months, and I guess there was no one around telling us what to do. So
+we just made a record and sent it around. I think we had a big fight [with the label] about something -- I
+don't even remember what it was about. We just weren't seeing eye-to-eye anymore and there was just no
+reason to talk to them. We're a self-sufficient band." , "But then you sent a letter to radio stations asking
+them to stop playing the album. Why? " , "The record company took note, and they were very upset. They
+said, 'Rivers, we have to stop this now, so please write a letter to all the radio stations asking them to not
+play your songs.' They were angry, and I don't really know what the hell I'm doing, so I didn't really have
+a choice. What I was supposed to say? At the end of the day, they have a frightening amount of power
+over my life. If they wanted to, they could pretty much completely end our career and make it impossible
+for us to release music anymore. It's frustrating for us, because it's our album. We made it, we paid for the
+thing, and we sent it out to everybody. We got it on the radio. We got the attention from press. And now,
+unfortunately, they have the right to claim ownership of it -- so we have to turn it over. " , "And are you
+going to? " , "Unless I totally freak out. They requested the masters -- they definitely want to put it out
+now." , " They didn't want to before? " , "My understanding was that they were opposed to the idea of us
+putting out an album so quickly after the last one. We had played them early versions of the songs, and
+they definitely were not into them. I'm under the impression that's one of the things we were fighting
+about: They didn't like the direction we were going in. They said it sounded too much like Lynyrd
+Skynyrd -- seriously. This one guy at the company is paranoid about classic rock, and if we do anything
+remotely [like] classic rock, he gets totally bummed out on us. And recently, we've just really been in a
+Skynyrd mood. [A label spokesperson declined to respond to Cuomo's comments, except to say: 'When
+Rivers is ready to put out his record, Geffen is ready to put it out.'] " , "You also pulled down the MP3
+section from your Web site. Was that at the label's request? " , "Yeah. It's a shame too, because the most
+important thing in the world to me is getting our songs out there. And we have a ton of them and I wish
+we could just constantly put new songs up for people to hear. We just recorded 10 to 15 new songs and if I
+had my way, I'd put them up right now, so everyone could download them. See, that's what I'd do if we
+owned the masters. I'd do stuff like that. Just give the music away for free. [Geffen has since agreed to the
+return of the MP3 section.]" , "Um, but how would you earn a living, then? " , "I don't know. It's just
+karma -- somehow we'd get paid back. I guess maybe from concerts or....But now they want the album
+and unfortunately they have the right to claim ownership of the tapes. It's crazy. It's totally unfair. I mean,
+that's us on the tape. That's me singing. Those are our songs. That's us rocking out. How come they can
+just walk in and pick up the tapes and say, they're ours? They didn't even pay for 'em -- we paid for 'em. I
+don't know. We don't really worry ourselves about it. The goal is just to make music and get it out there.
+And to have tons of people singing along to our songs. That's what makes us happy. I swear we pretty
+much just put the whole business side of things out of our minds and keep rocking. Unfortunately, through
+neglecting the business side, it's like our business problems are just piling up. I guess that's what happens
+when you don't have a manager. [laughs]" , "
+So what are you going to do about it? " , "I have no idea. I don't really care, either, because at the end of
+day no one can stop us from getting together and playing and as long as we can do that we'll be happy." ,
+"And if and when the record comes out on Geffen? " , "We'd just ignore it. We don't really bother
+ourselves with the actual album. All our fans already have the songs -- they downloaded them off the Web
+site before it got shut down." , "How did you guys get this far from where you were last year? " , "I think
+it was gradually getting more and more focused on making music and turning away from the idea of
+trying to be a successful product. It was probably a year ago that we fired our manager and we just started
+to veer off into outer space. I really think it was the best thing we ever did, because we don't have people
+whispering in our ears all the time trying to steer us back onto a normal course. We've been free to just do
+whatever we want to do, and figure out what it is we want to do. And that's led us to where we are, for
+better or worse." , "And yet it seems like a creatively fertile time for you. 'Maladroit' is the
+biggest-sounding rock you've ever done. " , "Yeah, we feel the same way, and we're really excited about
+moving forward and just developing from there. Now we're starting to try songs that the other guys wrote
+and that the other guys sing on. We just have a very relaxed and live and creative feel in the studio. It's our
+home."]
+["It seems like you've reached a point in your life when you no longer need to suffer for your art.",
+"I really don't need to suffer. I can really become a happy person and still make good music, in fact, better
+music. But until the music tells us that, I don't want to make that claim. I don't think 'Make Believe' is
+enough proof.",
+"'Make Believe' is Weezer's first happy album? ",
+"Yeah. It's just the first few years of being a Vipassana meditator, so. And I think a vast improvement on
+our fourth album. We'll have to see how the next one is.",
+"You recently said, 'Vipassana is a less well-known form of meditation in this country and I'm not sure
+why that is. I think so far, the press has misunderstood the purpose of the apparent austerities.' What is the
+press getting wrong about Vipassana?",
+"I went through a real ascetic phase, but that was before I was a Vipassana meditator. That was at the
+height of my misery at the beginning of 2003.",
+"I don't know why, but I have this real streak of self-flagellation. I'm not sure where it comes from. But
+once I started meditating, all that went away and now I live pretty comfortably. I mean, this is kind of
+spartan compared to what most rock stars live like, but, it's comfortable.",
+"Actually, the Buddha did the same thing. Before he became enlightened, it was several years where he
+was living on hardly any food and really beating himself up, thinking that that would lead to happiness.
+And that was actually pretty common in India at that time, for people to try those kinds of ascetic
+practices. But he actually turned away from that and tried what he called 'the middle path', and all of his
+friends that had been practicing with him thought he was like a total wimp for bailing out on harsh
+asceticism. And he started eating and taking care of his body and making sure he was healthy and
+practicing Vipassana meditation. And that's how he became enlightened, became happy.",
+"You spoke about the focus on meditation being concentration.",
+"Well, that's kind of like half of it. In the Vipassana course, the first three days are pure concentration
+exercise, and then the next seven days are Vipassana, which is more than that. You're not just trying to
+focus your mind, but you're trying to draw up all the deep negativities from your unconscious and purify
+them. My understanding of it keeps evolving as I experience more, so I may have said that at one point,
+but there's more to it now.",
+"Your recent trip to India was filmed for possible inclusion in a documentary?",
+"There's a filmmaker in Washington, D.C., who got funding from Geffen Records to film this trip. She
+wants to make a film about me and Vipassana. The record company owns the footage, so anything could
+happen with it. She's hoping that she'll be able to get some other funding to turn it into the film she wants
+to make.",
+"A film like that could get a lot of people looking into Vipassana. How do you feel about being the
+unofficial spokesman for Vipassana?",
+"I just gotta keep reminding myself: Every time I do an interview or something my volition really has to
+be just to serve, to help people. Not to feel like I'm important.",
+"I noticed a copy of 'Robinson Crusoe' on your desk. Are you reading it right now?",
+"Yep. Well, it's really exciting, inspiring. It reminded me of Thoreau. Reminded me of 'Walden'. So I
+imagine it must have been one of Thoreau's inspirations. And it also reminded me of my time in solitude
+at Vipassana courses and stuff like that. One thing that really struck me is, what he writes about for some
+reason comes across as so cruel. Like there's so little feeling of compassion or regret that he has to kill the
+animals to survive. I'm not sure what to make of it yet. The way he describes it is so cold.",
+"Any guesses as to where the coldness comes from?",
+"It never occurred to him that the suffering of the animals is something to worry about or to feel sorry
+about. And maybe that was just a product of the times or maybe some Christian philosophy that justifies
+it; I'm not sure. Really the thing that strikes me most about it is: Maybe there's something in me that's
+reacting to this and that maybe other people wouldn't notice it.",
+"You're thinking about suffering and sure enough…",
+"He gets a pet cat or something and he says, 'The cat keeps having kittens so I just go out and drown the
+kittens'.",
+"Didn't you write a song--'Really Freak Me Out'--about a spider?",
+"I did, but I changed the lyrics because I had the experience with a spider, and I realized, 'I can't write a
+song about a spider', so I just envisioned something else that's analogous.",
+"Let's talk about the song 'Pardon Me'. To me, the lyrics initially seemed didactic ('I may not be a perfect
+soul/ But I can learn self-control'), but the melody is so catchy that you don't in the end mind.",
+"I don't ever want anyone to think that I'm being judgmental. I gotta do everything I can do to not be
+preachy.",
+"Is Vipassana in some way a turning away from experience?",
+"That's a common misconception about meditation. That it's turning away from experience or turning
+away from really feeling what's going on. And it's really like the opposite of what you're doing. With
+Vipassana you're taking the time to stop and look inside yourself and really observe what's going on on a
+physical and mental level, and instead of just reacting to it, you're sitting there observing it with 100
+percent of your attention ideally. You're not turning away from anything.",
+"During Vipassana courses you are supposed to abstain from 'using high or luxurious beds'. Is your dorm
+bed 'high and luxurious'?","I think that these things were formulated at the time of the Buddha when, I
+think, they were sleeping on the ground. That's obviously not required of us. The point is, the facilities are
+comfortable but not extravagant. You know, just a simple bed like this--that's fine. You shouldn't go in
+with an attitude, 'I'm want to have, like, all these specific comforts while I'm here'. That's not what it's
+about.",
+"Was it hard going from being a rock star to an undergrad?",
+"Yeah, the writing workshop last semester was really painful. And I think it is for everyone in the class,
+too. You've got 11 of your peers tearing your writing apart.",
+"Any particular story that sticks out in your mind?",
+"The day that my first essay was critiqued in a workshop.",
+"Your ego is totally on the line.",
+"Yeah, all on the line. You're so concerned about your ego, too. I mean, you're at Harvard, everyone's so
+ambitious and so driven. On top of that, I'm older than everyone else, so I feel like I should be better and
+more accomplished. On top of that, I'm a rock star, so I feel like people are paying extra attention to me
+and they're going to be extra critical. So, it's tough, but it's my own mental garbage.",
+"Do you meditate in your dorm room?",
+"In the closet. And, you know, that really just evens things out. 'Cause whatever things come up during the
+day that get you agitated, you'll sit and, 'Oh'. And on top of that, throughout the day, even when I'm not
+sitting, I'm doing meditation. Whenever I remember somebody said something mean to me I'll feel, 'Oh,
+unpleasant sensation', and I'll observe it and try to be equanimous with it. Or I'll have to go in front of a
+camera and do an interview and feel nervous. So I'll feel all these unpleasant tingling sensations. So that
+the task, throughout the day, is kind of the same--whatever I'm doing--is just to observe the sensations and
+be equanimous.",
+"Right.",
+"The sensations are always changing but the task is always the same.",
+"You've made a few statements about the uncertainty of Weezer's future. It must have taken some work on
+the band's part to be equanimous with this.",
+"They have so much attachment to this continuing and it's frightening when that gets threatened. They've
+seen me go through this so many times over our career. I think they've learned that sometimes you've got
+to become a little detached from it. Say, 'Alright, he's gotta go through his process and if he's meant to
+come back, if there's more songs that are there, it'll happen. And if not, it won't'.",
+"Do you meditate with them?",
+"Yeah. Before the show. We sit for about five to 20 minutes. Not Pat (Wilson, Weezer's drummer)though,
+just the three of us. It was their idea. It was Brian's (Weezer guitarist Brian Bell)idea.",
+"Does it have a positive effect on way things go?",
+"I'm not really sure. I imagine we feel it must have a positive effect because we keep doing it. I know it
+makes me feel less anxious before I go onstage. Maybe a little more focused. I'm sure they had the same
+fears that I did when I started.",
+"Because you're the most public Vipassana meditator in America, have the people from the centers wanted
+to talk to you?",
+"It's an incredibly de-centralized organization. You can hardly call it an 'organization'.",
+" Each center is comprised of just other students like me. People who work there are just people like me
+who go there for 10 days, or sometimes longer, and volunteer to work in the kitchen or clean. You might
+have one to three people that stay there for a years at a time, kind of just manage the place. They're not
+involved in teaching or disseminating any kind of philosophy or anything. Wait a minute--no, they kind of
+set a tone at the center, I suppose.",
+"How was your visit to S.N. Goenka (Cuomo's meditation teacher, whom he thanks in the liner notes of
+'Make Believe')?",
+"It was pretty much what I thought it would be. ",
+"You must feel very indebted to him in some ways.",
+"Yeah. You know, I went there to thank him. And I knew exactly what he would say.",
+"What?",
+"He said nothing. 'Whatever benefit you're getting, it's because of your own hard work'. And that was it.",
+"A long way to go for a short conversation.",
+"Yeah, but it was totally worth it. I'm not even really sure why.",]
+["What was the hardest part about maintaining the two-year vow of celibacy that was part of your
+meditation training?
+GIRLDREAMS, SKOKIE, IL " , " It’s been two and a half years now, actually. The vow is over but I
+wanted to keep cruising. Abstinence doesn’t require as much self-discipline anymore. It’s a combination
+of the old crazy Rivers and a belief that a serious meditator should just stick with one partner or be
+celibate. My teacher doesn’t even recommend this technique. But I am an extreme type of person. We
+never had serious groupies, anyway. Our generation got screwed. " , "When I saw Weezer live, you guys
+came out to the Monday Night Football theme. Are you secretly jocks? PINKERBOOTS, GLENDALE,
+CA " , "
+I don’t think it’s a secret: We love sports. We’ve come out to a lot of different things, whatever gets us
+stoked. Right now, we come out to Pinocchio singing "When You Wish Upon a Star." I think our favorite
+one of all time was the Magnum, P.I. theme song in 1997." , "
+MTV made you change the words to "We Are All on Drugs," so you now sing "we are all on love"
+instead. What were other ideas for replacement words?
+BUDHOLLY, LAWRENCE, KS " , "Pat suggested "hugs" first, but that sounded too quirky. See, the
+whole thing is my fault — when I wrote the song, I wasn’t thinking carefully enough about the words I
+was choosing. Some fans have told me that their children hear me saying "we are all on drugs" and they
+take it literally because they don’t know any better. And that makes me feel horrible. I never wanted to
+write a song that would offend anyone or encourage anyone to use drugs or harm themselves in any way.
+In my mind, love and drugs are the same thing — we’re all numbing ourselves or stimulating ourselves
+with intense relationships or TV or movies or music and we use these like drugs. So to me, there was no
+artistic sacrifice or compromise and I was happy to change the word. Brian thought of "we are all on
+love." To me, that’s an even better line than the original lyric. It’s still a good rock jam, though. " , " What
+do you remember most about playing the Sunset Strip with your metal band when you first moved to
+L.A.?
+TAPELES, CALABASAS, CA" , "I just remember how exciting it was, truly the heavy metal dream I had
+growing up. We’d go down on weekends and pass out our flyers. I thought of a clever marketing gimmick:
+We affixed a stick of gum to each flyer, so hundreds of people would come from all over the Strip and
+grab ours so they could get a piece of Big Red or Juicy Fruit. " , "What’s the most ridiculous, decadent
+thing you’ve ever bought?AJARVIS, LITTLE COMPTON, RI" , "
+I give a lot of money away to family and friends and charity. The rest is just waiting in the bank for the
+day I have a family. I never think to spend my money except to give it away. Well, other than school —
+that’s expensive. And I give big tips, which freaks people out sometimes. When I bought a house, I had to
+get all this furniture to make it look lived in, then realized I didn’t really need any of this stuff and it
+means nothing to me. So why not move to a little apartment and get rid of it all? Now I live in a one-room
+loft." , "You’ve admitted using drugs to help your songwriting. What’s the most extreme thing you’ve ever
+done to be creative? NOTTIREDOFSEX, DALLAS, TX" , "
+I don’t really like to talk about the extremes — they’re the least important to me, yet that’s what people
+like to focus on the most. The important thing you’re looking for with any stimulus or inspiration is
+concentration. You’re looking for something to demand your attention so strongly that you can write a
+coherent statement about it lyrically or musically. Ritalin, or even coffee, can help that. I wrote "Dope
+Nose" and "Hash Pipe" with a combination of three tequila shots and Ritalin. There are other side effects
+specific to each kind of stimulant that affect the tone of what you write. It’s very scientific, finding the
+right balance, a lot of trial and error. A lot of error." , "Who came up with your Van Halenesque "W"
+onstage logo? CANTDRIVE55, SALT LAKE CITY, UT" , "
+If I remember the story correctly, our webmaster Karl took some tape and put a "W" on the back of my
+jacket while I was wearing it. Pat looked at it and put the wings on to make it more like Van Halen. " ,
+"What was it like growing up on an ashram?
+JHEFFER, WOODSTOCK, NY " , "
+That’s a very large question. I was at school there from third through fifth grade, and every day we did
+yoga and meditation and deep relaxation exercises, we did all our own cooking and cleaning, we did all
+kinds of chores. It wasn’t all that fun at the time. That was some serious work for kids, or anyone, really.
+From my earliest memories, my mom instilled in my brother and me that we were different and special
+and the rest of the world was "normal" and uptight and not in touch with their feelings. And we were this
+special, unique enclave of sanity. Deep in my heart, I knew there was a lot of value to the environment my
+parents were raising us in; however, around age 11 or 12, a lot of us kids in the ashram school started
+rebelling and fantasizing about being normal and having our own desks. We all took normal names. I
+changed mine to Peter Kitts — that was my stepfather’s last name. We started teaching ourselves how to
+swear. School colors, a school mascot, to be on a football team — all those things seemed really attractive
+to us. " , "When your second album, Pinkerton, bombed, you took the criticism hard. Is that still painful to
+think about?
+IMONDRUGS, FORT LAUDERDALE, FL " , "
+Back in 1997, I took that personally, yeah. We sent "El Scorcho," the first single, to a radio station and
+they said it was the worst song they’d ever heard and they wouldn’t play it. But I don’t have my own ego
+wrapped up in the album anymore. There are Pinkerton fans who come to our shows, so we’re always sure
+to play two or three songs every night. The audience divines it. " , "How did you get into this hardcore
+meditation routine? THEADMIRAL, SPARTANBURG, SC" , "
+In early 2003, I felt like I hit a roadblock with the songs for Make Believe and I just knew I wanted to dig
+deeper into myself and come up with better songs. [Producer] Rick Rubin suggested meditation. As soon
+as I started trying it again, I knew this was it. Vipassana is a less well-known form of meditation in this
+country and I’m not sure why that is. I think so far, the press has misunderstood the purpose of the
+apparent austerities. The belief is that two meals a day are enough, especially for someone who’s just
+sitting there. It’s all about moderation. Things appear extreme, but the motivation behind all of it is solely
+to help you concentrate. " , "What are your favorite and least favorite parts of your body? AMANDA,
+BROOKLINE, MA " , "
+I guess my hands are my favorite. I’m sometimes unhappy with my right leg, which was operated on
+because it was shorter than the other. The bone was broken clean in half and I had to turn these screws so
+the gap between the halves of the bone would get wider, which was actually kind of satisfying. But I’m
+trying to love all parts of my body equally and not generate negative feelings toward myself. " , "Did you
+hang out with Hugh Hefner when you shot the "Beverly Hills" video at the Playboy Mansion?
+JOEMOMMA, FOREST HILLS, NY" , "
+I didn’t hang out with Hef. But I know it was asked of him, "What do you do on a normal day when there
+isn’t a video being shot in your house?" And he said, "I do the same thing: I sit here around the pool with
+the Playmates and play cards." " , " What’s the most metal thing about Weezer?
+SLAYER99, NORTH FORK, CA" , "
+The guitar sound. I don’t really think it’s changed much from my metal days, and I don’t think that came
+from any other influences — it had to come from the Scorpions or Judas Priest. And also guitar solos. We
+suddenly realized we’re one of the only bands that play guitar solos. I couldn’t imagine not having a guitar
+solo; that’s just what happens after the second chorus. " , "Now that you’ve almost got your literature
+degree, what’s your favorite book?
+ELSCORCHO, BEND, OR " , "
+Books aren’t very important to me. When I was 20 and first going to college, I was really into literature
+and that’s why I chose that major. I’m not gonna be a professor, I’m not going to be a writer, I’m a rock
+guy. But I believe in finishing what I started. I enjoy school but I’m not, like, a serious reader." , "You
+played in a Kiss cover band growing up — which one were you? KHANKS, PARMA, OH " , "
+My ego was already apparent even at the tender age of 14 — I was singing Paul Stanley’s parts and played
+Ace Frehley’s leads. Our makeup looked more like Mötley Crüe, though. We thought of ourselves as an
+original band that was going to make it; it didn’t occur to us that a band had to write their own songs. I
+was also in a Metallica cover band, an Yngwie Malmsteen cover band and an all-’80s metal cover band.
+All I did in high school was play metal songs. " , "Didn’t you try to calculate the mathematical equation
+for a perfect pop song?
+TJHOOKER, AUSTIN, TX " , "That’s a pretty gross oversimplification. I’ve always deconstructed music
+and tried to figure out the order in which the parts were put together. In what order did the writer come up
+with the various elements? Did he start with the music or the riff or the melody or the beat? It wasn’t out
+of a desire to find one particular formula that would always work for anything I did but rather just to get a
+sense of all the possibilities that are out there. When I write a song, I’m just going on my instincts and
+when I’m writing at my best, it’s different every time. I remember asking Billie Joe years ago about some
+of the songs on the first Green Day album, ones with some pretty intense guitar riffs at the root, and he
+didn’t write them on a guitar, he wrote those in his head. I don’t remember exactly what my theory was on
+those songs, but I know I was surprised. Another one that really blew my mind was "Bridge Over
+Troubled Water," this really beautiful piano song, right? I read that it was written on guitar. I think it was
+one of the pillars of my theory that piano songs are better than guitar songs." , "How does a rock star like
+you usually meet girls? EMCEEBARD, KALAMAZOO, MI " , "
+I don’t. I’m almost more of a rock star at school than on the road, although they treat me pretty normally. I
+live in the undergraduate dorm, I go to the cafeteria three times a day, I go to the library and the fitness
+center and hang out with people in my hall and have normal relationships. I forget that I’m 35 and a rock
+star … until I look in the mirror. " , "You’ve mentioned recently that you’ve gotten into cooking. What’s
+your favorite meal to make? GINA, NASHVILLE, TN" , "
+I don’t really have a signature dish and I can’t remember the names of anything, but it’s all vegetarian.
+Cooking started out of necessity — I had to eat and I didn’t have anyone to help me. I bought a cookbook
+and was really putting some effort into it. I still have a problem dealing with people, so I’d rather eat
+cereal every day than order in. " , "Do you still live in a one-room apartment with the black walls and
+blacked-out windows?
+JERRY, DARIEN, CT " , "
+Not anymore. That was also about focus. Twice a day I close my eyes and meditate, and that’s really all
+the concentration practice I need. I find that my mind’s getting stronger in any situation. " , "Is Make
+Believe going to be the final Weezer album?
+SCOOTERPEPPY, STOCKTON, CA " , "Well, any album can be the last one for any artist. In the band,
+we’re definitely all aware that there’s this place in me that for some reason is hesitating to commit to
+future plans, and none of us is really sure what that’s about. I feel like I have to settle down and have a
+stable life. It’s painful because whatever’s going to happen is going to happen; there’s no point in stressing
+about it now. I have some hang-up and that’s causing anxiety for the band and for the audience. I think
+they’re handling it very graciously and not giving me guilt trips or anything. " , "In the current Ozzy
+Osbourne vs. Iron Maiden beef, whose side are you on?
+ANDREW CLARK, SMYRNA, GA " , "
+Well, I don’t know enough detail to take sides, but I guess I would take both sides and hope there’s a way
+they can work things out so they’re both happy. But I was definitely more of a fan of Maiden growing up
+than Ozzy. " , "Whatever happened to Homie, the album you made with your Harvard pals? LUKE T.,
+RAMSEY, NJ " , "Never finished it. We did all the basic tracks, but no overdubs. That was around 1997. I
+have plenty of unreleased songs, but no interest in putting them out. There’s too much garbage out there
+already. " , "Are you a tit man or an ass man?
+DEBORAH, DULUTH, GA" , "I don’t remember."]
+[“what can you tell me about steve martin's scientific approach to comedy?” , “who's better than us right
+now?” , “"stretching musically" does not equal better.” , “you guys have crap taste in music--no wonder
+you don't like weezer.” , “i honestly think creed is better than us right now, but not for long.” , “i prefer my
+"post hiatus" material. however, i appreciate, and, obviously, take into consideration, everyone's concern .”
+, “a little stress is good for a person.” , “i think you're right on with that tiger woods comparison.[it's kinda
+like when tiger woods decided to take apart & rebuild his stroke. that's just something you *don't* do in
+golf, especially not when you're that good. but he felt like that could only take him so far, so he rebuilt a
+stroke from the ground up that he thought was more fundamentally sound. and he struggled with it for a
+while, but now he's right back where he used to be. i think that's what we're seeing here. give it some
+time!] it's just something i have to do. i don't know if any of you are familiar with goethe, but i'm
+reminded of his situation also. in his youth, he wrote an e.mo-classic, "the sorrows of young werther", in a
+dramatic style which he subsequently abandoned for a more "classical" style. he burned all the
+manuscripts of his youth. in his lifetime, his later works never matched the poplarity of that one book,
+which could be found in the pockets of young suicide victims who had thrown themselves off of bridges.”
+, “i fully anticipate a renewed interest in music which develops beyond the strophic form: "symphonic"
+music. however, i still feel there's more i want to squeeze out of the 2-and-a-half minute gem: notably,
+emphasis on the "personal" aspect. this will be album 5. of course, i could be totally wrong. your "stroke"
+joke made me fall out of my chair!” , “i catalog just about every notion i have, and i finish just about
+everything i start.” , “i have no expectations or intentions for what i write. whatever happens, happens. i
+don't force anything.” , “don't expect every section of your songs to be killer. every extended meal needs
+to be punctuated by bread. if you come up with a part naturally, it's good. be patient, play your songs over
+and over, and they will work themselves out. of course, if you don't like my songs, don't take my advice.” ,
+“it's all a matter of taste, i suppose. my preference, obviously is for an organically unfolding compostion,
+which doesn't concern itself with whether its b-section is up to snuff. imo, there's nothing worse than a
+promising song ruined by the introduction of some incongruous part, simply for the sake of adding
+something more bitching. "Say it ain't so" is an example of song that was butchered in this manner:
+Where'd that bridge come from? Ozma has problems with this tendency as well, though i still worship
+them. I prefer to let my songs write themselves. My first rule of songwriting: COMPREHENSIBILITY.” ,
+“let me figure out how to write a pop song first, then i'll tackle the musical.” , “i was 19 in 1990. since
+then i've become myself more.” , “the business/pleasure dichotomy is for the small of mind.” , “when a
+man leaves his teens, music becomes less important to him. new records come out and they just don't feel
+as "classic" to him as the records of his youth. he blames it on a change in the quality of music but it's
+really just his sensitivity that's diminished. that being said, you do have some valid criticisms. there will
+never be new records that give you the same feeling that the records of your youth did. don't blame the
+artist.” , “you know what's weird? i'm sorta interested in meeting some of you freaks. no photographs or
+autographs or anything but maybe just a little meet 'n greet (or "fake 'n shake", as the artists call it)
+backstage. we should figure out a way to do it.” , “here's something you have to understand: "classic"
+weezer is going to be buried by a far more popular "new" style over the next few years. those 20 songs
+that you guys are so attached to are going to mean nothing to the millions and millions of new fans that
+are coming in.” , “with a lifestyle in which i hardly ever see the same people 2 days in a row, you are one
+of the few comforting constants i have. i've grown quite fond of some of you.” , “u2 is an enigma to me. i
+want to have their kind of popularity but i have absolutely zero interest in their kind of music.” , “i like to
+surround myself with people who disagree with me.” , “yeah, coming to europe right after we finished
+pinkerton in '96 was a big eye opener. techno was huge, oasis was huge, it was a very exciting time. i
+knew from the moment we first tried to play across the sea at one of those festivals that pinkerton was
+going to bomb. i became determined to develop a style that festival people could connect to and enjoy.” ,
+“i had seen the band setting up at soundcheck and laughed at them in an indie-highbrow sort of way. they
+didn't have guitars! they didn't have bass or drums! how could they possibly rock? how could they
+possibly go on as headliners after us? we were going to blow them off the stage! we played our set and, as
+i said, quickly realized the "masterpiece" we had just created would drop like a brick in environments like
+this. indeed, our complex music was all but incomprehensible to the 40,000 young europeans who had
+come simply for the purpose of getting rocked and having a good time. later that night, the sun went down
+and an ominous air gathered over the field as the crowd crammed together, packing towards the front of
+the stage. the excitement was palpable. the band everyone had come to see finally burst out of the
+darkness and onto the stage, hurling everyone into a frenzy of unified, mass po-going. it felt incredible,
+evil, and exciting. I wanted to run in and join the throng. it was then that i knew there was much i wanted
+to learn.i listened, intently. i noted the repetitive beats. i noted the fact that there were no jarring changes
+of feel, tempo, or harmony. i noted that i was being sucked in and forced to move, whether that meant
+dancing, head-banging or just generally rocking out. i noted the lack of "personal expression" and the lack
+of "emotion". most of all, i noted how much it rocked. although the band's music offered little in the way
+of compositional practices which i could integrate with my own, the experience of hearing it that night
+opened my ears to hearing music in a different way. it took me years to come to terms with that.” , “what's
+this decade called anyways? does anybody know?” , “yeah too bad crab isn't boring.” , “besides rap metal,
+green is the most significant accomplishment in rock music since grunge.” , “weezer is 100x better now
+that it is a real "band", IMHO.” , “i have no preconceived notion of what keys will be like in weezer. don't
+you understand my philosophy yet? bring the guy in and let him do his thing with no direction. give him
+encouragement and see what happens. i have no idea what it will sound except that it will rule.” , “i
+walked into a dept. store in korea and asked for a jacket because i was cold and i walked out in a 3 piece
+suit. 5 middle-aged salesladies descended on me and i was helpless to stop them. now i'm addicted.” , “i
+think you're all going to be deeply satisfied by my future songs but it's kind of pointless for me to talk
+about it.” , “i'm so happy that we can keep some old fans. relationships are more interesting when there's
+time for them to develop.” , “i talked to rick rubin again. he really likes the songs and he wants to produce
+the album. however, he asked me how i would feel about him asking me to REWRITE SECTIONS OF
+THE SONGS, for example MAKE A PART SOUND MORE LIKE A CHORUS. this is scary to me. no
+one's ever gotten that involved in my songs before. i consider that sacred, personal territory. however, i
+realize i've been trapped in my point of view for a long time now and it certainly wouldn't hurt to try some
+rewrites. this is going to be a wild ride.” , “well, i know it's not great, but it doesn't totally blow.” , “i need
+to get more of that romantic longing back in the melody. that only happens when i'm infatuated with
+someone and i can't imagine that happening now. i'm so totally over girls.” , “it's fun to play with a really
+big band but i never have any idea what's going to happen. it's just jam time.” , “i'm open to anything. you
+guys can come jam with us at rehearsal if you want.” , “it'd be cool to get like 50 people in the room all
+jamming the same song.”]
