@@ -15,6 +15,7 @@ pip install -r requirements.txt
 or poetry install
 
 ### Set environment variables in a .env file and in HEROKU
+```
 CLIENT_ID = 
 CLIENT_SECRET = 
 TOKEN = its another secret looking string from discord?
@@ -22,11 +23,13 @@ REPLICATE_API_TOKEN =
 OPENAI_API_KEY= 
 GOOGLE_APPLICATION_CREDENTIALS= path to json file
 GOOGLE_DRIVE_CREDFILE= path to json file
+```
 
 It seems I was able to set all credentials in heroku settings
+```
 firestore
 gspread
-
+```
 except for google drive. I just couldn't figure out how to authorize from a creds json object rather than a path to an object.
 
 ## RUN
