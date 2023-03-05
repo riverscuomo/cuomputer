@@ -125,18 +125,9 @@ async def on_message(message):
 async def respond(nick, message, language_code, test_message, author, channel, author_roles, firestore_user):
     """ Responds to a message with one of various bots """
 
-    # print(message.raw_mentions)
-    # print(message.reference)
-
-    
-    id_of_user_being_replied_to = None
-    if message.reference:
-        message_being_replied_to= await client.get_channel(message.reference.channel_id).fetch_message(message.reference.message_id)
-        id_of_user_being_replied_to = message_being_replied_to.author.id
-
-
     # a variable which holds a random float between 0 and 1
     t = random.random()
+    id_of_user_being_replied_to = await get_user_id(message)
     is_newbie = datetime.now(tz) - author.joined_at  < timedelta(days= 7)
     is_question = message.content[-1]=='?'
     mentions_rivers = 'rivers' in message.content.lower() # i think testmessage doesn't have 'rivers' in it
@@ -228,6 +219,13 @@ async def respond(nick, message, language_code, test_message, author, channel, a
 
     elif t>.997:
         await post_riverbot_response(nick, message, language_code)
+
+async def get_user_id(message):
+    id_of_user_being_replied_to = None
+    if message.reference:
+        message_being_replied_to= await client.get_channel(message.reference.channel_id).fetch_message(message.reference.message_id)
+        id_of_user_being_replied_to = message_being_replied_to.author.id
+    return id_of_user_being_replied_to
 
         
 

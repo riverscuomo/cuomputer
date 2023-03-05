@@ -18,7 +18,7 @@ def fetch_entries():
     response = requests.get(
         url=LIBRARY_API,
     )
-    if response is None:
+    if response.status_code != 200:
         print("error getting bundles from 1.0")
         return []
 
@@ -49,7 +49,7 @@ def fetch_users():
             "userId": USERS_API_USER_ID,
         },
     )
-    if response is None:
+    if response.status_code != 200:
         print("error getting bundles from 1.0")
         return []
 
@@ -68,6 +68,9 @@ def main():
     users = fetch_users()
     users = [x for x in users if x["username"] == "Olivia"]
     print(users)
+
+    entries = fetch_entries()
+    print(entries)
 
 
 if __name__ == "__main__":
