@@ -38,7 +38,7 @@ async def is_request_for_replicate_image(message, member_roles, firestore_user):
         user_score = firestore_user["score"]
         print(f"is_request_for_replicate_image. user_score={user_score}")
 
-        if user_score > 7:
+        if user_score > 4:
             
             prompt = re.sub(r"show me\s", "", message.content, flags=re.IGNORECASE)
             # prompt = prompt.lower().replace("show me ", "")[:-1]
