@@ -19,7 +19,7 @@ def fetch_entries():
         url=LIBRARY_API,
     )
     if response.status_code != 200:
-        print("error getting bundles from 1.0")
+        print("error getting entries from 1.0")
         return []
 
     try:

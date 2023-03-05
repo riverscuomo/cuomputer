@@ -40,6 +40,8 @@ except for google drive. I just couldn't figure out how to authorize from a cred
 
 ## Deploy to Heroku
 This is probably just for me.
+`git push heroku main`
+one time I had to add ` -f`
 
 ## Contribute
 Most of the interesting code is in bot/on_message folder and bot/scripts folder.
