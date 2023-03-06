@@ -1,8 +1,8 @@
 .G/
 .9/
 
-Procfile
-runtime.txt
+# Procfile
+# runtime.txt
 
 rctweetcleaner-3d2160633739.json
 riverscuomo-8cc6d-1e794dddab08.json
