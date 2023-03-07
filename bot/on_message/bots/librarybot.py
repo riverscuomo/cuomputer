@@ -7,7 +7,7 @@ from bot.scripts.message.finalize_response import finalize_response  # , firesto
 from bot.setup.init import common_words
 from config import members_to_skip, always_respond
 
-entries = fetch_entries()
+
 
 
 def build_reply(author_name, entry):
@@ -43,6 +43,7 @@ def get_wiki_response(content, pick_random=False):
     """
     Splits the content into words and looks for a Riverpedia entry that has a title or tag that matches one of the words.
     """
+    entries = fetch_entries()
 
     if pick_random == True:
         return None

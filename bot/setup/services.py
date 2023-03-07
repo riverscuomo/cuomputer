@@ -18,6 +18,8 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2 import service_account
+from dotenv import load_dotenv
+load_dotenv()
 
 sys.path.append("...")  # Adds higher directory to python modules path.
 
@@ -34,23 +36,28 @@ def get_service(api_name, api_version, scopes, key_file_location):
         A service that is connected to the specified API.
     """
 
-    try:
-        credentials = service_account.Credentials.from_service_account_info(
-        os.environ.get("GOOGLE_CREDENTIALS"))
+    try:  
+        print("trying to get credentials from env var GOOGLE_CREDENTIALS json object")
+        # get the path to the json file
+        path = "C:\RC Dropbox\Rivers Cuomo\Apps\cuomputer\riverscuomo-8cc6d-1e794dddab08.json"
+
+        credentials = service_account.Credentials.from_service_account_info(path)
     except Exception as e:
         print(e)
         try:
+            print(f"failed...trying to get credentials from env var GOOGLE_CREDENTIALS json file at {key_file_location}")
             credentials = service_account.Credentials.from_service_account_file(
             key_file_location)
         except Exception as e:
             print(e)
             
             return None
-
+    print("credentials obtained")
     scoped_credentials = credentials.with_scopes(scopes)
 
     # Build the service object.
     service = build(api_name, api_version, credentials=scoped_credentials)
+    print("service built")
 
     return service
 
@@ -62,6 +69,7 @@ def get_google_drive_service():
     api_name ="drive"
     api_version ="v3"
     key_file_location = os.environ.get("GOOGLE_DRIVE_CREDFILE")
+    print(f"get_google_drive_service...{key_file_location}")
     return get_service(api_name, api_version, SCOPES, key_file_location)
 
 
