@@ -14,7 +14,7 @@ USERS_API_USER_ID= os.getenv("USERS_API_USER_ID")
 cache = TTLCache(maxsize=100000, ttl=60)
 wikiCache = TTLCache(maxsize=100000, ttl=60 * 60)
 
-@cached(cache)
+@cached(wikiCache)
 def fetch_entries():
     print("fetch_entries")
     response = requests.get(

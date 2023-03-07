@@ -8,8 +8,6 @@ from bot.setup.init import common_words
 from config import members_to_skip, always_respond
 
 
-
-
 def build_reply(author_name, entry):
 
     # print(entry)
@@ -43,7 +41,9 @@ def get_wiki_response(content, pick_random=False):
     """
     Splits the content into words and looks for a Riverpedia entry that has a title or tag that matches one of the words.
     """
+    print("get_wiki_response")
     entries = fetch_entries()
+    print("entries.length", len(entries))
 
     if pick_random == True:
         return None
@@ -60,7 +60,7 @@ def get_wiki_response(content, pick_random=False):
     elements = [x for x in elements if x not in common_words]
     skippers = ["rivers", "cuomo"]
     elements = [x for x in elements if x not in skippers]
-    # print(elements)
+    print(elements)
 
     matching_entries = []
 
@@ -104,7 +104,7 @@ def recently_used(entry):
     minutes = delta.seconds / 60
     # print(minutes)
     if minutes < 240:
-        # print(f"'{title}' was used {minutes} minutes ago")
+        print(f"'{title}' was used {minutes} minutes ago")
         return True
 
 
