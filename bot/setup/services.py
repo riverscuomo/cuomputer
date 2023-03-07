@@ -35,7 +35,12 @@ def get_google_drive_service():
     #     creds = tools.run_flow(flow, store)
 
     """ Thereafter: """
+    print("loading google drive creds from file...")
     creds = store.get()
+    print("os.environ.get('GOOGLE_DRIVE_CLIENT_ID')", os.environ.get("GOOGLE_DRIVE_CLIENT_ID"))
+    creds.client_id = os.environ.get("GOOGLE_DRIVE_CLIENT_ID")
+    print("os.environ.get('GOOGLE_DRIVE_CLIENT_SECRET')", os.environ.get("GOOGLE_DRIVE_CLIENT_SECRET"))
+    creds.client_secret = os.environ.get("GOOGLE_DRIVE_CLIENT_SECRET")
     drive_service = build("drive", "v3", http=creds.authorize(Http()))
     # drive_service = build('drive', 'v3', credentials=creds)
     print(drive_service)
@@ -44,6 +49,7 @@ def get_google_drive_service():
 
 
 def main():
+
     drive_service = get_google_drive_service()
     print(drive_service)
 
@@ -61,6 +67,8 @@ def main():
         print("Files:")
         for item in items:
             print("{0} ({1})".format(item["name"], item["id"]))
+
+    exit()
 
     green_nft_folder_id = "1hrNAl3tDX3Ui5BldZDrgCWxiRBL6NxtY"
 

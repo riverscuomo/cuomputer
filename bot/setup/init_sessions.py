@@ -6,12 +6,28 @@ from config import all_response_channels
 from rich import print
 from dotenv import load_dotenv
 import os
+import json
 load_dotenv()
 
+# print("init_sessions.py")
+# print(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
 
+# google_store = json.load(open(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")))
+# # session_client = dialogflow.SessionsClient().from_service_account_json(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
+
+# print(google_store)
+# google_store["client_id"] = os.environ.get("GOOGLE_CLOUD_CLIENT_ID")
+# google_store["private_key_id"] = os.environ.get("GOOGLE_CLOUD_PRIVATE_KEY_ID")
+# google_store["private_key"] = os.environ.get("GOOGLE_CLOUD_PRIVATE_KEY")
+# print(google_store)
+
+# session_client = dialogflow.SessionsClient().from_service_account_info(google_store)
+
+
+# credentials = dialogflow.from_service_account_file(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
+
+# OG
 session_client = dialogflow.SessionsClient()
-print(session_client)
-
 
 def init_sessions():
     """create a dialogflow conversation session for each channel
