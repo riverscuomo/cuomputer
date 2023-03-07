@@ -35,11 +35,17 @@ def get_service(api_name, api_version, scopes, key_file_location):
     """
 
     try:
-        credentials = service_account.Credentials.from_service_account_file(
-        key_file_location)
-    except FileNotFoundError:
-        print("File not found")
-        return None
+        credentials = service_account.Credentials.from_service_account_info(
+        os.environ.get("GOOGLE_CREDENTIALS"))
+    except Exception as e:
+        print(e)
+        try:
+            credentials = service_account.Credentials.from_service_account_file(
+            key_file_location)
+        except Exception as e:
+            print(e)
+            
+            return None
 
     scoped_credentials = credentials.with_scopes(scopes)
 
