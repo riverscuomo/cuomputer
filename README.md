@@ -17,23 +17,27 @@ where python
 
 pip install -r requirements.txt
 
-### Set environment variables in a .env file and in HEROKU
+### Set environment variables in both a .env file and in HEROKU
+#### Discord
 ```
 CLIENT_ID = 
 CLIENT_SECRET = 
 TOKEN = its another secret looking string from discord?
+```
+#### Other Apis
+```
 REPLICATE_API_TOKEN = 
 OPENAI_API_KEY= 
-GOOGLE_APPLICATION_CREDENTIALS= path to json file
-GOOGLE_DRIVE_CREDFILE= path to json file
 ```
 
-It seems I was able to set all credentials in heroku settings
-```
-firestore
-gspread
-```
-except for google drive. I just couldn't figure out how to authorize from a creds json object rather than a path to an object.
+### Other Credentials
+#### `gspreader` [service account]: 
+Heroku.Settings.configVariables: `GSPREADER_GOOGLE_CREDS` json object . Gspreader uses the `gspreader.json` method to get the creds.
+.env: it still has access to a file using the `gspreader.path` method to `GSPREADER_GOOGLE_CREDS_PATH`=`C:\RC Dropbox\Rivers Cuomo\Apps\credentials\rctweetcleaner-3d2160633739.json`
+
+#### `firestore` and `google drive` [service account]:
+Heroku.Settings.configVariables: `GOOGLE_CREDENTIALS` json object.
+.env: I think it's just authorizing itself by using the `riverscuomo-8cc6c....json` cred file in the top level of the project. This file is not commited to git/github but it is avaialable in the directory via dropbox.
 
 ## RUN
 `py.main.py` in the top level directory
