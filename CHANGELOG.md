@@ -2,7 +2,13 @@
 
 <!--next-version-placeholder-->
 
-## v0.1.1 (2023-02-05)
+## v0.1.1 
+
+(2023-03-12)
+- moved neighbor threshold to config
+- bumped neighbor threshold to 2 days
+
+(2023-02-05)
 
 ### Feature
 
