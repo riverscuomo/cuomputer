@@ -5,15 +5,16 @@ from bot.scripts.get_firestore_user import get_firestore_user
 # from bot.setup.init import firestore_users, client
 from bot.setup.init import client
 from bot.scripts.message.fix_nick import fix_nick
-from config import (
-    bundles_map,
-    # time_based_roles,
-    firestore_time_format,
-    og_cutoff,
-    user_to_remove,
-    GUILD_ID,
-    members_to_skip,
-)
+import config
+# from config import (
+#     # bundles_map,
+#     # time_based_roles,
+#     # firestore_time_format,
+#     # og_cutoff,
+#     # user_to_remove,
+#     # GUILD_ID,
+#     members_to_skip,
+# )
 
 from bot.db.fbdb import db
 from firebase_admin import firestore
@@ -22,8 +23,7 @@ from rich import print
 
 async def add_time_based_roles(member, roles):
     """
-    If you want to change the name of the role,
-    replace all in discord_bot
+    If you want to change the name of the role, replace all in discord_bot
     and don't forget to change the name of the role in server/roles/settings.
 
     0.2: "Visitor",
@@ -46,9 +46,9 @@ async def add_time_based_roles(member, roles):
     member_roles = [x.name for x in member.roles]
     # print(member_roles)
     # print(time_based_roles)
-    neighbor_threshold = 1 # hour
+    
 
-    if hours >= neighbor_threshold:
+    if hours >= config.neighbor_threshold:
         if "Visitor" in member_roles:
             print(f"Removing Visitor from {member.name}")
             role = next((x for x in roles if x.name == "Visitor"), None)
@@ -127,7 +127,7 @@ async def add_time_based_roles(member, roles):
 
 async def add_remove_roles_for_specific_users(author, roles):
     print("add_remove_roles_for_specific_users")
-    if author.id == user_to_remove:
+    if author.id == config.user_to_remove:
         await author.remove_roles(next(x for x in roles if x.name == "Camp Counselor"))
         await author.remove_roles(next(x for x in roles if x.name == "Archivist"))
         await author.remove_roles(next(x for x in roles if x.name == "Librarian"))
@@ -186,10 +186,10 @@ async def add_og_role_from_firestore_user(member, firestore_user, roles):
             registered_on = firestore_user["registeredOn"]
 
         # registered_on = datetime.strptime("Jun 1 2005  1:33PM", "%b %d %Y %I:%M%p")
-        registered_on = datetime.strptime(registered_on, firestore_time_format)
+        registered_on = datetime.strptime(registered_on, config.firestore_time_format)
         # Sat, 12 Jun 2021 07:00:06 GMT
 
-        if registered_on < og_cutoff:
+        if registered_on < config.og_cutoff:
 
             await member.add_roles(next(x for x in roles if x.name == "OG"))
 
@@ -259,7 +259,7 @@ async def add_roles_from_firestore_bundles(member, firestore_user, roles):
     print('add_roles_from_firestore_bundles')
     # build a list of strings representing the bundle names they own
     member_bundles = [
-        bundles_map[x] for x in firestore_user["bundleIds"] if x in bundles_map
+        config.bundles_map[x] for x in firestore_user["bundleIds"] if x in config.bundles_map
     ]
 
     # build a list of strings for each of the roles that the member already has
@@ -350,7 +350,7 @@ async def add_discord_roles_to_firestore_user():
         "Welcome Committee",
         "Creative Director",
     ]
-    guild = client.get_guild(GUILD_ID)
+    guild = client.get_guild(config.GUILD_ID)
 
     members = guild.members
     # print(len(members))
@@ -390,7 +390,7 @@ async def add_discord_roles_to_firestore_user():
 #     await add_discord_roles_to_firestore_user()
 #     exit()
 
-#     guild = client.get_guild(GUILD_ID)
+#     guild = client.get_guild(config.GUILD_ID)
 #     roles = await guild.fetch_roles()
 #     bad_roles = [
 #         x for x in roles if x.name in ["Supporter", "Champion", "100+", "400+", "1000+"]

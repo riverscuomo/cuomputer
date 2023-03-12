@@ -19,6 +19,10 @@ OAUTH2_URL = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_ID}&pe
 GENERAL_ID = 890292832198344724
 GUILD_ID = 890210072381247548
 
+neighbor_threshold = 1 * 24 * 2 # hours (2 days)
+num_roles_for_newbie = 1
+
+
 sessions = []
 
 """ Channels """
@@ -45,6 +49,41 @@ channels = {
     "jamroom": 890210073308172348,
 
 }
+
+
+
+qna = "❔-questions-and-help"
+general = "🌟-general"
+
+# only respond to messages posted in these channels
+library_response_channels = [
+    general,
+    qna,
+    # "ask-rivers",
+    "espanol",
+]
+coach_response_channels = ["aunt-vangie", "coach-cuomo"]
+rivers_response_channels = [general, qna]
+q_and_a_channels = [qna, general, "espanol"]
+spanish_channels = ["espanol"]
+japanese_channels = ["日本"]
+korean_channels = ["한국어"]
+foreign_channels = spanish_channels + japanese_channels + korean_channels
+standard_reponse_channels = foreign_channels + [
+    general,
+]
+
+always_respond_channels = ["coach-cuomo"]
+
+all_response_channels = list(
+    set(
+        q_and_a_channels
+        + library_response_channels
+        + coach_response_channels
+        + rivers_response_channels
+        + foreign_channels
+    )
+)
 
 
 """ Members """
@@ -101,41 +140,6 @@ if testing:
 
 
 
-
-qna = "❔-questions-and-help"
-general = "🌟-general"
-
-# only respond to messages posted in these channels
-library_response_channels = [
-    general,
-    qna,
-    # "ask-rivers",
-    "espanol",
-]
-coach_response_channels = ["aunt-vangie", "coach-cuomo"]
-rivers_response_channels = [general, qna]
-q_and_a_channels = [qna, general, "espanol"]
-spanish_channels = ["espanol"]
-japanese_channels = ["日本"]
-korean_channels = ["한국어"]
-foreign_channels = spanish_channels + japanese_channels + korean_channels
-standard_reponse_channels = foreign_channels + [
-    general,
-]
-
-always_respond_channels = ["coach-cuomo"]
-
-all_response_channels = list(
-    set(
-        q_and_a_channels
-        + library_response_channels
-        + coach_response_channels
-        + rivers_response_channels
-        + foreign_channels
-    )
-)
-
-num_roles_for_newbie = 1
 
 
 """ MESSAGES """
