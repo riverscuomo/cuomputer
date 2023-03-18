@@ -174,7 +174,7 @@ async def respond(nick, message, language_code, test_message, author, channel, a
 
         await post_qna_default_response(nick, message, language_code)
 
-    elif channel.id in [channels["coach"], channels["vangie"], channels["dan"]]:
+    elif channel.id in [channels["coach"], channels["vangie"], channels["dan"], channels["geezerville"]]:
         if channel.id == channels["vangie"]:
             adjective = "funny and flirtatious"
         elif channel.id == channels["geezerville"]:
