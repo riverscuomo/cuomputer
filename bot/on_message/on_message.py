@@ -6,6 +6,8 @@ from bot.scripts.message.finalize_response import finalize_response
 sys.path.append("...")  # Adds higher directory to python modules path.
 
 from config import cuomputer_id, channels
+import config as config
+
 
 from bot.setup.init import client, openai_sessions
 from bot.db.fetch_data import fetch_roles
@@ -141,7 +143,7 @@ async def respond(nick, message, language_code, test_message, author, channel, a
 
     if (
         channel.id in [channels["lounge"]]
-        and user_score > 18
+        and user_score > config.gpt_threshold
         and await post_gpt_response(
             nick, message, language_code, test_message
         )
@@ -172,8 +174,8 @@ async def respond(nick, message, language_code, test_message, author, channel, a
 
         await post_qna_default_response(nick, message, language_code)
 
-    elif channel.id == channels["coach"]:
-        if user_score > 10 and  (
+    elif channel.id in [channels["coach"], channels["vangie"], channels["dan"]]:
+        if user_score > config.gpt_threshold and  (
             (is_question and mentions_rivers and t > .1) or 
             ((is_question or mentions_rivers) and t > .95) or
             mentions_cuomputer or

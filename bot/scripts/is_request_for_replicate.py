@@ -4,7 +4,7 @@ import replicate
 # https://replicate.com/account
 # I set a limit of $5 per month with google pay
 
-model = replicate.models.get("stability-ai/stable-diffusion")
+replicate_model = replicate.models.get("stability-ai/stable-diffusion")
 
 # regex formula to replace "show me " in a string, upper or lower case
 import re
@@ -38,7 +38,7 @@ async def is_request_for_replicate_image(message, member_roles, firestore_user):
         user_score = firestore_user["score"]
         print(f"is_request_for_replicate_image. user_score={user_score}")
 
-        if user_score > 4:
+        if user_score > config.replicate_threshold:
             
             prompt = re.sub(r"show me\s", "", message.content, flags=re.IGNORECASE)
             # prompt = prompt.lower().replace("show me ", "")[:-1]
@@ -49,7 +49,7 @@ async def is_request_for_replicate_image(message, member_roles, firestore_user):
                 image = generate_image(prompt)
             else:
 
-                image = model.predict(
+                image = replicate_model.predict(
                     prompt=prompt,
                     api_token=REPLICATE_API_TOKEN,
                     )

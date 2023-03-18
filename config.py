@@ -20,14 +20,16 @@ GENERAL_ID = 890292832198344724
 GUILD_ID = 890210072381247548
 
 neighbor_threshold = 1 * 24 * 2 # hours (2 days)
+replicate_threshold = 3
+gpt_threshold = 10
 num_roles_for_newbie = 1
-
 
 sessions = []
 
 """ Channels """
 channels = {
     "coach" : 903672810277318666,
+    "dan" : 890210072381247548,
     "qna" : 895330177456963645,
     "welcome" : 1022159784528597023,
     "general" : 892873789262680164,

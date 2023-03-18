@@ -89,6 +89,47 @@ async def read_message(message, response: str, language_code: str):
         await asyncio.sleep(1)
     # await vc.disconnect()
 
+
+def build_openai_response(text: str, adjective: str):
+
+    # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
+
+    prompt = f"write a response for Rivers Cuomo in this conversation in a {adjective}  way: {text}."
+
+    # Get the open model from .env if the user has specified it.
+    model = os.environ.get("OPENAI_MODEL")
+
+    # Use gpt-3 if the model is not specified
+    if model is None:
+        model = "text-davinci-003"
+
+    # Use gpt-4 if the model is specified as gpt-4
+    if model == "gpt-4":
+
+        completion = openai.ChatCompletion.create(model=model, messages=[{"role": "user", "content": prompt}])
+        reply = completion.choices[0].message.content    
+
+    # Otherwise use gpt-3 or another model specified in .env
+    else:
+        completion = openai.Completion.create(
+            model=os.environ.get("OPENAI_MODEL"),
+            prompt=prompt,
+            temperature=1,
+            max_tokens=120,
+        )
+        reply = completion["choices"]
+        reply = reply[0]["text"]
+
+    # whatever the model was, now you can make a few universal changes to the response.
+    reply = reply.replace("\n\n", "\n")
+    reply = reply.replace('"', "")
+    reply = reply.replace("2020", "2023")
+    reply = reply.replace("2021", "2023")
+    reply = reply.strip()
+    return reply
+
+
+
 def build_openai_response(message, adjective: str):
     print("build_openai_response")
     # c = message.content.split(" ")[1]
