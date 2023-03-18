@@ -117,9 +117,8 @@ def build_openai_response(text: str, system:str, adjective: str):
         print("Using gpt-4")
 
         completion = openai.ChatCompletion.create(model=model,  messages=[
-             {"role": "system", "content": system,
-            "role": "user", "content": text
-            }])
+             {"role": "system", "content": system},
+            {"role": "user", "content": text            }])
         reply = completion.choices[0].message.content    
 
     # Otherwise use gpt-3 or another model specified in .env
