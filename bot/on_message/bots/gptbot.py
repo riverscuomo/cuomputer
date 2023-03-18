@@ -19,7 +19,7 @@ uberduck_client = uberduck.UberDuck(os.environ["UBERDUCK_API_KEY"], os.environ["
 
 
 
-async def post_gpt_response(nick: str, message, language_code: str, adjective: str="funny"):
+async def post_gpt_response(nick: str, message, language_code: str, system = "you are Rivers Cuomo from Weezer. ", adjective: str="funny"):
     """
     Openai bot
 
@@ -27,14 +27,20 @@ async def post_gpt_response(nick: str, message, language_code: str, adjective: s
     print("post_gpt_response")
     # await client.process_commands(message)
     async with message.channel.typing():
+
         
-        reply = build_openai_response(message, adjective)
+
+        if message.channel == channels["dan"]:
+            system = "you are Rivers Cuomo from Weezer but you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan. "
+        
+        system += f" You are in a conversation with a fan named {nick}."
+        reply = build_openai_response(message, system, adjective)
         print(f"reply: {reply}")
 
         response = finalize_response(reply, language_code, nick, replace_names=True)
         print(f"response: {response}")
 
-        await read_message(message,response, language_code)
+        # await read_message(message,response, language_code)
 
         # await asyncio.sleep(8)
 
@@ -84,17 +90,17 @@ async def read_message(message, response: str, language_code: str):
         await vc.move_to(channel)
 
     
-    vc.play(discord.FFmpegPCMAudio('file.txt'))
-    while vc.is_playing():
-        await asyncio.sleep(1)
+        vc.play(discord.FFmpegPCMAudio('file.txt'))
+        while vc.is_playing():
+            await asyncio.sleep(1)
     # await vc.disconnect()
 
 
-def build_openai_response(text: str, adjective: str):
+def build_openai_response(text: str, system:str, adjective: str):
 
     # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
 
-    prompt = f"write a response for Rivers Cuomo in this conversation in a {adjective}  way: {text}."
+    prompt = f"{system}: respond in a {adjective}  way. Here is the user's message: {text}."
 
     # Get the open model from .env if the user has specified it.
     model = os.environ.get("OPENAI_MODEL")
@@ -105,6 +111,7 @@ def build_openai_response(text: str, adjective: str):
 
     # Use gpt-4 if the model is specified as gpt-4
     if model == "gpt-4":
+        print("Using gpt-4")
 
         completion = openai.ChatCompletion.create(model=model, messages=[{"role": "user", "content": prompt}])
         reply = completion.choices[0].message.content    
@@ -130,48 +137,48 @@ def build_openai_response(text: str, adjective: str):
 
 
 
-def build_openai_response(message, adjective: str):
-    print("build_openai_response")
-    # c = message.content.split(" ")[1]
-    incoming_message = message.content
-    # channel_name = message.channel.name
-    # author_name = message.author.name
+# def build_openai_response(message, adjective: str):
+#     print("build_openai_response")
+#     # c = message.content.split(" ")[1]
+#     incoming_message = message.content
+#     # channel_name = message.channel.name
+#     # author_name = message.author.name
 
-    # print(message.author, message.author.id, message.author.name)
-    # if message.author.id != cuomputer_id:
-    #     print('adding context to openai session')
+#     # print(message.author, message.author.id, message.author.name)
+#     # if message.author.id != cuomputer_id:
+#     #     print('adding context to openai session')
 
-    # try:
-    #     openai_sessions[channel_name][message.author.name] += f" {incoming_message}"
-    # # rarely, a new channel will be created and the bot will not have a session for it yet
-    # except KeyError:
-    #     openai_sessions[channel_name][message.author.name] = incoming_message
-    # context = openai_sessions[channel_name][message.author.name] 
+#     # try:
+#     #     openai_sessions[channel_name][message.author.name] += f" {incoming_message}"
+#     # # rarely, a new channel will be created and the bot will not have a session for it yet
+#     # except KeyError:
+#     #     openai_sessions[channel_name][message.author.name] = incoming_message
+#     # context = openai_sessions[channel_name][message.author.name] 
 
     
 
-    # context = manage_session_context(message, channel_name, )
-    context = incoming_message
+#     # context = manage_session_context(message, channel_name, )
+#     context = incoming_message
 
-    prompt = f"write a response for Rivers Cuomo in this conversation in a {adjective}  way: {context}."
-    # print(c)
-    reply = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=prompt,
-        temperature=1.0, # higher is more creative, lower is more boring
-        max_tokens=200, # speech tokens, not characters
-    )
-    reply = reply["choices"]
-    # print(reply)
-    reply = reply[0]["text"]
-    print(f"reply={reply}")
+#     prompt = f"write a response for Rivers Cuomo in this conversation in a {adjective}  way: {context}."
+#     # print(c)
+#     reply = openai.Completion.create(
+#         model="text-davinci-003",
+#         prompt=prompt,
+#         temperature=1.0, # higher is more creative, lower is more boring
+#         max_tokens=200, # speech tokens, not characters
+#     )
+#     reply = reply["choices"]
+#     # print(reply)
+#     reply = reply[0]["text"]
+#     print(f"reply={reply}")
 
-    reply = reply.replace("Rivers Cuomo: ", "").replace("Rivers Cuomo:", "")
-    reply = reply.replace("\n\n", "\n")
-    reply = reply.replace('"', "")
-    reply = reply.strip()
+#     reply = reply.replace("Rivers Cuomo: ", "").replace("Rivers Cuomo:", "")
+#     reply = reply.replace("\n\n", "\n")
+#     reply = reply.replace('"', "")
+#     reply = reply.strip()
     
-    return reply
+#     return reply
 
 
 def manage_session_context(message, channel_name, author_name, incoming_message):

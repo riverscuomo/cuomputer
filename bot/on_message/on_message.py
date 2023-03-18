@@ -175,12 +175,16 @@ async def respond(nick, message, language_code, test_message, author, channel, a
         await post_qna_default_response(nick, message, language_code)
 
     elif channel.id in [channels["coach"], channels["vangie"], channels["dan"]]:
+        if channel.id == channels["vangie"]:
+            adjective = "funny and flirtatious"
+        else: 
+            adjective = "funny"
         if user_score > config.gpt_threshold and  (
             (is_question and mentions_rivers and t > .1) or 
             ((is_question or mentions_rivers) and t > .95) or
             mentions_cuomputer or
              (t >.999)
-        ) and await post_gpt_response(nick, message, language_code):
+        ) and await post_gpt_response(nick, message, language_code, adjective=adjective):
             return
 
     elif channel.id == channels["vangie"]:
