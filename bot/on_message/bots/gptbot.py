@@ -101,7 +101,9 @@ def build_openai_response(text: str, system:str, adjective: str):
 
     # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
 
-    prompt = f"{system}: respond in a {adjective}  way. Here is the user's message: {text}."
+    system += adjective
+
+    # prompt = f"{text}."
 
     # Get the open model from .env if the user has specified it.
     model = os.environ.get("OPENAI_MODEL")
@@ -114,14 +116,14 @@ def build_openai_response(text: str, system:str, adjective: str):
     if model == "gpt-4":
         print("Using gpt-4")
 
-        completion = openai.ChatCompletion.create(model=model, messages=[{"role": "user", "content": prompt}])
+        completion = openai.ChatCompletion.create(model=model, system=system, messages=[{"role": "user", "content": text}])
         reply = completion.choices[0].message.content    
 
     # Otherwise use gpt-3 or another model specified in .env
     else:
         completion = openai.Completion.create(
             model=os.environ.get("OPENAI_MODEL"),
-            prompt=prompt,
+            prompt=text,
             temperature=1,
             max_tokens=120,
         )
