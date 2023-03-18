@@ -97,11 +97,11 @@ async def read_message(message, response: str, language_code: str):
     # await vc.disconnect()
 
 
-def build_openai_response(text: str, system:str, adjective: str):
+def build_openai_response(text: str, role:str, adjective: str):
 
     # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
 
-    system += adjective
+    role += adjective
 
     # prompt = f"{text}."
 
@@ -116,7 +116,7 @@ def build_openai_response(text: str, system:str, adjective: str):
     if model == "gpt-4":
         print("Using gpt-4")
 
-        completion = openai.ChatCompletion.create(model=model, system=system, messages=[{"role": "user", "content": text}])
+        completion = openai.ChatCompletion.create(model=model, role=role, messages=[{"role": "user", "content": text}])
         reply = completion.choices[0].message.content    
 
     # Otherwise use gpt-3 or another model specified in .env
