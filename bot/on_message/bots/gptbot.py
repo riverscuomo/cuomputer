@@ -28,12 +28,10 @@ async def post_gpt_response(nick: str, message, language_code: str, system = "yo
     # await client.process_commands(message)
     async with message.channel.typing():
 
-        
-
-        if message.channel == channels["dan"]:
+        if message.channel.id == channels["dan"]:
             system = "you are Rivers Cuomo from Weezer but you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan. "
 
-        if message.channel == channels["geezerville"]:
+        if message.channel.id == channels["geezerville"]:
             system = "you are Rivers Cuomo from Weezer. But you're not trying to act younger than you are (52). You're okay talking about middle-age issues including having kids. You sometimes reference 80's nostalgia. "
         
         system += f" You are in a conversation with a fan named {nick}."
