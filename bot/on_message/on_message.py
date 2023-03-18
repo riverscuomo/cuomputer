@@ -177,6 +177,8 @@ async def respond(nick, message, language_code, test_message, author, channel, a
     elif channel.id in [channels["coach"], channels["vangie"], channels["dan"]]:
         if channel.id == channels["vangie"]:
             adjective = "funny and flirtatious"
+        elif channel.id == channels["geezerville"]:
+            adjective = "nostalgic and sweet"
         else: 
             adjective = "funny"
         if user_score > config.gpt_threshold and  (
