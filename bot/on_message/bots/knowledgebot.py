@@ -16,7 +16,7 @@ from bot.setup.init import (
 )
 
 
-async def post_google_knowledge_response(nick: str, message, language: str):
+async def post_google_knowledge_response(message):
     """ From interviews? """
     print("post_knowledge_response")
 
@@ -46,7 +46,7 @@ async def post_google_knowledge_response(nick: str, message, language: str):
         reply = reply.split("\n")[0]
         reply = clean_message(reply)
 
-        response = finalize_response(reply, language, nick)
+        response = finalize_response(reply, message.language, message.nick)
         await message.channel.send(response)
 
         return True
@@ -75,7 +75,7 @@ def detect_intent_knowledge(message):
     project_id: The GCP project linked with the agent you are going to query.
     session_id: Id of the session, using the same `session_id` between requests
               allows continuation of the conversation.
-    language_code: Language of the queries.
+    message.language_code: message.Language of the queries.
     knowledge_base_id: The Knowledge base's id to query against.
     texts: A list of text queries to send.
     """
@@ -87,7 +87,7 @@ def detect_intent_knowledge(message):
 
     if len(text) > 255:
         text = text[:255]
-    text_input = dialogflow_v2beta1.TextInput(text=text, language_code=language_code)
+    text_input = dialogflow_v2beta1.TextInput(text=text, language_code=message.language_code)
     query_input = dialogflow_v2beta1.QueryInput(text=text_input)
     knowledge_base_path = dialogflow_v2beta1.KnowledgeBasesClient.knowledge_base_path(
         os.environ.get("GOOGLE_CLOUD_PROJECT"), os.environ.get("KNOWLEDGE_BASE_ID"),

@@ -50,9 +50,9 @@ channels = {
     "lounge": 890210073308172347,
     "lounge2": 1059229073466998854,
     "jamroom": 890210073308172348,
-
 }
 
+# all_response_channels = []
 
 
 qna = "❔-questions-and-help"

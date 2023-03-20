@@ -22,7 +22,7 @@ FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconne
 
 intents = discord.Intents.all()
 client = commands.Bot(
-    # command_prefix=commands.when_mentioned_or("/"),
+    command_prefix=commands.when_mentioned_or("/"),
     intents=intents,
     )
 
@@ -38,10 +38,10 @@ from io import StringIO, BytesIO
 # )
 uberduck_client = uberduck.UberDuck(os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
 
-@client.slash_command(name='speak',
-    description='speaks the text you give it',
-    pass_context=True,
-    guild_ids=[GUILD_ID],)
+# @client.slash_command(name='speak',
+#     description='speaks the text you give it',
+#     pass_context=True,
+#     guild_ids=[GUILD_ID],)
 
 async def speak(ctx, voice, *, speech):
 
@@ -61,10 +61,10 @@ async def speak(ctx, voice, *, speech):
         
         await ctx.send(file = file)
 
-@client.slash_command(name='voices',
-    description='lists the voices you can use',
-    pass_context=True,
-    guild_ids=[GUILD_ID],)
+# @client.slash_command(name='voices',
+#     description='lists the voices you can use',
+#     pass_context=True,
+#     guild_ids=[GUILD_ID],)
 
 async def voices(ctx):
     print(ctx)
@@ -97,12 +97,12 @@ async def voices(ctx):
 #         await asyncio.sleep(1)
 #     await vc.disconnect()
 
-@client.slash_command(
-    name='youtube',
-    description='Plays audio from a youtube video in the voice channel',
-    pass_context=True,
-    guild_ids=[GUILD_ID],
-)
+# @client.slash_command(
+#     name='youtube',
+#     description='Plays audio from a youtube video in the voice channel',
+#     pass_context=True,
+#     guild_ids=[GUILD_ID],
+# )
 async def youtube(ctx, search: str= "corn song"):
 
     # search = "corn song"

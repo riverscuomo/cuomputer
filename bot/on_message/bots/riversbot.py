@@ -26,7 +26,7 @@ from better_profanity import profanity
 from bot.setup.init import movie_lines, lyrics
 
 
-async def post_riverbot_response(nick: str, message, language: str):
+async def post_riverbot_response(message):
 
     """
     These are lyrics, movie lines, an inspo quotes.
@@ -44,15 +44,11 @@ async def post_riverbot_response(nick: str, message, language: str):
         print(f"reject bot response: {reply}")
         reply = get_response(content)
 
-    response = finalize_response(reply, language, nick, replace_names=True)
+    response = finalize_response(reply, message.language_code, message.nick, replace_names=True)
 
     await message.channel.send(response)
 
     return True
-
-
-
-
 
 def get_response(message: str):
     # print("get_response()")

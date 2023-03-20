@@ -9,15 +9,12 @@ role_info_link = "\n\nInformation about all the roles can be found here: <https:
 
 
 async def post_roles_response(
-    nick: str,
-    message,
-    language,
-    test_message: str,
+    message
 ):
     """
     Returns role description and earned by from the sheet if "role" in test_message and "how" in test_message
     """
-    test_message = test_message.lower()
+    test_message = message.test_message.lower()
     print(f"post_roles_response {test_message}")
     if "role" in test_message and (
         "how" in test_message or "what" in test_message or "when" in test_message
@@ -39,7 +36,7 @@ async def post_roles_response(
                 )
             response += role_info_link
 
-            response = finalize_response(response, language, nick)
+            response = finalize_response(response, message.language, message.nick)
 
             message = await message.channel.send(response)
             print(message)
@@ -54,7 +51,7 @@ async def post_roles_response(
                 f"Which role in particular were you curious about?{role_info_link}"
             )
 
-            response = finalize_response(response, language, nick)
+            response = finalize_response(response, message.language, message.nick)
 
             message = await message.channel.send(response)
 

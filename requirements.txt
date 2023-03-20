@@ -21,7 +21,8 @@ coolname==1.1.0
 cymem==2.0.5
 demoji==0.2.1
 Deprecated==1.2.13
-discord2==2.0.1
+# discord2==2.0.1
+discord.py==2.2.2
 et-xmlfile==1.1.0
 firebase-admin==5.1.0
 Flask==1.1.2

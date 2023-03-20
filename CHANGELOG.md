@@ -4,6 +4,12 @@
 
 ## v0.1.1 
 
+(2023-03-19)
+- extended Message class
+- did much work to integrate gpt4 into many channels
+- restore openai_session context for the gpt response. this will probably be too expensive and I'll have to reduce access
+- upgraded to discord.py 2.2.2 to get rid of the thread error on startup but I had to get rid of some of the slash commands (that no one was using).
+
 (2023-03-12)
 - moved neighbor threshold to config
 - bumped neighbor threshold to 2 days
