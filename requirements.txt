@@ -61,7 +61,9 @@ hyperframe==5.2.0
 idna==2.10
 itsdangerous==2.0.1
 Jinja2==3.0.1
-joblib==1.0.1
+# joblib==1.0.1
+joblib>=1.2.0
+
 langcodes==3.3.0
 MarkupSafe==2.0.1
 more-itertools==8.10.0

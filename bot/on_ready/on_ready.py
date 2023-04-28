@@ -9,6 +9,25 @@ from bot.on_ready.roles_sheet import (
     # set_role_attributes_from_sheet,
 )
 
+async def get_last_thousand_messages(guild, thread_id):
+    print(f'get_last_thousand_messages {thread_id}')
+
+    thread = await guild.fetch_channel(thread_id)
+    # print(thread)
+
+    messages = []
+    async for message in thread.history(limit=1000):
+        messages.append(message.content)
+
+    return messages
+
+async def fetch_and_print_messages(guild, thread_id):
+    messages = await get_last_thousand_messages( guild, thread_id)
+    for m in messages:
+        print(m)
+
+
+
 
 @client.event
 async def on_ready():
@@ -17,6 +36,10 @@ async def on_ready():
     # return
 
     guild = client.get_guild(GUILD_ID)
+
+    # # Run the fetch_and_print_messages function
+    # await fetch_and_print_messages(guild, '1098584328335802398')
+
 
     channels = await guild.fetch_channels()
     print(channels)

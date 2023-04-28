@@ -4,6 +4,9 @@
 
 ## v0.1.1 
 
+(2023-04-28)
+- added fetch_and_print_messages() to get messages from a channel and print them to console
+
 (2023-03-19)
 - extended Message class
 - did much work to integrate gpt4 into many channels
