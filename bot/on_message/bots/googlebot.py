@@ -6,12 +6,18 @@ from bot.setup.init import sessions
 from bot.setup.init_sessions import session_client
 from rich import print
 
+
+
 """
 https://dialogflow.cloud.google.com/#/agent/{GOOGLE_CLOUD_PROJECT}/intents
+
+select discordBot from the dropdown, top left
+
+see also post_google_knowledge_response
 """
 
 
-async def post_google_response(nick: str, message, language: str):
+async def post_google_response(message):
     """ the dialog flow with the intents I set. """
     print("post_google_response")
 
@@ -57,7 +63,7 @@ async def post_google_response(nick: str, message, language: str):
     # Otherwise let's post this baby
     reply = response.query_result.fulfillment_text
 
-    response = finalize_response(reply, language, nick)
+    response = finalize_response(reply, message.language_code, message.nick)
     await message.channel.send(response)
 
     # reply = author_name + ", " + reply

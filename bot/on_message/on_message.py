@@ -172,7 +172,7 @@ async def on_message(message):
     await respond(message, channel)
 
 
-async def respond(message, channel):
+async def respond(message: Message, channel):
     """ Responds to a message with one of various bots """
     
     
