@@ -3,6 +3,8 @@
 <!--next-version-placeholder-->
 
 ## v0.1.1 
+(2023-05-03)
+- fix googlebot(message) for qna channel
 
 (2023-04-28)
 - added fetch_and_print_messages() to get messages from a channel and print them to console
