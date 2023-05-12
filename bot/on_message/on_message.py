@@ -1,7 +1,8 @@
 import contextlib
 import sys
+from bot.on_message.classes.message import Message
 
-from bot.scripts.message.finalize_response import finalize_response
+# from bot.scripts.message.finalize_response import finalize_response
 
 sys.path.append("...")  # Adds higher directory to python modules path.
 
@@ -9,7 +10,7 @@ from config import cuomputer_id, channels
 import config as config
 
 
-from bot.setup.init import client, openai_sessions
+from bot.setup.init import client, openai_sessions, tz
 from bot.db.fetch_data import fetch_roles
 from bot.scripts.connect_to_mrn import connect_to_mrn
 from rivertils.rivertils import get_test_message_and_language
@@ -19,7 +20,7 @@ from bot.scripts.is_request_for_server_time import is_request_for_server_time
 from bot.scripts.is_message_from_another_guild import is_message_from_other_guild
 from bot.scripts.delete_message_if_conditions_are_met import (
     reject_artist_text_in_gallery,
-    delete_based_images_in_general,
+    # delete_based_images_in_general,
 )
 # from bot.scripts.is_newbie import is_newbie
 from bot.scripts.assert_old_users_have_connected import assert_old_users_have_connected
@@ -38,54 +39,16 @@ from bot.on_message.bots.knowledgebot import post_google_knowledge_response
 from bot.on_message.bots.librarybot import (
     post_library_query_response,
 )
-from bot.on_message.bots.flirtybot import post_flirty_response
+# from bot.on_message.bots.flirtybot import post_flirty_response
 from bot.on_message.bots.googlebot import post_google_response
 from bot.on_message.bots.rolesbot import post_roles_response
 from bot.on_message.bots.qna_default import post_qna_default_response
 
 import random
 from rich import print
-from datetime import datetime, timezone, timedelta
-import pytz
+from datetime import datetime
+
 from bot.on_message.bots.gptbot import post_gpt_response
-tz = pytz.timezone('America/Los_Angeles')
-import discord
-
-# define a custom class called Message that takes in a discord.Message and adds some attributes to it
-class Message(discord.Message):
-    
-    #initialize the class 
-    def __init__(self, message):
-        self.id = message.id
-        self.type = message.type
-        self.flags = message.flags
-        self.message = message
-        self.content = message.content
-        self.author = message.author
-        self.channel = message.channel
-        self.guild = message.guild
-        self.now = datetime.now(tz)
-        self.raw_mentions = message.raw_mentions
-        self.raw_role_mentions = message.raw_role_mentions
-        self.raw_channel_mentions = message.raw_channel_mentions
-        self.reference = message.reference
-
-        # a variable which holds a random float between 0 and 1
-        self.die_roll = random.random()        
-        self.is_newbie = datetime.now(tz) - self.author.joined_at  < timedelta(days= 7)
-        self.is_question = self.content[-1]=='?'
-        self.mentions_rivers = 'rivers' in self.content.lower()
-        self.firestore_user = None
-        self.id_of_user_being_replied_to = None
-        self.user_score = 0# firestore_user["score"]          
-        self.mentions_cuomputer = None
-        self.test_message = None
-        self.nick = None
-        self.language_code = None
-        self.author_roles = None
-
-    def log(self):
-        print(f"die_roll={ round(self.die_roll, 3)} user_score={self.user_score}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}")
 
 
 
@@ -93,6 +56,7 @@ class Message(discord.Message):
 async def on_message(message):
     author = message.author
     channel = message.channel
+    now = datetime.now(tz)
 
     if message_is_a_skipper(message, channel):
         if author.id == cuomputer_id:
@@ -114,8 +78,9 @@ async def on_message(message):
 
     if await message_is_too_negative(message, role_names):
         return
-
-    if await message_is_forbidden(message, role_names):
+    print(now.weekday())
+    # 4 represents Friday
+    if now.weekday()!=4 and await message_is_forbidden(message, role_names):
         return
 
     if await is_request_for_server_time(message):
@@ -139,7 +104,7 @@ async def on_message(message):
     # build a list of strings for each of the roles that the author already has
     author_roles = [x.name for x in author.roles]
 
-    now = datetime.now(tz)
+    
     # print(now.year, now.month, now.day, now.hour, now.minute, now.second)
     # print(now.hour)
 

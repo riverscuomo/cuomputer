@@ -29,6 +29,8 @@ client = commands.Bot(
 import uberduck
 import discord
 from io import StringIO, BytesIO
+import pytz
+tz = pytz.timezone('America/Los_Angeles')
 
 # bot = commands.Bot(
 #     command_prefix = '!',

@@ -3,6 +3,10 @@
 <!--next-version-placeholder-->
 
 ## v0.1.1 
+
+(2023-05-12)
+skip forbidden on Fridays
+
 (2023-05-03)
 - fix googlebot(message) for qna channel
 

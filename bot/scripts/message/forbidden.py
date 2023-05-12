@@ -151,6 +151,7 @@ async def message_is_forbidden(message, role_names):
 
 
 async def message_is_too_negative(message, role_names):
+    """ if polarity < negativity_threshold """
 
     from config import negativity_threshold
 
