@@ -44,6 +44,7 @@ Heroku.Settings.configVariables: `GOOGLE_CREDENTIALS` json object.
 
 ## Deploy to Heroku
 This is probably just for me.
+heroku login
 `git push heroku main`
 one time I had to add ` -f`
 
