@@ -9,8 +9,9 @@ CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 TOKEN = os.environ.get("TOKEN")
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-GOOGLE_APPLICATION_CREDENTIALS = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-GOOGLE_DRIVE_CREDFILE= os.environ.get("GOOGLE_DRIVE_CREDFILE")
+GOOGLE_APPLICATION_CREDENTIALS = os.environ.get(
+    "GOOGLE_APPLICATION_CREDENTIALS")
+GOOGLE_DRIVE_CREDFILE = os.environ.get("GOOGLE_DRIVE_CREDFILE")
 
 # testing = False
 
@@ -19,34 +20,34 @@ OAUTH2_URL = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_ID}&pe
 GENERAL_ID = 890292832198344724
 GUILD_ID = 890210072381247548
 
-neighbor_threshold = 1 * 24 * 2 # hours (2 days)
+neighbor_threshold = 1 * 24 * 2  # hours (2 days)
 replicate_threshold = 3
-gpt_threshold = 10
+gpt_threshold = 9
 num_roles_for_newbie = 1
 
 sessions = []
 
 """ Channels """
 channels = {
-    "coach" : 903672810277318666,
-    "dan" : 892599614191063071,
+    "coach": 903672810277318666,
+    "dan": 892599614191063071,
     "geezerville": 901827523279749230,
-    "qna" : 895330177456963645,
-    "welcome" : 1022159784528597023,
-    "general" : 892873789262680164,
-    "based" : 1023211668949438504,
-    "japanese" : 930818686686724146,
-    "korean" : 894614202315051101,
-    "pink" : 893943182507782154,
-    "spanish" : 892197175776383000,
-    "tiktok" : 928747669361418270,
-    "vangie" : 892536534186745907,
+    "qna": 895330177456963645,
+    "welcome": 1022159784528597023,
+    "general": 892873789262680164,
+    "based": 1023211668949438504,
+    "japanese": 930818686686724146,
+    "korean": 894614202315051101,
+    "pink": 893943182507782154,
+    "spanish": 892197175776383000,
+    "tiktok": 928747669361418270,
+    "vangie": 892536534186745907,
     "connect": 908388613786570782,
 
     # VOICE
-    "rctalk" : 892514465923366954,
+    "rctalk": 892514465923366954,
     "rcmusic": 910331814697107466,
-    "vangiesvc" : 1046958343308193842,
+    "vangiesvc": 1046958343308193842,
     "lounge": 890210073308172347,
     "lounge2": 1059229073466998854,
     "jamroom": 890210073308172348,
@@ -140,9 +141,6 @@ testing = True
 # If testing,  don't skip the message processing for your posts/
 if testing:
     members_to_skip.remove(rivers_id)
-
-
-
 
 
 """ MESSAGES """

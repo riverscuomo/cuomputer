@@ -7,7 +7,7 @@ import discord
 from bot.scripts.message.finalize_response import finalize_response
 from config import channels
 
-import asyncio # required for the sleeping
+import asyncio  # required for the sleeping
 
 import uberduck
 from gtts import gTTS
@@ -15,11 +15,11 @@ from gtts import gTTS
 from io import BytesIO
 
 import os
-uberduck_client = uberduck.UberDuck(os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
+uberduck_client = uberduck.UberDuck(
+    os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
 
 
-
-async def post_gpt_response(message, system = "you are Rivers Cuomo from Weezer. ", adjective: str="funny"):
+async def post_gpt_response(message, system="you are Rivers Cuomo from Weezer. ", adjective: str = "funny"):
     """
     Openai bot
 
@@ -30,15 +30,16 @@ async def post_gpt_response(message, system = "you are Rivers Cuomo from Weezer.
     async with message.channel.typing():
 
         system = system.replace(" from Weezer", "")
-        system +=  "You are in the middle of an ongoing conversation and do not need to provide introductory information. You are a well known member of this discord server."
+        system += "You are in the middle of an ongoing conversation and do not need to provide introductory information. You are a well known member of this discord server."
         system += f" The message you are replying to is from a fan named {message.nick}."
         reply = build_openai_response(message, system, adjective)
         # print(f"reply: {reply}")
 
-        response = finalize_response(reply, message.language_code, message.nick, replace_names=True)
+        response = finalize_response(
+            reply, message.language_code, message.nick, replace_names=True)
         print(f"response: {response}")
 
-        await read_message(message,response)
+        await read_message(message, response)
 
         # await asyncio.sleep(8)
 
@@ -51,7 +52,7 @@ async def post_gpt_response(message, system = "you are Rivers Cuomo from Weezer.
         return True
 
 
-def build_openai_response(message, system:str, adjective: str):
+def build_openai_response(message, system: str, adjective: str):
     text = message.content
 
     # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
@@ -90,7 +91,6 @@ def build_openai_response(message, system:str, adjective: str):
     return reply
 
 
-
 def fetch_gpt4_completion(message, system, text, model):
     print("Using gpt-4")
     # print(f"system: {system}")
@@ -100,7 +100,8 @@ def fetch_gpt4_completion(message, system, text, model):
     messages = [{"role": "system", "content": system}]
 
     # Add the user's text to the openai session for this channel
-    openai_sessions[message.channel.id].append({"role": "user", "content": f"{message.author.name}: {text}"}) 
+    openai_sessions[message.channel.id].append(
+        {"role": "user", "content": f"{message.author.name}: {text}"})
 
     # Limit the number of messages in the session to 6
     if len(openai_sessions[message.channel.id]) > 6:
@@ -116,29 +117,30 @@ def fetch_gpt4_completion(message, system, text, model):
     completion = openai.ChatCompletion.create(
         temperature=1.0,
         max_tokens=100,
-        model=model,  
+        model=model,
         messages=messages,
         # "top_p": 1,
         # "frequency_penalty": 0.0,
         # "presence_penalty": 0.0,
         # stop=["\n", " Human:", " AI:"], # kills poems
 
-        )
+    )
     text = completion.choices[0].message.content
 
     # add the response to the session. I suppose now there may be up to 7 messages in the session
-    openai_sessions[message.channel.id].append({"role": "assistant", "content": text})
+    openai_sessions[message.channel.id].append(
+        {"role": "assistant", "content": text})
 
     return text
 
 
 async def read_message(message, response: str):
-    print(f"read_message: {response} (in {message.language_code})")     
+    print(f"read_message: {response} (in {message.language_code})")
 
     if message.language_code == "en":
         try:
             # https://app.uberduck.ai/leaderboard/voice
-            result = await uberduck_client.speak_async(response, "Fluttershy", check_every = 0.5)
+            result = await uberduck_client.speak_async(response, "Fluttershy", check_every=0.5)
             bytes_IO = BytesIO(result)
 
             # Create and open a readable file
@@ -149,7 +151,7 @@ async def read_message(message, response: str):
             # return await ctx.reply(f'Sorry, an error occured\n{e}')
             print(e)
             return
-    
+
     else:
 
         print("not english so using gtts instead of uberduck")
@@ -159,7 +161,6 @@ async def read_message(message, response: str):
 
         tts.save("file.txt")
 
-    
     # await ctx.send(file = file)
 
     # Get the lounge channel
@@ -174,12 +175,10 @@ async def read_message(message, response: str):
     else:
         await vc.move_to(channel)
 
-
     vc.play(discord.FFmpegPCMAudio('file.txt'))
     while vc.is_playing():
         await asyncio.sleep(1)
     # await vc.disconnect()
-
 
 
 # def manage_session_context(message, channel_name, author_name, incoming_message):
@@ -191,7 +190,7 @@ async def read_message(message, response: str):
 #     # rarely, a new channel will be created and the bot will not have a session for it yet
 #     except KeyError:
 #         openai_sessions[channel_name] = incoming_message
-#     context = openai_sessions[channel_name] 
+#     context = openai_sessions[channel_name]
 
 #     print('\n\n')
 #     print(f"context for openai-bot in channel {channel_name} is {len( context)} characters long")
@@ -202,5 +201,3 @@ async def read_message(message, response: str):
 #     if len(context ) > 100:
 #         openai_sessions[message.channel.name] = openai_sessions[message.channel.name][-100:]
 #     return context
-
-

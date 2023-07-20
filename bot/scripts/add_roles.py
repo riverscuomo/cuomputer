@@ -46,7 +46,6 @@ async def add_time_based_roles(member, roles):
     member_roles = [x.name for x in member.roles]
     # print(member_roles)
     # print(time_based_roles)
-    
 
     if hours >= config.neighbor_threshold:
         if "Visitor" in member_roles:
@@ -72,7 +71,6 @@ async def add_time_based_roles(member, roles):
         #     # print(role)
         #     await member.remove_roles(role)
 
-    
     # # k, v
     # for threshold, role_name in time_based_roles.items():
     #     # print(threshold, role_name)
@@ -82,15 +80,14 @@ async def add_time_based_roles(member, roles):
     #     # Remove Visitor role so it can give exclusive access to newbies in Welcome
     #     if role_name == "Visitor":
     #         # print("Visitor")
-            
-    #         if "Visitor" in member_roles and "Neighbor" in member_roles: 
+
+    #         if "Visitor" in member_roles and "Neighbor" in member_roles:
     #             print(f"Removing Visitor from {member.name}")
     #             role = next((x for x in roles if x.name == role_name), None)
     #             # print(role)
     #             await member.remove_roles(role)
     #             # print(member.roles)
     #         continue
-        
 
         # elif hours >= threshold:
         #     # print(f"Not Visitor so going on to check {role_name}")
@@ -100,7 +97,7 @@ async def add_time_based_roles(member, roles):
         #     role = next((x for x in roles if x.name == role_name), None)
         #     # print(role)
 
-        #     if role not in member.roles:                
+        #     if role not in member.roles:
 
         #         # print(hours, " >= ", threshold, " == ", hours > threshold, end=" so ")
         #         print("adding role ", role_name, f" for {member.name}")
@@ -157,10 +154,13 @@ async def check_firestore_and_add_roles_and_nick(member, roles):
         await add_roles_from_firestore_bundles(member, firestore_user, roles)
 
         nick = firestore_user["username"]
+        # print(nick)
+        # print(member)
+        # print(member.name)
 
         actor_role = next(x for x in roles if x.name == "Actor")
 
-        if member.name != "Rivers":  # and actor_role not in member.roles:
+        if member.id != config.rivers_id:  # and actor_role not in member.roles:
             await member.edit(nick=nick)
 
     else:
@@ -186,7 +186,8 @@ async def add_og_role_from_firestore_user(member, firestore_user, roles):
             registered_on = firestore_user["registeredOn"]
 
         # registered_on = datetime.strptime("Jun 1 2005  1:33PM", "%b %d %Y %I:%M%p")
-        registered_on = datetime.strptime(registered_on, config.firestore_time_format)
+        registered_on = datetime.strptime(
+            registered_on, config.firestore_time_format)
         # Sat, 12 Jun 2021 07:00:06 GMT
 
         if registered_on < config.og_cutoff:
@@ -203,7 +204,7 @@ async def add_roles_from_firestore_badges(member, firestore_user, roles):
     """
     print('add_roles_from_firestore_badges')
 
-    member_roles = [x.name for x in member.roles ]
+    member_roles = [x.name for x in member.roles]
     # print(member_roles)
 
     # # if they don't already have the neighbor role
@@ -227,7 +228,7 @@ async def add_roles_from_firestore_badges(member, firestore_user, roles):
     #     return
     # print(f"this firestore_user has at least 1 badge: {firestore_user}")
 
-    badges = [x for x in firestore_user["badges"] if x!="Visitor"]
+    badges = [x for x in firestore_user["badges"] if x != "Visitor"]
     # print(badges)
 
     for role in badges:
