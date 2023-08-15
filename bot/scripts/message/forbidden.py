@@ -44,6 +44,7 @@ def forbidden_message(message: CustomMessage, role_names: list):
     #     await message.channel.send(
     #         "Please don't use '!'. I like it when you're calm."
     #     )
+    print(type(message))
 
     if (
         "http" in message.content.lower()
@@ -83,7 +84,7 @@ def forbidden_message(message: CustomMessage, role_names: list):
     # REQUIRE PUNCTUATION in all chann
     elif (message.channel.name != "fm-bot" and not based_role_in_based_channel) and re.match(
         r"[a-zA-Z0-9]+$", message.content.strip()[-1]
-    ) and message.message.attachments != []:
+    ) and message.attachments != []:
         # print("doesnt end with punctuation")
 
         return Forbidden(
