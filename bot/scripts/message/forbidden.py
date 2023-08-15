@@ -1,3 +1,4 @@
+import discord
 from bot.on_message.classes.message import CustomMessage
 from bot.setup.init import demoji
 from config import channels, rivers_id, cuomputer_id
@@ -26,7 +27,7 @@ class Forbidden:
         self.reason = reason
 
 
-def forbidden_message(message: CustomMessage, role_names: list):
+def forbidden_message(message: discord.Message, role_names: list):
     """ punctuation and emoji http """
 
     based_role_in_based_channel = (
@@ -44,7 +45,6 @@ def forbidden_message(message: CustomMessage, role_names: list):
     #     await message.channel.send(
     #         "Please don't use '!'. I like it when you're calm."
     #     )
-    print(type(message))
 
     if (
         "http" in message.content.lower()
@@ -72,25 +72,28 @@ def forbidden_message(message: CustomMessage, role_names: list):
             reason="Can you say that with words? I really want to understand you.",
         )
 
-    if len(message.content) == 0 and message.attachments != []:
-        # print("len(message.content) < 2")
-        return Forbidden(
-            is_forbidden=True, reason=f"Your message.content was too short."
-        )
-    # if len(message.content) == 0:
-    #     # print("len(message.content) < 2")
-    #     return Forbidden(is_forbidden=True, reason=f".")
+    print("message.attachments= ", message.attachments)
 
-    # REQUIRE PUNCTUATION in all chann
-    elif (message.channel.name != "fm-bot" and not based_role_in_based_channel) and re.match(
-        r"[a-zA-Z0-9]+$", message.content.strip()[-1]
-    ) and message.attachments != []:
-        # print("doesnt end with punctuation")
+    if message.attachments == []:
+        if len(message.content) == 0:
+            print("len(message.content) == 0")
+            return Forbidden(
+                is_forbidden=True, reason=f"Your message.content was too short."
+            )
+        # if len(message.content) == 0:
+        #     # print("len(message.content) < 2")
+        #     return Forbidden(is_forbidden=True, reason=f".")
 
-        return Forbidden(
-            is_forbidden=True,
-            reason=f"Please end your message.contents with punctuation. It makes it easier for me to read",
-        )
+        # REQUIRE PUNCTUATION in all chann
+        elif (message.channel.name != "fm-bot" and not based_role_in_based_channel) and re.match(
+            r"[a-zA-Z0-9]+$", message.content.strip()[-1]
+        ):
+            print("doesnt end with punctuation")
+
+            return Forbidden(
+                is_forbidden=True,
+                reason=f"Please end your message.contents with punctuation. It makes it easier for me to read",
+            )
 
     elif message.content.endswith("**"):
         # print("message.content.endswith **")
@@ -129,7 +132,7 @@ def forbidden_message(message: CustomMessage, role_names: list):
 #     return member_name
 
 
-async def message_is_forbidden(message: CustomMessage, role_names):
+async def message_is_forbidden(message: discord.Message, role_names):
     """ punctuation and emoji http among others """
 
     allowed_ids = [rivers_id, cuomputer_id]

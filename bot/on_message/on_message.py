@@ -96,7 +96,7 @@ async def on_message(message):
         author, roles
     )
 
-    if firestore_user["banned"]:
+    if firestore_user["banned"] == True:
         return
 
     await assert_old_users_have_connected(message, author, firestore_user)
@@ -139,6 +139,8 @@ async def on_message(message):
     # print(message.id_of_user_being_replied_to)
     # print(cuomputer_id in message.raw_mentions)
     # print(message.mentions_cuomputer)
+
+    print(type(message))
 
     await respond(message, channel)
 

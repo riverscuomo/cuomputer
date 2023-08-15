@@ -84,7 +84,7 @@ class CustomMessage(discord.Message):
         self.die_roll = random.random()
         self.is_newbie = datetime.now(
             tz) - self.author.joined_at < timedelta(days=7)
-        self.is_question = self.content[-1] == '?'
+        self.is_question = len(self.content) > 0 and self.content[-1] == '?'
         self.mentions_rivers = 'rivers' in self.content.lower()
         self.firestore_user = None
         self.id_of_user_being_replied_to = None
