@@ -96,6 +96,9 @@ async def on_message(message):
         author, roles
     )
 
+    if firestore_user["banned"]:
+        return
+
     await assert_old_users_have_connected(message, author, firestore_user)
 
     # build a list of strings for each of the roles that the author already has
