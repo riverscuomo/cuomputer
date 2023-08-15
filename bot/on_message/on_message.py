@@ -118,7 +118,10 @@ async def on_message(message):
     if await post_library_query_response(nick, message, language_code):
         return
 
-    message = CustomMessage(message)
+    original_message = message
+
+    # from here on out, 'message' refers to the CustomMessage class
+    message = CustomMessage(original_message)
     message.message = message
     message.nick = nick
     message.language_code = language_code
