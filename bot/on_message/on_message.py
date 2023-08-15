@@ -37,7 +37,7 @@ import config as config
 from config import cuomputer_id, channels
 import contextlib
 import sys
-from bot.on_message.classes.message import Message
+from bot.on_message.classes.message import CustomMessage
 
 # from bot.scripts.message.finalize_response import finalize_response
 
@@ -118,7 +118,7 @@ async def on_message(message):
     if await post_library_query_response(nick, message, language_code):
         return
 
-    message = Message(message)
+    message = CustomMessage(message)
     message.message = message
     message.nick = nick
     message.language_code = language_code
@@ -137,7 +137,7 @@ async def on_message(message):
     await respond(message, channel)
 
 
-async def respond(message: Message, channel):
+async def respond(message: CustomMessage, channel):
     """ Responds to a message with one of various bots """
 
     message.log()

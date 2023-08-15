@@ -4,7 +4,7 @@ import discord
 from bot.setup.init import tz
 
 
-class Message(discord.Message):
+class CustomMessage(discord.Message):
     """
     This class represents a Message on Discord. This class is derived from discord.Message.
 
@@ -64,7 +64,7 @@ class Message(discord.Message):
         The roles of the author of the Message.
     """
 
-    def __init__(self, message):
+    def __init__(self, message: discord.Message):
         self.message = message
         self.id = message.id
         self.type = message.type
