@@ -1,3 +1,4 @@
+from bot.on_message.classes.message import Message
 from bot.setup.init import demoji
 from config import channels, rivers_id, cuomputer_id
 from bot.scripts.message.sentiment import get_polarity
@@ -25,7 +26,7 @@ class Forbidden:
         self.reason = reason
 
 
-def forbidden_message(message, role_names: list):
+def forbidden_message(message: Message, role_names: list):
     """ punctuation and emoji http """
 
     based_role_in_based_channel = (
@@ -70,7 +71,7 @@ def forbidden_message(message, role_names: list):
             reason="Can you say that with words? I really want to understand you.",
         )
 
-    if len(message.content) == 0:
+    if len(message.content) == 0 and message.message.attachments != []:
         # print("len(message.content) < 2")
         return Forbidden(
             is_forbidden=True, reason=f"Your message.content was too short."
@@ -82,7 +83,7 @@ def forbidden_message(message, role_names: list):
     # REQUIRE PUNCTUATION in all chann
     elif (message.channel.name != "fm-bot" and not based_role_in_based_channel) and re.match(
         r"[a-zA-Z0-9]+$", message.content.strip()[-1]
-    ):
+    ) and message.message.attachments != []:
         # print("doesnt end with punctuation")
 
         return Forbidden(
@@ -127,7 +128,7 @@ def forbidden_message(message, role_names: list):
 #     return member_name
 
 
-async def message_is_forbidden(message, role_names):
+async def message_is_forbidden(message: Message, role_names):
     """ punctuation and emoji http among others """
 
     allowed_ids = [rivers_id, cuomputer_id]
@@ -156,7 +157,7 @@ async def message_is_forbidden(message, role_names):
     return False
 
 
-async def message_is_too_negative(message, role_names):
+async def message_is_too_negative(message: Message, role_names):
     """ if polarity < negativity_threshold """
 
     from config import negativity_threshold
@@ -193,7 +194,7 @@ async def message_is_too_negative(message, role_names):
     return False
 
 
-async def name_contains_profanity(name, message=None, member=None):
+async def name_contains_profanity(name, message: Message = None, member=None):
     """
     The 2 kwargs are when this function is called from on member join.
     """
