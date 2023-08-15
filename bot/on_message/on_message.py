@@ -119,6 +119,7 @@ async def on_message(message):
         return
 
     message = Message(message)
+    message.message = message
     message.nick = nick
     message.language_code = language_code
     message.test_message = test_message

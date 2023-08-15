@@ -16,7 +16,11 @@ class Message(discord.Message):
         The type of Message. 
     flags: MessageFlags
         The flags of the Message.
-    message: str
+    message: discord.Message
+        The Message.
+    attachments: list
+        The attachments of the Message.
+    content: str
         The content of the Message.
     author: Member
         The author of the Message.
@@ -61,11 +65,12 @@ class Message(discord.Message):
     """
 
     def __init__(self, message):
+        self.message = message
         self.id = message.id
         self.type = message.type
         self.flags = message.flags
-        self.message = message
         self.content = message.content
+        self.attachments = message.attachments
         self.author = message.author
         self.channel = message.channel
         self.guild = message.guild
