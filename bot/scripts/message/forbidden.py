@@ -71,7 +71,7 @@ def forbidden_message(message: CustomMessage, role_names: list):
             reason="Can you say that with words? I really want to understand you.",
         )
 
-    if len(message.content) == 0 and message.message.attachments != []:
+    if len(message.content) == 0 and message.attachments != []:
         # print("len(message.content) < 2")
         return Forbidden(
             is_forbidden=True, reason=f"Your message.content was too short."
