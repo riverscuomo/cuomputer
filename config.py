@@ -22,7 +22,7 @@ GUILD_ID = 890210072381247548
 
 neighbor_threshold = 1 * 24 * 2  # hours (2 days)
 replicate_threshold = 3
-gpt_threshold = 9
+gpt_threshold = 10
 num_roles_for_newbie = 1
 
 sessions = []

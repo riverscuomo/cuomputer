@@ -1,20 +1,20 @@
+from bot.setup.init import demoji
+from config import channels, rivers_id, cuomputer_id
+from bot.scripts.message.sentiment import get_polarity
+from data.lists import strings_to_delete  # , forbidden_words
 from better_profanity import profanity
 
 import re
 import sys
 
 sys.path.append("...")  # Adds higher directory to python modules path.
-from data.lists import strings_to_delete  # , forbidden_words
-from bot.scripts.message.sentiment import get_polarity
-from config import channels
 
-from bot.setup.init import demoji
 
 profanity.add_censor_words(
     ["cock", "arse", "whore",
-    #  "lesbian", 
-    #  "slept with", 
-    #  "sleep with"
+     #  "lesbian",
+     #  "slept with",
+     #  "sleep with"
      ]
 )
 
@@ -28,7 +28,8 @@ class Forbidden:
 def forbidden_message(message, role_names: list):
     """ punctuation and emoji http """
 
-    based_role_in_based_channel = (message.channel.id == channels["based"] and "Based" in role_names )
+    based_role_in_based_channel = (
+        message.channel.id == channels["based"] and "Based" in role_names)
 
     # # print(channel)
     # if channel_name == "questions-and-help":
@@ -128,6 +129,11 @@ def forbidden_message(message, role_names: list):
 
 async def message_is_forbidden(message, role_names):
     """ punctuation and emoji http among others """
+
+    allowed_ids = [rivers_id, cuomputer_id]
+
+    if message.author.id in allowed_ids:
+        return False
 
     # DELETE FORBIDDEN MESSAGES
     # put this first so it doesn't take too long
