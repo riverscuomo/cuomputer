@@ -97,7 +97,7 @@ async def on_message(message):
     )
 
     if firestore_user["banned"] == True:
-        return
+        await message.delete()
 
     await assert_old_users_have_connected(message, author, firestore_user)
 
