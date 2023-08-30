@@ -94,7 +94,7 @@ async def on_member_update(before, after):
 
                 message = f"{message}"
 
-                print(message)
+                # print(message)
 
                 if len(role_object["description"]) > 0:
                     message = message + "\n\n" + role_object["description"]

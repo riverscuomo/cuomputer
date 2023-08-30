@@ -39,7 +39,7 @@ async def post_roles_response(
             response = finalize_response(response, message.language, message.nick)
 
             message = await message.channel.send(response)
-            print(message)
+            # print(message)
 
             await message.edit(embed=None)
 

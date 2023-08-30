@@ -34,7 +34,7 @@ async def reject_artist_text_in_gallery(message, member_roles):
         and message.attachments == []
         and "Artist" in member_roles
     ):
-        print(message.attachments)
+        # print(message.attachments)
         print("Artists are not allowed to send text messages the gallery.")
         channel = await message.author.create_dm()
         await message.delete()

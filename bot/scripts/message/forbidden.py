@@ -72,7 +72,7 @@ def forbidden_message(message: discord.Message, role_names: list):
             reason="Can you say that with words? I really want to understand you.",
         )
 
-    print("message.attachments= ", message.attachments)
+    # print("message.attachments= ", message.attachments)
 
     if message.attachments == []:
         if len(message.content) == 0:

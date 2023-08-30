@@ -54,6 +54,11 @@ async def on_message(message):
     channel = message.channel
     now = datetime.now(tz)
 
+    # # if the message content doesn't end with punctuation, add a period
+    # if message.content[-1] not in [".", "?", "!"]:
+    #     message.content += "."  # append_punctuation(message.content)
+    #     print(message.content)
+
     if message_is_a_skipper(message, channel):
         if author.id == cuomputer_id:
             with contextlib.suppress(Exception):
@@ -75,6 +80,9 @@ async def on_message(message):
     if await message_is_too_negative(message, role_names):
         return
     print(now.weekday())
+
+    
+
     # 4 represents Friday
     if now.weekday() != 4 and await message_is_forbidden(message, role_names):
         return
@@ -96,8 +104,14 @@ async def on_message(message):
         author, roles
     )
 
+    # firestore_user["banned"]=True
+    # print(firestore_user)
+    # print(firestore_user["banned"])
+    # print(firestore_user["banned"] == "False")
+    # print(firestore_user["banned"] == False)
     if firestore_user["banned"] == True:
         await message.delete()
+        return
 
     await assert_old_users_have_connected(message, author, firestore_user)
 
@@ -165,14 +179,14 @@ async def respond(message: CustomMessage, channel):
     # if await post_library_response(nick, message, language_code):
     #     return
 
-    print(channel.id == channels["coach"])
-    print(message.user_score > config.gpt_threshold)
-    print((
-        (message.is_question and message.mentions_rivers and message.die_roll > .1) or
-        ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
-        message.mentions_cuomputer or
-        (message.die_roll > .999)
-    ))
+    # print(channel.id == channels["coach"])
+    # print(message.user_score > config.gpt_threshold)
+    # print((
+    #     (message.is_question and message.mentions_rivers and message.die_roll > .1) or
+    #     ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
+    #     message.mentions_cuomputer or
+    #     (message.die_roll > .999)
+    # ))
 
     if channel.id == channels["qna"]:
 

@@ -13,9 +13,9 @@ def finalize_response(response: str, language_code: str, nick: str, replace_name
     """
     Replace any names with the user's name. Translate the reponse to the user's language_code of choice. Append punctuation.
     """
-    if replace_names:
-        # response = response + " Dorothy"
-        response = replace_names_with_username(response, nick)
+    # if replace_names:
+    #     # response = response + " Dorothy"
+    #     response = replace_names_with_username(response, nick)
     # print("after replacing names: ", response)
 
     # print(language)
