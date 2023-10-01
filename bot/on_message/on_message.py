@@ -27,7 +27,7 @@ from bot.scripts.delete_message_if_conditions_are_met import (
 )
 from bot.scripts.is_message_from_another_guild import is_message_from_other_guild
 from bot.scripts.is_request_for_server_time import is_request_for_server_time
-from bot.scripts.is_request_for_replicate import is_request_for_replicate_image
+from bot.scripts.is_request_for_replicate import is_request_for_image
 from bot.scripts.message_is_a_skipper import message_is_a_skipper
 from rivertils.rivertils import get_test_message_and_language
 from bot.scripts.connect_to_mrn import connect_to_mrn
@@ -129,7 +129,7 @@ async def on_message(message):
     # print(firestore_user)
     # await add_remove_roles_for_specific_users(author, roles)
 
-    if await is_request_for_replicate_image(message, author_roles, firestore_user):
+    if await is_request_for_image(message, nick, firestore_user):
         return
 
     if await post_library_query_response(nick, message, language_code):
