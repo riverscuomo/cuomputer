@@ -24,6 +24,7 @@ intents = discord.Intents.all()
 client = commands.Bot(
     command_prefix=commands.when_mentioned_or("/"),
     intents=intents,
+    allowed_mentions=discord.AllowedMentions(roles=False, everyone=False),
     )
 
 import uberduck
