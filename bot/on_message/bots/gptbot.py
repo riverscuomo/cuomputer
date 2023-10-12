@@ -1,5 +1,6 @@
 import contextlib
 import openai
+from litellm import completion
 from bot.setup.init import client
 from bot.setup.init import openai_sessions
 from config import cuomputer_id
@@ -73,7 +74,7 @@ def build_openai_response(message, system: str, adjective: str):
     if model == "gpt-4":
         reply = fetch_gpt4_completion(message, system, text, model)
     else:
-        completion = openai.Completion.create(
+        completion = completion(
             model=os.environ.get("OPENAI_MODEL"),
             prompt=text,
             temperature=1,
@@ -114,7 +115,7 @@ def fetch_gpt4_completion(message, system, text, model):
     for m in messages:
         print(m)
 
-    completion = openai.ChatCompletion.create(
+    completion = completion(
         temperature=1.0,
         max_tokens=100,
         model=model,
