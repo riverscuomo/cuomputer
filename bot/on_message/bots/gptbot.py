@@ -65,28 +65,28 @@ def build_openai_response(message, system: str, adjective: str):
     # Get the open model from .env if the user has specified it.
     model = os.environ.get("OPENAI_MODEL")
 
-    # Use gpt-3 if the model is not specified
-    if model is None:
-        model = "text-davinci-003"
+    # # Use gpt-3 if the model is not specified
+    # if model is None:
+    #     model = "text-davinci-003"
 
     # Use gpt-4 if the model is specified as gpt-4
-    if model == "gpt-4":
-        reply = fetch_gpt4_completion(message, system, text, model)
-    else:
-        completion = openai.Completion.create(
-            model=os.environ.get("OPENAI_MODEL"),
-            prompt=text,
-            temperature=1,
-            max_tokens=80,
-        )
-        reply = completion["choices"]
-        reply = reply[0]["text"]
+    # if model == "gpt-4":
+    reply = fetch_gpt4_completion(message, system, text, model)
+    # else:
+    #     completion = openai.Completion.create(
+    #         model=os.environ.get("OPENAI_MODEL"),
+    #         prompt=text,
+    #         temperature=1,
+    #         max_tokens=80,
+    #     )
+    #     reply = completion["choices"]
+    #     reply = reply[0]["text"]
 
     # whatever the model was, now you can make a few universal changes to the response.
     reply = reply.replace("\n\n", "\n")
     reply = reply.replace('"', "")
-    reply = reply.replace("2020", "2023")
-    reply = reply.replace("2021", "2023")
+    # reply = reply.replace("2020", "2023")
+    # reply = reply.replace("2021", "2023")
     reply = reply.strip()
     return reply
 

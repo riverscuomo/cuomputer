@@ -8,8 +8,8 @@ async def assert_old_users_have_connected(
     # """# This block will be used less and less."""
     if (
         # "Neighbor" in member_roles
-        # and not 
-        not firestore_user
+        # and not
+        firestore_user is None
         and message.channel.id != channels["connect"]
     ):
         # if member.id in [rivers_id, fm_bot, cuomputer_id]:
