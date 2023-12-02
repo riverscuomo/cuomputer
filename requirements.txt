@@ -50,8 +50,6 @@ gspread==5.7.2
 gspreader==0.1.20
 gTTS==2.3.0
 gunicorn==20.0.4
-h11==0.9.0
-h2==3.2.0
 hpack==3.0.0
 hstspreload==2021.10.1
 httpcore==1.0.1
