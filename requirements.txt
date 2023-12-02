@@ -1,5 +1,5 @@
 aiohttp>=3.7.9
-async-timeout==3.0.1
+async-timeout
 attrs==21.2.0
 better-profanity==0.6.1
 black
