@@ -2,7 +2,7 @@ aiohttp>=3.7.9
 async-timeout==3.0.1
 attrs==21.2.0
 better-profanity==0.6.1
-black==21.9b0
+black
 blinker==1.4
 blis==0.7.9
 CacheControl==0.12.10
