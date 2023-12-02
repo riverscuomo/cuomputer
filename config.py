@@ -21,8 +21,8 @@ GENERAL_ID = 890292832198344724
 GUILD_ID = 890210072381247548
 
 neighbor_threshold = 1 * 24 * 2  # hours (2 days)
-image_threshold = 3
-gpt_threshold = 10
+image_threshold = 2  # user_score
+gpt_threshold = 8  # user_score
 num_roles_for_newbie = 1
 
 sessions = []
@@ -144,7 +144,7 @@ if testing:
 
 
 """ MESSAGES """
-negativity_threshold = -0.5
+negativity_threshold = -0.6
 never_respond = 10  # t has to be higher
 threshold_for_not_mentioning_rivers = 97  # if no 'river', t has to be higher
 threshold_for_non_questions = 97  # if no '?', t has to be higher

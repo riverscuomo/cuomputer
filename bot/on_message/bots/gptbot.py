@@ -1,4 +1,5 @@
 import contextlib
+import random
 import openai
 from bot.setup.init import client
 from bot.setup.init import openai_sessions
@@ -15,6 +16,7 @@ from gtts import gTTS
 from io import BytesIO
 
 import os
+voices = uberduck.get_voices(return_only_names=True)
 uberduck_client = uberduck.UberDuck(
     os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
 
@@ -30,7 +32,8 @@ async def post_gpt_response(message, system="you are Rivers Cuomo from Weezer. "
     async with message.channel.typing():
 
         system = system.replace(" from Weezer", "")
-        system += "You are in the middle of an ongoing conversation and do not need to provide introductory information. You are a well known member of this discord server."
+        system += "You are in the middle of an ongoing conversation and do not need to provide introductory information."
+        "You are a well known member of this discord server."
         system += f" The message you are replying to is from a fan named {message.nick}."
         reply = build_openai_response(message, system, adjective)
         # print(f"reply: {reply}")
@@ -57,7 +60,8 @@ def build_openai_response(message, system: str, adjective: str):
 
     # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
 
-    system += f" Make your response {adjective}."
+    # system += f" Make your response {adjective}."
+    system += " Try to match the style and tone of the message you are replying to."
     system += "Don't start your response with the indicator of who you are, such as 'Rivers Cuomo: '. Just start with your response."
 
     # prompt = f"{text}."
@@ -114,7 +118,7 @@ def fetch_gpt4_completion(message, system, text, model):
     for m in messages:
         print(m)
 
-    completion = openai.ChatCompletion.create(
+    completion = openai.chat.completions.create(
         temperature=1.0,
         max_tokens=100,
         model=model,
@@ -139,8 +143,11 @@ async def read_message(message, response: str):
 
     if message.language_code == "en":
         try:
+
             # https://app.uberduck.ai/leaderboard/voice
-            result = await uberduck_client.speak_async(response, "Fluttershy", check_every=0.5)
+            voice = random.choice(voices)
+            print(f"voice: {voice}")
+            result = await uberduck_client.speak_async(response, voice, check_every=0.5)
             bytes_IO = BytesIO(result)
 
             # Create and open a readable file

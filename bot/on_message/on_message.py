@@ -54,11 +54,6 @@ async def on_message(message):
     channel = message.channel
     now = datetime.now(tz)
 
-    # # if the message content doesn't end with punctuation, add a period
-    # if message.content[-1] not in [".", "?", "!"]:
-    #     message.content += "."  # append_punctuation(message.content)
-    #     print(message.content)
-
     if message_is_a_skipper(message, channel):
         if author.id == cuomputer_id:
             with contextlib.suppress(Exception):
@@ -79,7 +74,6 @@ async def on_message(message):
 
     if await message_is_too_negative(message, role_names):
         return
-    print(now.weekday())
 
     # 4 represents Friday
     if now.weekday() != 4 and await message_is_forbidden(message, role_names):
@@ -111,7 +105,8 @@ async def on_message(message):
         await message.delete()
         return
 
-    await assert_old_users_have_connected(message, author, firestore_user)
+    if not await assert_old_users_have_connected(message, author, firestore_user):
+        return
 
     # build a list of strings for each of the roles that the author already has
     author_roles = [x.name for x in author.roles]
@@ -205,7 +200,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer but you're good at giving advice."):
+        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer and you're a good friend, a good listener, and can serve as a therapist or coach."):
             return
 
     elif channel.id == channels["dan"]:
@@ -213,7 +208,7 @@ async def respond(message: CustomMessage, channel):
             (message.is_question and message.mentions_rivers and message.die_roll > .1) or
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
-            (message.die_roll > .999)
+            (message.die_roll > .99)
         ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer but you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan."):
             return
 
@@ -232,7 +227,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .8) or
             message.mentions_cuomputer or
             (message.die_roll > .99)
-        ) and await post_gpt_response(message, system="You are a gay version of Rivers Cuomo from Weezer.", adjective="funny"):
+        ) and await post_gpt_response(message, system="You are a gay version of Rivers Cuomo from Weezer."):
             return
 
     elif channel.id == channels["vangie"]:
@@ -241,7 +236,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer but are very smart and smooth and like to flirt with women.", adjective="witty"):
+        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer but are very smart and smooth and like to flirt with women in a way they enjoy."):
             return
 
     elif channel.id in [channels["korean"], channels["japanese"]]:
@@ -254,12 +249,12 @@ async def respond(message: CustomMessage, channel):
         ) and await post_gpt_response(message):
             return
 
-    elif message.is_newbie and message.die_roll > .96:
+    elif message.is_newbie and message.die_roll > .94:
         await post_gpt_response(message)
         return
 
-    elif message.die_roll > .997:
-        await post_riverbot_response(message)
+    elif message.die_roll > .99:
+        await post_gpt_response(message)
 
 
 async def get_user_id(message):

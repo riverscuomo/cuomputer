@@ -4,7 +4,9 @@ from config import channels
 async def assert_old_users_have_connected(
     message, member, firestore_user
 ):
-    """ If they're not connected to RC.COM (no firestore user) and they're not in the connect channel, delete their message and DM them to connect."""
+    """ If they're not connected to RC.COM (no firestore user) and they're not in the connect channel, 
+    delete their message and DM them to connect.
+    """
     # """# This block will be used less and less."""
     if (
         # "Neighbor" in member_roles
@@ -25,3 +27,5 @@ async def assert_old_users_have_connected(
            The easiest way to fix this is to follow the instructions in the #connect-to-mrn channel in the WELCOME section or in this doc https://docs.google.com/document/d/1sn8xZ9pEMEAia9jHeaC_DEKVlgCxZ6WnuPiKuI8h_cU. 
           """
         )
+        return False
+    return True
