@@ -6,7 +6,6 @@ from config import REPLICATE_API_TOKEN, channels, image_threshold
 # import replicate
 
 
-
 async def is_request_for_image(message: discord.Message, nick: str, firestore_user: dict):
     """ Returns True if the message is a request for a replicate image, meets, conditions, and sends the image."""
     if message.content.lower().startswith("show me "):
@@ -20,16 +19,15 @@ async def is_request_for_image(message: discord.Message, nick: str, firestore_us
 
             print(prompt)
 
-            response = openai.Image.create(
+            response = openai.images.generate(
                 prompt=prompt,
                 n=1,
-                size="256x256"
-                )
-            image_url = response['data'][0]['url']
-
+                size='512x512'
+            )
+            # image_response = response.
             s = f"{nick}, {prompt}"
             await message.channel.send(s)
-            await message.channel.send(image_url)
+            await message.channel.send(response.data[0].url)
             return True
     return False
 

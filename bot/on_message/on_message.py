@@ -81,8 +81,6 @@ async def on_message(message):
         return
     print(now.weekday())
 
-    
-
     # 4 represents Friday
     if now.weekday() != 4 and await message_is_forbidden(message, role_names):
         return
@@ -109,7 +107,7 @@ async def on_message(message):
     # print(firestore_user["banned"])
     # print(firestore_user["banned"] == "False")
     # print(firestore_user["banned"] == False)
-    if firestore_user["banned"] == True:
+    if firestore_user is not None and firestore_user["banned"] == True:
         await message.delete()
         return
 

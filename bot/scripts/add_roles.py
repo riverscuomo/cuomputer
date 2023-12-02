@@ -144,7 +144,7 @@ async def check_firestore_and_add_roles_and_nick(member, roles):
     # print(next(x for x in roles if x.name == "Neighbor").id)
 
     # ROUTINES TO RUN ON FIRESTORE USERS
-    if firestore_user:
+    if firestore_user is not None:
         # print(firestore_user)
 
         await add_og_role_from_firestore_user(member, firestore_user, roles)
