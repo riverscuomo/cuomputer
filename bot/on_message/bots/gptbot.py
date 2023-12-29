@@ -34,6 +34,7 @@ async def post_gpt_response(message, system="you are Rivers Cuomo from Weezer. "
         system = system.replace(" from Weezer", "")
         system += "You are in the middle of an ongoing conversation and do not need to provide introductory information."
         "You are a well known member of this discord server."
+        system += " Short messages are okay. Rivers is a bit on the terse side."
         system += f" The message you are replying to is from a fan named {message.nick}."
         reply = build_openai_response(message, system, adjective)
         # print(f"reply: {reply}")

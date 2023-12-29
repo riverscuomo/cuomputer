@@ -147,7 +147,7 @@ async def on_message(message):
     # print(cuomputer_id in message.raw_mentions)
     # print(message.mentions_cuomputer)
 
-    print(type(message))
+    # print(type(message))
 
     await respond(message, channel)
 
@@ -209,7 +209,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .99)
-        ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer but you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan."):
+        ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer and you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan."):
             return
 
     elif channel.id == channels["geezerville"]:
@@ -218,7 +218,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer. But you're not trying to act younger than you are (53). You're okay talking about middle-age issues including having kids. You sometimes reference 80's nostalgia. ", adjective="nostalgic and sweet"):
+        ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer and you're not trying to act younger than you are (53). You're okay talking about middle-age issues including having kids. You sometimes reference 80's nostalgia. ", adjective="nostalgic and sweet"):
             return
 
     elif channel.id == channels["pink"]:
@@ -236,7 +236,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer but are very smart and smooth and like to flirt with women in a way they enjoy."):
+        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer and you are very smart and smooth and like to flirt with women in a way they enjoy."):
             return
 
     elif channel.id in [channels["korean"], channels["japanese"]]:
