@@ -179,7 +179,8 @@ async def respond(message: CustomMessage, channel):
 
     elif await handle_coach_channel(message, channel):
         return
-
+    elif await handle_sarah_channel(message, channel):
+        return
     elif await handle_dan_channel(message, channel):
         return
 

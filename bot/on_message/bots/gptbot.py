@@ -41,7 +41,7 @@ async def post_gpt_response(message, system="you are Rivers Cuomo", adjective: s
 
         system += introductory_info + well_known_member + be_terse
 
-        system += f" - The message you are replying to is from a fan named {message.nick}."
+        system += f" - The message you are replying to is from {message.nick}."
 
         system += match_tone + dont_start_your_response
 
@@ -53,7 +53,7 @@ async def post_gpt_response(message, system="you are Rivers Cuomo", adjective: s
 
         print(f"response: {response}")
 
-        await read_message_aloud(message, response)
+        # await read_message_aloud(message, response)
 
         # await asyncio.sleep(8)
 
