@@ -88,12 +88,13 @@ class CustomMessage(discord.Message):
         self.mentions_rivers = 'rivers' in self.content.lower()
         self.firestore_user = None
         self.id_of_user_being_replied_to = None
-        self.user_score = 0  # firestore_user["score"]
+        self.user_score = 0
         self.mentions_cuomputer = None
         self.test_message = None
         self.nick = None
         self.language_code = None
         self.author_roles = None
+        self.gpt_system = "You are Rivers Cuomo"
 
     def log(self):
-        print(f"die_roll={ round(self.die_roll, 3)} user_score={self.user_score}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}")
+        print(f"user_score={self.user_score}, die_roll={ round(self.die_roll, 3)}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}")

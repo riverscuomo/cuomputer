@@ -1,7 +1,8 @@
 from bot.on_message.bots.gptbot import post_gpt_response
 from datetime import datetime
 from rich import print
-import random
+from bot.on_message.bots.response_handlers import *
+from config import cuomputer_id, channels, rivers_id
 from bot.on_message.bots.qna_default import post_qna_default_response
 from bot.on_message.bots.rolesbot import post_roles_response
 from bot.on_message.bots.googlebot import post_google_response
@@ -34,7 +35,7 @@ from bot.scripts.connect_to_mrn import connect_to_mrn
 from bot.db.fetch_data import fetch_roles
 from bot.setup.init import client, openai_sessions, tz
 import config as config
-from config import cuomputer_id, channels
+
 import contextlib
 import sys
 from bot.on_message.classes.message import CustomMessage
@@ -149,6 +150,9 @@ async def on_message(message):
 
     # print(type(message))
 
+    if (author.id == rivers_id):
+        message.user_score = 12
+
     await respond(message, channel)
 
 
@@ -157,11 +161,78 @@ async def respond(message: CustomMessage, channel):
 
     message.log()
 
-    if (
-            channel.id in [channels["lounge"]]
-            and message.user_score > config.gpt_threshold
-            and await post_gpt_response(message)):
+    if await handle_lounge_channel(message, channel):
         return
+
+    if channel.id == channels["qna"]:
+
+        if await post_roles_response(message):
+            return
+
+        if await post_google_knowledge_response(message):
+            return
+
+        if await post_google_response(message):
+            return
+
+        await post_qna_default_response(message)
+
+    elif await handle_coach_channel(message, channel):
+        return
+
+    elif await handle_dan_channel(message, channel):
+        return
+
+    elif await handle_geezerville_channel(message, channel):
+        return
+
+    elif channel.id == channels["pink"]:
+        message.gpt_system = " but you are a gay version of him."
+        if (
+            (message.is_question and message.mentions_rivers) or
+            ((message.is_question or message.mentions_rivers) and message.die_roll > .8) or
+            message.mentions_cuomputer or
+            (message.die_roll > .99)
+        ) and await post_gpt_response(message):
+            return
+
+    elif channel.id == channels["vangie"]:
+        message.gpt_system += " and you are very smart and smooth and like to flirt with women in a way they enjoy."
+        if message.user_score > config.gpt_threshold and (
+            (message.is_question and message.mentions_rivers and message.die_roll > .1) or
+            ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
+            message.mentions_cuomputer or
+            (message.die_roll > .999)
+        ) and await post_gpt_response(message):
+            return
+
+    elif await handle_artists_channel(message, channel):
+        return
+    elif await handle_music_channel(message, channel):
+        return
+    elif await handle_musicians_channel(message, channel):
+        return
+    elif await handle_movies_tv_books_channel(message, channel):
+        return
+    elif await handle_zoo_channel(message, channel):
+        return
+    elif await handle_language_channels(message, channel):
+        return
+
+    elif message.is_newbie and message.die_roll > .94:
+        await post_gpt_response(message)
+        return
+
+    elif message.die_roll > .97:
+        await post_gpt_response(message)
+
+
+async def get_user_id(message):
+    id_of_user_being_replied_to = None
+    if message.reference:
+        message_being_replied_to = await client.get_channel(message.reference.channel_id).fetch_message(message.reference.message_id)
+        id_of_user_being_replied_to = message_being_replied_to.author.id
+    return id_of_user_being_replied_to
 
     # if t==2 and await post_google_knowledge_response(nick, message, language_code):
     #     return
@@ -180,90 +251,6 @@ async def respond(message: CustomMessage, channel):
     #     message.mentions_cuomputer or
     #     (message.die_roll > .999)
     # ))
-
-    if channel.id == channels["qna"]:
-
-        if await post_roles_response(message):
-            return
-
-        if await post_google_knowledge_response(message):
-            return
-
-        if await post_google_response(message):
-            return
-
-        await post_qna_default_response(message)
-
-    elif channel.id == channels["coach"]:
-        if message.user_score > config.gpt_threshold and (
-            (message.is_question and message.mentions_rivers and message.die_roll > .1) or
-            ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
-            message.mentions_cuomputer or
-            (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer and you're a good friend, a good listener, and can serve as a therapist or coach."):
-            return
-
-    elif channel.id == channels["dan"]:
-        if message.user_score > config.gpt_threshold and (
-            (message.is_question and message.mentions_rivers and message.die_roll > .1) or
-            ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
-            message.mentions_cuomputer or
-            (message.die_roll > .99)
-        ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer and you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan."):
-            return
-
-    elif channel.id == channels["geezerville"]:
-        if message.user_score > config.gpt_threshold and (
-            (message.is_question and message.mentions_rivers and message.die_roll > .1) or
-            ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
-            message.mentions_cuomputer or
-            (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="you are Rivers Cuomo from Weezer and you're not trying to act younger than you are (53). You're okay talking about middle-age issues including having kids. You sometimes reference 80's nostalgia. ", adjective="nostalgic and sweet"):
-            return
-
-    elif channel.id == channels["pink"]:
-        if (
-            (message.is_question and message.mentions_rivers) or
-            ((message.is_question or message.mentions_rivers) and message.die_roll > .8) or
-            message.mentions_cuomputer or
-            (message.die_roll > .99)
-        ) and await post_gpt_response(message, system="You are a gay version of Rivers Cuomo from Weezer."):
-            return
-
-    elif channel.id == channels["vangie"]:
-        if message.user_score > config.gpt_threshold and (
-            (message.is_question and message.mentions_rivers and message.die_roll > .1) or
-            ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
-            message.mentions_cuomputer or
-            (message.die_roll > .999)
-        ) and await post_gpt_response(message, system="You are Rivers Cuomo from Weezer and you are very smart and smooth and like to flirt with women in a way they enjoy."):
-            return
-
-    elif channel.id in [channels["korean"], channels["japanese"]]:
-        if (
-            (message.is_question and message.mentions_rivers) or
-            ((message.is_question) and message.die_roll > .5) or
-            ((message.mentions_rivers) and message.die_roll > .5) or
-            message.mentions_cuomputer or
-            (message.die_roll > .6)
-        ) and await post_gpt_response(message):
-            return
-
-    elif message.is_newbie and message.die_roll > .94:
-        await post_gpt_response(message)
-        return
-
-    elif message.die_roll > .99:
-        await post_gpt_response(message)
-
-
-async def get_user_id(message):
-    id_of_user_being_replied_to = None
-    if message.reference:
-        message_being_replied_to = await client.get_channel(message.reference.channel_id).fetch_message(message.reference.message_id)
-        id_of_user_being_replied_to = message_being_replied_to.author.id
-    return id_of_user_being_replied_to
-
 
 # async def post_qna_default_response(nick, message, language_code):
 

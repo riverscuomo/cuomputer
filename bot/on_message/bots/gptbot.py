@@ -20,8 +20,14 @@ voices = uberduck.get_voices(return_only_names=True)
 uberduck_client = uberduck.UberDuck(
     os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
 
+introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
+well_known_member = " - You are a well known member of this discord server."
+be_terse = " - Short responses are okay. After all, Rivers is a bit on the terse side."
+match_tone = " - But try to match the style and tone of the message you are replying to."
+dont_start_your_response = " - Do not start your response with the indicator of who you are, such as 'Rivers Cuomo: '. Just start with your response."
 
-async def post_gpt_response(message, system="you are Rivers Cuomo from Weezer. ", adjective: str = "funny"):
+
+async def post_gpt_response(message, system="you are Rivers Cuomo", adjective: str = "funny"):
     """
     Openai bot
 
@@ -31,19 +37,23 @@ async def post_gpt_response(message, system="you are Rivers Cuomo from Weezer. "
     # await client.process_commands(message)
     async with message.channel.typing():
 
-        system = system.replace(" from Weezer", "")
-        system += "You are in the middle of an ongoing conversation and do not need to provide introductory information."
-        "You are a well known member of this discord server."
-        system += " Short messages are okay. Rivers is a bit on the terse side."
-        system += f" The message you are replying to is from a fan named {message.nick}."
+        system = message.gpt_system
+
+        system += introductory_info + well_known_member + be_terse
+
+        system += f" - The message you are replying to is from a fan named {message.nick}."
+
+        system += match_tone + dont_start_your_response
+
         reply = build_openai_response(message, system, adjective)
         # print(f"reply: {reply}")
 
         response = finalize_response(
             reply, message.language_code, message.nick, replace_names=True)
+
         print(f"response: {response}")
 
-        await read_message(message, response)
+        await read_message_aloud(message, response)
 
         # await asyncio.sleep(8)
 
@@ -58,14 +68,6 @@ async def post_gpt_response(message, system="you are Rivers Cuomo from Weezer. "
 
 def build_openai_response(message, system: str, adjective: str):
     text = message.content
-
-    # prompt = f"{prompt}.\nHere is the text I want you to respond to: '{text}'"
-
-    # system += f" Make your response {adjective}."
-    system += " Try to match the style and tone of the message you are replying to."
-    system += "Don't start your response with the indicator of who you are, such as 'Rivers Cuomo: '. Just start with your response."
-
-    # prompt = f"{text}."
 
     # Get the open model from .env if the user has specified it.
     model = os.environ.get("OPENAI_MODEL")
@@ -139,8 +141,8 @@ def fetch_gpt4_completion(message, system, text, model):
     return text
 
 
-async def read_message(message, response: str):
-    print(f"read_message: {response} (in {message.language_code})")
+async def read_message_aloud(message, response: str):
+    print(f"read_message_aloud: {response} (in {message.language_code})")
 
     if message.language_code == "en":
         try:
@@ -158,7 +160,13 @@ async def read_message(message, response: str):
         except uberduck.UberduckException as e:
             # return await ctx.reply(f'Sorry, an error occured\n{e}')
             print(e)
-            return
+            # return
+
+            print("uberduck failed so using gtts instead of uberduck")
+            # get the text to speech
+            tts = gTTS(response, lang=message.language_code)
+
+            tts.save("file.txt")
 
     else:
 
@@ -172,18 +180,27 @@ async def read_message(message, response: str):
     # await ctx.send(file = file)
 
     # Get the lounge channel
-    channel = client.get_channel(channels["lounge"])
-    print(channel)
+    voice_channel = client.get_channel(channels["lounge"])
+    print(voice_channel)
 
-    # Get the voice client for this server
+    # Check if the bot is already connected to the correct voice channel
     vc = discord.utils.get(client.voice_clients, guild=message.guild)
 
-    if vc is None:
-        vc = await channel.connect()
-    else:
-        await vc.move_to(channel)
+    # If the bot is not connected or in another channel, connect or move to the correct channel
+    if vc is None or not vc.is_connected() or vc.channel != voice_channel:
+        if vc is not None and vc.is_connected():
+            await vc.disconnect()  # Disconnect from the current channel if necessary
+        vc = await voice_channel.connect()  # Connect to the correct voice channel
 
-    vc.play(discord.FFmpegPCMAudio('file.txt'))
+    # Before playing audio, create the audio source (ensure the file exists)
+    # Update with the correct audio file path
+    audio_source = discord.FFmpegPCMAudio('file.txt')
+
+    # Play audio only if not already playing
+    if not vc.is_playing():
+        vc.play(audio_source)
+
+    # Wait for the audio to complete playing before returning
     while vc.is_playing():
         await asyncio.sleep(1)
     # await vc.disconnect()

@@ -22,16 +22,23 @@ GUILD_ID = 890210072381247548
 
 neighbor_threshold = 1 * 24 * 2  # hours (2 days)
 image_threshold = 2  # user_score
-gpt_threshold = 6  # user_score
+gpt_threshold = 5  # user_score
 num_roles_for_newbie = 1
 
 sessions = []
 
 """ Channels """
 channels = {
+    "artists": 913828394888736799,
     "coach": 903672810277318666,
     "dan": 892599614191063071,
+    "foodies": 906963583567560804,
+    "gamers": 908704398325207120,
     "geezerville": 901827523279749230,
+    "memes": 998236631511347271,
+    "movies-tv-books": 1164041947976048660,
+    "music": 938551407093620776,
+    "musicians": 901547467298975784,
     "qna": 895330177456963645,
     "welcome": 1022159784528597023,
     "general": 892873789262680164,
@@ -39,10 +46,12 @@ channels = {
     "japanese": 930818686686724146,
     "korean": 894614202315051101,
     "pink": 893943182507782154,
+    "sarah": 1187565432161439877,
     "spanish": 892197175776383000,
     "tiktok": 928747669361418270,
     "vangie": 892536534186745907,
     "connect": 908388613786570782,
+    "zoo": 908369813389324378,
 
     # VOICE
     "rctalk": 892514465923366954,
