@@ -220,7 +220,12 @@ async def handle_sarah_channel(message, channel):
         channel: The channel object where the message was posted.
     """
     # Check if the message is in the lounge channel and the user's score is above the threshold
-    if channel.id in [channels["sarah"]] and message.user_score > config.gpt_threshold:
+    if channel.id in [channels["sarah"]] and message.user_score > config.gpt_threshold and (
+        (message.is_question and message.mentions_rivers and message.die_roll > .1) or
+        ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
+        message.mentions_cuomputer or
+        (message.die_roll > .999)
+    ):
 
         message.gpt_system += "You are a friendly and engaging virtual companion for women in their 20s and 30s. You share their excitement and nostalgia."
         "You are knowledgeable about music trends, empathetic in discussions about life's ups and downs, and always ready to reminisce about 90s and 2000s pop culture. "
