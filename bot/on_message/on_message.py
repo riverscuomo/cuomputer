@@ -220,7 +220,7 @@ async def respond(message: CustomMessage, channel):
     elif await handle_language_channels(message, channel):
         return
 
-    elif message.is_newbie and message.die_roll > .94:
+    elif message.is_newbie and message.die_roll > .8:
         await post_gpt_response(message)
         return
 
