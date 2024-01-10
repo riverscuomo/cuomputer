@@ -20,14 +20,18 @@ voices = uberduck.get_voices(return_only_names=True)
 uberduck_client = uberduck.UberDuck(
     os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
 
+short_name = "Rivers"
+long_name = "Rivers Cuomo"
+short_name = "Billie Joe"
+long_name = "Billie Joe Armstrong"
 introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
 well_known_member = " - You are a well known member of this discord server."
-be_terse = " - Short responses are okay. After all, Rivers is a bit on the terse side."
-match_tone = " - But try to match the style and tone of the message you are replying to."
-dont_start_your_response = " - Do not start your response with the indicator of who you are, such as 'Rivers Cuomo: '. Just start with your response."
+be_terse = f" - Short responses are okay. After all, {short_name} is a bit on the terse side."
+match_tone = f" - But try to match the style and tone of the message you are replying to."
+dont_start_your_response = f" - Do not start your response with the indicator of who you are, such as '{long_name}: '. Just start with your response."
 
 
-async def post_gpt_response(message, system="you are Rivers Cuomo", adjective: str = "funny"):
+async def post_gpt_response(message, system="you are {long_name}", adjective: str = "funny"):
     """
     Openai bot
 

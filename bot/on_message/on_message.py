@@ -1,4 +1,4 @@
-from bot.on_message.bots.gptbot import post_gpt_response
+from bot.on_message.bots.gptbot import post_gpt_response, long_name
 from datetime import datetime
 from rich import print
 from bot.on_message.bots.response_handlers import *
@@ -58,7 +58,7 @@ async def on_message(message):
     if message_is_a_skipper(message, channel):
         if author.id == cuomputer_id:
             with contextlib.suppress(Exception):
-                openai_sessions[channel.name] += f" Rivers Cuomo: {message.content}"
+                openai_sessions[channel.name] += f" {long_name}: {message.content}"
         return
 
     if await is_message_from_other_guild(message):
