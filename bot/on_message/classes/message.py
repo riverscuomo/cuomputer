@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import random
 import discord
 from bot.setup.init import tz
+from bot.on_message.bots.gptbot import long_name
 
 
 class CustomMessage(discord.Message):
@@ -94,7 +95,7 @@ class CustomMessage(discord.Message):
         self.nick = None
         self.language_code = None
         self.author_roles = None
-        self.gpt_system = "You are Rivers Cuomo"
+        self.gpt_system = f"You are {long_name}"
 
     def log(self):
         print(f"user_score={self.user_score}, die_roll={ round(self.die_roll, 3)}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}")

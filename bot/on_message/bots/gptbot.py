@@ -49,6 +49,8 @@ async def post_gpt_response(message, system="you are {long_name}", adjective: st
 
         system += match_tone + dont_start_your_response
 
+        print(system)
+
         reply = build_openai_response(message, system, adjective)
         # print(f"reply: {reply}")
 
