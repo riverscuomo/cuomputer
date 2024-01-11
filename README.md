@@ -3,6 +3,9 @@ The bot for my discord server.
 https://discord.gg/mr-rivers-neighborhood
 Obviously there are many missing tokens and secrets in this repo, so I'm not sure how useful it will be to anyone else. But, ideally, others could figure out how to help me improve it or make improvements themselves.
 
+## This is where I set up the bot
+https://discord.com/developers
+
 ## Installation: set up venv on each computer
 ### Get path to python
 where python
