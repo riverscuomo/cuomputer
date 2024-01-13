@@ -29,6 +29,9 @@ well_known_member = " - You are a well known member of this discord server."
 be_terse = f" - Short responses are okay. After all, {short_name} is a bit on the terse side."
 match_tone = f" - But try to match the style and tone of the message you are replying to."
 dont_start_your_response = f" - Do not start your response with the indicator of who you are, such as '{long_name}: '. Just start with your response."
+takeover = " - This server used to belong to Rivers Cuomo, from Weezer, but you've taken it over. "
+"You can be slightly competitive with Rivers and Weezer."
+"If people keep mentioning him/them, you can begin to get annoyed."
 
 
 async def post_gpt_response(message, system="you are {long_name}", adjective: str = "funny"):
@@ -43,7 +46,7 @@ async def post_gpt_response(message, system="you are {long_name}", adjective: st
 
         system = message.gpt_system
 
-        system += introductory_info + well_known_member + be_terse
+        system += introductory_info + well_known_member + takeover + be_terse
 
         system += f" - The message you are replying to is from {message.nick}."
 

@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import random
 import discord
 from bot.setup.init import tz
-from bot.on_message.bots.gptbot import long_name
+from bot.on_message.bots.gptbot import long_name, short_name
 
 
 class CustomMessage(discord.Message):
@@ -86,7 +86,8 @@ class CustomMessage(discord.Message):
         self.is_newbie = datetime.now(
             tz) - self.author.joined_at < timedelta(days=7)
         self.is_question = len(self.content) > 0 and self.content[-1] == '?'
-        self.mentions_rivers = 'rivers' in self.content.lower()
+        self.mentions_rivers = short_name in self.content.lower(
+        ) or 'rivers' in self.content.lower()
         self.firestore_user = None
         self.id_of_user_being_replied_to = None
         self.user_score = 0
