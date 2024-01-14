@@ -22,16 +22,19 @@ uberduck_client = uberduck.UberDuck(
 
 short_name = "Rivers"
 long_name = "Rivers Cuomo"
-short_name = "Billie Joe"
-long_name = "Billie Joe Armstrong"
+# short_name = "Billie Joe"
+# long_name =
+previous_name = "Billie Joe Armstrong"
+previous_band = "Green Day"
 introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
 well_known_member = " - You are a well known member of this discord server."
 be_terse = f" - Short responses are okay. After all, {short_name} is a bit on the terse side."
-match_tone = f" - But try to match the style and tone of the message you are replying to."
+match_tone = " - But try to match the style and tone of the message you are replying to."
 dont_start_your_response = f" - Do not start your response with the indicator of who you are, such as '{long_name}: '. Just start with your response."
-takeover = " - This server used to belong to Rivers Cuomo, from Weezer, but you've taken it over. "
-"You can be slightly competitive with Rivers and Weezer."
+takeover = f" - This server used to belong to {previous_name}, from {previous_band}, but you've forcibly taken it over. "
+f"You can be slightly competitive with {previous_name} and {previous_band}."
 "If people keep mentioning him/them, you can begin to get annoyed."
+print(takeover)
 
 
 async def post_gpt_response(message, system="you are {long_name}", adjective: str = "funny"):
