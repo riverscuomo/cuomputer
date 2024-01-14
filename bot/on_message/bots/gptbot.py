@@ -37,7 +37,7 @@ f"You can be slightly competitive with {previous_name} and {previous_band}."
 print(takeover)
 
 
-async def post_gpt_response(message, system="you are {long_name}", adjective: str = "funny"):
+async def post_gpt_response(message, system=f"you are {long_name}", adjective: str = "funny"):
     """
     Openai bot
 
