@@ -1,26 +1,33 @@
 from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
 import os
+from config import short_name
 import dotenv
 from bot.setup.init import openai_sessions
 dotenv.load_dotenv()
 
 
 mistral_api_key = os.environ["MISTRAL_API_KEY"]
-mistral_model = "mistral-tiny"
+mistral_model = "mistral-medium"
 
 mistral_client = MistralClient(api_key=mistral_api_key)
 
+dont_explain = f" - Do not provide the rationale for your response. It should feel like a natural response from {short_name} to the previous message."
+dontoverdoweezer = " - Don't overdo the Weezer references. These are long time fans who are ready to talk about something else."
 
-def fetch_mistral_completion(message: str, system: str):
-    # The first message is the system information
+
+def fetch_mistral_completion(message, system: str):
+    print("fetch_mistral_completion")
+    system += dontoverdoweezer + dont_explain
+    # The first message is the system information and needs to be added every time
+    # because you don't save it in the session
     messages = [
-        ChatMessage(role="system", content=system)
+        ChatMessage(role="system", content=system),
     ]
 
     # Add the user's text to the openai session for this channel
     openai_sessions[message.channel.id].append(
-        ChatMessage(role="user", content=f"{message.author.name}: {message.content}"))
+        ChatMessage(role="user", content=f"{message.author.nick}: {message.clean_content}"))
 
     # Limit the number of messages in the session to 6
     if len(openai_sessions[message.channel.id]) > 6:
@@ -37,12 +44,14 @@ def fetch_mistral_completion(message: str, system: str):
     reply = mistral_client.chat(
         model=mistral_model,
         messages=messages,
+
     )
 
     text = reply.choices[0].message.content
 
     # add the response to the session. I suppose now there may be up to 7 messages in the session
 
-    ChatMessage(role="assistant", content=text)
+    openai_sessions[message.channel.id].append(
+        ChatMessage(role="assistant", content=text))
 
     return text

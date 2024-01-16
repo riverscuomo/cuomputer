@@ -5,7 +5,7 @@ from bot.setup.init import client, openai_sessions
 from config import cuomputer_id
 import discord
 from bot.scripts.message.finalize_response import finalize_response
-from config import channels
+from config import channels, long_name, short_name
 from bot.on_message.bots.mistralbot import fetch_mistral_completion
 
 import asyncio  # required for the sleeping
@@ -20,22 +20,20 @@ voices = uberduck.get_voices(return_only_names=True)
 uberduck_client = uberduck.UberDuck(
     os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
 
-
-short_name = "Rivers"
-long_name = "Rivers Cuomo"
 # short_name = "Billie Joe"
 # long_name =
 previous_name = "Billie Joe Armstrong"
 previous_band = "Green Day"
 introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
 well_known_member = " - You are a well known member of this discord server."
-be_terse = f" - Short responses are okay. After all, {short_name} is a bit on the terse side."
-match_tone = " - But try to match the style and tone of the message you are replying to."
+be_terse = f" - Keep the responses short. After all, {short_name} is a bit on the terse side."
+match_tone = " - Match the style and tone of the message you are replying to."
+be_interesting = " - Be interesting, entertaining, exciting."
 dont_start_your_response = f" - Do not start your response with the indicator of who you are, such as '{long_name}: '. Just start with your response."
-takeover = f" - This server used to belong to {previous_name}, from {previous_band}, but you've forcibly taken it over. "
-f"You can be slightly competitive with {previous_name} and {previous_band}."
-"If people keep mentioning him/them, you can begin to get annoyed."
-print(takeover)
+# takeover = f" - This server used to belong to {previous_name}, from {previous_band}, but you've forcibly taken it over. "
+# f"You can be slightly competitive with {previous_name} and {previous_band}."
+# "If people keep mentioning him/them, you can begin to get annoyed."
+# print(takeover)
 
 
 async def post_ai_response(message, system=f"you are {long_name}", adjective: str = "funny"):
@@ -50,7 +48,7 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
 
         system = message.gpt_system
 
-        system += introductory_info + well_known_member + be_terse
+        system += introductory_info + well_known_member + be_interesting + be_terse
 
         system += f" - The message you are replying to is from {message.nick}."
 
@@ -125,7 +123,7 @@ def fetch_openai_completion(message, system, text, model):
 
     # Add the user's text to the openai session for this channel
     openai_sessions[message.channel.id].append(
-        {"role": "user", "content": f"{message.author.name}: {text}"})
+        {"role": "user", "content": f"{message.author.nick}: {text}"})
 
     # Limit the number of messages in the session to 6
     if len(openai_sessions[message.channel.id]) > 6:

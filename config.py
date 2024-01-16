@@ -27,6 +27,9 @@ num_roles_for_newbie = 1
 
 sessions = []
 
+short_name = "Rivers"
+long_name = "Rivers Cuomo"
+
 """ Channels """
 channels = {
     "artists": 913828394888736799,
