@@ -3,7 +3,7 @@ from enum import Enum, auto
 from bot.on_message.classes.message import CustomMessage
 from config import channels
 import config
-from bot.on_message.bots.gptbot import post_gpt_response
+from bot.on_message.bots.gptbot import post_ai_response
 
 
 async def handle_artists_channel(message, channel):
@@ -21,7 +21,7 @@ async def handle_artists_channel(message, channel):
 
     if channel.id in [channels["artists"]] and meets_conditions(message, ConversationStyle.RETICENT):
         message.gpt_system += " and you are a fan of visual artists. You know a lot about the history of art."
-        await post_gpt_response(message)
+        await post_ai_response(message)
         return True
 
     return False
@@ -40,7 +40,7 @@ async def handle_coach_channel(message, channel):
     """
     if channel.id == channels["coach"] and meets_conditions(message, ConversationStyle.GARRULOUS):
         message.gpt_system += " and you're a good friend, a good listener, and can serve as a therapist or coach."
-        await post_gpt_response(message)
+        await post_ai_response(message)
         return True
 
     return False
@@ -59,7 +59,7 @@ async def handle_dan_channel(message, channel):
     """
     if channel.id == channels["dan"] and meets_conditions(message, ConversationStyle.RETICENT):
         message.gpt_system += " and you have adopted the persona of a hyper-opinionated and knowledgable Weezer fan. An armchair producer so to speak."
-        await post_gpt_response(message)
+        await post_ai_response(message)
         return True
 
     return False
@@ -78,7 +78,7 @@ async def handle_geezerville_channel(message, channel):
     """
     if channel.id == channels["geezerville"] and meets_conditions(message, ConversationStyle.RETICENT):
         message.gpt_system += " and you're not trying to act younger than you are (53). You're okay talking about middle-age issues including having kids. You sometimes reference 80's nostalgia. "
-        await post_gpt_response(message, adjective="nostalgic and sweet")
+        await post_ai_response(message, adjective="nostalgic and sweet")
         return True
 
     return False
@@ -98,7 +98,7 @@ async def handle_language_channels(message, channel):
     return bool(
         channel.id in [channels["korean"], channels["japanese"]]
         and meets_conditions(message, ConversationStyle.GARRULOUS)
-        and await post_gpt_response(message)
+        and await post_ai_response(message)
     )
 
 
@@ -116,7 +116,7 @@ async def handle_lounge_channel(message, channel):
     # Check if the message is in the lounge channel and the user's score is above the threshold
     if channel.id in [channels["lounge"]] and message.user_score > config.gpt_threshold:
         # If the conditions are met, attempt to post a GPT response
-        return await post_gpt_response(message)
+        return await post_ai_response(message)
 
     # Return False to indicate that no response has been posted
     return False
@@ -138,7 +138,7 @@ async def handle_music_channel(message, channel):
 
         message.gpt_system += " and you are a huge music fan who loves to talk about music and music history."
         # If the conditions are met, attempt to post a GPT response
-        return await post_gpt_response(message)
+        return await post_ai_response(message)
 
     # Return False to indicate that no response has been posted
     return False
@@ -160,7 +160,7 @@ async def handle_musicians_channel(message, channel):
 
         message.gpt_system += " and you love to help striving musicians and songwriters hone their craft."
         # If the conditions are met, attempt to post a GPT response
-        return await post_gpt_response(message)
+        return await post_ai_response(message)
 
     # Return False to indicate that no response has been posted
     return False
@@ -182,7 +182,7 @@ async def handle_movies_tv_books_channel(message, channel):
 
         message.gpt_system += " and you love to talk about movies, tv, and books. You have a good memory for details and can quote lines from movies and tv shows."
         # If the conditions are met, attempt to post a GPT response
-        return await post_gpt_response(message)
+        return await post_ai_response(message)
 
     # Return False to indicate that no response has been posted
     return False
@@ -204,7 +204,7 @@ async def handle_sarah_channel(message, channel):
         "You have free reign to be as flirtatious as they want."
 
         # If the conditions are met, attempt to post a GPT response
-        return await post_gpt_response(message)
+        return await post_ai_response(message)
 
     # Return False to indicate that no response has been posted
     return False
@@ -226,7 +226,7 @@ async def handle_zoo_channel(message, channel):
 
         message.gpt_system += " and you love to talk about animals and nature. you have a deep knowledge of animal facts and nature facts. In this channel are posting pics of their cute pets."
         # If the conditions are met, attempt to post a GPT response
-        return await post_gpt_response(message)
+        return await post_ai_response(message)
 
     # Return False to indicate that no response has been posted
     return False

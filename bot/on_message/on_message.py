@@ -1,4 +1,4 @@
-from bot.on_message.bots.gptbot import post_gpt_response, long_name
+from bot.on_message.bots.gptbot import post_ai_response, long_name
 from datetime import datetime
 from rich import print
 from bot.on_message.bots.response_handlers import *
@@ -11,7 +11,7 @@ from bot.on_message.bots.librarybot import (
 )
 from bot.on_message.bots.knowledgebot import post_google_knowledge_response
 from bot.on_message.bots.riversbot import post_riverbot_response
-from bot.on_message.bots.mongobot import post_gpt_response
+# from bot.on_message.bots.mongobot import post_ai_response
 from bot.scripts.add_roles import (
     check_firestore_and_add_roles_and_nick,
     add_time_based_roles,
@@ -194,7 +194,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .8) or
             message.mentions_cuomputer or
             (message.die_roll > .99)
-        ) and await post_gpt_response(message):
+        ) and await post_ai_response(message):
             return
 
     elif channel.id == channels["vangie"]:
@@ -204,7 +204,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .999)
-        ) and await post_gpt_response(message):
+        ) and await post_ai_response(message):
             return
 
     elif await handle_artists_channel(message, channel):
@@ -221,11 +221,11 @@ async def respond(message: CustomMessage, channel):
         return
 
     elif message.is_newbie and message.die_roll > .8:
-        await post_gpt_response(message)
+        await post_ai_response(message)
         return
 
     elif message.die_roll > .97:
-        await post_gpt_response(message)
+        await post_ai_response(message)
 
 
 async def get_user_id(message):

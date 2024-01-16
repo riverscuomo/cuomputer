@@ -1,14 +1,14 @@
+from dotenv import load_dotenv
+import os
+from bot.scripts.message.finalize_response import finalize_response
+import requests
 import contextlib
 import sys
 from better_profanity import profanity
 
-from bot.on_message.bots.gptbot import build_openai_response, post_gpt_response
-import random
+# from bot.on_message.bots.gptbot import build_openai_response, post_ai_response
+# import random
 sys.path.append("...")  # Adds higher directory to python modules path.
-import requests
-from bot.scripts.message.finalize_response import finalize_response
-import os
-from dotenv import load_dotenv
 load_dotenv()
 
 
@@ -42,7 +42,8 @@ async def post_mongo_response(nick: str, message, language, test_message: str):
         and not profanity.contains_profanity(response.text)
     ):
 
-        response = finalize_response(response.text, language, nick, replace_names=True)
+        response = finalize_response(
+            response.text, language, nick, replace_names=True)
 
         with contextlib.suppress(Exception):
             await message.channel.send(response)

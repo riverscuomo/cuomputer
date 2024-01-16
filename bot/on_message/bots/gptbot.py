@@ -1,12 +1,12 @@
 import contextlib
 import random
 import openai
-from bot.setup.init import client
-from bot.setup.init import openai_sessions
+from bot.setup.init import client, openai_sessions
 from config import cuomputer_id
 import discord
 from bot.scripts.message.finalize_response import finalize_response
 from config import channels
+from bot.on_message.bots.mistralbot import fetch_mistral_completion
 
 import asyncio  # required for the sleeping
 
@@ -19,6 +19,7 @@ import os
 voices = uberduck.get_voices(return_only_names=True)
 uberduck_client = uberduck.UberDuck(
     os.environ["UBERDUCK_API_KEY"], os.environ["UBERDUCK_API_SECRET"])
+
 
 short_name = "Rivers"
 long_name = "Rivers Cuomo"
@@ -37,19 +38,19 @@ f"You can be slightly competitive with {previous_name} and {previous_band}."
 print(takeover)
 
 
-async def post_gpt_response(message, system=f"you are {long_name}", adjective: str = "funny"):
+async def post_ai_response(message, system=f"you are {long_name}", adjective: str = "funny"):
     """
     Openai bot
 
     """
-    print("post_gpt_response")
+    print("post_ai_response")
     print(openai_sessions[message.channel.id])
     # await client.process_commands(message)
     async with message.channel.typing():
 
         system = message.gpt_system
 
-        system += introductory_info + well_known_member + takeover + be_terse
+        system += introductory_info + well_known_member + be_terse
 
         system += f" - The message you are replying to is from {message.nick}."
 
@@ -57,7 +58,7 @@ async def post_gpt_response(message, system=f"you are {long_name}", adjective: s
 
         print(system)
 
-        reply = build_openai_response(message, system, adjective)
+        reply = build_ai_response(message, system, adjective)
         # print(f"reply: {reply}")
 
         response = finalize_response(
@@ -78,7 +79,7 @@ async def post_gpt_response(message, system=f"you are {long_name}", adjective: s
         return True
 
 
-def build_openai_response(message, system: str, adjective: str):
+def build_ai_response(message, system: str, adjective: str):
     text = message.content
 
     # Get the open model from .env if the user has specified it.
@@ -90,7 +91,11 @@ def build_openai_response(message, system: str, adjective: str):
 
     # Use gpt-4 if the model is specified as gpt-4
     # if model == "gpt-4":
-    reply = fetch_gpt4_completion(message, system, text, model)
+
+    if message.channel.id in [channels["vangie"], channels["sarah"]]:
+        reply = fetch_mistral_completion(message, system)
+    else:
+        reply = fetch_openai_completion(message, system, text, model)
     # else:
     #     completion = openai.Completion.create(
     #         model=os.environ.get("OPENAI_MODEL"),
@@ -110,7 +115,7 @@ def build_openai_response(message, system: str, adjective: str):
     return reply
 
 
-def fetch_gpt4_completion(message, system, text, model):
+def fetch_openai_completion(message, system, text, model):
     print("Using gpt-4")
     # print(f"system: {system}")
     # print(f"text: {text}")
