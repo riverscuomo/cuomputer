@@ -1,4 +1,4 @@
-from bot.on_message.bots.gptbot import post_ai_response, long_name
+from bot.on_message.bots.ai_bot import post_ai_response, long_name
 from datetime import datetime
 from rich import print
 from bot.on_message.bots.response_handlers import *
@@ -10,8 +10,7 @@ from bot.on_message.bots.librarybot import (
     post_library_query_response,
 )
 from bot.on_message.bots.knowledgebot import post_google_knowledge_response
-from bot.on_message.bots.riversbot import post_riverbot_response
-# from bot.on_message.bots.mongobot import post_ai_response
+# from bot.on_message.bots.riversbot import post_riverbot_response
 from bot.scripts.add_roles import (
     check_firestore_and_add_roles_and_nick,
     add_time_based_roles,

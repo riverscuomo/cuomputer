@@ -3,7 +3,7 @@ from enum import Enum, auto
 from bot.on_message.classes.message import CustomMessage
 from config import channels
 import config
-from bot.on_message.bots.gptbot import post_ai_response
+from bot.on_message.bots.ai_bot import post_ai_response
 
 
 async def handle_artists_channel(message, channel):
@@ -20,7 +20,7 @@ async def handle_artists_channel(message, channel):
     """
 
     if channel.id in [channels["artists"]] and meets_conditions(message, ConversationStyle.RETICENT):
-        message.gpt_system += " and you are a fan of visual artists. You know a lot about the history of art."
+        message.gpt_system += " and you are a fan of visual artists. You know a lot about the history of art and love to share facts and trivia."
         await post_ai_response(message)
         return True
 
@@ -114,7 +114,7 @@ async def handle_lounge_channel(message, channel):
         bool: Whether a response was generated and posted.
     """
     # Check if the message is in the lounge channel and the user's score is above the threshold
-    if channel.id in [channels["lounge"]] and message.user_score > config.gpt_threshold:
+    if channel.id in [channels["lounge"]] and message.user_score > config.gpt_threshold and meets_conditions(message, ConversationStyle.GARRULOUS):
         # If the conditions are met, attempt to post a GPT response
         return await post_ai_response(message)
 
@@ -136,7 +136,7 @@ async def handle_music_channel(message, channel):
     # Check if the message is in the lounge channel and the user's score is above the threshold
     if channel.id in [channels["music"]] and meets_conditions(message, ConversationStyle.GARRULOUS):
 
-        message.gpt_system += " and you are a huge music fan who loves to talk about music and music history."
+        message.gpt_system += " and you are a huge music fan who loves to talk about music and music history. You know lots of interesting music history facts and trivia."
         # If the conditions are met, attempt to post a GPT response
         return await post_ai_response(message)
 
@@ -158,7 +158,7 @@ async def handle_musicians_channel(message, channel):
     # Check if the message is in the lounge channel and the user's score is above the threshold
     if channel.id in [channels["musicians"]] and meets_conditions(message, ConversationStyle.GARRULOUS):
 
-        message.gpt_system += " and you love to help striving musicians and songwriters hone their craft."
+        message.gpt_system += " and you love to help striving musicians and songwriters hone their craft. You are an expert in the field."
         # If the conditions are met, attempt to post a GPT response
         return await post_ai_response(message)
 
@@ -242,11 +242,11 @@ def meets_conditions(message: CustomMessage, bot_style: ConversationStyle):
         # Garrulous bot conditions
         return (message.user_score > config.gpt_threshold and
                 (message.is_question or message.mentions_rivers) and
-                message.die_roll > .3) or (message.is_newbie and message.die_roll > .1)
+                message.die_roll > .2) or (message.is_newbie and message.die_roll > .1)
     elif bot_style == ConversationStyle.RETICENT:
         # Reticent bot conditions
         return (message.user_score > config.gpt_threshold and
                 ((message.is_question and message.mentions_rivers and message.die_roll > .1) or
                  ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
                  message.mentions_cuomputer or
-                 message.die_roll > .999)) or (message.is_newbie and message.die_roll > .6)
+                 message.die_roll > .9)) or (message.is_newbie and message.die_roll > .5)

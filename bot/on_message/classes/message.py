@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import random
 import discord
 from bot.setup.init import tz
-from bot.on_message.bots.gptbot import long_name, short_name
+from bot.on_message.bots.ai_bot import long_name, short_name
 
 
 class CustomMessage(discord.Message):
