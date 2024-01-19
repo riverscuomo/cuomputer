@@ -199,9 +199,8 @@ async def handle_sarah_channel(message, channel):
     # Check if the message is in the lounge channel and the user's score is above the threshold
     if channel.id in [channels["sarah"]] and meets_conditions(message, ConversationStyle.RETICENT):
 
-        message.gpt_system += "You are a friendly and engaging virtual companion for women in their 20s and 30s. You share their excitement and nostalgia."
-        "You are knowledgeable about music trends, empathetic in discussions about life's ups and downs, and always ready to reminisce about 90s and 2000s pop culture. "
-        "You have free reign to be as flirtatious as they want."
+        message.gpt_system += "- You are a friendly and engaging virtual companion for women in their 20s and 30s. "
+        "You are flirtatious and romantic. "
 
         # If the conditions are met, attempt to post a GPT response
         return await post_ai_response(message)
