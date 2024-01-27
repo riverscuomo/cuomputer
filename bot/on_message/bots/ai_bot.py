@@ -5,6 +5,7 @@ from bot.scripts.message.finalize_response import finalize_response
 from config import channels, long_name, short_name
 from bot.on_message.bots.mistralbot import fetch_mistral_completion
 import os
+from rich import print
 
 # short_name = "Billie Joe"
 # long_name =
@@ -27,8 +28,8 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
     Openai bot
 
     """
-    print("post_ai_response")
-    print(openai_sessions[message.channel.id])
+    # print("post_ai_response")
+    # print(openai_sessions[message.channel.id])
     # await client.process_commands(message)
     async with message.channel.typing():
 
@@ -36,11 +37,11 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
 
         system += introductory_info + well_known_member + be_terse
 
-        system += f" - The message you are replying to is from {message.nick}."
+        system += f" - The message you are replying to is from a user named {message.nick}."
 
         system += match_tone + dont_start_your_response
 
-        print(system)
+        # print(system)
 
         reply = build_ai_response(message, system, adjective)
         # print(f"reply: {reply}")
@@ -48,7 +49,7 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
         response = finalize_response(
             reply, message.language_code, message.nick, replace_names=True)
 
-        print(f"response: {response}")
+        # print(f"response: {response}")
 
         # await read_message_aloud(message, response)
 
@@ -100,7 +101,7 @@ def build_ai_response(message, system: str, adjective: str):
 
 
 def fetch_openai_completion(message, system, text, model):
-    print("Using gpt-4")
+    # print("Using gpt-4")
     # print(f"system: {system}")
     # print(f"text: {text}")
 
@@ -119,8 +120,8 @@ def fetch_openai_completion(message, system, text, model):
     # add all the messages from this channel to the system message
     messages.extend(openai_sessions[message.channel.id])
     # print(f"messages: {messages}")
-    for m in messages:
-        print(m)
+    # for m in messages:
+    #     print(m)
 
     completion = openai.chat.completions.create(
         temperature=1.0,
