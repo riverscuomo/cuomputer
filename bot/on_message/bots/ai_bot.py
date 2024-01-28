@@ -77,10 +77,10 @@ def build_ai_response(message, system: str, adjective: str):
     # Use gpt-4 if the model is specified as gpt-4
     # if model == "gpt-4":
 
-    if message.channel.id in [channels["vangie"], channels["sarah"]]:
-        reply = fetch_mistral_completion(message, system)
-    else:
-        reply = fetch_openai_completion(message, system, text, model)
+    # if message.channel.id in [channels["vangie"], channels["sarah"]]:
+    #     reply = fetch_mistral_completion(message, system)
+    # else:
+    reply = fetch_openai_completion(message, system, text, model)
     # else:
     #     completion = openai.Completion.create(
     #         model=os.environ.get("OPENAI_MODEL"),

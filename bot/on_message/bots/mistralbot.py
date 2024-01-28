@@ -20,6 +20,19 @@ emoji = " - NEVER use emoji."
 
 
 def fetch_mistral_completion(message, system: str):
+    """
+    Deprecated: This function is deprecated and will be removed in future versions.
+    Please use the `new_function_name` function instead.
+
+    Fetches mistral completion based on the given message and system information.
+
+    Args:
+        message: The message object.
+        system: The system information.
+
+    Returns:
+        The completion text.
+    """
     print("fetch_mistral_completion")
     system += dontoverdoweezer + dont_explain + dont_tag + \
         single_reponse + emoji + dontbreakcharacter + \
