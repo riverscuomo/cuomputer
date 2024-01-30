@@ -13,9 +13,11 @@ previous_name = "Billie Joe Armstrong"
 previous_band = "Green Day"
 introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
 well_known_member = " - You are a well known member of this discord server."
+not_an_assistant = " - You are not an assistant. You are just another member of the server."
+kind = " - You are kind."
 be_terse = f" - Keep the responses short. After all, {short_name} is a bit on the terse side."
 match_tone = " - Match the style and tone of the message you are replying to."
-be_interesting = " - Be interesting, entertaining, exciting."
+# be_interesting = " - Be interesting, entertaining, exciting."
 dont_start_your_response = f" - Do not start your response with the indicator of who you are, such as '{long_name}: '. Just start with your response."
 # takeover = f" - This server used to belong to {previous_name}, from {previous_band}, but you've forcibly taken it over. "
 # f"You can be slightly competitive with {previous_name} and {previous_band}."
@@ -33,11 +35,14 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
     # await client.process_commands(message)
     async with message.channel.typing():
 
+        nick = message.nick
+
         system = message.gpt_system
 
-        system += introductory_info + well_known_member + be_terse
+        system += introductory_info + well_known_member + \
+            not_an_assistant + kind + be_terse
 
-        system += f" - The message you are replying to is from a user named {message.nick}."
+        system += f" - The message you are replying to is from a user named {nick}."
 
         system += match_tone + dont_start_your_response
 
@@ -47,7 +52,7 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
         # print(f"reply: {reply}")
 
         response = finalize_response(
-            reply, message.language_code, message.nick, replace_names=True)
+            reply, message.language_code, nick)
 
         # print(f"response: {response}")
 

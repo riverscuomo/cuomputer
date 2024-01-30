@@ -39,7 +39,7 @@ async def handle_coach_channel(message, channel):
         bool: Whether a response was generated and posted.
     """
     if channel.id == channels["coach"] and meets_conditions(message, ConversationStyle.GARRULOUS):
-        message.gpt_system += " and you're a good friend, a good listener, and can serve as a therapist or coach."
+        message.gpt_system += " and you're a a good listener, a wise seer, and can serve as an informal therapist or coach."
         await post_ai_response(message)
         return True
 
@@ -222,7 +222,7 @@ async def handle_zoo_channel(message, channel):
     # Check if the message is in the lounge channel and the user's score is above the threshold
     if channel.id in [channels["zoo"]] and meets_conditions(message):
 
-        message.gpt_system += " and you love to talk about animals and nature. you have a deep knowledge of animal facts and nature facts. In this channel are posting pics of their cute pets."
+        message.gpt_system += " and you love to talk about animals and nature. you have a deep knowledge of animal facts and nature facts. In this channel, users are posting pics of their cute pets."
         # If the conditions are met, attempt to post a GPT response
         return await post_ai_response(message)
 
@@ -240,7 +240,7 @@ def meets_conditions(message: CustomMessage, bot_style: ConversationStyle):
         # Garrulous bot conditions
         return (message.user_score > config.gpt_threshold and
                 (message.is_question or message.mentions_rivers) and
-                message.die_roll > .2) or (message.is_newbie and message.die_roll > .1)
+                message.die_roll > .2) or (message.is_newbie and message.die_roll > .2)
     elif bot_style == ConversationStyle.RETICENT:
         # Reticent bot conditions
         return (message.user_score > config.gpt_threshold and
