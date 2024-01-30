@@ -75,26 +75,7 @@ def build_ai_response(message, system: str, adjective: str):
     # Get the open model from .env if the user has specified it.
     model = os.environ.get("OPENAI_MODEL")
 
-    # # Use gpt-3 if the model is not specified
-    # if model is None:
-    #     model = "text-davinci-003"
-
-    # Use gpt-4 if the model is specified as gpt-4
-    # if model == "gpt-4":
-
-    # if message.channel.id in [channels["vangie"], channels["sarah"]]:
-    #     reply = fetch_mistral_completion(message, system)
-    # else:
     reply = fetch_openai_completion(message, system, text, model)
-    # else:
-    #     completion = openai.Completion.create(
-    #         model=os.environ.get("OPENAI_MODEL"),
-    #         prompt=text,
-    #         temperature=1,
-    #         max_tokens=80,
-    #     )
-    #     reply = completion["choices"]
-    #     reply = reply[0]["text"]
 
     # whatever the model was, now you can make a few universal changes to the response.
     reply = reply.replace("\n\n", "\n")
@@ -106,9 +87,6 @@ def build_ai_response(message, system: str, adjective: str):
 
 
 def fetch_openai_completion(message, system, text, model):
-    # print("Using gpt-4")
-    # print(f"system: {system}")
-    # print(f"text: {text}")
 
     # The first message is the system information
     messages = [{"role": "system", "content": system}]
@@ -120,34 +98,27 @@ def fetch_openai_completion(message, system, text, model):
     # Limit the number of messages in the session to 6
     if len(openai_sessions[message.channel.id]) > 6:
 
-        openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-3:]
+        openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-6:]
 
     # add all the messages from this channel to the system message
     messages.extend(openai_sessions[message.channel.id])
-    # print(f"messages: {messages}")
-    # for m in messages:
-    #     print(m)
 
-    completion = openai.chat.completions.create(
-        temperature=1.0,
-        max_tokens=100,
-        model=model,
-        messages=messages,
-        # "top_p": 1,
-        # "frequency_penalty": 0.0,
-        # "presence_penalty": 0.0,
-        # stop=["\n", " Human:", " AI:"], # kills poems
+    try:
+        completion = openai.chat.completions.create(
+            temperature=1.0,
+            max_tokens=100,
+            model=model,
+            messages=messages,
+        )
+        text = completion.choices[0].message.content
 
-    )
-    text = completion.choices[0].message.content
-
-    # add the response to the session. I suppose now there may be up to 7 messages in the session
-    openai_sessions[message.channel.id].append(
-        {"role": "assistant", "content": text})
+        # add the response to the session. I suppose now there may be up to 7 messages in the session
+        openai_sessions[message.channel.id].append(
+            {"role": "assistant", "content": text})
+    except openai.error.OpenAIError as e:
+        text = f"An error occurred: {e}"
 
     return text
-
-    # await vc.disconnect()
 
 
 # def manage_session_context(message, channel_name, author_name, incoming_message):

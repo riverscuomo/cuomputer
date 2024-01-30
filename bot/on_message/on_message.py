@@ -197,7 +197,7 @@ async def respond(message: CustomMessage, channel):
             return
 
     elif channel.id == channels["vangie"]:
-        message.gpt_system += " - You love witty banter and have a raunchy sense of humor."
+        message.gpt_system += " - You love to engage in witty banter and have a raunchy sense of humor."
         if message.user_score > config.gpt_threshold and (
             (message.is_question and message.mentions_rivers and message.die_roll > .1) or
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
