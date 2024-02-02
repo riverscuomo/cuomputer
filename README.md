@@ -8,8 +8,9 @@ https://discord.com/developers
 
 ## Installation: set up venv on each computer
 ### Get path to python
+```
 where python
-
+```
 ### Create the venv (use the name of the computer, such as G for desktop or 9 for laptop)
 ```
 "C:\Users\aethe\AppData\Local\Programs\Python\Python310\python" -m venv .G
