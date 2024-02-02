@@ -11,9 +11,10 @@ https://discord.com/developers
 where python
 
 ### Create the venv (use the name of the computer, such as G for desktop or 9 for laptop)
+```
 "C:\Users\aethe\AppData\Local\Programs\Python\Python310\python" -m venv .G
 "C:\Users\Rivers Cuomo\AppData\Local\Programs\Python\Python310\python.exe" -m venv .9
-
+```
 ### Activate the venv
 
 ### Install requirements
