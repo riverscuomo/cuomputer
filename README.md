@@ -1,7 +1,7 @@
 # Cuomputer [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 The bot for my discord server.
 https://discord.gg/mr-rivers-neighborhood
-Obviously there are many missing tokens and secrets in this repo, so I'm not sure how useful it will be to anyone else. But, ideally, others could figure out how to help me improve it or make improvements themselves.
+Obviously, there are many missing tokens and secrets in this repo, so I'm not sure how useful it will be to anyone else. But, ideally, others could figure out how to help me improve it or make improvements themselves.
 
 ## This is where I set up the bot
 https://discord.com/developers
@@ -17,8 +17,9 @@ where python
 ### Activate the venv
 
 ### Install requirements
-
+```
 pip install -r requirements.txt
+```
 
 ### Set environment variables in both a .env file and in HEROKU
 #### Discord
@@ -43,7 +44,7 @@ Heroku.Settings.configVariables: `GOOGLE_CREDENTIALS` json object.
 .env: I think it's just authorizing itself by using the `riverscuomo-8cc6c....json` cred file in the top level of the project. This file is not commited to git/github but it is avaialable in the directory via dropbox.
 
 ## RUN
-`py.main.py` in the top level directory
+`py.main.py` in the top-level directory
 
 ## Deploy to Heroku
 This is probably just for me.
