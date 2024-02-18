@@ -6,6 +6,10 @@ Obviously there are many missing tokens and secrets in this repo, so I'm not sur
 ## This is where I set up the bot
 https://discord.com/developers
 
+   https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&scope=bot&permissions=PERMISSIONS_INT
+   8 = admin
+
+
 ## Installation: set up venv on each computer
 ### Get path to python
 where python

@@ -7,6 +7,7 @@ load_dotenv()
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 TOKEN = os.environ.get("TOKEN")
+GUEST_BOT_TOKEN = os.environ.get("GUEST_BOT_TOKEN")
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 GOOGLE_APPLICATION_CREDENTIALS = os.environ.get(
@@ -29,6 +30,7 @@ sessions = []
 
 short_name = "Rivers"
 long_name = "Rivers Cuomo"
+guest_bot_name = "Patrick Wilson"
 
 """ Channels """
 channels = {
@@ -110,6 +112,7 @@ rivers_id = 734902900257718355  # ????
 cuomputer_id = (
     890946668940361778  # this is the bot that posts the messages on your behalf
 )
+guest_bot_id = 1202764276121477150
 riverbot_id = cuomputer_id
 dyno_id = 155149108183695360
 another_rivers_server_id = 895330177456963645  # announcement channel?
@@ -123,6 +126,7 @@ members_to_skip = [
     carlbot,
     rivers_id,
     cuomputer_id,
+    guest_bot_id,
     another_rivers_server_id,
     dyno_id,
     server_publish_message_id,

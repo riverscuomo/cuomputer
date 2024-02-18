@@ -91,6 +91,9 @@ def fetch_openai_completion(message, system, text, model):
     # The first message is the system information
     messages = [{"role": "system", "content": system}]
 
+    if message.channel.id not in openai_sessions:
+        openai_sessions[message.channel.id] = []
+
     # Add the user's text to the openai session for this channel
     openai_sessions[message.channel.id].append(
         {"role": "user", "content": f"{message.author.nick}: {text}"})
@@ -114,7 +117,7 @@ def fetch_openai_completion(message, system, text, model):
 
         # add the response to the session. I suppose now there may be up to 7 messages in the session
         openai_sessions[message.channel.id].append(
-            {"role": "assistant", "content": text})
+            {"role": "assistant", "content": text, })
     except openai.error.OpenAIError as e:
         text = f"An error occurred: {e}"
 

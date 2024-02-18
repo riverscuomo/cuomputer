@@ -236,15 +236,20 @@ class ConversationStyle(Enum):
 
 
 def meets_conditions(message: CustomMessage, bot_style: ConversationStyle):
+
+    # mentions = message.mentions_rivers or message.mentions_cuomputer or message.mentions_guest_bot
     if bot_style == ConversationStyle.GARRULOUS:
         # Garrulous bot conditions
         return (message.user_score > config.gpt_threshold and
-                (message.is_question or message.mentions_rivers) and
+                (message.is_question or message.mentions_the_bot_who_is_responding) and
                 message.die_roll > .2) or (message.is_newbie and message.die_roll > .2)
     elif bot_style == ConversationStyle.RETICENT:
         # Reticent bot conditions
-        return (message.user_score > config.gpt_threshold and
-                ((message.is_question and message.mentions_rivers and message.die_roll > .1) or
-                 ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
-                 message.mentions_cuomputer or
-                 message.die_roll > .9)) or (message.is_newbie and message.die_roll > .5)
+        return (
+            # The user is an established user and  the
+            # or the user is a newbie and the die roll is greater than .5
+            message.user_score > config.gpt_threshold and
+            ((message.is_question and message.mentions_the_bot_who_is_responding and message.die_roll > .1) or
+             ((message.is_question or message.mentions_the_bot_who_is_responding) and message.die_roll > .95) or
+             message.mentions_the_bot_who_is_responding and
+             message.die_roll > .9)) or (message.is_newbie and message.die_roll > .5)

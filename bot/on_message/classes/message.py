@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import random
 import discord
 from bot.setup.init import tz
-from bot.on_message.bots.ai_bot import long_name, short_name
+from config import long_name, short_name, guest_bot_name
 
 
 class CustomMessage(discord.Message):
@@ -87,16 +87,20 @@ class CustomMessage(discord.Message):
             tz) - self.author.joined_at < timedelta(days=7)
         self.is_question = len(self.content) > 0 and self.content[-1] == '?'
         self.mentions_rivers = short_name in self.content.lower(
-        ) or 'rivers' in self.content.lower()
+        ) or 'rivers' in self.content.lower() or 'patrick' in self.content.lower()
         self.firestore_user = None
         self.id_of_user_being_replied_to = None
         self.user_score = 0
         self.mentions_cuomputer = None
+        self.mentions_guest_bot = None
         self.test_message = None
         self.nick = None
         self.language_code = None
         self.author_roles = None
-        self.gpt_system = f"You are {long_name}"
+        self.gpt_system = None
+        self.mentions_the_bot_who_is_responding = False
+        self.mentions_someone_else = False
+        self.is_intended_for_someone_else = True
 
     def log(self):
-        print(f"user_score={self.user_score}, die_roll={ round(self.die_roll, 3)}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}")
+        print(f"user_score={self.user_score}, die_roll={ round(self.die_roll, 3)}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}, mentions_guest_bot={self.mentions_guest_bot}")
