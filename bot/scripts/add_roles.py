@@ -149,13 +149,13 @@ async def check_firestore_and_add_roles_and_nick(member, roles):
 
         nick = firestore_user["username"]
 
-        # if member.id == config.cuomputer_id:
+        if member.id != config.cuomputer_id:
 
-        await add_og_role_from_firestore_user(member, firestore_user, roles)
+            await add_og_role_from_firestore_user(member, firestore_user, roles)
 
-        await add_roles_from_firestore_badges(member, firestore_user, roles)
+            await add_roles_from_firestore_badges(member, firestore_user, roles)
 
-        await add_roles_from_firestore_bundles(member, firestore_user, roles)
+            await add_roles_from_firestore_bundles(member, firestore_user, roles)
 
         if member.id not in [config.rivers_id, config.guest_bot_id]:
             await member.edit(nick=nick)
