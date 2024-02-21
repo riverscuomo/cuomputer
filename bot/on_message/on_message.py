@@ -60,7 +60,7 @@ def is_for_pat(message):
 
 @guest_client.event
 async def on_message(message):
-    print('PATRICK CLIENT')
+    # print('PATRICK CLIENT')
     if is_for_pat(message):
         print('is for pat')
 

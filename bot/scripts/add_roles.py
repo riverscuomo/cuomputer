@@ -149,16 +149,16 @@ async def check_firestore_and_add_roles_and_nick(member, roles):
 
         nick = firestore_user["username"]
 
-        if member.id == config.cuomputer_id:
+        # if member.id == config.cuomputer_id:
 
-            await add_og_role_from_firestore_user(member, firestore_user, roles)
+        await add_og_role_from_firestore_user(member, firestore_user, roles)
 
-            await add_roles_from_firestore_badges(member, firestore_user, roles)
+        await add_roles_from_firestore_badges(member, firestore_user, roles)
 
-            await add_roles_from_firestore_bundles(member, firestore_user, roles)
+        await add_roles_from_firestore_bundles(member, firestore_user, roles)
 
-            if member.id not in [config.rivers_id, config.guest_bot_id]:
-                await member.edit(nick=nick)
+        if member.id not in [config.rivers_id, config.guest_bot_id]:
+            await member.edit(nick=nick)
 
         # print(nick)
         # print(member)
@@ -253,12 +253,10 @@ async def add_roles_from_firestore_badges(member, firestore_user, roles):
 
 
 async def add_roles_from_firestore_bundles(member, firestore_user, roles):
-
     """
-    Assign any roles they have MRN bundles for.
+    Assign any roles they have Weezify bundles for.
     I can add Neighbor to the discord roles.
     But only if they're connected.
-
     """
     print('add_roles_from_firestore_bundles')
     # build a list of strings representing the bundle names they own
