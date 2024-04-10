@@ -182,6 +182,10 @@ bundles_map = {
     "45": "Patrick & Rivers",
     "48": "Weezma",
     "bu0QgWG8ILJw7afdqkvp": "Pacific Daydream",
+    "Xuq6DptPbiXebElzip99": "The Black Album",
+    "CZnb2XGfNUSPYA5izsg1": "OK Human",
+    "qki8QLSg7m8W6yVyD1OO": "Van Weezer",
+    "K8B5vBaQJnck9aoSAZ1b": "SZNZ",
 }
 
 # # OHHHHHHHHHHHHHH!!!!!!
