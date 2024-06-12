@@ -38,7 +38,7 @@ async def handle_coach_channel(message, channel):
     Returns:
         bool: Whether a response was generated and posted.
     """
-    if channel.id == channels["coach"] and meets_conditions(message, ConversationStyle.GARRULOUS):
+    if channel.id == channels["coach"] and meets_conditions(message, ConversationStyle.ALWAYS):
         message.gpt_system += " and you're a good listener, you're kind and caring, and can serve as an informal therapist or coach. But keep responses short and sweet, informal and friendly. "
         await post_ai_response(message)
         return True
