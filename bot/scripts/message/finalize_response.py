@@ -3,10 +3,10 @@ import sys
 sys.path.append("...")  # Adds higher directory to python modules path.
 from bot.scripts.message.message import (
     append_punctuation,
-    mention,
-    replace_names_with_username,
+    # mention,
+    # replace_names_with_username,
 )
-from textblob.blob import TextBlob
+# from textblob.blob import TextBlob
 
 
 def finalize_response(response: str, language_code: str, nick: str, replace_names=False):

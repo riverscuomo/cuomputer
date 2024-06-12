@@ -1,4 +1,4 @@
-from bot.on_message.bots.ai_bot import post_ai_response, long_name
+from bot.on_message.bots.openai_bot import post_ai_response, long_name
 from datetime import datetime
 from rich import print
 from bot.on_message.bots.response_handlers import *

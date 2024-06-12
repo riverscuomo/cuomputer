@@ -3,7 +3,7 @@ import openai
 from bot.setup.init import openai_sessions
 from bot.scripts.message.finalize_response import finalize_response
 from config import channels, long_name, short_name
-from bot.on_message.bots.mistralbot import fetch_mistral_completion
+# from bot.on_message.bots.mistralbot import fetch_mistral_completion
 import os
 from rich import print
 
@@ -70,58 +70,69 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
 
 
 def build_ai_response(message, system: str, adjective: str):
+
     text = message.content
-
-    # Get the open model from .env if the user has specified it.
-    model = os.environ.get("OPENAI_MODEL")
-
-    reply = fetch_openai_completion(message, system, text, model)
-
-    # whatever the model was, now you can make a few universal changes to the response.
+    reply = fetch_openai_completion(message, system, text)
     reply = reply.replace("\n\n", "\n")
     reply = reply.replace('"', "")
-    # reply = reply.replace("2020", "2023")
-    # reply = reply.replace("2021", "2023")
     reply = reply.strip()
     return reply
 
 
-def fetch_openai_completion(message, system, text, model):
+def fetch_openai_completion(message, system, text):
 
-    # The first message is the system information
-    messages = [{"role": "system", "content": system}]
+    # # The first message is the system information
+    # new_messages = [{"role": "system", "content": system}]
 
+    # If the channel is not in the openai_sessions dictionary, add it
     if message.channel.id not in openai_sessions:
         openai_sessions[message.channel.id] = []
 
+    content = [
+        {"type": "text", "text": 
+        f"{message.author.nick}: {text}"},]
+
+    # If there is an attachment, get the url
+    content = get_any_attachments(message, content)
+
     # Add the user's text to the openai session for this channel
     openai_sessions[message.channel.id].append(
-        {"role": "user", "content": f"{message.author.nick}: {text}"})
+        {"role": "user", "content": content})
 
-    # Limit the number of messages in the session to 6
-    if len(openai_sessions[message.channel.id]) > 6:
+    # Limit the number of messages in the session to 10
+    if len(openai_sessions[message.channel.id]) > 10:
 
-        openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-6:]
+        openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-10:]
 
-    # add all the messages from this channel to the system message
-    messages.extend(openai_sessions[message.channel.id])
+    # # add all the messages from this channel to the system message
+    # new_messages.extend(openai_sessions[message.channel.id])
 
     try:
         completion = openai.chat.completions.create(
             temperature=1.0,
-            max_tokens=100,
-            model=model,
-            messages=messages,
+            max_tokens=150,
+            model="gpt-4o",
+            messages=openai_sessions[message.channel.id],
         )
         text = completion.choices[0].message.content
 
         # add the response to the session. I suppose now there may be up to 7 messages in the session
         openai_sessions[message.channel.id].append(
             {"role": "assistant", "content": text, })
-    except openai.error.OpenAIError as e:
+    except openai.APIError as e:
         text = f"An error occurred: {e}"
-
+        print(text)
+    except Exception as e:
+        text = f"An error occurred: {e}"
+        print(text)
     return text
+
+def get_any_attachments(message, content):
+    url = message.attachments[0].url if message.attachments else None
+    if url:
+        content.append(
+            {"type": "image_url", "image_url": {"url": url}})
+    return content
 
 
 # def manage_session_context(message, channel_name, author_name, incoming_message):

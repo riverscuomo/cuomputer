@@ -3,7 +3,7 @@ from enum import Enum, auto
 from bot.on_message.classes.message import CustomMessage
 from config import channels
 import config
-from bot.on_message.bots.ai_bot import post_ai_response
+from bot.on_message.bots.openai_bot import post_ai_response
 
 
 async def handle_artists_channel(message, channel):
@@ -39,7 +39,7 @@ async def handle_coach_channel(message, channel):
         bool: Whether a response was generated and posted.
     """
     if channel.id == channels["coach"] and meets_conditions(message, ConversationStyle.GARRULOUS):
-        message.gpt_system += " and you're a a good listener, a wise seer, and can serve as an informal therapist or coach."
+        message.gpt_system += " and you're a good listener, you're kind and caring, and can serve as an informal therapist or coach. But keep responses short and sweet, informal and friendly. "
         await post_ai_response(message)
         return True
 
@@ -231,6 +231,7 @@ async def handle_zoo_channel(message, channel):
 
 
 class ConversationStyle(Enum):
+    ALWAYS = auto()
     GARRULOUS = auto()
     RETICENT = auto()
 
@@ -253,3 +254,7 @@ def meets_conditions(message: CustomMessage, bot_style: ConversationStyle):
              ((message.is_question or message.mentions_the_bot_who_is_responding) and message.die_roll > .95) or
              message.mentions_the_bot_who_is_responding and
              message.die_roll > .9)) or (message.is_newbie and message.die_roll > .5)
+    elif bot_style == ConversationStyle.ALWAYS:
+        return (message.user_score > config.gpt_threshold )
+                # and
+                # (message.is_question or message.mentions_the_bot_who_is_responding))

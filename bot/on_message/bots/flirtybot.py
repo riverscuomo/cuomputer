@@ -1,5 +1,5 @@
 import random
-from bot.on_message.bots.ai_bot import build_openai_response
+from bot.on_message.bots.openai_bot import build_openai_response
 from bot.scripts.message.finalize_response import finalize_response
 from bot.setup.init import pickup_lines, sweet_things
 import random
