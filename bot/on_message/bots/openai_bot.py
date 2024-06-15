@@ -49,7 +49,7 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
 
         system += match_tone + dont_start_your_response
 
-        # print(system)
+        print(system)
 
         reply = build_ai_response(message, system, adjective)
         # print(f"reply: {reply}")
@@ -84,8 +84,8 @@ def build_ai_response(message, system: str, adjective: str):
 
 def fetch_openai_completion(message, system, text):
 
-    # # The first message is the system information
-    # new_messages = [{"role": "system", "content": system}]
+    # The first message is the system information
+    system_message = {"role": "system", "content": system}
 
     # If the channel is not in the openai_sessions dictionary, add it
     if message.channel.id not in openai_sessions:
@@ -96,7 +96,7 @@ def fetch_openai_completion(message, system, text):
         f"{message.author.nick}: {text}"},]
 
     # If there is an attachment, get the url
-    content = get_any_attachments(message, content)
+    content = append_any_attachments(message, content)
 
     # Add the user's text to the openai session for this channel
     openai_sessions[message.channel.id].append(
@@ -110,6 +110,8 @@ def fetch_openai_completion(message, system, text):
     # # add all the messages from this channel to the system message
     # new_messages.extend(openai_sessions[message.channel.id])
 
+    openai_sessions[message.channel.id].append(system_message)
+    
     try:
         completion = openai.chat.completions.create(
             temperature=1.0,
@@ -130,7 +132,7 @@ def fetch_openai_completion(message, system, text):
         print(text)
     return text
 
-def get_any_attachments(message, content):
+def append_any_attachments(message, content):
     url = message.attachments[0].url if message.attachments else None
     if url:
         content.append(
