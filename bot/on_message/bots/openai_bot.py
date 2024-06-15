@@ -49,7 +49,7 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
 
         system += match_tone + dont_start_your_response
 
-        print(system)
+        # print(system)
 
         reply = build_ai_response(message, system, adjective)
         # print(f"reply: {reply}")
@@ -110,6 +110,11 @@ def fetch_openai_completion(message, system, text):
     # # add all the messages from this channel to the system message
     # new_messages.extend(openai_sessions[message.channel.id])
 
+    # remove all instances of the system message from the session
+    if system_message in openai_sessions[message.channel.id]:
+        openai_sessions[message.channel.id].remove(system_message)
+
+    # add the system message to the session
     openai_sessions[message.channel.id].append(system_message)
     
     try:
