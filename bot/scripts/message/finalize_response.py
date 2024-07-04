@@ -1,11 +1,11 @@
-import sys
-
-sys.path.append("...")  # Adds higher directory to python modules path.
 from bot.scripts.message.message import (
     append_punctuation,
     # mention,
     # replace_names_with_username,
 )
+import sys
+
+sys.path.append("...")  # Adds higher directory to python modules path.
 # from textblob.blob import TextBlob
 
 
@@ -33,7 +33,7 @@ def finalize_response(response: str, language_code: str, nick: str, replace_name
     # print(response)
     response = response.replace("!", ".")
 
-    if len(response) < 1:
+    if not response:
         return ""
 
     # APPEND PUNCTUATION IF NECESSARY

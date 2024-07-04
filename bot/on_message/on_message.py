@@ -255,9 +255,6 @@ async def respond(message: CustomMessage, channel):
         if await post_roles_response(message):
             return
 
-        if await post_google_knowledge_response(message):
-            return
-
         if await post_google_response(message):
             return
 

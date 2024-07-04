@@ -1,25 +1,28 @@
 
-import sys
-
-sys.path.append("...")  # Adds higher directory to python modules path.
-from typing import List
-from config import *
-from google.cloud import dialogflow_v2beta1 as dialogflow_v2beta1
-from bot.scripts.message.finalize_response import finalize_response
-from dotenv import load_dotenv
-load_dotenv()
-
-
 from bot.setup.init import (
     session_path_knowledge,
     session_client_knowledge,
 )
+from dotenv import load_dotenv
+from bot.scripts.message.finalize_response import finalize_response
+from google.cloud import dialogflow_v2beta1 as dialogflow_v2beta1
+from config import *
+from typing import List
+import sys
+
+sys.path.append("...")  # Adds higher directory to python modules path.
+load_dotenv()
 
 
+@DeprecationWarning
 async def post_google_knowledge_response(message):
-    """ From interviews? """
-    print("post_knowledge_response")
+    """ 
+    Appears to be dead?
 
+    From interviews?    
+
+    """
+    print("post_knowledge_response")
 
     response = detect_intent_knowledge(message)
     # print(response)
@@ -46,7 +49,8 @@ async def post_google_knowledge_response(message):
         reply = reply.split("\n")[0]
         reply = clean_message(reply)
 
-        response = finalize_response(reply, message.language, message.nick)
+        response = finalize_response(
+            reply, message.language_code, message.nick)
         await message.channel.send(response)
 
         return True
@@ -69,13 +73,14 @@ def clean_message(reply):
 
 
 def detect_intent_knowledge(message):
-    """Returns the result of detect intent with querying Knowledge Connector.
+    """
+    Returns the result of detect intent with querying Knowledge Connector.
 
     Args:
     project_id: The GCP project linked with the agent you are going to query.
     session_id: Id of the session, using the same `session_id` between requests
               allows continuation of the conversation.
-    message.language_code: message.Language of the queries.
+    message.language_code: message.language_code of the queries.
     knowledge_base_id: The Knowledge base's id to query against.
     texts: A list of text queries to send.
     """
@@ -87,10 +92,12 @@ def detect_intent_knowledge(message):
 
     if len(text) > 255:
         text = text[:255]
-    text_input = dialogflow_v2beta1.TextInput(text=text, language_code=message.language_code)
+    text_input = dialogflow_v2beta1.TextInput(
+        text=text, language_code=message.language_code)
     query_input = dialogflow_v2beta1.QueryInput(text=text_input)
     knowledge_base_path = dialogflow_v2beta1.KnowledgeBasesClient.knowledge_base_path(
-        os.environ.get("GOOGLE_CLOUD_PROJECT"), os.environ.get("KNOWLEDGE_BASE_ID"),
+        os.environ.get("GOOGLE_CLOUD_PROJECT"), os.environ.get(
+            "KNOWLEDGE_BASE_ID"),
     )
     query_params = dialogflow_v2beta1.QueryParameters(
         knowledge_base_names=[knowledge_base_path]
@@ -132,7 +139,6 @@ def detect_intent_knowledge(message):
 
 
 def main():
-    
 
     texts = [
         "connie chung?",

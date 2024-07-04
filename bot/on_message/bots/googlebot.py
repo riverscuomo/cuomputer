@@ -7,7 +7,6 @@ from bot.setup.init_sessions import session_client
 from rich import print
 
 
-
 """
 https://dialogflow.cloud.google.com/#/agent/{GOOGLE_CLOUD_PROJECT}/intents
 
@@ -22,7 +21,6 @@ async def post_google_response(message):
     print("post_google_response")
 
     # t = random.randint(1, 100)
-
 
     author = message.author  # User
     # author_name = author.name  # Str
@@ -64,6 +62,7 @@ async def post_google_response(message):
     reply = response.query_result.fulfillment_text
 
     response = finalize_response(reply, message.language_code, message.nick)
+
     await message.channel.send(response)
 
     # reply = author_name + ", " + reply
@@ -82,9 +81,11 @@ def detect_intent_texts(texts: List[str], channel: str):
     print(f"querying in the {channel} session.")
     # print(sessions)
 
-    session = next((x["session"] for x in sessions if x["id"] == channel), None)
+    session = next((x["session"]
+                   for x in sessions if x["id"] == channel), None)
+
     print("session", session)
-    print(sessions)
+    # print(sessions)
 
     # language_code = "en-us"
 
@@ -97,13 +98,15 @@ def detect_intent_texts(texts: List[str], channel: str):
 
         text = text[:255] if len(text) > 255 else text
 
-        text_input = dialogflow.TextInput(text=text, language_code=language_code)
+        text_input = dialogflow.TextInput(
+            text=text, language_code=language_code)
 
         query_input = dialogflow.QueryInput(text=text_input)
 
-        return session_client.detect_intent(
+        response = session_client.detect_intent(
             request={"session": session, "query_input": query_input}
         )
+        return response
 
 
 def main():

@@ -1,9 +1,9 @@
+from bot.setup.init import sheet
+from bot.scripts.message.finalize_response import finalize_response
 import sys
 from better_profanity import profanity
 
 sys.path.append("...")  # Adds higher directory to python modules path.
-from bot.scripts.message.finalize_response import finalize_response
-from bot.setup.init import sheet
 
 role_info_link = "\n\nInformation about all the roles can be found here: <https://docs.google.com/spreadsheets/d/1K51AJScqeqiGJquOdaHncgFe0UQUEvRCg0QnqeJQxHA>"
 
@@ -36,7 +36,8 @@ async def post_roles_response(
                 )
             response += role_info_link
 
-            response = finalize_response(response, message.language, message.nick)
+            response = finalize_response(
+                response, message.language_code, message.nick)
 
             message = await message.channel.send(response)
             # print(message)
@@ -51,7 +52,8 @@ async def post_roles_response(
                 f"Which role in particular were you curious about?{role_info_link}"
             )
 
-            response = finalize_response(response, message.language, message.nick)
+            response = finalize_response(
+                response, message.language_code, message.nick)
 
             message = await message.channel.send(response)
 
