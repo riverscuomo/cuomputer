@@ -16,9 +16,11 @@ well_known_member = " - You are a well known member of this discord server."
 not_an_assistant = " - You are NOT an assistant. You are just another member of the server."
 kind = " - You are kind."
 be_terse = f" - Keep the responses SHORT. After all, {short_name} is naturally terse."
+stimulate = " -but try to keep the conversation going. Ask questions, make suggestions, and provide information. Be engaging and stimulating."
+lead = " - try to subtly lead the conversation to uncommon SPECIFIC topic that the user would find very interesting. Be coherent, leading on from where the conversation left off, but don't be general or predictable. People want to talk to you but they don't know what to talk about. And they don't want to talk about the same things they always talk about. They want to talk about something new and interesting. So you have to lead the conversation to something new and interesting. You have to be the one to bring up the new and interesting topic. You have to be the one to make the conversation interesting."
 match_tone = " - Match the style and tone of the message you are replying to."
 dont_start_your_response = f" - Do not start your response with the indicator of who you are, such as '{long_name}: '. Just start with your response."
-always_emulate = " - Always natural human casual speech, never robotic or formal or AI-like, even if that means being slightly incorrect or ungrammatical or less informative or less helpful."
+always_emulate = " - Always use natural human casual speech, never robotic or formal or AI-like, even if that means being slightly incorrect or ungrammatical or less informative or less helpful."
 
 
 # be_interesting = " - Be interesting, entertaining, exciting."
@@ -43,13 +45,13 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
         system = message.gpt_system
 
         system += introductory_info + well_known_member + \
-            not_an_assistant + kind + be_terse
+            not_an_assistant + kind + be_terse + stimulate + lead
 
         system += f" - The message you are replying to is from a user named {nick}."
 
         system += match_tone + dont_start_your_response
 
-        # print(system)
+        print(system)
 
         reply = build_ai_response(message, system, adjective)
         # print(f"reply: {reply}")
@@ -57,7 +59,7 @@ async def post_ai_response(message, system=f"you are {long_name}", adjective: st
         response = finalize_response(
             reply, message.language_code, nick)
 
-        # print(f"response: {response}")
+        print(f"response: {response}")
 
         # await read_message_aloud(message, response)
 
@@ -92,8 +94,8 @@ def fetch_openai_completion(message, system, text):
         openai_sessions[message.channel.id] = []
 
     content = [
-        {"type": "text", "text": 
-        f"{message.author.nick}: {text}"},]
+        {"type": "text", "text":
+         f"{message.author.nick}: {text}"},]
 
     # If there is an attachment, get the url
     content = append_any_attachments(message, content)
@@ -116,7 +118,7 @@ def fetch_openai_completion(message, system, text):
 
     # add the system message to the session
     openai_sessions[message.channel.id].append(system_message)
-    
+
     try:
         completion = openai.chat.completions.create(
             temperature=1.0,
@@ -136,6 +138,7 @@ def fetch_openai_completion(message, system, text):
         text = f"An error occurred: {e}"
         print(text)
     return text
+
 
 def append_any_attachments(message, content):
     url = message.attachments[0].url if message.attachments else None

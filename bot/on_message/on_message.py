@@ -47,94 +47,15 @@ sys.path.append("...")  # Adds higher directory to python modules path.
 # from bot.scripts.is_newbie import is_newbie
 # from bot.on_message.bots.flirtybot import post_flirty_response
 
-def is_for_pat(message):
-    message.content = message.content.lower()
-    mentions = message.mentions
-    if mentions or "patrick" in message.content:
-        for mention in mentions:
-            if mention.id == guest_client.user.id:
-                return True
-        return
-    return
-
-
-@guest_client.event
-async def on_message(message):
-    # print('PATRICK CLIENT')
-    if is_for_pat(message):
-        print('is for pat')
-
-        await handle_message_for_guest_bot(message)
-
 
 @client.event
 async def on_message(message):
     # print('RIVERSBOT CLIENT')
-    await handle_message_for_rivers(message)
-    # print(f"message: {message.content}")
-    return
+    #     await handle_message_for_rivers(message)
+    #     # print(f"message: {message.content}")
+    #     return
 
-
-async def handle_message_for_guest_bot(message):
-    print('handle_message_for_guest_bot')
-
-    author = message.author
-    channel = message.channel
-
-    roles, role_names = await fetch_roles(message.guild)
-
-    test_message, language_code = get_test_message_and_language(
-        message.content)
-
-    author, nick, firestore_user = await check_firestore_and_add_roles_and_nick(
-        author, roles
-    )
-
-    # build a list of strings for each of the roles that the author already has
-    author_roles = [x.name for x in author.roles]
-
-    original_message = message
-
-    # from here on out, 'message' refers to the CustomMessage class
-    message = CustomMessage(original_message)
-    message.message = message
-    message.nick = nick
-    message.language_code = language_code
-    message.test_message = test_message
-    message.author_roles = author_roles
-    message.firestore_user = firestore_user
-    message.user_score = firestore_user["score"]
-    message.id_of_user_being_replied_to = await get_user_id(message)
-    message.mentions_cuomputer = get_mentions_a_user(message, cuomputer_id)
-    message.mentions_guest_bot = get_mentions_a_user(
-        message, guest_client.user.id)
-    message.mentions_someone_else = get_mentions_someone_else(
-        message, guest_client.user.id)
-    message.is_intended_for_someone_else = message.mentions_someone_else and not message.mentions_guest_bot
-    if message.is_intended_for_someone_else:
-        return
-    message.gpt_system = f"You are {guest_bot_name}"
-    message.gpt_system += """**Objective:** Generate responses as if you are Patrick Wilson, the drummer for the American rock band Weezer, engaging in a conversation on a Discord server dedicated to Weezer fans. Your responses should reflect Patrick’s known public persona, interests in music, and his sense of humor. You should also incorporate knowledge of Weezer’s discography, history, and the music industry where applicable. Keep responses friendly, informative, and in line with Patrick’s typical interaction style with fans.
-                **Instructions:**
-                1. **Engage with fans:** Respond to questions or comments about Weezer’s music, history, and upcoming projects with enthusiasm and insider knowledge. Share personal anecdotes related to band experiences when appropriate.
-                2. **Show Personality:** Exhibit a sense of humor and a laid-back attitude in your responses. Include emojis or informal language when it fits the conversational tone.
-                3. **Music Insight:** When asked about musical influences, gear, or playing techniques, provide detailed and knowledgeable responses, reflecting Patrick’s experience as a musician.
-                4. **Polite Corrections:** If correcting misinformation, do so politely and support your corrections with facts or personal experiences.
-                5. **Fan Interaction:** Express gratitude for fan support and show interest in fans' opinions and questions about the band and its music.
-                6. **Privacy and Boundaries:** Avoid sharing highly personal information or engaging in discussions that Patrick Wilson would likely consider inappropriate for a public forum.
-
-                **Notes:** Remember, the goal is to convincingly emulate Patrick Wilson’s voice in a way that engages fans authentically and positively. Maintain a balance between professional musician insights and the casual, friendly nature of Discord chats."
-                """
-    message.gpt_system += "Note, Rivers Cuomo is also a member of the server and may be interacting with you."
-    if (author.id == rivers_id):
-        message.user_score = 12
-
-    message.mentions_the_bot_who_is_responding = guest_client.user.id in message.raw_mentions or message.id_of_user_being_replied_to == guest_client.user.id
-
-    await respond(message, channel)
-
-
-async def handle_message_for_rivers(message):
+    # async def handle_message_for_rivers(message):
 
     author = message.author
     channel = message.channel
@@ -357,3 +278,82 @@ async def get_user_id(message):
 #     ]
 #     # response = finalize_response(reply, language_code, nick)
 #     await channel.send("".join(reply))
+
+
+# def is_for_pat(message):
+#     message.content = message.content.lower()
+#     mentions = message.mentions
+#     if mentions or "patrick" in message.content:
+#         for mention in mentions:
+#             if mention.id == guest_client.user.id:
+#                 return True
+#         return
+#     return
+
+
+# @guest_client.event
+# async def on_message(message):
+#     # print('PATRICK CLIENT')
+#     if is_for_pat(message):
+#         print('is for pat')
+
+#         await handle_message_for_guest_bot(message)
+
+
+# async def handle_message_for_guest_bot(message):
+#     print('handle_message_for_guest_bot')
+
+#     author = message.author
+#     channel = message.channel
+
+#     roles, role_names = await fetch_roles(message.guild)
+
+#     test_message, language_code = get_test_message_and_language(
+#         message.content)
+
+#     author, nick, firestore_user = await check_firestore_and_add_roles_and_nick(
+#         author, roles
+#     )
+
+#     # build a list of strings for each of the roles that the author already has
+#     author_roles = [x.name for x in author.roles]
+
+#     original_message = message
+
+#     # from here on out, 'message' refers to the CustomMessage class
+#     message = CustomMessage(original_message)
+#     message.message = message
+#     message.nick = nick
+#     message.language_code = language_code
+#     message.test_message = test_message
+#     message.author_roles = author_roles
+#     message.firestore_user = firestore_user
+#     message.user_score = firestore_user["score"]
+#     message.id_of_user_being_replied_to = await get_user_id(message)
+#     message.mentions_cuomputer = get_mentions_a_user(message, cuomputer_id)
+#     message.mentions_guest_bot = get_mentions_a_user(
+#         message, guest_client.user.id)
+#     message.mentions_someone_else = get_mentions_someone_else(
+#         message, guest_client.user.id)
+#     message.is_intended_for_someone_else = message.mentions_someone_else and not message.mentions_guest_bot
+#     if message.is_intended_for_someone_else:
+#         return
+#     message.gpt_system = f"You are {guest_bot_name}"
+#     message.gpt_system += """**Objective:** Generate responses as if you are Patrick Wilson, the drummer for the American rock band Weezer, engaging in a conversation on a Discord server dedicated to Weezer fans. Your responses should reflect Patrick’s known public persona, interests in music, and his sense of humor. You should also incorporate knowledge of Weezer’s discography, history, and the music industry where applicable. Keep responses friendly, informative, and in line with Patrick’s typical interaction style with fans.
+#                 **Instructions:**
+#                 1. **Engage with fans:** Respond to questions or comments about Weezer’s music, history, and upcoming projects with enthusiasm and insider knowledge. Share personal anecdotes related to band experiences when appropriate.
+#                 2. **Show Personality:** Exhibit a sense of humor and a laid-back attitude in your responses. Include emojis or informal language when it fits the conversational tone.
+#                 3. **Music Insight:** When asked about musical influences, gear, or playing techniques, provide detailed and knowledgeable responses, reflecting Patrick’s experience as a musician.
+#                 4. **Polite Corrections:** If correcting misinformation, do so politely and support your corrections with facts or personal experiences.
+#                 5. **Fan Interaction:** Express gratitude for fan support and show interest in fans' opinions and questions about the band and its music.
+#                 6. **Privacy and Boundaries:** Avoid sharing highly personal information or engaging in discussions that Patrick Wilson would likely consider inappropriate for a public forum.
+
+#                 **Notes:** Remember, the goal is to convincingly emulate Patrick Wilson’s voice in a way that engages fans authentically and positively. Maintain a balance between professional musician insights and the casual, friendly nature of Discord chats."
+#                 """
+#     message.gpt_system += "Note, Rivers Cuomo is also a member of the server and may be interacting with you."
+#     if (author.id == rivers_id):
+#         message.user_score = 12
+
+#     message.mentions_the_bot_who_is_responding = guest_client.user.id in message.raw_mentions or message.id_of_user_being_replied_to == guest_client.user.id
+
+#     await respond(message, channel)
