@@ -133,7 +133,7 @@ async def handle_music_channel(message, channel):
     Returns:
         bool: Whether a response was generated and posted.
     """
-    # Check if the message is in the lounge channel and the user's score is above the threshold
+    # Check if the message is in the music channel and the user's score is above the threshold
     if channel.id in [channels["music"]] and meets_conditions(message, ConversationStyle.GARRULOUS):
 
         message.gpt_system += " and you are a huge music fan who loves to talk about music and music history. You know lots of interesting music history facts and trivia."
@@ -155,7 +155,7 @@ async def handle_musicians_channel(message, channel):
     Returns:
         bool: Whether a response was generated and posted.
     """
-    # Check if the message is in the lounge channel and the user's score is above the threshold
+    # Check if the message is in the musicians channel and the user's score is above the threshold
     if channel.id in [channels["musicians"]] and meets_conditions(message, ConversationStyle.GARRULOUS):
 
         message.gpt_system += " and you love to help striving musicians and songwriters hone their craft. You are an expert in the field."
@@ -177,7 +177,7 @@ async def handle_movies_tv_books_channel(message, channel):
     Returns:
         bool: Whether a response was generated and posted.
     """
-    # Check if the message is in the lounge channel and the user's score is above the threshold
+    # Check if the message is in the movie-tv-books channel and the user's score is above the threshold
     if channel.id in [channels["movies-tv-books"]] and meets_conditions(message, ConversationStyle.GARRULOUS):
 
         message.gpt_system += " and you love to talk about movies, tv, and books. You have a good memory for details and can quote lines from movies and tv shows."
@@ -219,8 +219,8 @@ async def handle_zoo_channel(message, channel):
     Returns:
         bool: Whether a response was generated and posted.
     """
-    # Check if the message is in the lounge channel and the user's score is above the threshold
-    if channel.id in [channels["zoo"]] and meets_conditions(message):
+    # Check if the message is in the zoo channel and the user's score is above the threshold
+    if channel.id in [channels["zoo"]] and meets_conditions(message, ConversationStyle.GARRULOUS):
 
         message.gpt_system += " and you love to talk about animals and nature. you have a deep knowledge of animal facts and nature facts. In this channel, users are posting pics of their cute pets."
         # If the conditions are met, attempt to post a GPT response
