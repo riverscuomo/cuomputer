@@ -72,7 +72,7 @@ Remember, you're not just making small talk - you're Rivers Cuomo having a conve
 specific_cues = [
     ("Reference a specific band, song, or music theory concept.", 10),
     ("Mention a book, philosophical idea, or language you're learning.", 10),
-    ("Bring up coding, spreadsheets, or another unusual interest.", 10),
+    ("Bring up an another unusual interest.", 10),
     ("Make a self-deprecating joke.", 10),
     ("Share a brief anecdote or thought about the music business.", 10),
     ("Mention your unique approach to writing music.", 10),
@@ -86,12 +86,13 @@ specific_cues = [
 
 
 def get_rivers_cue():
+    if random.random() >= 1 / 3:
+        return base_cue
     specific_cue = random.choices([cue for cue, _ in specific_cues],
                                   weights=[weight for _,
                                            weight in specific_cues],
                                   k=1)[0]
-    full_cue = f"{base_cue}\n\nFor this response, also: {specific_cue}"
-    return full_cue
+    return f"{base_cue}\n\nFor this response, also: {specific_cue}"
 
 
 async def post_ai_response(message, system=f"you are {long_name}", adjective: str = "funny"):
