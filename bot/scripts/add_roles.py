@@ -167,7 +167,7 @@ async def check_firestore_and_add_roles_and_nick(member, roles):
         # actor_role = next(x for x in roles if x.name == "Actor")
 
     else:
-        # print("not MRN")
+        print("not MRN")
         nick = await fix_nick(member)
 
     return member, nick, firestore_user

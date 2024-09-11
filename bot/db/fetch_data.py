@@ -52,7 +52,7 @@ def fetch_users():
         },
     )
     if response.status_code != 200:
-        print("error getting bundles from 1.0")
+        print("error getting users from 1.0")
         return []
 
     json = response.json()

@@ -1,5 +1,6 @@
 import contextlib
 import openai
+from bot.on_message.bots.weezerpedia import WeezerpediaAPI
 from bot.setup.init import openai_sessions
 from bot.scripts.message.finalize_response import finalize_response
 from config import channels, long_name, short_name
@@ -154,60 +155,157 @@ def build_ai_response(message, system: str, adjective: str):
     return reply
 
 
-def fetch_openai_completion(message, system, text):
+# Method for deciding if GPT needs to query the Weezerpedia API based on the new message
 
-    # The first message is the system information
+
+# Method for deciding if GPT needs to query the Weezerpedia API based on the new message
+
+def should_query_api(new_message):
+    decision_prompt = {
+        "role": "system",
+        "content": (
+            f"The user has asked: '{new_message}'. "
+            "If the question is asking for specific or detailed information that is not in your internal knowledge, "
+            "especially related to Weezerpedia, you **must** query the Weezerpedia API to provide accurate information. "
+            "Always prefer querying the API for detailed questions about Weezer. "
+            "If a query is needed, respond with 'API NEEDED:<query term>'. Otherwise, respond 'NO API NEEDED'."
+        )
+    }
+
+    print(f"Decision prompt: {decision_prompt['content']}")
+
+    try:
+        # Ask GPT to make the decision based on the new message
+        decision_response = openai.chat.completions.create(
+            temperature=0.7,
+            max_tokens=50,
+            model="gpt-4o",
+            messages=[decision_prompt],
+        )
+
+        decision_text = decision_response.choices[0].message.content.strip()
+        print(f"API decision: {decision_text}")
+        return decision_text
+    except openai.APIError as e:
+        print(f"An error occurred during API decision: {e}")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+
+# Main completion method
+
+def fetch_openai_completion(message, system, text):
     system_message = {"role": "system", "content": system}
 
-    # If the channel is not in the openai_sessions dictionary, add it
     if message.channel.id not in openai_sessions:
         openai_sessions[message.channel.id] = []
 
-    content = [
-        {"type": "text", "text":
-         f"{message.author.nick}: {text}"},]
+    # Only pass the new message to the decision logic
+    new_message_content = text
+    decision_text = should_query_api(new_message_content)
 
-    # If there is an attachment, get the url
-    content = append_any_attachments(message, content)
+    # Handle the decision output
+    if decision_text and decision_text.startswith("API NEEDED"):
+        # Extract the clean query term from GPT's decision
+        query_term = decision_text.split("API NEEDED:")[1].strip()
 
-    # Add the user's text to the openai session for this channel
-    openai_sessions[message.channel.id].append(
-        {"role": "user", "content": content})
+        # Query the Weezerpedia API
+        wiki_api = WeezerpediaAPI()
+        wiki_content = wiki_api.get_search_result_knowledge(
+            search_query=query_term)
 
-    # Limit the number of messages in the session to 10
-    if len(openai_sessions[message.channel.id]) > 10:
+        if wiki_content:
+            # Append the API result to the conversation context
+            wiki_message = {
+                "role": "system", "content": f"API result for '{query_term}': {wiki_content}"}
+            openai_sessions[message.channel.id].append(wiki_message)
 
-        openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-10:]
+    elif decision_text == "NO API NEEDED":
+        # No API call, proceed with the regular flow
+        pass
 
-    # # add all the messages from this channel to the system message
-    # new_messages.extend(openai_sessions[message.channel.id])
-
-    # remove all instances of the system message from the session
-    if system_message in openai_sessions[message.channel.id]:
-        openai_sessions[message.channel.id].remove(system_message)
-
-    # add the system message to the session
-    openai_sessions[message.channel.id].append(system_message)
-
+    # Now generate the final response from GPT using the updated context
     try:
         completion = openai.chat.completions.create(
             temperature=1.0,
             max_tokens=150,
             model="gpt-4o",
-            messages=openai_sessions[message.channel.id],
+            messages=openai_sessions[message.channel.id] +
+            [{"role": "user", "content": text}],
         )
+
         text = completion.choices[0].message.content
 
-        # add the response to the session. I suppose now there may be up to 7 messages in the session
+        # Add GPT's response to the session
         openai_sessions[message.channel.id].append(
-            {"role": "assistant", "content": text, })
+            {"role": "assistant", "content": text}
+        )
     except openai.APIError as e:
         text = f"An error occurred: {e}"
         print(text)
     except Exception as e:
         text = f"An error occurred: {e}"
         print(text)
+
     return text
+
+
+# def fetch_openai_completion(message, system, text):
+
+#     # The first message is the system information
+#     system_message = {"role": "system", "content": system}
+
+#     # If the channel is not in the openai_sessions dictionary, add it
+#     if message.channel.id not in openai_sessions:
+#         openai_sessions[message.channel.id] = []
+
+#     content = [
+#         {"type": "text", "text":
+#          f"{message.author.nick}: {text}"},]
+
+#     # If there is an attachment, get the url
+#     content = append_any_attachments(message, content)
+
+#     # Add the user's text to the openai session for this channel
+#     openai_sessions[message.channel.id].append(
+#         {"role": "user", "content": content})
+
+#     # Limit the number of messages in the session to 10
+#     if len(openai_sessions[message.channel.id]) > 10:
+
+#         openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-10:]
+
+#     # # add all the messages from this channel to the system message
+#     # new_messages.extend(openai_sessions[message.channel.id])
+
+#     # remove all instances of the system message from the session
+#     if system_message in openai_sessions[message.channel.id]:
+#         openai_sessions[message.channel.id].remove(system_message)
+
+#     # add the system message to the session
+#     openai_sessions[message.channel.id].append(system_message)
+
+#     try:
+#         completion = openai.chat.completions.create(
+#             temperature=1.0,
+#             max_tokens=150,
+#             model="gpt-4oo",
+#             messages=openai_sessions[message.channel.id],
+#         )
+#         text = completion.choices[0].message.content
+
+#         # add the response to the session. I suppose now there may be up to 7 messages in the session
+#         openai_sessions[message.channel.id].append(
+#             {"role": "assistant", "content": text, })
+#     except openai.APIError as e:
+#         text = f"An error occurred: {e}"
+#         print(text)
+#     except Exception as e:
+#         text = f"An error occurred: {e}"
+#         print(text)
+#     return text
 
 
 def append_any_attachments(message, content):
