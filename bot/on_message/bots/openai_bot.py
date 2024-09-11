@@ -212,11 +212,39 @@ def fetch_openai_completion(message, system, incoming_message_text):
             # Append the API result to the conversation context
             wiki_message = {
                 "role": "system", "content": f"API result for '{query_term}': {wiki_content}"}
-            openai_sessions[message.channel.id].append(wiki_message)
 
     # elif decision_text == "NO API NEEDED":
     #     # No API call, proceed with the regular flow
     #     pass
+
+    content = [
+        {"type": "text", "text":
+         f"{message.author.nick}: {text}"},]
+
+    # If there is an attachment, get the url
+    content = append_any_attachments(message, content)
+
+    if wiki_message:
+        content.append(wiki_message)
+
+    # Add the user's text to the openai session for this channel
+    openai_sessions[message.channel.id].append(
+        {"role": "user", "content": content})
+
+    # Limit the number of messages in the session to 10
+    if len(openai_sessions[message.channel.id]) > 10:
+
+        openai_sessions[message.channel.id] = openai_sessions[message.channel.id][-10:]
+
+    # # add all the messages from this channel to the system message
+    # new_messages.extend(openai_sessions[message.channel.id])
+
+    # remove all instances of the system message from the session
+    if system_message in openai_sessions[message.channel.id]:
+        openai_sessions[message.channel.id].remove(system_message)
+
+    # add the system message to the session
+    openai_sessions[message.channel.id].append(system_message)
 
     # Now generate the final response from GPT using the updated context
     try:
@@ -242,3 +270,11 @@ def fetch_openai_completion(message, system, incoming_message_text):
         print(text)
 
     return text
+
+
+def append_any_attachments(message, content):
+    url = message.attachments[0].url if message.attachments else None
+    if url:
+        content.append(
+            {"type": "image_url", "image_url": {"url": url}})
+    return content
