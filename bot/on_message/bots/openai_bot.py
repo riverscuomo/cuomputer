@@ -198,6 +198,8 @@ def fetch_openai_completion(message, system, incoming_message_text):
     # Only pass the new message to the decision incoming_message_text
     decision_text = should_query_api(incoming_message_text)
 
+    wiki_message = None
+
     # Handle the decision output
     if decision_text and decision_text.startswith("API NEEDED"):
         # Extract the clean query term from GPT's decision
@@ -219,7 +221,7 @@ def fetch_openai_completion(message, system, incoming_message_text):
 
     content = [
         {"type": "text", "text":
-         f"{message.author.nick}: {text}"},]
+         f"{message.author.nick}: {incoming_message_text}"},]
 
     # If there is an attachment, get the url
     content = append_any_attachments(message, content)
