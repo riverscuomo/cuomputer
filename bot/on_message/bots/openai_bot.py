@@ -225,7 +225,7 @@ def fetch_openai_completion(message, system, incoming_message_text):
             max_tokens=500,
             model="gpt-4o",
             messages=openai_sessions[message.channel.id] +
-            [{"role": "user", "content": text}],
+            [{"role": "user", "content": incoming_message_text}],
         )
 
         text = completion.choices[0].message.content
