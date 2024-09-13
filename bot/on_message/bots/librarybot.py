@@ -4,7 +4,7 @@ from rich import print
 import re
 from bot.db.fetch_data import fetch_entries
 from bot.scripts.message.finalize_response import finalize_response  # , firestore_roles
-from bot.setup.init import common_words
+from bot.setup.bots import resource_manager
 from config import members_to_skip, always_respond
 
 
@@ -57,7 +57,7 @@ def get_wiki_response(content, pick_random=False):
 
     elements = content.split()
     elements = [to_alpha_num(x).lower() for x in elements if len(x) > 2]
-    elements = [x for x in elements if x not in common_words]
+    elements = [x for x in elements if x not in resource_manager.common_words]
     skippers = ["rivers", "cuomo"]
     elements = [x for x in elements if x not in skippers]
     print(elements)
@@ -129,7 +129,8 @@ async def post_library_query_response(nick, message, language):
             await message.channel.send(response)
             # await message.channel.send(reply)
             return True
-    except:
+    except Exception as e:
+        print(e)
         return
 
 

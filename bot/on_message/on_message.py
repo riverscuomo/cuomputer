@@ -1,8 +1,8 @@
-from bot.on_message.bots.openai_bot import post_ai_response, long_name
+
 from datetime import datetime
 from rich import print
 from bot.on_message.bots.response_handlers import *
-from config import cuomputer_id, channels, rivers_id, long_name, guest_bot_name
+from config import cuomputer_id, channels, rivers_id, long_name
 from bot.on_message.bots.qna_default import post_qna_default_response
 from bot.on_message.bots.rolesbot import post_roles_response
 from bot.on_message.bots.googlebot import post_google_response
@@ -32,8 +32,11 @@ from bot.scripts.message_is_a_skipper import message_is_a_skipper
 from rivertils.rivertils import get_test_message_and_language
 from bot.scripts.connect_to_mrn import connect_to_mrn
 from bot.db.fetch_data import fetch_roles
-from bot.setup.init import client, openai_sessions, tz, guest_client
+from bot.setup.discord_bot import client
 import config as config
+
+from bot.setup.bots import openai_sessions
+
 
 import contextlib
 import sys
@@ -50,19 +53,13 @@ sys.path.append("...")  # Adds higher directory to python modules path.
 
 @client.event
 async def on_message(message):
-    # print('RIVERSBOT CLIENT')
-    #     await handle_message_for_rivers(message)
-    #     # print(f"message: {message.content}")
-    #     return
-
-    # async def handle_message_for_rivers(message):
 
     author = message.author
     channel = message.channel
-    now = datetime.now(tz)
+    now = datetime.now(config.tz)
 
     if message_is_a_skipper(message, channel):
-        if author.id in [cuomputer_id, guest_client.user.id]:
+        if author.id in [cuomputer_id]:
             with contextlib.suppress(Exception):
                 openai_sessions[channel.name] += f" {long_name}: {message.content}"
         return
@@ -138,8 +135,8 @@ async def on_message(message):
     message.gpt_system = f"You are {long_name}"
     message.id_of_user_being_replied_to = await get_user_id(message)
     message.mentions_cuomputer = get_mentions_a_user(message, cuomputer_id)
-    message.mentions_guest_bot = get_mentions_a_user(
-        message, guest_client.user.id)
+    # message.mentions_guest_bot = get_mentions_a_user(
+    #     message, guest_client.user.id)
     message.mentions_someone_else = get_mentions_someone_else(
         message, cuomputer_id)
     message.is_intended_for_someone_else = message.mentions_someone_else and not message.mentions_cuomputer
@@ -190,7 +187,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .8) or
             message.mentions_cuomputer or
             (message.die_roll > .99)
-        ) and await post_ai_response(message):
+        ) and await openai_bot.post_ai_response(message):
             return
 
     if message.die_roll > .98:
@@ -212,7 +209,7 @@ async def respond(message: CustomMessage, channel):
             ((message.is_question or message.mentions_rivers) and message.die_roll > .95) or
             message.mentions_cuomputer or
             (message.die_roll > .999)
-        ) and await post_ai_response(message):
+        ) and await openai_bot.post_ai_response(message):
             return
 
     elif await handle_artists_channel(message, channel):
@@ -229,15 +226,15 @@ async def respond(message: CustomMessage, channel):
         return
 
     elif message.is_newbie and message.die_roll > .8:
-        await post_ai_response(message)
+        await openai_bot.post_ai_response(message)
         return
 
     elif message.mentions_the_bot_who_is_responding and message.die_roll > .6:
-        await post_ai_response(message)
+        await openai_bot.post_ai_response(message)
         return
 
     elif message.die_roll > .97:
-        await post_ai_response(message)
+        await openai_bot.post_ai_response(message)
 
 
 async def get_user_id(message):

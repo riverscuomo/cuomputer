@@ -1,13 +1,13 @@
+from coolname import generate_slug, generate
+import string
+import re
+import random
+from rivertils.lists import *
+from data.lists import *
+from bot.setup.bots import resource_manager
 import sys
 
 sys.path.append("...")  # Adds higher directory to python modules path.
-from bot.setup.init import names
-from data.lists import *
-from rivertils.lists import *
-import random
-import re
-import string
-from coolname import generate_slug, generate
 # from flask_login import current_user, login_required
 
 
@@ -44,7 +44,6 @@ def remove_substring_case_insensitive(message):
     return message
 
 
-
 def mention(nick: str, message: str):
     """
     Mention the original poster.
@@ -76,7 +75,6 @@ def mentions_rivers(message):
         return False
 
 
-
 def replace_names_with_username(message: str, nick: str):
 
     # names = get_names()
@@ -100,7 +98,7 @@ def replace_names_with_username(message: str, nick: str):
         word = word.translate(str.maketrans("", "", string.punctuation))
 
         # don't use lower becuase of names that are also common words, like charity, hope
-        if word.strip() in names:
+        if word.strip() in resource_manager.names:
 
             names_found += 1
 
@@ -116,7 +114,6 @@ def replace_names_with_username(message: str, nick: str):
         message = message.replace(name_to_replace, nick)
 
     return message
-
 
 
 def is_question(string):

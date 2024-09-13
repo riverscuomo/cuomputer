@@ -1,4 +1,4 @@
-from bot.setup.init import client
+from bot.setup.discord_bot import client
 from config import channels
 from bot.scripts.message.forbidden import name_contains_profanity
 from bot.db.fetch_data import fetch_roles

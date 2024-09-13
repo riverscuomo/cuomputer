@@ -1,4 +1,4 @@
-from bot.setup.init import sheet
+from bot.setup.services.roles_sheet import load_roles_sheet
 from bot.scripts.message.finalize_response import finalize_response
 import sys
 from better_profanity import profanity
@@ -20,7 +20,7 @@ async def post_roles_response(
         "how" in test_message or "what" in test_message or "when" in test_message
     ):
 
-        data = sheet.get_all_records()
+        sheet, data, headers = load_roles_sheet()
 
         try:
             row = next(x for x in data if x["role"].lower() in test_message)

@@ -1,18 +1,25 @@
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+import pytz
 
 load_dotenv()
 
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 TOKEN = os.environ.get("TOKEN")
-GUEST_BOT_TOKEN = os.environ.get("GUEST_BOT_TOKEN")
+
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 GOOGLE_APPLICATION_CREDENTIALS = os.environ.get(
     "GOOGLE_APPLICATION_CREDENTIALS")
 GOOGLE_DRIVE_CREDFILE = os.environ.get("GOOGLE_DRIVE_CREDFILE")
+
+FFMPEG_OPTIONS = {
+    'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+
+
+tz = pytz.timezone('America/Los_Angeles')
 
 # testing = False
 
@@ -23,15 +30,13 @@ GUILD_ID = 890210072381247548
 
 neighbor_threshold = 1 * 24 * 1  # hours (2 days)
 image_threshold = 2  # user_score
-gpt_threshold = 5  # user_score
+gpt_threshold = 4  # user_score
 num_roles_for_newbie = 1
 
 sessions = []
 
 short_name = "Rivers"
 long_name = "Rivers Cuomo"
-guest_bot_name = "Patrick Wilson"
-
 """ Channels """
 channels = {
     "artists": 913828394888736799,
@@ -112,7 +117,7 @@ rivers_id = 734902900257718355  # ????
 cuomputer_id = (
     890946668940361778  # this is the bot that posts the messages on your behalf
 )
-guest_bot_id = 1202764276121477150
+
 riverbot_id = cuomputer_id
 dyno_id = 155149108183695360
 another_rivers_server_id = 895330177456963645  # announcement channel?
@@ -126,7 +131,7 @@ members_to_skip = [
     carlbot,
     rivers_id,
     cuomputer_id,
-    guest_bot_id,
+
     another_rivers_server_id,
     dyno_id,
     server_publish_message_id,
@@ -142,11 +147,9 @@ stan_role_id = 1036300448052818051
 
 skipper_role_ids = [
     dyno_role_id,
-    # 891338172301193229,
     server_booster_role_id,
     everyone,
     cuomputer_role_id,
-    # 891296798319190056,
     mee6_role_id,
 ]
 

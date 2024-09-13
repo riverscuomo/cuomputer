@@ -2,9 +2,9 @@ from config import language_code
 from typing import List
 from google.cloud import dialogflow
 from bot.scripts.message.finalize_response import finalize_response
-from bot.setup.init import sessions
-from bot.setup.init_sessions import session_client
 from rich import print
+
+from bot.setup.services.google_services import init_dialogflow
 
 
 """
@@ -79,6 +79,10 @@ def detect_intent_texts(texts: List[str], channel: str):
     of the conversation."""
 
     print(f"querying in the {channel} session.")
+
+    # Initialize Dialogflow when needed
+    sessions, openai_sessions, session_client_knowledge, session_path_knowledge = init_dialogflow()
+
     # print(sessions)
 
     session = next((x["session"]

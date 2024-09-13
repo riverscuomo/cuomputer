@@ -1,6 +1,6 @@
 import discord
 from rich import print
-from bot.setup.init import client, GUILD_ID
+from bot.setup.discord_bot import client, GUILD_ID
 from config import TOKEN, CLIENT_ID
 
 

@@ -1,19 +1,15 @@
+from config import TOKEN, GUILD_ID, skipper_role_ids, default_color
+from bot.setup.services.roles_sheet import load_roles_sheet
+from gspreader import update_range
+from rich import print
+import discord
 import sys  # For relative imports to work in Python 3.6
+from bot.setup.discord_bot import client
 
 
 sys.path.append("...")  # Adds higher directory to python modules path.
 
 # from time import sleep
-import discord
-from rich import print
-from gspreader import update_range
-from bot.setup.init import (
-    sheet,
-    client,
-    roles_sheet_headers as headers,
-)
-
-from config import TOKEN, GUILD_ID, skipper_role_ids, default_color
 
 
 async def print_role_ids_to_sheet():
@@ -33,7 +29,7 @@ async def print_role_ids_to_sheet():
     roles = await guild.fetch_roles()
     # print(roles)
 
-    data = sheet.get_all_records()
+    sheet, data, headers = load_roles_sheet()
 
     for role in roles:
         try:
@@ -78,9 +74,10 @@ async def set_role_attributes_from_sheet():
     guild = client.get_guild(GUILD_ID)
     roles = await guild.fetch_roles()
 
-    data = sheet.get_all_records()
+    sheet, data, headers = load_roles_sheet()
 
-    xdata = [x for x in data if "id" in x and x["id"] != "" and x["position"] != ""]
+    xdata = [x for x in data if "id" in x and x["id"]
+             != "" and x["position"] != ""]
     # print(xdata)
     xdata.sort(key=lambda x: x["position"], reverse=True)
     # xdata.sort(
@@ -129,7 +126,8 @@ async def set_role_attributes_from_sheet():
             position = int(row["position"])
 
             if position is not role.position:
-                print(f"Updating {role.name} from {role.position} to {position}")
+                print(
+                    f"Updating {role.name} from {role.position} to {position}")
 
                 try:
                     await role.edit(position=position)
@@ -137,7 +135,8 @@ async def set_role_attributes_from_sheet():
                 except discord.Forbidden:
                     print("You do not have permission to do that")
                 except discord.HTTPException:
-                    print(f"Failed to move role from {role.position} to {position}")
+                    print(
+                        f"Failed to move role from {role.position} to {position}")
                 except discord.InvalidArgument:
                     print("Invalid argument")
             else:
@@ -155,7 +154,8 @@ async def print_channel_attributes_to_sheet():
     roles = await guild.fetch_roles()
     channels = await guild.fetch_channels()
     # print(channels)
-    data = sheet.get_all_records()
+
+    sheet, data, headers = load_roles_sheet()
 
     new_channel_names = [x.name for x in channels if x not in [*data]]
 
@@ -170,7 +170,6 @@ async def print_channel_attributes_to_sheet():
                 row[channel] = ""
 
     update_range(sheet, data)
-
 
     updated_header_row = headers + new_channel_names
     sheet.update("A1:ZZ1", [updated_header_row])
@@ -250,7 +249,6 @@ async def print_channel_attributes_to_sheet():
 
 @client.event
 async def on_ready():
-
     """
     For interacting with  the ROLES spreadsheet.
     https://docs.google.com/spreadsheets/d/1K51AJScqeqiGJquOdaHncgFe0UQUEvRCg0QnqeJQxHA/edit#gid=0

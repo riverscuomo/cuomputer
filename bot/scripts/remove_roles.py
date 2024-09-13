@@ -1,6 +1,6 @@
 from discord.utils import get
 import asyncio
-from bot.setup.init import client
+from bot.setup.discord_bot import client
 from config import TOKEN, CLIENT_ID
 
 

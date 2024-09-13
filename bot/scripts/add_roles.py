@@ -3,7 +3,7 @@ from bot.db.fetch_data import fetch_users
 from bot.scripts.get_firestore_user import get_firestore_user
 
 # from bot.setup.init import firestore_users, client
-from bot.setup.init import client
+from bot.setup.discord_bot import client
 from bot.scripts.message.fix_nick import fix_nick
 import config
 # from config import (
@@ -16,7 +16,8 @@ import config
 #     members_to_skip,
 # )
 
-from bot.db.fbdb import db
+# from bot.db.fbdb import db
+from bot.db.fbdb import get_firestore_db
 from firebase_admin import firestore
 from rich import print
 
@@ -157,7 +158,7 @@ async def check_firestore_and_add_roles_and_nick(member, roles):
 
             await add_roles_from_firestore_bundles(member, firestore_user, roles)
 
-        if member.id not in [config.rivers_id, config.guest_bot_id]:
+        if member.id not in [config.rivers_id]:
             await member.edit(nick=nick)
 
         # print(nick)
@@ -199,7 +200,6 @@ async def add_og_role_from_firestore_user(member, firestore_user, roles):
 
 
 async def add_roles_from_firestore_badges(member, firestore_user, roles):
-
     """
     Assign any roles they have MRN badges for.
     No way to add Neighbor here unless they have entered the
@@ -299,7 +299,6 @@ async def add_roles_from_firestore_bundles(member, firestore_user, roles):
 
 
 async def delete_bad_roles(member, bad_roles):
-
     """
     Delete bad roles. A one-time function.
     """
@@ -377,44 +376,9 @@ async def add_discord_roles_to_firestore_user():
             # print(firestore_user)
             id = firestore_user["id"]
 
+            db = get_firestore_db()
+
             if ref := db.collection("users").document(id).get():
                 ref.reference.update({"badges": firestore.ArrayUnion(roles)})
             else:
                 print(f"No firestore user record with firestore id {id}")
-
-
-# @client.event
-# async def on_ready():
-
-#     print(f"Logged into discord add_roles as {client.user.id}")
-#     # print(client.intents)
-
-#     await add_discord_roles_to_firestore_user()
-#     exit()
-
-#     guild = client.get_guild(config.GUILD_ID)
-#     roles = await guild.fetch_roles()
-#     bad_roles = [
-#         x for x in roles if x.name in ["Supporter", "Champion", "100+", "400+", "1000+"]
-#     ]
-
-#     members = guild.members
-
-#     for member in members:
-
-#         # If they don't have more than 5 roles, skip them.
-#         if len(member.roles) > 5:
-
-#             print(member.roles)
-
-#             await delete_bad_roles(member, bad_roles)
-
-
-# def main():
-#     asyncio.run(add_discord_roles_to_firestore_user())
-
-
-# if __name__ == "__main__":
-
-#     # main()
-#     client.run(TOKEN)

@@ -1,8 +1,7 @@
 from datetime import datetime, timedelta
 import random
 import discord
-from bot.setup.init import tz
-from config import long_name, short_name, guest_bot_name
+from config import short_name, tz
 
 
 class CustomMessage(discord.Message):

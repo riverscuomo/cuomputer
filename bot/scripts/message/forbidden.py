@@ -1,6 +1,6 @@
 import discord
 from bot.on_message.classes.message import CustomMessage
-from bot.setup.init import demoji
+from bot.setup.services.demoji_setup import demoji
 from config import channels, rivers_id, cuomputer_id
 from bot.scripts.message.sentiment import get_polarity
 from data.lists import strings_to_delete  # , forbidden_words

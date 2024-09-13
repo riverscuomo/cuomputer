@@ -1,13 +1,15 @@
-from bot.setup.init import client
-import sys
-from rich import print
-
-sys.path.append("...")  # Adds higher directory to python modules path.
+from config import GUILD_ID, TOKEN
 from bot.on_ready.roles_sheet import (
     print_role_ids_to_sheet,
     # print_channel_attributes_to_sheet,
     # set_role_attributes_from_sheet,
 )
+from bot.setup.discord_bot import client
+import sys
+from rich import print
+
+sys.path.append("...")  # Adds higher directory to python modules path.
+
 
 async def get_last_thousand_messages(guild, thread_id):
     print(f'get_last_thousand_messages {thread_id}')
@@ -21,12 +23,11 @@ async def get_last_thousand_messages(guild, thread_id):
 
     return messages
 
+
 async def fetch_and_print_messages(guild, thread_id):
-    messages = await get_last_thousand_messages( guild, thread_id)
+    messages = await get_last_thousand_messages(guild, thread_id)
     for m in messages:
         print(m)
-
-
 
 
 @client.event
@@ -40,7 +41,6 @@ async def on_ready():
     # # Run the fetch_and_print_messages function
     # await fetch_and_print_messages(guild, '1098584328335802398')
 
-
     channels = await guild.fetch_channels()
     print(channels)
 
@@ -51,9 +51,6 @@ async def on_ready():
 
     # print("Bot logged in as {0.user} with id {0.user.id}".format(client))
     print("Bot logged in")
-
-
-from config import GUILD_ID, TOKEN
 
 
 # import asyncio

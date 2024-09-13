@@ -1,10 +1,7 @@
 import re
 
-from bot.setup.init import demoji
-
 
 async def fix_nick(member):
-
     """
     for non-firestore-users, this fixes up their discord nick
     """

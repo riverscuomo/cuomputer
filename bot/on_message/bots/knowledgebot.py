@@ -1,8 +1,5 @@
 
-from bot.setup.init import (
-    session_path_knowledge,
-    session_client_knowledge,
-)
+from bot.setup.services.google_services import init_dialogflow
 from dotenv import load_dotenv
 from bot.scripts.message.finalize_response import finalize_response
 from google.cloud import dialogflow_v2beta1 as dialogflow_v2beta1
@@ -87,6 +84,7 @@ def detect_intent_knowledge(message):
 
     text = message.content
     print("detect_intent_knowledge")
+    sessions, openai_sessions, session_client_knowledge, session_path_knowledge = init_dialogflow()
     print(session_client_knowledge)
     # print(text)
 

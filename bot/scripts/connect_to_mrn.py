@@ -1,4 +1,5 @@
-from bot.db.fbdb import db
+# from bot.db.fbdb import db
+from bot.db.fbdb import get_firestore_db
 import sys
 
 sys.path.append("...")  # Adds higher directory to python modules path.
@@ -21,6 +22,8 @@ async def connect_to_mrn(message, member, member_name):
     # If username ends with a dot, the dot is removed
     if username[-1] == ".":
         username = username[:-1]
+
+    db = get_firestore_db()
 
     # Query the database to get the users having the above username
     users = db.collection("users").where("username", "==", username).get()

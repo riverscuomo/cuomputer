@@ -1,24 +1,23 @@
+from firebase_admin import firestore
+from bot.db.fbdb import get_firestore_db
+from bot.setup.services.roles_sheet import load_roles_sheet
+from config import members_to_skip, service_message, GUILD_ID
+from rich import print
+from bot.setup.discord_bot import (
+    client,
+
+)
+from bot.scripts.get_firestore_user import get_firestore_user
+from bot.db.fetch_data import fetch_users
 import sys
+from bot.setup.services.google_services import get_google_drive_service
 
 from gspreader import get_sheet
 
 sys.path.append("...")  # Adds higher directory to python modules path.
 
-from bot.db.fetch_data import fetch_users
-from bot.scripts.get_firestore_user import get_firestore_user
 
-from bot.setup.init import (
-    client,
-    drive_service,
-    roles_sheet_data,
-)
-
-from rich import print
-from config import members_to_skip, service_message, GUILD_ID
-
-
-from bot.db.fbdb import db
-from firebase_admin import firestore
+# from bot.db.fbdb import db
 
 
 @client.event
@@ -47,7 +46,8 @@ async def on_member_update(before, after):
 
     # If you've just taken away one of their roles
     elif len(before.roles) > len(after.roles):
-        removed_role = [x.name for x in before.roles if x not in after.roles][0]
+        removed_role = [
+            x.name for x in before.roles if x not in after.roles][0]
         print(f"removed_role: {removed_role}")
 
     else:
@@ -55,6 +55,8 @@ async def on_member_update(before, after):
 
     firestore_users = fetch_users()
     if firestore_user := get_firestore_user(before.id, firestore_users):
+
+        roles_sheet_data = load_roles_sheet()
 
         # Get the matching role row from the roles sheet data
         role_object = next(
@@ -67,8 +69,11 @@ async def on_member_update(before, after):
             None,
         )
 
+        db = get_firestore_db()
+
         # gET actual firestore record
-        user = db.collection("users").where("discordId", "==", str(before.id)).get()[0]
+        user = db.collection("users").where(
+            "discordId", "==", str(before.id)).get()[0]
 
         email = firestore_user["email"]
         print("email", email)
@@ -77,11 +82,13 @@ async def on_member_update(before, after):
 
             message = f"You've been given the {added_role} role on my server."
 
-            user.reference.update({"badges": firestore.ArrayUnion([added_role])})
+            user.reference.update(
+                {"badges": firestore.ArrayUnion([added_role])})
 
             if _is_valid_email(email):
 
-                response = add_drive_access_to_role(added_role, email, role_object)
+                response = add_drive_access_to_role(
+                    added_role, email, role_object)
 
                 if response != "success":
                     message += f"\n\n{response}"
@@ -111,7 +118,8 @@ async def on_member_update(before, after):
 
             # message = f"You've been removed from the {removed_role} role on my server."
 
-            user.reference.update({"badges": firestore.ArrayRemove([removed_role])})
+            user.reference.update(
+                {"badges": firestore.ArrayRemove([removed_role])})
 
             if _is_valid_email(email):
 
@@ -121,8 +129,6 @@ async def on_member_update(before, after):
                 #     additional_message = remove_android_role(email, "Android")
                 # if removed_role == "iPhone":
                 #     additional_message = remove_android_role(email, "iPhone")
-
-
 
     else:
         print(f"There is no firestore_user for {before.name}")
@@ -182,6 +188,8 @@ def remove_drive_access_for_role(added_role, email, role_object=None):
 
         print(f"Removing {role} folder for {email}")
 
+        drive_service = get_google_drive_service()
+
         print(f"Getting existing permissions on {role} folder ")
         all_permissions = (
             drive_service.permissions()
@@ -227,6 +235,8 @@ def add_drive_access_to_role(added_role, email, role_object=None):
             google_drive_role = role_object["google_drive_role"]
 
         print(f"Sharing {role} folder {google_drive_role} with {email}")
+
+        drive_service = get_google_drive_service()
 
         # https://developers.google.com/drive/api/v3/reference/permissions/create
         try:
