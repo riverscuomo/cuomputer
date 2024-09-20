@@ -28,7 +28,18 @@ where python
 
 pip install -r requirements.txt
 
+### Set up path-related environment variables in the root directory terminal
+
+(this one is necessary to run the tests from the root directory with pytest)
+
+```bash
+PYTHONPATH=%cd%
+
+```bash
+
 ### Set environment variables in both a .env file and in HEROKU
+
+
 
 #### Discord
 
