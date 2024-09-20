@@ -38,6 +38,8 @@ async def on_ready():
 
     guild = client.get_guild(GUILD_ID)
 
+    await client.tree.sync()  # Sync all slash commands
+
     # # Run the fetch_and_print_messages function
     # await fetch_and_print_messages(guild, '1098584328335802398')
 

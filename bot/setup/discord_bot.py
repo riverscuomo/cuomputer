@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 
+
 # Set up the Discord bot's intents and permissions
 intents = discord.Intents.all()
 

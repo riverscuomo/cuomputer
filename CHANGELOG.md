@@ -8,6 +8,7 @@
 ## v0.1.2 (2023-07-19)
 updated openai and discord2
 switched from arthur to default replicate model
+
 ## v0.1.1 
 
 (2023-05-12)

@@ -1,4 +1,4 @@
-# from bot.setup.bots import resource_manager
+# from bot.setup.resource_manager import resource_manager
 # from better_profanity import profanity
 # import requests
 # import random

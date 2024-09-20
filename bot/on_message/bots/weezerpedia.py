@@ -1,8 +1,9 @@
-
 import logging
 import re
 import requests
 from rich import print
+
+from bot.scripts.wiki_to_markdown import wiki_to_markdown
 
 logging.basicConfig(level=logging.INFO)
 
@@ -63,7 +64,6 @@ class WeezerpediaAPI:
             print("Error fetching page content:",
                   response_full.status_code, response_full.text)
             return None
-    import re
 
     def preprocess_query(self, query):
         # Remove common stop words and punctuation
@@ -125,14 +125,20 @@ class WeezerpediaAPI:
 
         # Fetch full content
         full_content = self.fetch_page_content(title)
+        print(full_content)
 
-        # Prepare the knowledge context text
-        knowledge_text = f"Background information about '{title}':\n\n"
-        knowledge_text += f"{full_content[:1000]}"
+        md_content = wiki_to_markdown(full_content)
 
-        logging.info(f"Knowledge text: {knowledge_text}")
+        if len(md_content) > 2000:
+            md_content = md_content[:2000]
 
-        return knowledge_text
+        # # Prepare the knowledge context text
+        # knowledge_text = f"Background information about '{title}':\n\n"
+        # # knowledge_text += f"{md_content[:1000]}"
+
+        # logging.info(f"Knowledge text: {knowledge_text}")
+
+        return md_content
 
     def has_search_results(self, search_results):
         return (
@@ -141,21 +147,3 @@ class WeezerpediaAPI:
             'search' in search_results['query'] and
             search_results['query']['search']
         )
-
-
-def test():
-    # Create an instance of the WeezerpediaAPI class
-    # wiki_api = WeezerpediaAPI()
-
-    # # Call the methods to fetch page information and content
-    # wiki_api.fetch_page_info()
-    # wiki_api.fetch_page_content()
-
-    api = WeezerpediaAPI()
-    knowledge = api.get_search_result_knowledge(
-        "Ecce Homo in the Weezer context")
-    print(knowledge)
-
-
-if __name__ == "__main__":
-    test()

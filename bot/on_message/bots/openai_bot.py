@@ -127,11 +127,11 @@ class OpenAIBot:
         # Add the new system message at the beginning
         new_content = [system_message] + messages_in_this_channel
 
-        # Step 2: Add any context from Weezerpedia API if needed
-        if weezerpedia_context := self.get_weezerpedia_context(
-            incoming_message_text, messages_in_this_channel
-        ):
-            new_content.append(weezerpedia_context)
+        # # Step 2: Add any context from Weezerpedia API if needed
+        # if weezerpedia_context := self.get_weezerpedia_context(
+        #     incoming_message_text, messages_in_this_channel
+        # ):
+        #     new_content.append(weezerpedia_context)
 
         # Step 3: Append the user's message to the session
         new_content.append(

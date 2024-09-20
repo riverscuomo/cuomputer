@@ -4,7 +4,7 @@ import re
 import random
 from rivertils.lists import *
 from data.lists import *
-from bot.setup.bots import resource_manager
+from bot.setup.resource_manager import resource_manager
 import sys
 
 sys.path.append("...")  # Adds higher directory to python modules path.

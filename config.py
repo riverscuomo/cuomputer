@@ -125,13 +125,11 @@ server_publish_message_id = 903799822350422138
 fm_bot = 356268235697553409
 carlbot = 235148962103951360
 
-# skip all the message processing for simple bots that are just removing posts
-# or slash commands posts
+# skip all the message processing for simple bots that are just removing posts or slash commands posts
 members_to_skip = [
     carlbot,
     rivers_id,
     cuomputer_id,
-
     another_rivers_server_id,
     dyno_id,
     server_publish_message_id,
