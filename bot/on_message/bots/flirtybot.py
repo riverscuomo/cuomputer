@@ -34,6 +34,8 @@ def get_flirty_response(message: str):
         return random.choice(resource_manager.pickup_lines)
     elif t == 2:
         return random.choice(resource_manager.sweet_things)
+    elif t == 3:
+        return random.choice(resource_manager.flirty_florida)
     else:
         return openai_bot.build_openai_response(message, "flirtatious")
 

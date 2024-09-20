@@ -30,6 +30,7 @@ class ResourceManager:
         boy_names = get_lines_from_file("boy_names")
         girl_names = get_lines_from_file("girl_names")
         self.names = [x.title() for x in boy_names + girl_names]
+        self.flirty_florida = get_lines_from_file("flirty_florida")
 
 
 # Instantiate ResourceManager
