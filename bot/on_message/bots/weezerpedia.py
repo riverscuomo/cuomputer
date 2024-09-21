@@ -26,7 +26,7 @@ class WeezerpediaAPI:
             "format": "json",
             "list": "search",
             "srsearch": search_query,
-            "srwhat": "text",  # Could also try "title" or "nearmatch"
+            "srwhat": "nearmatch",  # Could also try "title" or "nearmatch"
             "srlimit": 1,
             "srprop": "snippet|titlesnippet|redirecttitle"
         }
@@ -47,7 +47,8 @@ class WeezerpediaAPI:
             "format": "json",
             "titles": title,
             "prop": "revisions",
-            "rvprop": "content"
+            "rvprop": "content",
+            "redirects": ""
         }
         response_full = requests.get(self.base_url, params=params_full)
         if response_full.status_code == 200:
