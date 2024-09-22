@@ -10,7 +10,7 @@ def test():
     # wiki_api.fetch_page_content()
 
     api = WeezerpediaAPI()
-    knowledge = api.get_search_result_knowledge(
+    knowledge, img = api.get_search_result_knowledge(
         "bokkus")
     print(knowledge)
 

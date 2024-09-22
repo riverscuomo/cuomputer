@@ -2,6 +2,10 @@ import logging
 import re
 import requests
 from rich import print
+from PIL import Image, ImageDraw, ImageFont
+from discord import File
+from bot.on_message.bots.infobox_generator import InfoboxGenerator
+import io
 
 from bot.scripts.wiki_to_markdown import wiki_to_markdown
 
@@ -65,6 +69,33 @@ class WeezerpediaAPI:
             print("Error fetching page content:",
                   response_full.status_code, response_full.text)
             return None
+        
+    # Gets the true URL of a wiki file (e.g. File:Weezer => Weezer.png). Do not put 'File:' in the file_name.
+    def get_file_url(self, file_name):
+        if file_name is None or len(file_name) <= 3:
+            return None
+
+        # Fetch cover image
+        params_search = {
+            "action": "query",
+            "format": "json",
+            "titles": "File:" + file_name,
+            "iiprop": "url",
+            "prop": "imageinfo"
+        }
+        
+        response_search = requests.get(self.base_url, params=params_search)
+
+        if response_search.status_code == 200:
+            search_results = response_search.json()
+
+            if 'pages' in search_results['query']:
+                page = search_results['query']['pages']
+
+                if '-1' not in page:
+                    return page[list(page.keys())[0]]['imageinfo'][0]['url']
+        
+        return None
 
     def preprocess_query(self, query):
         # Remove common stop words and punctuation
@@ -117,7 +148,7 @@ class WeezerpediaAPI:
         if not self.has_search_results(search_results):
             logging.info(
                 f"No detailed information found for '{search_query}'.")
-            return None
+            return None, None
 
         # Proceed with fetching the first result
         first_result = search_results['query']['search'][0]
@@ -127,6 +158,18 @@ class WeezerpediaAPI:
         # Fetch full content
         full_content = self.fetch_page_content(title)
         print(full_content)
+
+        # Convert [[Link]] to just the text if no pipe exists, otherwise keep the link format
+        # Example: [[Pat Wilson]] becomes Pat Wilson, but [[Blue Album|the Blue Album]] becomes the Blue Album
+        full_content = re.sub(r"\[\[(.+?)(?:\|(.+?))?\]\]",
+        lambda m: m.group(2) if m.group(2) else m.group(1), full_content)
+
+        # Generate infobox
+        img_file = None
+        infobox_match = re.search('{{Infobox', full_content)
+        if infobox_match:
+            infobox = InfoboxGenerator(full_content, self)
+            img_file = infobox.generate_infobox()
 
         md_content = wiki_to_markdown(full_content)
 
@@ -139,7 +182,7 @@ class WeezerpediaAPI:
 
         # logging.info(f"Knowledge text: {knowledge_text}")
 
-        return md_content
+        return md_content, img_file
 
     def has_search_results(self, search_results):
         return (

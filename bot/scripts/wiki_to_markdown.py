@@ -8,6 +8,9 @@ def wiki_to_markdown(text):
     # Remove Wikipedia-style image placeholders entirely
     text = re.sub(r"\[\[Image:.+?\]\]", "", text)
 
+    # Remove wiki formatting for templates (e.g., {{Infobox}})
+    text = re.sub(r"\{\{.*?\}\}", "", text, flags=re.DOTALL)
+
     # Convert '''bold''' to **bold**, ensuring no extra spaces between words
     text = re.sub(r"'''(\S.*?\S)'''", r"**\1**", text)
 
@@ -17,11 +20,6 @@ def wiki_to_markdown(text):
     # Convert ==Header== to # Header for Markdown headers (support multiple levels)
     text = re.sub(r"={2,}(.*?)={2,}", lambda m: "#" * (7 -
                   m.group(0).count("=")) + " " + m.group(1).strip(), text)
-
-    # Convert [[Link]] to just the text if no pipe exists, otherwise keep the link format
-    # Example: [[Pat Wilson]] becomes Pat Wilson, but [[Blue Album|the Blue Album]] becomes the Blue Album
-    text = re.sub(r"\[\[(.+?)(?:\|(.+?))?\]\]",
-                  lambda m: m.group(2) if m.group(2) else m.group(1), text)
 
     # Convert [https://example.com description] to [description](https://example.com) for Markdown links
     text = re.sub(r"\[(https?://[^\s]+)\s(.+?)\]", r"[\2](\1)", text)
