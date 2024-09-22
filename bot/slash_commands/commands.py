@@ -10,8 +10,12 @@ print('commands.py')
 @client.tree.command(name="weezerpedia", description="Query Weezerpedia API")
 async def weezerpedia(interaction: discord.Interaction, search_term: str):
     # Your function to query the Weezerpedia API
-    result = weezerpedia_api.get_search_result_knowledge(search_term)
-    await interaction.response.send_message(result)
+    await interaction.response.defer()
+    result, img_file = weezerpedia_api.get_search_result_knowledge(search_term)
+    if result is None:
+        await interaction.followup.send("No results found.")
+    else:
+        await interaction.followup.send(result, files=[] if img_file is None else [img_file], suppress_embeds=True)
 
 
 @client.tree.command(name="riverpedia", description="Query Riverpedia API")
