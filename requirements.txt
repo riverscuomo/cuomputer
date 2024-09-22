@@ -135,6 +135,3 @@ wrapt==1.13.3
 WTForms==3.0.1
 yarl==1.6.3
 youtube-dl==2021.12.17
-
-setuptools>=70.0
-wheel>=0.44.0
