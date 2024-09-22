@@ -119,7 +119,7 @@ spacy==2.3.8
 spacy-legacy==3.0.10
 spacy-loggers==1.0.3
 textblob==0.17.1
-thinc==7.4.5
+# thinc==7.4.5
 tomli==1.2.1
 tomlkit==0.5.11
 tqdm==4.62.3
