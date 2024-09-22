@@ -159,11 +159,6 @@ class WeezerpediaAPI:
         full_content = self.fetch_page_content(title)
         print(full_content)
 
-        # Convert [[Link]] to just the text if no pipe exists, otherwise keep the link format
-        # Example: [[Pat Wilson]] becomes Pat Wilson, but [[Blue Album|the Blue Album]] becomes the Blue Album
-        full_content = re.sub(r"\[\[(.+?)(?:\|(.+?))?\]\]",
-        lambda m: m.group(2) if m.group(2) else m.group(1), full_content)
-
         # Generate infobox
         img_file = None
         infobox_match = re.search('{{Infobox', full_content)
