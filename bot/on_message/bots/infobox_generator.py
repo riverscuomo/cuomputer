@@ -38,6 +38,11 @@ class InfoboxGenerator:
     }
 
     def __init__(self, full_content, weezerpedia_api):
+        # Convert [[Link]] to just the text if no pipe exists, otherwise keep the link format
+        # Example: [[Pat Wilson]] becomes Pat Wilson, but [[Blue Album|the Blue Album]] becomes the Blue Album
+        full_content = re.sub(r"\[\[(.+?)(?:\|(.+?))?\]\]",
+                              lambda m: m.group(2) if m.group(2) else m.group(1), full_content)
+
         infobox_data, infobox_type = self.extract_template_data(
             full_content, 'Infobox')
 
