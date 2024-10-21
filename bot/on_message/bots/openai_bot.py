@@ -57,21 +57,20 @@ class OpenAIBot:
         return f"{self.base_cue}\n\nFor this response, also: {specific_cue}"
 
     async def post_ai_response(self, message, adjective="funny"):
-        nick = message.nick
-        system = message.gpt_system
+        async with message.channel.typing():
+            nick = message.author.display_name  # Use `author` instead of `nick`
+            system = message.gpt_system
 
-        cue = self.get_rivers_cue()
-        system += cue
-        system += f" - The message you are replying to is from a user named {nick}."
-        system += self.match_tone + self.dont_start_your_response
+            cue = self.get_rivers_cue()
+            system += cue
+            system += f" - The message you are replying to is from a user named {nick}."
+            system += self.match_tone + self.dont_start_your_response
 
-        reply = self.build_ai_response(message, system, adjective)
+            reply = self.build_ai_response(message, system, adjective)
 
-        # response = self.finalize_response(reply, message.language_code, nick)
-
-        with contextlib.suppress(Exception):
-            print('sending response: ', reply)
-            await message.channel.send(reply)
+            with contextlib.suppress(Exception):
+                print('sending response: ', reply)
+                await message.channel.send(reply)
 
         return True
 
