@@ -77,6 +77,7 @@ class OpenAIBot:
     def build_ai_response(self, message, system: str, adjective: str):
         text = message.content
         reply = self.fetch_openai_completion(message, system, text)
+        reply = reply.replace("!", ".")
         return reply.strip()
 
     def should_query_weezerpedia_api(self, last_three_messages):
