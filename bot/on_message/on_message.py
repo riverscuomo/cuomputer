@@ -44,9 +44,6 @@ async def on_message(message):
     channel = message.channel
     now = datetime.now(config.tz)
 
-    if author == client.user:
-        return
-
     if message.attachments:
         return
 
