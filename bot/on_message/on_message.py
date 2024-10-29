@@ -44,6 +44,12 @@ async def on_message(message):
     channel = message.channel
     now = datetime.now(config.tz)
 
+    if author == client.user:
+        return
+
+    if message.attachments:
+        return
+
     if message_is_a_skipper(message, channel):
         if author.id in [cuomputer_id]:
             with contextlib.suppress(Exception):
