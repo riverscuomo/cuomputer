@@ -1,5 +1,5 @@
 import config as config
-from bot.on_message.bots.googlebot import post_google_response
+# from bot.on_message.bots.googlebot import post_google_response
 from bot.on_message.bots.qna_default import post_qna_default_response
 from bot.on_message.bots.response_handlers import CustomMessage, channels, config, handle_artists_channel, handle_coach_channel, handle_dan_channel, handle_geezerville_channel, handle_language_channels, handle_lounge_channel, handle_movies_tv_books_channel, handle_music_channel, handle_musicians_channel, handle_sarah_channel, handle_zoo_channel, openai_bot
 from bot.on_message.bots.rolesbot import post_roles_response
@@ -20,8 +20,8 @@ async def respond(message: CustomMessage, channel):
         if await post_roles_response(message):
             return
 
-        if await post_google_response(message):
-            return
+        # if await post_google_response(message):
+        #     return
 
         await post_qna_default_response(message)
 

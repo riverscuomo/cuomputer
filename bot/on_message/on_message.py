@@ -24,7 +24,7 @@ from bot.scripts.is_message_from_another_guild import is_message_from_other_guil
 from bot.scripts.is_request_for_server_time import is_request_for_server_time
 from bot.scripts.is_request_for_replicate import is_request_for_image
 from bot.scripts.message_is_a_skipper import message_is_a_skipper
-from rivertils.rivertils import get_test_message_and_language
+# from rivertils.rivertils import get_test_message_and_language
 from bot.scripts.connect_to_mrn import connect_to_mrn
 from bot.db.fetch_data import fetch_roles
 from bot.setup.discord_bot import client
@@ -32,6 +32,9 @@ import config as config
 from bot.setup.bots import openai_sessions
 import contextlib
 import sys
+import openai
+import requests
+from io import BytesIO
 from bot.on_message.classes.message import CustomMessage
 
 sys.path.append("...")  # Adds higher directory to python modules path.
@@ -52,6 +55,33 @@ async def on_message(message):
 
     if await is_message_from_other_guild(message):
         return
+
+    # if message.attachments:
+    #     for attachment in message.attachments:
+    #         if any(attachment.filename.lower().endswith(ext) for ext in ['.jpg', '.jpeg', '.png']):
+    #             image_data = requests.get(attachment.url).content
+
+    #             # Use OpenAI API to analyze the image
+    #             try:
+    #                 # Assuming GPT-4 with vision capabilities
+    #                 response = openai.ChatCompletion.create(
+    #                     model="gpt-4-turbo",
+    #                     messages=[
+    #                         {"role": "user", "content": "What is in this image?"},
+    #                     ],
+    #                     files=[("image", ("image.png", BytesIO(image_data), "image/png"))]
+    #                 )
+
+    #                 # Extract response text
+    #                 analysis_result = response['choices'][0]['message']['content']
+                    
+    #                 # Send the analysis result as a reply
+    #                 await message.channel.send(f"Image Analysis: {analysis_result}")
+
+    #             except Exception as e:
+    #                 await message.channel.send("Sorry, I couldn't analyze the image.")
+    #                 print(e)  # Log the error for debugging
+    #             return
 
     g = message.guild.name  # if message.guild.id != GUILD_ID else ""
     print(f"{g}\"{channel.name}\"<{author.name} {author.id}>:'{message.content}'")
@@ -75,8 +105,8 @@ async def on_message(message):
     # Add time-based roles so they can access more channels I MOVED THIS UP
     await add_time_based_roles(author, roles)
 
-    test_message, language_code = get_test_message_and_language(
-        message.content)
+    # test_message, language_code = get_test_message_and_language(
+    #     message.content)
 
     if channel.id == channels["connect"] and len(message.content) < 30:
         await connect_to_mrn(message, author, author.name)
