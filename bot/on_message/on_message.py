@@ -1,9 +1,10 @@
 
 from datetime import datetime
 from rich import print
+from bot.on_message.bots import image_handler
 from bot.on_message.bots.response_handlers import *
 from bot.on_message.respond import respond
-from config import cuomputer_id, channels, rivers_id, long_name
+from config import OPENAI_API_KEY, cuomputer_id, channels, rivers_id, long_name
 # from bot.on_message.bots.knowledgebot import post_google_knowledge_response
 # from bot.on_message.bots.riversbot import post_riverbot_response
 from bot.scripts.add_roles import (
@@ -51,6 +52,12 @@ async def on_message(message):
         return
 
     if await is_message_from_other_guild(message):
+        return
+
+    if message.attachments:
+        for attachment in message.attachments:
+            if attachment.content_type.startswith('image/'):
+                await image_handler.process_image_and_respond(attachment, message.channel)
         return
 
     g = message.guild.name  # if message.guild.id != GUILD_ID else ""
