@@ -205,5 +205,6 @@ class OpenAIBot:
     def append_any_attachments(self, message, content):
         url = message.attachments[0].url if message.attachments else None
         if url:
-            content.append({"type": "image_url", "image_url": {"url": url}})
+            content.append({"role": "user", "content": [
+                        {"type": "image_url", "image_url": {"url": url}}]}),
         return content
