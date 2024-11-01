@@ -24,7 +24,7 @@ from bot.scripts.is_message_from_another_guild import is_message_from_other_guil
 from bot.scripts.is_request_for_server_time import is_request_for_server_time
 from bot.scripts.is_request_for_replicate import is_request_for_image
 from bot.scripts.message_is_a_skipper import message_is_a_skipper
-# from rivertils.rivertils import get_test_message_and_language
+from rivertils.rivertils import get_test_message_and_language
 from bot.scripts.connect_to_mrn import connect_to_mrn
 from bot.db.fetch_data import fetch_roles
 from bot.setup.discord_bot import client
@@ -76,18 +76,20 @@ async def on_message(message):
         return
 
     # Add time-based roles so they can access more channels I MOVED THIS UP
-    await add_time_based_roles(author, roles)
+    # await add_time_based_roles(author, roles)
 
-    # test_message, language_code = get_test_message_and_language(
-    #     message.content)
+    test_message, language_code = get_test_message_and_language(
+        message.content)
 
     if channel.id == channels["connect"] and len(message.content) < 30:
         await connect_to_mrn(message, author, author.name)
         return
 
-    author, nick, firestore_user = await check_firestore_and_add_roles_and_nick(
-        author, roles
-    )
+    # author, nick, firestore_user = await check_firestore_and_add_roles_and_nick(
+    #     author, roles
+    # )
+    nick = "hh1988"
+    firestore_user = {"banned": False, "score": 1}
 
     if (author.id == rivers_id):
         firestore_user["score"] = 12

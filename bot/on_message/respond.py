@@ -1,5 +1,5 @@
 import config as config
-# from bot.on_message.bots.googlebot import post_google_response
+from bot.on_message.bots.googlebot import post_google_response
 from bot.on_message.bots.qna_default import post_qna_default_response
 from bot.on_message.bots.response_handlers import CustomMessage, channels, config, handle_artists_channel, handle_coach_channel, handle_dan_channel, handle_geezerville_channel, handle_language_channels, handle_lounge_channel, handle_movies_tv_books_channel, handle_music_channel, handle_musicians_channel, handle_sarah_channel, handle_zoo_channel, openai_bot
 from bot.on_message.bots.rolesbot import post_roles_response
@@ -20,8 +20,8 @@ async def respond(message: CustomMessage, channel):
         if await post_roles_response(message):
             return
 
-        # if await post_google_response(message):
-        #     return
+        if await post_google_response(message):
+            return
 
         await post_qna_default_response(message)
 
@@ -69,17 +69,19 @@ async def respond(message: CustomMessage, channel):
         return
     elif await handle_language_channels(message, channel):
         return
-
-    elif message.die_roll == 97:
-        await openai_bot.post_ai_response(message)
-
-    if message.die_roll >= 0.98:
-        message.gpt_system = " but actually you are a sarcastic bot who loves to roast people. (all in good fun of course)"
-
-    elif message.is_newbie and message.die_roll > .8:
+    if message.author.name != "hh_bot":
         await openai_bot.post_ai_response(message)
         return
+    # elif message.die_roll == 97:
+    #     await openai_bot.post_ai_response(message)
 
-    elif message.mentions_the_bot_who_is_responding and message.die_roll > .6:
-        await openai_bot.post_ai_response(message)
-        return
+    # if message.die_roll >= 0.98:
+    #     message.gpt_system = " but actually you are a sarcastic bot who loves to roast people. (all in good fun of course)"
+
+    # elif message.is_newbie and message.die_roll > .8:
+    #     await openai_bot.post_ai_response(message)
+    #     return
+
+    # elif message.mentions_the_bot_who_is_responding and message.die_roll > .6:
+    #     await openai_bot.post_ai_response(message)
+    #     return

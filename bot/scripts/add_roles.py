@@ -20,6 +20,7 @@ import config
 from bot.db.fbdb import get_firestore_db
 from firebase_admin import firestore
 from rich import print
+import discord
 
 
 async def add_time_based_roles(member, roles):
@@ -45,27 +46,31 @@ async def add_time_based_roles(member, roles):
     # print(f"add_time_based_roles for {member.name} who joined {hours} hours ago.")
 
     member_roles = [x.name for x in member.roles]
+    print(member_roles)
+    print(roles)
     # print(member_roles)
     # print(time_based_roles)
-
-    if hours >= config.neighbor_threshold:
-        if "Visitor" in member_roles:
-            print(f"Removing Visitor from {member.name}")
-            role = next((x for x in roles if x.name == "Visitor"), None)
-            # print(role)
-            await member.remove_roles(role)
-        if "Neighbor" not in member_roles:
-            print(f"Adding Neighbor to {member.name}")
-            role = next((x for x in roles if x.name == "Neighbor"), None)
-            # print(role)
-            await member.add_roles(role)
-    else:
-        if "Visitor" not in member_roles:
-            print(f"Adding Visitor to {member.name}")
-            role = next((x for x in roles if x.name == "Visitor"), None)
-            # print(role)
-            await member.add_roles(role)
-        """ YOU CAN'T REMOVE NEIGHBOR AUTOMATICALLY CUZ SOME NEWBIES MAY HAVE A BUNDLE """
+    role = discord.utils.get(roles, name="Neighbor")
+    print(role)
+    await member.add_roles(role)
+    # if hours >= config.neighbor_threshold:
+    #     if "Visitor" in member_roles:
+    #         print(f"Removing Visitor from {member.name}")
+    #         role = next((x for x in roles if x.name == "Visitor"), None)
+    #         # print(role)
+    #         await member.remove_roles(role)
+    #     if "Neighbor" not in member_roles:
+    #         print(f"Adding Neighbor to {member.name}")
+    #         role = next((x for x in roles if x.name == "Neighbor"), None)
+    #         # print(role)
+    #         await member.add_roles(role)
+    # else:
+    #     if "Visitor" not in member_roles:
+    #         print(f"Adding Visitor to {member.name}")
+    #         role = next((x for x in roles if x.name == "Visitor"), None)
+    #         # print(role)
+    #         await member.add_roles(role)
+    #     """ YOU CAN'T REMOVE NEIGHBOR AUTOMATICALLY CUZ SOME NEWBIES MAY HAVE A BUNDLE """
         # if "Neighbor" in member_roles:
         #     print(f"Removing Neighbor from {member.name}")
         #     role = next((x for x in roles if x.name == "Neighbor"), None)
@@ -106,7 +111,7 @@ async def add_time_based_roles(member, roles):
         #         # add the role object to the member
         #         await member.add_roles(role)
 
-        """ YOU CAN'T REMOVE NEIGHBOR AUTOMATICALLY CUZ SOME NEWBIES MAY HAVE A BUNDLE """
+        # """ YOU CAN'T REMOVE NEIGHBOR AUTOMATICALLY CUZ SOME NEWBIES MAY HAVE A BUNDLE """
         # else:
         #     # member_roles = [x.name for x in member.roles]
         #     if role in member.roles:
