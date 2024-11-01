@@ -56,33 +56,6 @@ async def on_message(message):
     if await is_message_from_other_guild(message):
         return
 
-    # if message.attachments:
-    #     for attachment in message.attachments:
-    #         if any(attachment.filename.lower().endswith(ext) for ext in ['.jpg', '.jpeg', '.png']):
-    #             image_data = requests.get(attachment.url).content
-
-    #             # Use OpenAI API to analyze the image
-    #             try:
-    #                 # Assuming GPT-4 with vision capabilities
-    #                 response = openai.ChatCompletion.create(
-    #                     model="gpt-4-turbo",
-    #                     messages=[
-    #                         {"role": "user", "content": "What is in this image?"},
-    #                     ],
-    #                     files=[("image", ("image.png", BytesIO(image_data), "image/png"))]
-    #                 )
-
-    #                 # Extract response text
-    #                 analysis_result = response['choices'][0]['message']['content']
-                    
-    #                 # Send the analysis result as a reply
-    #                 await message.channel.send(f"Image Analysis: {analysis_result}")
-
-    #             except Exception as e:
-    #                 await message.channel.send("Sorry, I couldn't analyze the image.")
-    #                 print(e)  # Log the error for debugging
-    #             return
-
     g = message.guild.name  # if message.guild.id != GUILD_ID else ""
     print(f"{g}\"{channel.name}\"<{author.name} {author.id}>:'{message.content}'")
 
