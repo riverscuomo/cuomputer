@@ -42,8 +42,8 @@ async def servertime(interaction: discord.Interaction):
 @client.tree.command(name="summarize", description="Summarize the last N messages in a given channel")
 async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
     await interaction.response.defer()
-    member_roles = [role.name for role in interaction.member.roles]
-    if "Supporter" in interaction.user.roles:
+    member_roles = [role.name for role in interaction.user.roles]
+    if "Supporter" in member_roles:
         response = openai_bot.build_ai_response(SUMMARY_MESSAGE,
                                                 SUMMARY_SYSTEM_PROMPT,
                                                 None,
@@ -55,7 +55,7 @@ async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSA
 @client.tree.command(name="summarize_and_advise", description="Summarize the last N msesages in a given channel, and advise Rivers on what to do")
 async def summarize_and_advise(interaction: discord.Interaction, count: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
     await interaction.response.defer()
-    if interaction.member.user.id == rivers_id:
+    if interaction.user.user.id == rivers_id:
         response = openai_bot.build_ai_response(SUMMARY_MESSAGE,
                                                 SUMMARY_SYSTEM_PROMPT,
                                                 None,
