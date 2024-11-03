@@ -39,30 +39,30 @@ async def servertime(interaction: discord.Interaction):
 
 
 @client.tree.command(name="summarize", description="Summarize the last N messages in a given channel")
-async def summarize(interaction: discord.Interaction, num_messages: int):
+async def summarize(interaction: discord.Interaction, count: int = 12):
     await interaction.response.defer()
     member_roles = [role.name for role in interaction.member.roles]
     if "Supporter" in interaction.user.roles:
         response = openai_bot.build_ai_response(SUMMARY_MESSAGE,
                                                 SUMMARY_SYSTEM_PROMPT,
                                                 None,
-                                                num_messages)
+                                                count)
         with contextlib.suppress(Exception):
             await interaction.user.send(response)
 
 
 @client.tree.command(name="summarize_and_advise", description="Summarize the last N msesages in a given channel, and advise Rivers on what to do")
-async def summarize_and_advise(interaction: discord.Interaction, num_messages: int):
+async def summarize_and_advise(interaction: discord.Interaction, count: int = 12):
     await interaction.response.defer()
     if interaction.member.user.id == rivers_id:
         response = openai_bot.build_ai_response(SUMMARY_MESSAGE,
                                                 SUMMARY_SYSTEM_PROMPT,
                                                 None,
-                                                num_messages)
+                                                count)
         await interaction.user.send(response)
         response = openai_bot.build_ai_response("Based on these recent messages in channel chat history, how would you advise Rivers Cuomo in some following ways: 1) technical improvements of the server, 2) community engagement of the server, or 3) any feedback on Rivers' music",
                                                 "You are Rivers Cuomo's personal advisor who is very capable and results oriented.",
                                                 None,
-                                                num_messages)
+                                                count)
         with contextlib.suppress(Exception):
             await interaction.user.send(response)
