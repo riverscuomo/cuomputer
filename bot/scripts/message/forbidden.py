@@ -116,7 +116,7 @@ def forbidden_message(message: discord.Message, role_names: list):
             
     if message.channel.id == channels["shrine"]:
         if message.reference:
-            return Forbidden(is_forbidden=True, reason="Please keep your messages open to the whole shrine, and not directed at specific people.")
+            return Forbidden(is_forbidden=True, reason="Replies are not allowed in the Shrine. Please read the channel description at the top of the page.")
 
     # for x in forbidden_words:
     #     if x in message.lower():
