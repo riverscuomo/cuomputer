@@ -5,6 +5,7 @@ import openai
 from rich import print
 import random
 
+DEFAULT_MESSAGE_LOOKBACK_COUNT = 12
 
 class OpenAIBot:
     def __init__(self, long_name, short_name, openai_sessions, weezerpedia_api):
@@ -74,7 +75,7 @@ class OpenAIBot:
 
         return True
 
-    def build_ai_response(self, message, system: str, adjective: str, num_messages: int = 12):
+    def build_ai_response(self, message, system: str, adjective: str, num_messages: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
         text = message.content
         reply = self.fetch_openai_completion(message, system, text, num_messages)
         reply = reply.replace("!", ".")
@@ -112,7 +113,7 @@ class OpenAIBot:
             print(f"An error occurred: {e}")
             return None
 
-    def fetch_openai_completion(self, message, system, incoming_message_text, num_messages=12):
+    def fetch_openai_completion(self, message, system, incoming_message_text, num_messages=DEFAULT_MESSAGE_LOOKBACK_COUNT):
 
         system_message = {"role": "system", "content": system}
 

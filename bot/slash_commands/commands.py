@@ -1,6 +1,7 @@
 import asyncio
 import contextlib
 import discord
+from bot.on_message.bots.openai_bot import DEFAULT_MESSAGE_LOOKBACK_COUNT
 from config import GUILD_ID, rivers_id
 from bot.setup.discord_bot import client
 from bot.setup.bots import weezerpedia_api, riverpedia_api, openai_bot
@@ -39,7 +40,7 @@ async def servertime(interaction: discord.Interaction):
 
 
 @client.tree.command(name="summarize", description="Summarize the last N messages in a given channel")
-async def summarize(interaction: discord.Interaction, count: int = 12):
+async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
     await interaction.response.defer()
     member_roles = [role.name for role in interaction.member.roles]
     if "Supporter" in interaction.user.roles:
@@ -52,7 +53,7 @@ async def summarize(interaction: discord.Interaction, count: int = 12):
 
 
 @client.tree.command(name="summarize_and_advise", description="Summarize the last N msesages in a given channel, and advise Rivers on what to do")
-async def summarize_and_advise(interaction: discord.Interaction, count: int = 12):
+async def summarize_and_advise(interaction: discord.Interaction, count: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
     await interaction.response.defer()
     if interaction.member.user.id == rivers_id:
         response = openai_bot.build_ai_response(SUMMARY_MESSAGE,
