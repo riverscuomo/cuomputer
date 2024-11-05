@@ -1,5 +1,6 @@
 import contextlib
 from dataclasses import dataclass
+import os
 from typing import Any, Optional
 import openai
 # from bot.setup.bots import WeezerpediaAPI
@@ -7,7 +8,8 @@ import openai
 from rich import print
 import random
 
-DEFAULT_MESSAGE_LOOKBACK_COUNT = 12
+DEFAULT_MESSAGE_LOOKBACK_COUNT = 5
+
 
 @dataclass(frozen=True)
 class PromptParams:
@@ -16,6 +18,7 @@ class PromptParams:
     nick: str
     channel_id: int
     attachment_urls: list[str]
+
 
 class OpenAIBot:
     def __init__(self, long_name, short_name, openai_sessions, weezerpedia_api):
@@ -77,7 +80,8 @@ class OpenAIBot:
             system += f" - The message you are replying to is from a user named {nick}."
             system += self.match_tone + self.dont_start_your_response
 
-            reply = self.build_ai_response(message, system, adjective, DEFAULT_MESSAGE_LOOKBACK_COUNT)
+            reply = self.build_ai_response(
+                message, system, adjective, DEFAULT_MESSAGE_LOOKBACK_COUNT)
 
             with contextlib.suppress(Exception):
                 print('sending response: ', reply)
@@ -86,13 +90,15 @@ class OpenAIBot:
         return True
 
     def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
-        attachment_urls = [message.attachments[0]] if message.attachments else []
+        attachment_urls = [message.attachments[0]
+                           ] if message.attachments else []
         prompt_params = PromptParams(user_prompt=message.content,
                                      system_prompt=system,
                                      channel_id=message.channel.id,
                                      nick=message.author.nick,
                                      attachment_urls=attachment_urls)
-        reply = self.fetch_openai_completion(prompt_params, num_messages_lookback)
+        reply = self.fetch_openai_completion(
+            prompt_params, num_messages_lookback)
         reply = reply.replace("!", ".")
         return reply.strip()
 
@@ -128,14 +134,31 @@ class OpenAIBot:
             print(f"An error occurred: {e}")
             return None
 
-
     def fetch_openai_completion(self, prompt_params: PromptParams, num_messages_lookback: int):
-        system_message = {"role": "system", "content": prompt_params.system_prompt}
+        system_message = {"role": "system",
+                          "content": prompt_params.system_prompt}
 
         if prompt_params.channel_id not in self.openai_sessions:
             self.openai_sessions[prompt_params.channel_id] = []
 
         messages_in_this_channel = self.openai_sessions[prompt_params.channel_id]
+
+        # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
+
+        # if running on heroku
+
+        # Check if running in production
+        is_production = os.getenv('ENV') == 'production'
+
+        # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
+        if not is_production and len(messages_in_this_channel) < 5:
+            messages_in_this_channel = [
+                {"role": "user", "content": "My favorite color is blue."},
+                {"role": "user", "content": "My favorite color is red."},
+                {"role": "user", "content": "My favorite color is yellow."},
+                {"role": "user", "content": "My favorite color is green."},
+                {"role": "user", "content": "My favorite color is orange."},
+            ]
 
         # Remove any existing system messages
         messages_in_this_channel = [
@@ -217,4 +240,4 @@ class OpenAIBot:
     def append_any_attachments(self, attachment_urls: list[str], content: list[dict[str, Any]]):
         for url in attachment_urls:
             content.append({"role": "user", "content": [
-                        {"type": "image_url", "image_url": {"url": url}}]})
+                {"type": "image_url", "image_url": {"url": url}}]})
