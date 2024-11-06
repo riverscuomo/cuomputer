@@ -90,7 +90,7 @@ class OpenAIBot:
         return True
 
     def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
-        attachment_urls = [message.attachments[0]
+        attachment_urls = [message.attachments[0].url
                            ] if message.attachments else []
         display_name = message.author.nick or message.author.name
         prompt_params = PromptParams(user_prompt=message.content,
@@ -162,11 +162,8 @@ class OpenAIBot:
                 {"role": "user", "content": "My favorite color is orange."},
             ]
         # Remove any existing system messages
-        messages_in_this_channel = [
+        new_content = [
             msg for msg in messages_in_this_channel if msg["role"] != "system" and "[INTERNAL]" not in msg["content"]]
-
-        # Add the new system message at the beginning
-        new_content = [system_message] + messages_in_this_channel
 
         # Replace the channel messages with the cleaned up content
         self.openai_sessions[prompt_params.channel_id] = new_content
@@ -187,6 +184,7 @@ class OpenAIBot:
         # Limit the number of messages in the session
         if len(new_content) > num_messages_lookback:
             new_content = new_content[-num_messages_lookback:]
+        new_content = [system_message] + new_content
 
         try:
             completion = openai.chat.completions.create(
