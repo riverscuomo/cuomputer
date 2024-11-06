@@ -15,7 +15,7 @@ DEFAULT_MESSAGE_LOOKBACK_COUNT = 5
 class PromptParams:
     system_prompt: str
     user_prompt: str
-    nick: str
+    user_name: str
     channel_id: int
     attachment_urls: list[str]
 
@@ -92,10 +92,11 @@ class OpenAIBot:
     def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
         attachment_urls = [message.attachments[0]
                            ] if message.attachments else []
+        display_name = message.author.nick or message.author.name
         prompt_params = PromptParams(user_prompt=message.content,
                                      system_prompt=system,
                                      channel_id=message.channel.id,
-                                     nick=message.author.nick,
+                                     user_name=display_name,
                                      attachment_urls=attachment_urls)
         reply = self.fetch_openai_completion(
             prompt_params, num_messages_lookback)
@@ -178,7 +179,7 @@ class OpenAIBot:
 
         # Append the user's message to the session
         new_content.append(
-            {"role": "user", "content": f"{prompt_params.nick}: {prompt_params.user_prompt}"})
+            {"role": "user", "content": f"{prompt_params.user_name}: {prompt_params.user_prompt}"})
 
         # Append any attachments to the user's message
         self.append_any_attachments(prompt_params.attachment_urls, new_content)

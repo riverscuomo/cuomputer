@@ -75,13 +75,13 @@ async def respond(message: CustomMessage, channel):
     # elif message.die_roll == 97:
     #     await openai_bot.post_ai_response(message)
 
-    # if message.die_roll >= 0.98:
-    #     message.gpt_system = " but actually you are a sarcastic bot who loves to roast people. (all in good fun of course)"
+    if message.die_roll: #>= 0.98:
+        message.gpt_system = " but actually you are a sarcastic bot who loves to roast people. (all in good fun of course)"
 
     # elif message.is_newbie and message.die_roll > .8:
     #     await openai_bot.post_ai_response(message)
     #     return
 
-    # elif message.mentions_the_bot_who_is_responding and message.die_roll > .6:
-    #     await openai_bot.post_ai_response(message)
-    #     return
+    elif message.mentions_the_bot_who_is_responding: #and message.die_roll > .6:
+        await openai_bot.post_ai_response(message)
+        return

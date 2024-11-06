@@ -6,7 +6,7 @@ from bot.on_message.on_message import on_message
 from bot.setup.services.demoji_setup import initialize_demoji
 from config import TOKEN
 from bot.setup.discord_bot import client
-# import bot.slash_commands.commands
+import bot.slash_commands.commands
 
 
 async def main():

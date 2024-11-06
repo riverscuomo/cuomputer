@@ -46,8 +46,6 @@ async def add_time_based_roles(member, roles):
     # print(f"add_time_based_roles for {member.name} who joined {hours} hours ago.")
 
     member_roles = [x.name for x in member.roles]
-    print(member_roles)
-    print(roles)
     # print(member_roles)
     # print(time_based_roles)
     role = discord.utils.get(roles, name="Neighbor")
