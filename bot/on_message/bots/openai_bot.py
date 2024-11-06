@@ -163,7 +163,7 @@ class OpenAIBot:
 
         # Remove any existing system messages
         new_content = [
-            msg for msg in messages_in_this_channel if msg["role"] != "system" and "[INTERNAL]" not in msg["content"]]
+            msg for msg in messages_in_this_channel if msg["role"] != "system"]
 
         # Replace the channel messages with the cleaned up content
         self.openai_sessions[prompt_params.channel_id] = new_content
