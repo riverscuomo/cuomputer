@@ -15,7 +15,7 @@ DEFAULT_MESSAGE_LOOKBACK_COUNT = 5
 class PromptParams:
     system_prompt: str
     user_prompt: str
-    nick: str
+    user_name: str
     channel_id: int
     attachment_urls: list[str]
 
@@ -90,12 +90,13 @@ class OpenAIBot:
         return True
 
     def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
-        attachment_urls = [message.attachments[0]
+        attachment_urls = [message.attachments[0].url
                            ] if message.attachments else []
+        display_name = message.author.nick or message.author.name
         prompt_params = PromptParams(user_prompt=message.content,
                                      system_prompt=system,
                                      channel_id=message.channel.id,
-                                     nick=message.author.nick,
+                                     user_name=display_name,
                                      attachment_urls=attachment_urls)
         reply = self.fetch_openai_completion(
             prompt_params, num_messages_lookback)
@@ -161,11 +162,8 @@ class OpenAIBot:
             ]
 
         # Remove any existing system messages
-        messages_in_this_channel = [
-            msg for msg in messages_in_this_channel if msg["role"] != "system" or "[INTERNAL]" not in msg["content"]]
-
-        # Add the new system message at the beginning
-        new_content = [system_message] + messages_in_this_channel
+        new_content = [
+            msg for msg in messages_in_this_channel if msg["role"] != "system" and "[INTERNAL]" not in msg["content"]]
 
         # Replace the channel messages with the cleaned up content
         self.openai_sessions[prompt_params.channel_id] = new_content
@@ -178,7 +176,7 @@ class OpenAIBot:
 
         # Append the user's message to the session
         new_content.append(
-            {"role": "user", "content": f"{prompt_params.nick}: {prompt_params.user_prompt}"})
+            {"role": "user", "content": f"{prompt_params.user_name}: {prompt_params.user_prompt}"})
 
         # Append any attachments to the user's message
         self.append_any_attachments(prompt_params.attachment_urls, new_content)
@@ -186,6 +184,7 @@ class OpenAIBot:
         # Limit the number of messages in the session
         if len(new_content) > num_messages_lookback:
             new_content = new_content[-num_messages_lookback:]
+        new_content = [system_message] + new_content
 
         try:
             completion = openai.chat.completions.create(
