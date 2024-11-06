@@ -1,9 +1,23 @@
 import contextlib
+from dataclasses import dataclass
+import os
+from typing import Any, Optional
 import openai
 # from bot.setup.bots import WeezerpediaAPI
 
 from rich import print
 import random
+
+DEFAULT_MESSAGE_LOOKBACK_COUNT = 5
+
+
+@dataclass(frozen=True)
+class PromptParams:
+    system_prompt: str
+    user_prompt: str
+    nick: str
+    channel_id: int
+    attachment_urls: list[str]
 
 
 class OpenAIBot:
@@ -66,7 +80,8 @@ class OpenAIBot:
             system += f" - The message you are replying to is from a user named {nick}."
             system += self.match_tone + self.dont_start_your_response
 
-            reply = self.build_ai_response(message, system, adjective)
+            reply = self.build_ai_response(
+                message, system, adjective, DEFAULT_MESSAGE_LOOKBACK_COUNT)
 
             with contextlib.suppress(Exception):
                 print('sending response: ', reply)
@@ -74,9 +89,16 @@ class OpenAIBot:
 
         return True
 
-    def build_ai_response(self, message, system: str, adjective: str):
-        text = message.content
-        reply = self.fetch_openai_completion(message, system, text)
+    def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
+        attachment_urls = [message.attachments[0]
+                           ] if message.attachments else []
+        prompt_params = PromptParams(user_prompt=message.content,
+                                     system_prompt=system,
+                                     channel_id=message.channel.id,
+                                     nick=message.author.nick,
+                                     attachment_urls=attachment_urls)
+        reply = self.fetch_openai_completion(
+            prompt_params, num_messages_lookback)
         reply = reply.replace("!", ".")
         return reply.strip()
 
@@ -112,63 +134,76 @@ class OpenAIBot:
             print(f"An error occurred: {e}")
             return None
 
-    def fetch_openai_completion(self, message, system, incoming_message_text):
+    def fetch_openai_completion(self, prompt_params: PromptParams, num_messages_lookback: int):
+        system_message = {"role": "system",
+                          "content": prompt_params.system_prompt}
 
-        system_message = {"role": "system", "content": system}
+        if prompt_params.channel_id not in self.openai_sessions:
+            self.openai_sessions[prompt_params.channel_id] = []
 
-        if message.channel.id not in self.openai_sessions:
-            self.openai_sessions[message.channel.id] = []
+        messages_in_this_channel = self.openai_sessions[prompt_params.channel_id]
 
-        messages_in_this_channel = self.openai_sessions[message.channel.id]
+        # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
+
+        # if running on heroku
+
+        # Check if running in production
+        is_production = os.getenv('ENV') == 'production'
+
+        # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
+        if not is_production and len(messages_in_this_channel) < 5:
+            messages_in_this_channel = [
+                {"role": "user", "content": "My favorite color is blue."},
+                {"role": "user", "content": "My favorite color is red."},
+                {"role": "user", "content": "My favorite color is yellow."},
+                {"role": "user", "content": "My favorite color is green."},
+                {"role": "user", "content": "My favorite color is orange."},
+            ]
 
         # Remove any existing system messages
         messages_in_this_channel = [
-            msg for msg in messages_in_this_channel if msg['role'] != 'system']
-
-        # Update the session with messages excluding old system messages
-        self.openai_sessions[message.channel.id] = messages_in_this_channel
+            msg for msg in messages_in_this_channel if msg["role"] != "system" or "[INTERNAL]" not in msg["content"]]
 
         # Add the new system message at the beginning
         new_content = [system_message] + messages_in_this_channel
 
-        # # Step 2: Add any context from Weezerpedia API if needed
+        # Replace the channel messages with the cleaned up content
+        self.openai_sessions[prompt_params.channel_id] = new_content
+
+        # Add any context from Weezerpedia API if needed
         # if weezerpedia_context := self.get_weezerpedia_context(
-        #     incoming_message_text, messages_in_this_channel
+        #     prompt_params.user_prompt, messages_in_this_channel
         # ):
         #     new_content.append(weezerpedia_context)
 
-        # Step 3: Append the user's message to the session
+        # Append the user's message to the session
         new_content.append(
-            {"role": "user", "content": f"{message.author.nick}: {incoming_message_text}"})
+            {"role": "user", "content": f"{prompt_params.nick}: {prompt_params.user_prompt}"})
 
-        # Step 4: Append any attachments to the user's message
-        new_content = self.append_any_attachments(message, new_content)
+        # Append any attachments to the user's message
+        self.append_any_attachments(prompt_params.attachment_urls, new_content)
 
-        # Step 5: Limit the number of messages in the session to 12
-        if len(messages_in_this_channel) > 12:
-            messages_in_this_channel = messages_in_this_channel[-12:]
-
-        # Step 6: Append all the new content to list of messages in this channel
-        messages_in_this_channel.extend(new_content)
+        # Limit the number of messages in the session
+        if len(new_content) > num_messages_lookback:
+            new_content = new_content[-num_messages_lookback:]
 
         try:
             completion = openai.chat.completions.create(
                 temperature=1.0,
                 max_tokens=500,
                 model="gpt-4o",
-                messages=messages_in_this_channel,
+                messages=new_content,
             )
 
             response_text = completion.choices[0].message.content
 
-            messages_in_this_channel.append(
+            new_content.append(
                 {"role": "assistant", "content": response_text}
             )
         except openai.APIError as e:
             response_text = f"An error occurred: {e}"
         except Exception as e:
             response_text = f"An error occurred: {e}"
-
         return response_text
 
     def get_weezerpedia_context(self, incoming_message_text, messages_in_this_channel) -> dict:
@@ -202,9 +237,7 @@ class OpenAIBot:
 
         return weezerpedia_context
 
-    def append_any_attachments(self, message, content):
-        url = message.attachments[0].url if message.attachments else None
-        if url:
+    def append_any_attachments(self, attachment_urls: list[str], content: list[dict[str, Any]]):
+        for url in attachment_urls:
             content.append({"role": "user", "content": [
-                        {"type": "image_url", "image_url": {"url": url}}]}),
-        return content
+                {"type": "image_url", "image_url": {"url": url}}]})
