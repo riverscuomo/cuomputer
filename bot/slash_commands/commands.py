@@ -4,7 +4,7 @@ import discord
 from bot.on_message.bots.openai_bot import DEFAULT_MESSAGE_LOOKBACK_COUNT, PromptParams
 from config import GUILD_ID, rivers_id
 from bot.setup.discord_bot import client
-from bot.setup.bots import weezerpedia_api, riverpedia_api, openai_bot
+from bot.setup.bots import weezerpedia_api, openai_bot # riverpedia_api,
 
 print('commands.py')
 
