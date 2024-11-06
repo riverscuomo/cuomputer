@@ -9,13 +9,9 @@ from bot.setup.bots import weezerpedia_api, openai_bot # riverpedia_api,
 print('commands.py')
 
 SUMMARIZE_SYSTEM_PROMPT = "You are the person responsible for summarizing server messages in a succinct and effective way for the server owner and supporters. Always report the number of messages found."
-SUMMARIZE_SYSTEM_PROMPT = ""
 SUMMARIZE_USER_PROMPT = "[INTERNAL] Summarize these recent messages in channel history if theres at least one message. Close by reporting the number of messages found."
-SUMMARIZE_USER_PROMPT = SUMMARIZE_USER_PROMPT[11:]
 ADVISE_SYSTEM_PROMPT = "You are Rivers Cuomo's personal advisor who is very capable and results oriented."
-ADVISE_SYSTEM_PROMPT = ""
 ADVISE_USER_PROMPT = "[INTERNAL] Rivers Cuomo runs this Discord server. Given there is at least one message in this channel, then based on these recent messages, how would you advise him?"
-ADVISE_SYSTEM_PROMPT = ADVISE_USER_PROMPT[11:]
 
 
 def is_supporter():
@@ -59,7 +55,7 @@ async def servertime(interaction: discord.Interaction):
 
 
 @client.tree.command(name="summarize", description="Summarize the last N messages in a given channel")
-@is_supporter()
+# @is_supporter()
 async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
     await interaction.response.send_message("Processing...", ephemeral=True)
     prompt_params = PromptParams(
@@ -75,7 +71,7 @@ async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSA
 
 
 @client.tree.command(name="summarize_and_advise", description="Summarize the last N messages in a given channel, and advise on what to do")
-@is_rivers()
+# @is_rivers()
 async def summarize_and_advise(interaction: discord.Interaction, count: int = DEFAULT_MESSAGE_LOOKBACK_COUNT):
     await interaction.response.send_message("Processing...", ephemeral=True)
     prompt_params = PromptParams(system_prompt=SUMMARIZE_SYSTEM_PROMPT,

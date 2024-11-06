@@ -161,10 +161,9 @@ class OpenAIBot:
                 {"role": "user", "content": "My favorite color is green."},
                 {"role": "user", "content": "My favorite color is orange."},
             ]
-
         # Remove any existing system messages
         messages_in_this_channel = [
-            msg for msg in messages_in_this_channel if msg["role"] != "system" or "[INTERNAL]" not in msg["content"]]
+            msg for msg in messages_in_this_channel if msg["role"] != "system" and "[INTERNAL]" not in msg["content"]]
 
         # Add the new system message at the beginning
         new_content = [system_message] + messages_in_this_channel
@@ -189,7 +188,6 @@ class OpenAIBot:
         if len(new_content) > num_messages_lookback:
             new_content = new_content[-num_messages_lookback:]
 
-        print(new_content)
         try:
             completion = openai.chat.completions.create(
                 temperature=1.0,
