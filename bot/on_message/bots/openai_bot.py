@@ -150,6 +150,7 @@ class OpenAIBot:
 
         # Check if running in production
         is_production = os.getenv('ENV') == 'production'
+        is_production = True
 
         # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
         if not is_production and len(messages_in_this_channel) < 5:
@@ -188,6 +189,7 @@ class OpenAIBot:
         if len(new_content) > num_messages_lookback:
             new_content = new_content[-num_messages_lookback:]
 
+        print(new_content)
         try:
             completion = openai.chat.completions.create(
                 temperature=1.0,
