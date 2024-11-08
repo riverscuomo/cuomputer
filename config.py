@@ -25,8 +25,8 @@ tz = pytz.timezone('America/Los_Angeles')
 
 OAUTH2_URL = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_ID}&permissions=8&scope=bot"
 OAUTH2_URL = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_ID}&permissions=8&redirect_uri=https%3A%2F%2Frcwebserver.herokuapp.com%2F&response_type=code&scope=bot%20activities.write%20activities.read%20relationships.read%20applications.entitlements%20applications.store.update%20applications.commands%20applications.builds.read%20rpc.voice.read%20rpc.voice.write%20rpc.activities.write%20webhook.incoming%20messages.read%20applications.builds.upload%20identify%20email%20connections%20guilds%20guilds.join%20gdm.join%20rpc%20rpc.notifications.read"
-GENERAL_ID = 812808393357131849
-GUILD_ID = 812808393357131846
+GENERAL_ID = 890292832198344724
+GUILD_ID = 890210072381247548
 
 neighbor_threshold = 1 * 24 * 1  # hours (2 days)
 image_threshold = 2  # user_score

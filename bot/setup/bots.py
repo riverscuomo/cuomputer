@@ -8,7 +8,7 @@ from config import long_name, short_name
 openai_sessions = init_openai_sessions()
 
 
-# riverpedia_api = RiverpediaAPI()
+riverpedia_api = RiverpediaAPI()
 weezerpedia_api = WeezerpediaAPI()
 
 # Instantiate OpenAIBot
