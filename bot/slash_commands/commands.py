@@ -65,7 +65,7 @@ async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSA
     prompt_params = PromptParams(
         system_prompt=SUMMARIZE_SYSTEM_PROMPT,
         user_prompt=SUMMARIZE_USER_PROMPT,
-        nick=interaction.user.global_name,
+        user_name=interaction.user.global_name,
         channel_id=interaction.channel_id,
         attachment_urls=[])
     response = openai_bot.fetch_openai_completion(prompt_params, count).strip()
@@ -80,7 +80,7 @@ async def summarize_and_advise(interaction: discord.Interaction, count: int = DE
     await interaction.response.send_message("Processing...", ephemeral=True)
     prompt_params = PromptParams(system_prompt=SUMMARIZE_SYSTEM_PROMPT,
                                  user_prompt=SUMMARIZE_USER_PROMPT,
-                                 nick=interaction.user.global_name,
+                                 user_name=interaction.user.global_name,
                                  channel_id=interaction.channel_id,
                                  attachment_urls=[])
     response = openai_bot.fetch_openai_completion(prompt_params, count).strip()
@@ -92,7 +92,7 @@ async def summarize_and_advise(interaction: discord.Interaction, count: int = DE
 
     prompt_params = PromptParams(system_prompt=ADVISE_SYSTEM_PROMPT,
                                  user_prompt=ADVISE_USER_PROMPT,
-                                 nick=interaction.user.global_name,
+                                 user_name=interaction.user.global_name,
                                  channel_id=interaction.channel_id,
                                  attachment_urls=[])
     response = openai_bot.fetch_openai_completion(prompt_params,

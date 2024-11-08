@@ -15,7 +15,7 @@ DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
 class PromptParams:
     system_prompt: str
     user_prompt: str
-    nick: str
+    user_name: str
     channel_id: int
     attachment_urls: list[str]
 
@@ -176,11 +176,8 @@ class OpenAIBot:
             ]
 
         # Remove any existing system messages
-        messages_in_this_channel = [
-            msg for msg in messages_in_this_channel if msg["role"] != "system" or "[INTERNAL]" not in msg["content"]]
-
-        # Add the new system message at the beginning
-        new_content = [system_message] + messages_in_this_channel
+        new_content = [
+            msg for msg in messages_in_this_channel if msg["role"] != "system"]
 
         # Replace the channel messages with the cleaned up content
         self.openai_sessions[prompt_params.channel_id] = new_content
@@ -201,6 +198,7 @@ class OpenAIBot:
         # Limit the number of messages in the session
         if len(new_content) > num_messages_lookback:
             new_content = new_content[-num_messages_lookback:]
+        new_content = [system_message] + new_content
 
         try:
             completion = openai.chat.completions.create(
