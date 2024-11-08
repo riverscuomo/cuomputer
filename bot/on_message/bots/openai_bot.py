@@ -8,7 +8,7 @@ import openai
 from rich import print
 import random
 
-DEFAULT_MESSAGE_LOOKBACK_COUNT = 5
+DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
 
 
 @dataclass(frozen=True)
@@ -70,6 +70,13 @@ class OpenAIBot:
         )[0]
         return f"{self.base_cue}\n\nFor this response, also: {specific_cue}"
 
+    async def get_optional_original_message_content_and_display_name(self, message) -> tuple[Optional[str], Optional[str]]:
+        if message.reference and message.reference.message_id:
+            original_message = await message.channel.fetch_message(message.reference.message_id)
+            original_display_name = original_message.author.nick or original_message.author.name
+            return original_message.content, original_display_name
+        return None, None
+
     async def post_ai_response(self, message, adjective="funny"):
         async with message.channel.typing():
             nick = message.author.display_name  # Use `author` instead of `nick`
@@ -80,7 +87,7 @@ class OpenAIBot:
             system += f" - The message you are replying to is from a user named {nick}."
             system += self.match_tone + self.dont_start_your_response
 
-            reply = self.build_ai_response(
+            reply = await self.build_ai_response(
                 message, system, adjective, DEFAULT_MESSAGE_LOOKBACK_COUNT)
 
             with contextlib.suppress(Exception):
@@ -89,15 +96,22 @@ class OpenAIBot:
 
         return True
 
-    def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
+    async def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
         attachment_urls = [message.attachments[0].url
                            ] if message.attachments else []
         display_name = message.author.nick or message.author.name
-        prompt_params = PromptParams(user_prompt=message.content,
-                                     system_prompt=system,
-                                     channel_id=message.channel.id,
-                                     user_name=display_name,
-                                     attachment_urls=attachment_urls)
+        content = f"{display_name}: {message.content}"
+
+        original_content, original_display_name = await self.get_optional_original_message_content_and_display_name(message)
+        if original_content:
+            content = f"Replying to: '{original_display_name}: {original_content}'\n\n{content}"
+
+        prompt_params = PromptParams(user_prompt=content,
+                                system_prompt=system,
+                                channel_id=message.channel.id,
+                                user_name=display_name,
+                                attachment_urls=attachment_urls)
+
         reply = self.fetch_openai_completion(
             prompt_params, num_messages_lookback)
         reply = reply.replace("!", ".")
@@ -176,10 +190,10 @@ class OpenAIBot:
 
         # Append the user's message to the session
         new_content.append(
-            {"role": "user", "content": f"{prompt_params.user_name}: {prompt_params.user_prompt}"})
+            {"role": "user", "content": prompt_params.user_prompt})
 
         # Append any attachments to the user's message
-        self.append_any_attachments(prompt_params.attachment_urls, new_content)
+        self.append_any_images(prompt_params.attachment_urls, new_content)
 
         # Limit the number of messages in the session
         if len(new_content) > num_messages_lookback:
@@ -236,7 +250,8 @@ class OpenAIBot:
 
         return weezerpedia_context
 
-    def append_any_attachments(self, attachment_urls: list[str], content: list[dict[str, Any]]):
+    def append_any_images(self, attachment_urls: list[str], content: list[dict[str, Any]]):
         for url in attachment_urls:
-            content.append({"role": "user", "content": [
-                {"type": "image_url", "image_url": {"url": url}}]})
+            if any(ext in url for ext in ['.jpg', '.jpeg', '.png', '.gif']):
+                content.append({"role": "user", "content": [
+                    {"type": "image_url", "image_url": {"url": url}}]})
