@@ -166,6 +166,7 @@ class WeezerpediaAPI:
             img_file = infobox.generate_infobox()
 
         md_content = wiki_to_markdown(full_content)
+        print(md_content)
 
         if len(md_content) > 2000:
             md_content = md_content[:2000]
