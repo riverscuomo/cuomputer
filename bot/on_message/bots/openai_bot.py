@@ -208,16 +208,6 @@ class OpenAIBot:
         except Exception as e:
             return {"error": str(e)}
 
-    def process_message(self, incoming_message_text, messages_in_this_channel):
-        # Define the OpenAI function with a clear description
-        openai.ChatCompletion.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "user", "content": incoming_message_text}
-            ],
-
-        )
-
     def append_any_attachments(self, attachment_urls: list[str], content: list[dict[str, Any]]):
         for url in attachment_urls:
             content.append({"role": "user", "content": [
