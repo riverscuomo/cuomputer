@@ -167,8 +167,8 @@ class WeezerpediaAPI:
 
         md_content = wiki_to_markdown(full_content)
 
-        if len(md_content) > 20000:
-            md_content = md_content[:20000]
+        if len(md_content) > 2000:
+            md_content = md_content[:2000]
 
         # # Prepare the knowledge context text
         # knowledge_text = f"Background information about '{title}':\n\n"
