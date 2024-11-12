@@ -50,6 +50,9 @@ def wiki_to_markdown(text, wiki_url_prefix='https://www.weezerpedia.com/wiki/'):
     # Trim any leading or trailing whitespaces
     text = text.strip()
 
+    url_pattern = r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+    text = re.sub(url_pattern, '', text)
+
     return text
 
 
