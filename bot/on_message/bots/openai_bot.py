@@ -194,12 +194,8 @@ class OpenAIBot:
         new_content = [system_message] + new_content
 
         response_text = self._get_response_or_weezerpedia_function_call_results(new_content, True)
-
-        if response_text:
-            new_content.append(
-                {"role": "user", "content": f"Incorporate the following Weezerpedia entry into your response, to the extent it is appropriate. \n {response_text}"})
-
-        response_text = self._get_response_or_weezerpedia_function_call_results(new_content, False)
+        function_call_content =  [{"role": "user", "content": f"Incorporate the following Weezerpedia entry into your response, to the extent it is relevant. \n {response_text}"}]
+        response_text = self._get_response_or_weezerpedia_function_call_results(function_call_content, False)
         new_content.append(
             {"role": "assistant", "content": response_text}
         )
