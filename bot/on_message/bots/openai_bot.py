@@ -4,6 +4,7 @@ import json
 import os
 from typing import Any, Optional
 import openai
+from bot.on_message.bots.weezerpedia import WeezerpediaAPI
 
 from rich import print
 import random
@@ -21,7 +22,7 @@ class PromptParams:
 
 
 class OpenAIBot:
-    def __init__(self, long_name, short_name, openai_sessions, weezerpedia_api):
+    def __init__(self, long_name: str, short_name: str, openai_sessions: list, weezerpedia_api: WeezerpediaAPI):
         self.long_name = long_name
         self.short_name = short_name
         self.openai_sessions = openai_sessions
@@ -140,7 +141,7 @@ class OpenAIBot:
                 query_term = function_args.get("query_term")
 
                 if query_term:
-                    response_text = self.weezerpedia_api.get_search_result_knowledge(query_term)[0]
+                    response_text = self.weezerpedia_api.get_search_result_knowledge(query_term, True)[0]
 
         except openai.APIError as e:
             response_text = f"An error occurred: {e}"
@@ -201,12 +202,6 @@ class OpenAIBot:
         )
 
         return response_text
-
-    def fetch_weezerpedia_data(self, query_term: str) -> dict:
-        try:
-            return {"result": self.weezerpedia_api.get_search_result_knowledge(query_term)}
-        except Exception as e:
-            return {"error": str(e)}
 
     def append_any_attachments(self, attachment_urls: list[str], content: list[dict[str, Any]]):
         for url in attachment_urls:
