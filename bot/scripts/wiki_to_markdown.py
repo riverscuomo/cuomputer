@@ -2,7 +2,7 @@ import re
 import urllib.parse
 
 
-def wiki_to_markdown(text, wiki_url_prefix='https://www.weezerpedia.com/wiki/'):
+def wiki_to_markdown(text, remove_urls, wiki_url_prefix='https://www.weezerpedia.com/wiki/'):
 
     # Remove everything from "See also" or "References" downward
     text = re.split(r"==See also==", text)[0]
@@ -49,6 +49,10 @@ def wiki_to_markdown(text, wiki_url_prefix='https://www.weezerpedia.com/wiki/'):
 
     # Trim any leading or trailing whitespaces
     text = text.strip()
+
+    if remove_urls:
+        url_pattern = r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+        text = re.sub(url_pattern, '', text)
 
     return text
 

@@ -120,7 +120,7 @@ class WeezerpediaAPI:
         return ' '.join(key_terms)
 
     # Main method to get the knowledge to be used as context for GPT
-    def get_search_result_knowledge(self, search_query="Songs from the Black Hole"):
+    def get_search_result_knowledge(self, search_query, remove_urls):
         logging.info(f"Original query: {search_query}")
 
         # Step 1: Preprocess the query
@@ -166,7 +166,7 @@ class WeezerpediaAPI:
             infobox = InfoboxGenerator(full_content, self)
             img_file = infobox.generate_infobox()
 
-        md_content = wiki_to_markdown(full_content)
+        md_content = wiki_to_markdown(full_content, remove_urls)
 
         if len(md_content) > 2000:
             md_content = md_content[:2000]

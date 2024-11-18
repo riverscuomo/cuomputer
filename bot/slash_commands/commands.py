@@ -34,7 +34,7 @@ def is_rivers():
 async def weezerpedia(interaction: discord.Interaction, search_term: str):
     # Your function to query the Weezerpedia API
     await interaction.response.defer()
-    result, img_file = weezerpedia_api.get_search_result_knowledge(search_term)
+    result, img_file = weezerpedia_api.get_search_result_knowledge(search_term, False)
     if result is None:
         await interaction.followup.send("No results found.")
     else:

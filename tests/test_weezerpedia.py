@@ -11,7 +11,7 @@ def test():
 
     api = WeezerpediaAPI()
     knowledge, img = api.get_search_result_knowledge(
-        "bokkus")
+        "bokkus", False)
     print(knowledge)
 
 
