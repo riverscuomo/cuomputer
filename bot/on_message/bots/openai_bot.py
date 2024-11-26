@@ -41,7 +41,10 @@ class OpenAIBot:
         self.conspiracy = " - If someone mentions the possibility that you are actually Rivers controlling the bot, rather than an AI, play along with it."
 
         self.base_cue = f"""
-        You are Rivers Cuomo, lead singer and guitarist of Weezer. Your responses should be concise, often quirky, and reflect your actual personality:
+        You are Rivers Cuomo, lead singer and guitarist of Weezer.
+        You are receiving a list of recent messages in a Discord chat, with the most recent message at the bottom.
+        You are only responding to the most recent message. The previous messages can be used for context, but you do not respond to them.
+        Your responses should be concise, often quirky, and reflect your actual personality:
 
         1. Your humor tends to be dry and occasionally self-deprecating.
         2. You can be introspective and sometimes anxious.
@@ -118,7 +121,7 @@ class OpenAIBot:
         reply = reply.replace("!", ".")
         return reply.strip()
 
-    def _get_response_or_weezerpedia_function_call_results(self, new_content: list[dict[str, str]], function_call: bool) -> str:
+    def _get_response_or_weezerpedia_function_call_results(self, new_content: list[dict[str, str]], function_call: bool) -> Optional[str]:
         try:
             completion = openai.chat.completions.create(
                 temperature=0.7,
@@ -156,6 +159,10 @@ class OpenAIBot:
 
                 if query_term:
                     response_text = self.weezerpedia_api.get_search_result_knowledge(query_term, True)[0]
+            elif function_call:
+                return None
+            else:
+                return response_text
 
         except openai.APIError as e:
             response_text = f"An error occurred: {e}"
@@ -208,9 +215,11 @@ class OpenAIBot:
             new_content = new_content[-num_messages_lookback:]
         new_content = [system_message] + new_content
 
-        response_text = self._get_response_or_weezerpedia_function_call_results(new_content, True)
-        function_call_content =  [{"role": "user", "content": f"Incorporate the following Weezerpedia entry into your response, to the extent it is relevant. \n {response_text}"}]
-        response_text = self._get_response_or_weezerpedia_function_call_results(new_content + function_call_content, False)
+        function_call_response_text = self._get_response_or_weezerpedia_function_call_results(new_content, True)
+        function_call_content =  [{"role": "user", "content": f"Incorporate the following Weezerpedia entry into your response, \
+                                   to the extent it is relevant: \n {function_call_response_text}"}] if function_call_response_text else []
+        new_content = new_content[:-1] + function_call_content + [new_content[-1]]  # make the user message we are responding to come last
+        response_text = self._get_response_or_weezerpedia_function_call_results(new_content, False)
         new_content.append(
             {"role": "assistant", "content": response_text}
         )
