@@ -121,7 +121,7 @@ class OpenAIBot:
         reply = reply.replace("!", ".")
         return reply.strip()
 
-    def _get_response_or_weezerpedia_function_call_results(self, new_content: list[dict[str, str]], function_call: bool) -> str:
+    def _get_response_or_weezerpedia_function_call_results(self, new_content: list[dict[str, str]], function_call: bool) -> Optional[str]:
         try:
             completion = openai.chat.completions.create(
                 temperature=0.7,
