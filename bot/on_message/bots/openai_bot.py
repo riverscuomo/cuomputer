@@ -173,7 +173,6 @@ class OpenAIBot:
         function_call_content =  [{"role": "assistant", "content": f"Incorporate the following Weezerpedia entry into your response, \
                                    to the extent it is relevant: \n {function_call_response_text}"}] if function_call_response_text else []
         messages += function_call_content
-        print(messages)
         return self._get_response_or_weezerpedia_function_call_results(messages, False, prompt_params.max_tokens)
 
     @staticmethod
