@@ -37,7 +37,7 @@ async def post_roles_response(
             response += role_info_link
 
             response = finalize_response(
-                response, message.language_code, message.nick)
+                response, message.nick)
 
             message = await message.channel.send(response)
             # print(message)
@@ -53,7 +53,7 @@ async def post_roles_response(
             )
 
             response = finalize_response(
-                response, message.language_code, message.nick)
+                response, message.nick)
 
             message = await message.channel.send(response)
 

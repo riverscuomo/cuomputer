@@ -42,7 +42,7 @@
 #         reply = get_response(content)
 
 #     response = finalize_response(
-#         reply, message.language_code, message.nick, replace_names=True)
+#         reply, message.nick, replace_names=True)
 
 #     await message.channel.send(response)
 

@@ -58,8 +58,6 @@ class CustomMessage(discord.Message):
         A test message.
     nick: str
         The nickname of the author of Message.
-    language_code: str
-        The language code of the Message.
     author_roles: list
         The roles of the author of the Message.
     """
@@ -94,7 +92,6 @@ class CustomMessage(discord.Message):
         self.mentions_guest_bot = None
         self.test_message = None
         self.nick = None
-        self.language_code = None
         self.author_roles = None
         self.gpt_system = None
         self.mentions_the_bot_who_is_responding = False
@@ -102,4 +99,4 @@ class CustomMessage(discord.Message):
         self.is_intended_for_someone_else = True
 
     def log(self):
-        print(f"user_score={self.user_score}, die_roll={ round(self.die_roll, 3)}, language_code={self.language_code}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}, mentions_guest_bot={self.mentions_guest_bot}")
+        print(f"user_score={self.user_score}, die_roll={ round(self.die_roll, 3)}, is_newbie={self.is_newbie}, is_question={self.is_question}, mentions_rivers={self.mentions_rivers}, mentions_cuomputer={self.mentions_cuomputer}, mentions_guest_bot={self.mentions_guest_bot}")

@@ -9,9 +9,9 @@ sys.path.append("...")  # Adds higher directory to python modules path.
 # from textblob.blob import TextBlob
 
 
-def finalize_response(response: str, language_code: str, nick: str, replace_names=False):
+def finalize_response(response: str, nick: str, replace_names=False):
     """
-    Replace any names with the user's name. Translate the reponse to the user's language_code of choice. Append punctuation.
+    Replace any names with the user's name. Append punctuation.
     """
     # if replace_names:
     #     # response = response + " Dorothy"

@@ -61,7 +61,7 @@ async def post_google_response(message):
     # Otherwise let's post this baby
     reply = response.query_result.fulfillment_text
 
-    response = finalize_response(reply, message.language_code, message.nick)
+    response = finalize_response(reply,  message.nick)
 
     await message.channel.send(response)
 
@@ -89,14 +89,6 @@ def detect_intent_texts(texts: List[str], channel: str):
                    for x in sessions if x["id"] == channel), None)
 
     print("session", session)
-    # print(sessions)
-
-    # language_code = "en-us"
-
-    # if channel in spanish_channels:
-    #     language_code = "es"
-    # if channel in japanese_channels:
-    #     language_code = "ja"
 
     for text in texts:
 

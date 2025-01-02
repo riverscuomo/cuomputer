@@ -1,8 +1,8 @@
 import contextlib
 from dataclasses import dataclass
+from discord.channel import DMChannel, PartialMessageable, StageChannel, TextChannel, Thread, VoiceChannel
 import json
-import os
-from typing import Any, Optional
+from typing import Any, Optional, Union
 import openai
 from bot.on_message.bots.weezerpedia import WeezerpediaAPI
 
@@ -10,6 +10,7 @@ from rich import print
 import random
 
 DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
+DEFAULT_MAX_TOKENS = 100
 
 
 @dataclass(frozen=True)
@@ -17,15 +18,15 @@ class PromptParams:
     system_prompt: str
     user_prompt: str
     user_name: str
-    channel_id: int
-    attachment_urls: list[str]
+    channel: Union[DMChannel, PartialMessageable, StageChannel, TextChannel, Thread, VoiceChannel]
+    max_tokens: Optional[int]
+    lookback_count: int
 
 
 class OpenAIBot:
-    def __init__(self, long_name: str, short_name: str, openai_sessions: list, weezerpedia_api: WeezerpediaAPI):
+    def __init__(self, long_name: str, short_name: str, weezerpedia_api: WeezerpediaAPI):
         self.long_name = long_name
         self.short_name = short_name
-        self.openai_sessions = openai_sessions
         self.weezerpedia_api = weezerpedia_api
         self.introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
         self.well_known_member = " - You are a well known member of this discord server."
@@ -81,7 +82,7 @@ class OpenAIBot:
             return original_message.content, original_display_name
         return None, None
 
-    async def post_ai_response(self, message, adjective="funny"):
+    async def post_ai_response(self, message):
         async with message.channel.typing():
             nick = message.author.display_name  # Use `author` instead of `nick`
             system = message.gpt_system
@@ -91,8 +92,7 @@ class OpenAIBot:
             system += f" - The message you are replying to is from a user named {nick}."
             system += self.match_tone + self.dont_start_your_response
 
-            reply = await self.build_ai_response(
-                message, system, adjective, DEFAULT_MESSAGE_LOOKBACK_COUNT)
+            reply = await self.build_ai_response(message, system)
 
             with contextlib.suppress(Exception):
                 print('sending response: ', reply)
@@ -100,9 +100,7 @@ class OpenAIBot:
 
         return True
 
-    async def build_ai_response(self, message, system: str, adjective: str, num_messages_lookback: int):
-        attachment_urls = [message.attachments[0].url
-                           ] if message.attachments else []
+    async def build_ai_response(self, message, system: str):
         display_name = message.author.nick or message.author.name
         content = f"{display_name}: {message.content}"
 
@@ -111,23 +109,22 @@ class OpenAIBot:
             content = f"Replying to: '{original_display_name}: {original_content}'\n\n{content}"
 
         prompt_params = PromptParams(user_prompt=content,
-                                system_prompt=system,
-                                channel_id=message.channel.id,
-                                user_name=display_name,
-                                attachment_urls=attachment_urls)
+                                     system_prompt=system,
+                                     channel=message.channel,
+                                     user_name=display_name,
+                                     max_tokens=DEFAULT_MAX_TOKENS,
+                                     lookback_count=DEFAULT_MESSAGE_LOOKBACK_COUNT)
 
-        reply = self.fetch_openai_completion(
-            prompt_params, num_messages_lookback)
-        reply = reply.replace("!", ".")
+        reply = await self.fetch_openai_completion(prompt_params)
         return reply.strip()
 
-    def _get_response_or_weezerpedia_function_call_results(self, new_content: list[dict[str, str]], function_call: bool) -> Optional[str]:
+    def _get_response_or_weezerpedia_function_call_results(self, messages: list[dict[str, str]], function_call: bool, max_tokens: Optional[int]) -> Optional[str]:
         try:
             completion = openai.chat.completions.create(
                 temperature=0.7,
-                max_tokens=100,
+                max_tokens=max_tokens,
                 model="gpt-4o",
-                messages=new_content,
+                messages=messages,
                 functions = [
                 {
                     "name": "fetch_weezerpedia_data",
@@ -170,64 +167,35 @@ class OpenAIBot:
             response_text = f"An error occurred: {e}"
         return response_text
 
-    def fetch_openai_completion(self, prompt_params: PromptParams, num_messages_lookback: int):
-        system_message = {"role": "system",
-                          "content": prompt_params.system_prompt}
-
-        if prompt_params.channel_id not in self.openai_sessions:
-            self.openai_sessions[prompt_params.channel_id] = []
-
-        messages_in_this_channel = self.openai_sessions[prompt_params.channel_id]
-
-        # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
-
-        # if running on heroku
-
-        # Check if running in production
-        is_production = os.getenv('ENV') == 'production'
-
-        # For testing purposes, if there are fewer than 5 messages in the channel, add some dummy messages
-        if not is_production and len(messages_in_this_channel) < 5:
-            messages_in_this_channel = [
-                {"role": "user", "content": "My favorite color is blue."},
-                {"role": "user", "content": "My favorite color is red."},
-                {"role": "user", "content": "My favorite color is yellow."},
-                {"role": "user", "content": "My favorite color is green."},
-                {"role": "user", "content": "My favorite color is orange."},
-            ]
-
-        # Remove any existing system messages
-        new_content = [
-            msg for msg in messages_in_this_channel if msg["role"] != "system" and "[INTERNAL]" not in msg["content"]]
-
-        # Replace the channel messages with the cleaned up content
-        self.openai_sessions[prompt_params.channel_id] = new_content
-
-        # Append the user's message to the session
-        new_content.append(
-            {"role": "user", "content": prompt_params.user_prompt})
-
-        # Append any attachments to the user's message
-        self.append_any_images(prompt_params.attachment_urls, new_content)
-
-        # Limit the number of messages in the session
-        if len(new_content) > num_messages_lookback:
-            new_content = new_content[-num_messages_lookback:]
-        new_content = [system_message] + new_content
-
-        function_call_response_text = self._get_response_or_weezerpedia_function_call_results(new_content, True)
-        function_call_content =  [{"role": "user", "content": f"Incorporate the following Weezerpedia entry into your response, \
+    async def fetch_openai_completion(self, prompt_params: PromptParams):
+        messages = await OpenAIBot._create_message_prompt(prompt_params)
+        function_call_response_text = self._get_response_or_weezerpedia_function_call_results(messages, True, prompt_params.max_tokens)
+        function_call_content =  [{"role": "assistant", "content": f"Incorporate the following Weezerpedia entry into your response, \
                                    to the extent it is relevant: \n {function_call_response_text}"}] if function_call_response_text else []
-        new_content = new_content[:-1] + function_call_content + [new_content[-1]]  # make the user message we are responding to come last
-        response_text = self._get_response_or_weezerpedia_function_call_results(new_content, False)
-        new_content.append(
-            {"role": "assistant", "content": response_text}
-        )
+        messages += function_call_content
+        return self._get_response_or_weezerpedia_function_call_results(messages, False, prompt_params.max_tokens)
 
-        return response_text
+    @staticmethod
+    async def _create_message_prompt(prompt_params: PromptParams) -> list[dict[str, str]]:
+        messages = []
+        async for msg in prompt_params.channel.history(limit=prompt_params.lookback_count, oldest_first=False):
+            messages.append({"role": "user",
+                             "content": f"{msg.author.nick or msg.author.name}: {msg.content}"})
+            attachment_urls = [attachment.url for attachment in msg.attachments]
+            OpenAIBot._append_any_images(attachment_urls, messages)
+        messages = messages[::-1]
+        system_message = {"role": "system", "content": prompt_params.system_prompt}
+        messages.insert(0, system_message)
+        if prompt_params.user_prompt:
+            messages.append({"role": "user",
+                             "content": prompt_params.user_prompt})
+        return messages
 
-    def append_any_images(self, attachment_urls: list[str], content: list[dict[str, Any]]):
+    @staticmethod
+    def _append_any_images(attachment_urls: list[str], messages: list[dict[str, Any]]):
         for url in attachment_urls:
-            if any(ext in url for ext in ['.jpg', '.jpeg', '.png', '.gif']):
-                content.append({"role": "user", "content": [
-                    {"type": "image_url", "image_url": {"url": url}}]})
+            if any([ext in url for ext in ['.jpg', '.jpeg', '.png', '.gif']]):
+                messages.append({
+                    "role": "user",
+                    "content": [{"type": "image_url", "image_url": {"url": url}}]
+                })
