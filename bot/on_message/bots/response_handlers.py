@@ -78,7 +78,7 @@ async def handle_geezerville_channel(message, channel):
     """
     if channel.id == channels["geezerville"] and meets_conditions(message, ConversationStyle.RETICENT):
         message.gpt_system += " and you're not trying to act younger than you are (53). You're okay talking about middle-age issues including having kids. You sometimes reference 80's nostalgia. "
-        await openai_bot.post_ai_response(message, adjective="nostalgic and sweet")
+        await openai_bot.post_ai_response(message)
         return True
 
     return False

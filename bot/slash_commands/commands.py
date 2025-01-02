@@ -8,11 +8,16 @@ from bot.setup.bots import weezerpedia_api, riverpedia_api, openai_bot
 
 print('commands.py')
 
-SUMMARIZE_SYSTEM_PROMPT = "You are the person responsible for summarizing server messages in a succinct and effective way for the server owner and supporters. Always report the number of messages found."
-SUMMARIZE_USER_PROMPT = "[INTERNAL] Summarize these recent messages in channel history if theres at least one message. Close by reporting the number of messages found."
-ADVISE_SYSTEM_PROMPT = "You are Rivers Cuomo's personal advisor who is very capable and results oriented."
-ADVISE_USER_PROMPT = "[INTERNAL] Rivers Cuomo runs this Discord server. Given there is at least one message in this channel, then based on these recent messages, how would you advise him?"
-
+SUMMARIZE_SYSTEM_PROMPT = """You are the person responsible for summarizing server messages in a succinct
+and effective way for the server owner and supporters.
+Summarize entire message history, not just the recent ones.
+Just begin with the summary, no header, and no "Sure! Here's a summmary" type language.
+Please be very thorough in your summary and don't skip over things."""
+SUMMARIZE_USER_PROMPT = "Those are all the channel messages. Please summarize them."
+ADVISE_SYSTEM_PROMPT = """You are Rivers Cuomo's personal advisor who is very capable and results oriented.
+You are helping with this Discord server.
+Please review the channel message history and provide him any relevant advice."""
+ADVISE_USER_PROMPT = "Based on these recent messages, how would you advise him?"
 
 def is_supporter():
     async def predicate(interaction: discord.Interaction) -> bool:
@@ -62,12 +67,12 @@ async def summarize(interaction: discord.Interaction, count: int = DEFAULT_MESSA
         system_prompt=SUMMARIZE_SYSTEM_PROMPT,
         user_prompt=SUMMARIZE_USER_PROMPT,
         user_name=interaction.user.global_name,
-        channel_id=interaction.channel_id,
-        attachment_urls=[])
-    response = openai_bot.fetch_openai_completion(prompt_params, count).strip()
-    channel = interaction.channel
+        channel=interaction.channel,
+        max_tokens=None,
+        lookback_count=count)
+    response = await openai_bot.fetch_openai_completion(prompt_params)
     with contextlib.suppress(Exception):
-        await channel.send(f"**Summary of last {count} messages:**\n{response}")
+        await interaction.channel.send(f"**Summary of last {count} messages:**\n{response.strip()}")
 
 
 @client.tree.command(name="summarize_and_advise", description="Summarize the last N messages in a given channel, and advise on what to do")
@@ -77,24 +82,23 @@ async def summarize_and_advise(interaction: discord.Interaction, count: int = DE
     prompt_params = PromptParams(system_prompt=SUMMARIZE_SYSTEM_PROMPT,
                                  user_prompt=SUMMARIZE_USER_PROMPT,
                                  user_name=interaction.user.global_name,
-                                 channel_id=interaction.channel_id,
-                                 attachment_urls=[])
-    response = openai_bot.fetch_openai_completion(prompt_params, count).strip()
+                                 channel=interaction.channel,
+                                 max_tokens=None,
+                                 lookback_count=count)
+    response = await openai_bot.fetch_openai_completion(prompt_params)
 
-    # Get the channel to send messages to
-    channel = interaction.channel
     with contextlib.suppress(Exception):
-        await channel.send(f"**Summary of last {count} messages:**\n{response}")
+        await interaction.channel.send(f"**Summary of last {count} messages:**\n{response.strip()}")
 
     prompt_params = PromptParams(system_prompt=ADVISE_SYSTEM_PROMPT,
                                  user_prompt=ADVISE_USER_PROMPT,
                                  user_name=interaction.user.global_name,
-                                 channel_id=interaction.channel_id,
-                                 attachment_urls=[])
-    response = openai_bot.fetch_openai_completion(prompt_params,
-                                                  count).strip()
+                                 channel=interaction.channel,
+                                 max_tokens=None,
+                                 lookback_count=count)
+    response = await openai_bot.fetch_openai_completion(prompt_params)
     with contextlib.suppress(Exception):
-        await channel.send(f"**Summary of last {count} messages:**\n{response}")
+        await interaction.user.send(f"**Advice regarding last {count} messages:**\n{response.strip()}")
 
 
 @client.tree.error

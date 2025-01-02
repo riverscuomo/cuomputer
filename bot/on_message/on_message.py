@@ -29,7 +29,6 @@ from bot.scripts.connect_to_mrn import connect_to_mrn
 from bot.db.fetch_data import fetch_roles
 from bot.setup.discord_bot import client
 import config as config
-from bot.setup.bots import openai_sessions
 import contextlib
 import sys
 from bot.on_message.classes.message import CustomMessage
@@ -45,9 +44,6 @@ async def on_message(message):
     now = datetime.now(config.tz)
 
     if message_is_a_skipper(message, channel):
-        if author.id in [cuomputer_id]:
-            with contextlib.suppress(Exception):
-                openai_sessions[channel.name] += f" {long_name}: {message.content}"
         return
 
     if await is_message_from_other_guild(message):
