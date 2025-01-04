@@ -1,10 +1,14 @@
 import contextlib
+from config import channels
 from dataclasses import dataclass
+import discord
 from discord.channel import DMChannel, PartialMessageable, StageChannel, TextChannel, Thread, VoiceChannel
 import json
 from typing import Any, Optional, Union
 import openai
+import os
 from bot.on_message.bots.weezerpedia import WeezerpediaAPI
+from fish_audio_sdk import Session, TTSRequest, ReferenceAudio
 
 from rich import print
 import random
@@ -12,6 +16,29 @@ import random
 DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
 DEFAULT_MAX_TOKENS = 100
 
+async def reply_with_voice(message, reply: str):
+
+    if message.author.voice:
+        channel = message.author.voice.channel
+
+        if message.guild.voice_client:
+            vc = message.guild.voice_client
+            if vc.channel != channel:
+                await vc.move_to(channel)
+        else:
+            vc = await channel.connect()
+
+    audio_file = f"{os.getcwd()}/voice_output.mp3"
+    session = Session("19c527e3fe494f768815ee30ee576376")
+    with open(audio_file, "wb") as f:
+        for chunk in session.tts(TTSRequest(
+            reference_id="7ade82c5f92d47a6acf52e38613be86f",
+            text=reply
+        )):
+            f.write(chunk)
+
+    if not vc.is_playing():
+        vc.play(discord.FFmpegPCMAudio(audio_file))
 
 @dataclass(frozen=True)
 class PromptParams:
@@ -96,7 +123,10 @@ class OpenAIBot:
 
             with contextlib.suppress(Exception):
                 print('sending response: ', reply)
-                await message.channel.send(reply)
+                if (message.channel.id == channels["rctalk"]) and (message.die_roll > .9):
+                    await reply_with_voice(message, reply)
+                else:
+                    await message.channel.send(reply)
 
         return True
 
