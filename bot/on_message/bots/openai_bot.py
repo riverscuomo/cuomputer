@@ -16,7 +16,7 @@ import random
 DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
 DEFAULT_MAX_TOKENS = 100
 
-async def use_voice(message, reply: str):
+async def reply_with_voice(message, reply: str):
 
     if message.author.voice:
         channel = message.author.voice.channel
@@ -37,7 +37,6 @@ async def use_voice(message, reply: str):
         )):
             f.write(chunk)
 
-    print(audio_file)
     if not vc.is_playing():
         vc.play(discord.FFmpegPCMAudio(audio_file))
 
@@ -125,7 +124,7 @@ class OpenAIBot:
             with contextlib.suppress(Exception):
                 print('sending response: ', reply)
                 if (message.channel.id == channels["rctalk"]) and (message.die_roll > .9):
-                    await use_voice(message, reply)
+                    await reply_with_voice(message, reply)
                 else:
                     await message.channel.send(reply)
 
