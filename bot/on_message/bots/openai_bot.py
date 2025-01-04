@@ -28,7 +28,7 @@ async def reply_with_voice(message, reply: str):
         else:
             vc = await channel.connect()
 
-    audio_file = f"{os.getcwd()}\\voice_output.mp3"
+    audio_file = f"{os.getcwd()}/voice_output.mp3"
     session = Session("19c527e3fe494f768815ee30ee576376")
     with open(audio_file, "wb") as f:
         for chunk in session.tts(TTSRequest(
