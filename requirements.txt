@@ -61,7 +61,7 @@ Jinja2==3.0.1
 joblib>=1.2.0
 langcodes==3.3.0
 MarkupSafe==2.0.1
-mistralai==0.0.11
+# mistralai==0.0.11
 more-itertools
 msgpack==1.0.2
 multidict==5.1.0
