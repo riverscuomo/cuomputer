@@ -1,3 +1,4 @@
+import asyncio
 import contextlib
 from config import channels, VOICE_API_KEY
 from dataclasses import dataclass
@@ -7,8 +8,9 @@ import json
 from typing import Any, Optional, Union
 import openai
 import os
+import tempfile
 from bot.on_message.bots.weezerpedia import WeezerpediaAPI
-from fish_audio_sdk import Session, TTSRequest, ReferenceAudio
+from elevenlabs import ElevenLabs
 
 from rich import print
 import random
@@ -28,17 +30,26 @@ async def reply_with_voice(message, reply: str):
         else:
             vc = await channel.connect()
 
-    audio_file = f"{os.getcwd()}/voice_output.mp3"
-    session = Session(VOICE_API_KEY)
-    with open(audio_file, "wb") as f:
-        for chunk in session.tts(TTSRequest(
-            reference_id="7ade82c5f92d47a6acf52e38613be86f",
-            text=reply
-        )):
-            f.write(chunk)
+        client = ElevenLabs(api_key=VOICE_API_KEY)
+        audio_data = client.generate(
+            text=reply,
+            voice='iP95p4xoKVk53GoZ742B',
+            model="eleven_flash_v2_5"
+        )
 
-    if not vc.is_playing():
-        vc.play(discord.FFmpegPCMAudio(audio_file))
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as temp_audio_file:
+            for chunk in audio_data:
+                temp_audio_file.write(chunk)
+            temp_audio_path = temp_audio_file.name
+
+        vc.play(discord.FFmpegPCMAudio(temp_audio_path))
+
+        while vc.is_playing():
+            await asyncio.sleep(1)
+
+        await vc.disconnect()
+
+        os.remove(temp_audio_path)
 
 @dataclass(frozen=True)
 class PromptParams:
