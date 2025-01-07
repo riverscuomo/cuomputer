@@ -1,6 +1,6 @@
 import asyncio
 import contextlib
-from config import channels, ELEVENLABS_API_KEY
+from config import channels, VOICE_API_KEY
 from dataclasses import dataclass
 import discord
 from discord.channel import DMChannel, PartialMessageable, StageChannel, TextChannel, Thread, VoiceChannel
@@ -30,11 +30,11 @@ async def reply_with_voice(message, reply: str):
         else:
             vc = await channel.connect()
 
-        client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
+        client = ElevenLabs(api_key=VOICE_API_KEY)
         audio_data = client.generate(
             text=reply,
             voice='iP95p4xoKVk53GoZ742B',
-            model="eleven_flash_v2"
+            model="eleven_flash_v2_5"
         )
 
         with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as temp_audio_file:
