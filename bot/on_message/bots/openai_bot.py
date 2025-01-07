@@ -135,8 +135,7 @@ class OpenAIBot:
             with contextlib.suppress(Exception):
                 print('sending response: ', reply)
                 if (message.channel.id == channels["rctalk"]):
-                    if message.die_roll > 0.8:
-                        await reply_with_voice(message, reply)
+                    await reply_with_voice(message, reply)
                 else:
                     await message.channel.send(reply)
 
