@@ -199,8 +199,8 @@ class OpenAIBot:
                     response_text = self.weezerpedia_api.get_search_result_knowledge(query_term, True)[0]
             elif function_call:
                 return None
-            else:
-                return response_text
+            # else:
+            #     return response_text
 
         except openai.APIError as e:
             response_text = f"An error occurred: {e}"
