@@ -1,5 +1,5 @@
 import contextlib
-from config import channels
+from config import channels, VOICE_API_KEY
 from dataclasses import dataclass
 import discord
 from discord.channel import DMChannel, PartialMessageable, StageChannel, TextChannel, Thread, VoiceChannel
@@ -29,7 +29,7 @@ async def reply_with_voice(message, reply: str):
             vc = await channel.connect()
 
     audio_file = f"{os.getcwd()}/voice_output.mp3"
-    session = Session("19c527e3fe494f768815ee30ee576376")
+    session = Session(VOICE_API_KEY)
     with open(audio_file, "wb") as f:
         for chunk in session.tts(TTSRequest(
             reference_id="7ade82c5f92d47a6acf52e38613be86f",
