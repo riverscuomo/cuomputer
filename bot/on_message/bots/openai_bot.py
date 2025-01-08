@@ -33,7 +33,7 @@ async def reply_with_voice(message, reply: str):
         client = ElevenLabs(api_key=VOICE_API_KEY)
         audio_data = client.generate(
             text=reply,
-            voice='iP95p4xoKVk53GoZ742B',
+            voice='xmatqqt3MOPcaRHRvpXD',
             model="eleven_flash_v2_5"
         )
 
