@@ -134,8 +134,7 @@ class OpenAIBot:
                 print('sending response: ', reply)
                 if (message.channel.id == channels["rctalk"]):
                     await reply_with_voice(message, reply)
-                else:
-                    await message.channel.send(reply)
+                await message.channel.send(reply)
 
         return True
 
