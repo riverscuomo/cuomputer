@@ -47,8 +47,6 @@ async def reply_with_voice(message, reply: str):
         while vc.is_playing():
             await asyncio.sleep(1)
 
-        await vc.disconnect()
-
         os.remove(temp_audio_path)
 
 @dataclass(frozen=True)
