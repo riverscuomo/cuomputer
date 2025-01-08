@@ -20,34 +20,33 @@ DEFAULT_MAX_TOKENS = 100
 
 async def reply_with_voice(message, reply: str):
 
-    if message.author.voice:
-        channel = message.author.voice.channel
+    channel = discord.utils.get(message.guild.voice_channels, name="RC-talk")
 
-        if message.guild.voice_client:
-            vc = message.guild.voice_client
-            if vc.channel != channel:
-                await vc.move_to(channel)
-        else:
-            vc = await channel.connect()
+    if message.guild.voice_client:
+        vc = message.guild.voice_client
+        if vc.channel != channel:
+            await vc.move_to(channel)
+    else:
+        vc = await channel.connect()
 
-        client = ElevenLabs(api_key=VOICE_API_KEY)
-        audio_data = client.generate(
-            text=reply,
-            voice='xmatqqt3MOPcaRHRvpXD',
-            model="eleven_flash_v2_5"
-        )
+    client = ElevenLabs(api_key=VOICE_API_KEY)
+    audio_data = client.generate(
+        text=reply,
+        voice='xmatqqt3MOPcaRHRvpXD',
+        model="eleven_flash_v2_5"
+    )
 
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as temp_audio_file:
-            for chunk in audio_data:
-                temp_audio_file.write(chunk)
-            temp_audio_path = temp_audio_file.name
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as temp_audio_file:
+        for chunk in audio_data:
+            temp_audio_file.write(chunk)
+        temp_audio_path = temp_audio_file.name
 
-        vc.play(discord.FFmpegPCMAudio(temp_audio_path))
+    vc.play(discord.FFmpegPCMAudio(temp_audio_path))
 
-        while vc.is_playing():
-            await asyncio.sleep(1)
+    while vc.is_playing():
+        await asyncio.sleep(1)
 
-        os.remove(temp_audio_path)
+    os.remove(temp_audio_path)
 
 @dataclass(frozen=True)
 class PromptParams:
