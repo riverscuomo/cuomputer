@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.3.0
+## 1.3.0 (2025-01-15)
+
+Changed python buildpack to use .python-version file.
+Testing automatic deployment to Heroku.
 
 ## 1.2.0
 
