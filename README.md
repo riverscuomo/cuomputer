@@ -38,8 +38,6 @@ PYTHONPATH=%cd%
 
 ### Set environment variables in both a .env file and in HEROKU
 
-
-
 #### Discord
 
 ```
@@ -77,18 +75,17 @@ press play in the debugger in vscode on the `main.py` file
 
 ## Deploy to Heroku
 
-This is probably just for me.
-heroku login
-`git push heroku main`
-one time I had to add `-f`
+This should automatically deploy to Heroku now when you `git push origin main`
 
 ## Unit Tests
+
 Unit tests can be found in the folder `tests/unit_tests`, and they can be executed with the following command (from the repository root directory):
+
 ```bash
 PYTHONPATH=. pytest tests/unit_tests
 ```
 
-If you do not have `pytest` installed, refer to https://docs.pytest.org/en/stable/getting-started.html
+If you do not have `pytest` installed, refer to <https://docs.pytest.org/en/stable/getting-started.html>
 
 ## Contribute
 
