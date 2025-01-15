@@ -6,6 +6,8 @@ from rich import print
 
 from bot.setup.services.google_services import init_dialogflow
 
+from google.cloud.dialogflow_v2beta1 import QueryInput, TextInput
+
 
 """
 https://dialogflow.cloud.google.com/#/agent/{GOOGLE_CLOUD_PROJECT}/intents
@@ -77,11 +79,11 @@ def detect_intent_texts(texts: List[str], channel: str):
 
     Using the same `session_id` between requests allows continuation
     of the conversation."""
-
+    print('detect_intent_texts')
     print(f"querying in the {channel} session.")
 
     # Initialize Dialogflow when needed
-    sessions, openai_sessions, session_client_knowledge, session_path_knowledge = init_dialogflow()
+    sessions, session_client_knowledge, session_path_knowledge = init_dialogflow()
 
     # print(sessions)
 
@@ -94,14 +96,18 @@ def detect_intent_texts(texts: List[str], channel: str):
 
         text = text[:255] if len(text) > 255 else text
 
-        text_input = dialogflow.TextInput(
+        text_input = TextInput(
             text=text, language_code=language_code)
 
-        query_input = dialogflow.QueryInput(text=text_input)
+        query_input = QueryInput(text=text_input)
 
-        response = session_client.detect_intent(
-            request={"session": session, "query_input": query_input}
-        )
+        try:
+            response = session_client_knowledge.detect_intent(
+                request={"session": session, "query_input": query_input}
+            )
+        except Exception as e:
+            print(f"Error in detect_intent_texts: {e}")
+            return None
         return response
 
 

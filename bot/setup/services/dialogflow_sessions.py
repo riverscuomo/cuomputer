@@ -1,12 +1,13 @@
 from google.cloud import dialogflow
 import os
+from config import all_response_channels
 from dotenv import load_dotenv
 load_dotenv()
 
 session_client = dialogflow.SessionsClient()
 
 
-def init_dialogflow_sessions(all_response_channels):
+def init_dialogflow_sessions():
     """Create a dialogflow conversation session for each channel."""
     sessions = []
 

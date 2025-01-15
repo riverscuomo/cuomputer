@@ -16,7 +16,7 @@ sys.path.append("...")  # Adds higher directory to python modules path.
 # Initialize Dialogflow sessions and clients
 def init_dialogflow():
     """Initialize dialogflow clients and sessions"""
-    sessions, openai_sessions = init_dialogflow_sessions()
+    sessions = init_dialogflow_sessions()
 
     session_id = "123456789"
     session_client_knowledge = dialogflow.SessionsClient()
@@ -24,7 +24,7 @@ def init_dialogflow():
         os.getenv("GOOGLE_CLOUD_PROJECT"), session_id
     )
 
-    return sessions, openai_sessions, session_client_knowledge, session_path_knowledge
+    return sessions, session_client_knowledge, session_path_knowledge
 
 
 def get_service(api_name, api_version, scopes, key_file_location):
