@@ -20,8 +20,8 @@ async def respond(message: CustomMessage, channel):
         if await post_roles_response(message):
             return
 
-        if await post_google_response(message):
-            return
+        # if await post_google_response(message):
+        #     return
 
         await post_qna_default_response(message)
 
