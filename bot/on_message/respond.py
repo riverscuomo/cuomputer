@@ -5,7 +5,10 @@ from bot.on_message.bots.response_handlers import CustomMessage, channels, confi
 from bot.on_message.bots.rolesbot import post_roles_response
 from bot.on_message.classes.message import CustomMessage
 from config import channels
+import time
 
+# dict to store last response time for rctalk
+last_response_times = {}
 
 async def respond(message: CustomMessage, channel):
     """ Responds to a message with one of various bots """
@@ -36,6 +39,16 @@ async def respond(message: CustomMessage, channel):
             message.mentions_cuomputer or
             (message.die_roll > .99)
         ) and await openai_bot.post_ai_response(message):
+            return
+        
+    elif channel.id == channels["rctalk"]:
+        current_time = time.time()
+        
+        last_response_time = last_response_times.get(channel.id, 0)
+        
+        if current_time - last_response_time >= 10: # check if cooldown has passed
+            await openai_bot.post_ai_response(message)
+            last_response_times[channel.id] = current_time # update the last response time for this channel
             return
 
     elif await handle_sarah_channel(message, channel):
