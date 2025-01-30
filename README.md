@@ -29,13 +29,7 @@ where python
 
 pip install -r requirements.txt
 
-### Set up path-related environment variables in the root directory terminal
 
-(this one is necessary to run the tests from the root directory with pytest)
-
-```bash
-PYTHONPATH=%cd%
-```
 
 ### Set environment variables in both a .env file and in HEROKU
 
@@ -68,7 +62,7 @@ Heroku.Settings.configVariables: `GOOGLE_CREDENTIALS` json object.
 
 ## RUN
 
-`py.main.py` in the top level directory
+`py main.py` in the top level directory
 
 ## Debug
 
@@ -77,6 +71,14 @@ press play in the debugger in vscode on the `main.py` file
 ## Deploy to Heroku
 
 This should automatically deploy to Heroku now when you `git push origin main`
+
+### To run tests Set up path-related environment variables in the root directory terminal
+
+(this one is necessary to run the tests from the root directory with pytest)
+
+```bash
+PYTHONPATH=%cd%
+```
 
 ## Unit Tests
 

@@ -1,5 +1,6 @@
 .G/
 .9/
+.1/
 
 # Procfile
 # runtime.txt
@@ -14,7 +15,6 @@ name_that_tune/
 prompts/
 data/archive/
 
-.vscode
 requirementspipreqs.txt
 
 # Byte-compiled / optimized / DLL files

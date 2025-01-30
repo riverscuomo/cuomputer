@@ -132,7 +132,7 @@ uritemplate==4.1.1
 urllib3==1.25.9
 wasabi==0.8.2
 Werkzeug==2.0.1
-wrapt==1.13.3
+# wrapt==1.13.3
 WTForms==3.0.1
-yarl==1.6.3
-youtube-dl==2021.12.17
+# yarl==1.6.3
+# youtube-dl==2021.12.17
