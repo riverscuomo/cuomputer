@@ -29,7 +29,7 @@ async def respond(message: CustomMessage, channel):
         await post_qna_default_response(message)
 
     elif await handle_coach_channel(message, channel):
-        return
+        return #
 
     elif channel.id == channels["pink"]:
         message.gpt_system = " but you are a gay version of him."
@@ -96,3 +96,5 @@ async def respond(message: CustomMessage, channel):
     elif message.mentions_the_bot_who_is_responding and message.die_roll > .6:
         await openai_bot.post_ai_response(message)
         return
+    
+
