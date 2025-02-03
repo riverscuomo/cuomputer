@@ -17,7 +17,6 @@ import random
 DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
 DEFAULT_MAX_TOKENS = 100
 
-# Define PromptParams before the OpenAIBot class
 @dataclass(frozen=True)
 class PromptParams:
     system_prompt: str
@@ -134,43 +133,41 @@ class OpenAIBot:
 
     async def post_ai_response(self, message):
         try:
-            # Try to acquire the lock with a timeout
-            async with asyncio.timeout(self.RESPONSE_TIMEOUT):
-                if not await self.response_lock.acquire():
-                    return False
-                
-                try:
-                    async with message.channel.typing():
-                        nick = message.author.display_name
-                        system = message.gpt_system
+            if not await asyncio.wait_for(self.response_lock.acquire(), timeout=self.RESPONSE_TIMEOUT):
+                return False
 
-                        cue = self.get_rivers_cue()
-                        system += cue
-                        system += f" - The message you are replying to is from a user named {nick}."
-                        system += self.match_tone + self.dont_start_your_response
+            try:
+                async with message.channel.typing():
+                    nick = message.author.display_name
+                    system = message.gpt_system
 
-                        reply = await self.build_ai_response(message, system)
+                    cue = self.get_rivers_cue()
+                    system += cue
+                    system += f" - The message you are replying to is from a user named {nick}."
+                    system += self.match_tone + self.dont_start_your_response
 
-                        # First try to send the text message
-                        try:
-                            print('sending response: ', reply)
-                            await message.channel.send(reply)
-                            message_sent = True
-                        except Exception as e:
-                            print(f"Error sending text message: {e}")
-                            message_sent = False
+                    reply = await self.build_ai_response(message, system)
 
-                        # Then try voice if appropriate
-                        if message.channel.id == channels["rctalk"]:
-                            voice_success = await reply_with_voice(message, reply)
-                            if not voice_success:
-                                print("Voice generation/playback failed")
+                    # First try to send the text message
+                    try:
+                        print('sending response: ', reply)
+                        await message.channel.send(reply)
+                        message_sent = True
+                    except Exception as e:
+                        print(f"Error sending text message: {e}")
+                        message_sent = False
 
-                        return message_sent
+                    # Then try voice if appropriate
+                    if message.channel.id == channels["rctalk"]:
+                        voice_success = await reply_with_voice(message, reply)
+                        if not voice_success:
+                            print("Voice generation/playback failed")
 
-                finally:
-                    self.response_lock.release()
-                    
+                    return message_sent
+
+            finally:
+                self.response_lock.release()
+
         except asyncio.TimeoutError:
             print(f"Response generation timed out after {self.RESPONSE_TIMEOUT} seconds")
             return False
