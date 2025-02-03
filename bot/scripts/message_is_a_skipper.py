@@ -36,5 +36,9 @@ def message_is_a_skipper(message, channel):
         or channel.name == "moderator-only"
         or channel.id == channels["welcome"]
         or member.id in members_to_skip
+        or channel.id == channels["dan"]
+        or channel.id == channels["sarah"]
+        or channel.id == channels["vangie"]
+        or channel.id == channels["geezerville"]
     ):
         return True
