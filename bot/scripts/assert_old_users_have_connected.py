@@ -24,7 +24,7 @@ async def assert_old_users_have_connected(
         await message.delete()
         await channel.send(
             """It looks like your discord account is not connected to your riverscuomo.com account. 
-           The easiest way to fix this is to follow the instructions in the #connect-to-mrn channel in the WELCOME section or in this doc https://docs.google.com/document/d/1sn8xZ9pEMEAia9jHeaC_DEKVlgCxZ6WnuPiKuI8h_cU. 
+           The easiest way to fix this is to follow the instructions in the #connect-to-mrn channel description or in this doc https://docs.google.com/document/d/1sn8xZ9pEMEAia9jHeaC_DEKVlgCxZ6WnuPiKuI8h_cU. 
           """
         )
         return False
