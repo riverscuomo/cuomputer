@@ -1,7 +1,3 @@
-Certainly! Below is the updated **README** with a greatly simplified **Python Virtual Environment** section. Instead of detailed instructions, it now provides a brief overview and directs users to an external guide for comprehensive steps. Additionally, all Heroku-related sections remain moved to the end under the **Owner Setup** section, as per your previous requests.
-
----
-
 # Cuomputer ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
 
 The bot for my Discord server.  
@@ -279,4 +275,3 @@ This project is configured to automatically deploy to Heroku when you push to th
 5. **Enhanced Clarity and Organization:**
    - Clear section headings and concise instructions improve readability and usability for contributors.
 
-If you need any further adjustments or additional sections, feel free to let me know!
