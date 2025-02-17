@@ -257,21 +257,3 @@ This project is configured to automatically deploy to Heroku when you push to th
 **Happy Coding!** 🚀
 
 ---
-
-### Summary of Changes:
-
-1. **Simplified Virtual Environment Setup:**
-   - The **Python Virtual Environment** section now provides a brief overview with essential commands and directs users to the [official Python venv documentation](https://docs.python.org/3/library/venv.html) for detailed instructions.
-
-2. **Maintained Owner-Specific Sections:**
-   - Both **Heroku Deployment** and **Discord Bot Setup** are consolidated under the **Owner Setup** section, indicating they are intended solely for the project owner.
-
-3. **Updated Table of Contents:**
-   - The Table of Contents reflects the new structure, ensuring easy navigation.
-
-4. **Ensured Generic Paths and Placeholders:**
-   - Continued use of generic placeholders (e.g., `path/to/your/credentials.json`) ensures the README is applicable to all developers without exposing personal or sensitive paths.
-
-5. **Enhanced Clarity and Organization:**
-   - Clear section headings and concise instructions improve readability and usability for contributors.
-
