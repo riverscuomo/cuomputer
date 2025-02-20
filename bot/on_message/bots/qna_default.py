@@ -9,7 +9,7 @@ async def post_qna_default_response(message):
 
     reply = [
         response,
-        "To have a fun conversation with me: please use the #coach-cuomo channel--but make sure you have the Neighbor role first.\n",
-        "To report a bug: please use the relevant channel in the Tech Support section.\n",
+        "To have a fun conversation with me: please use the #coach-cuomo channel or join the RC-talk voice channel--but make sure you have the Neighbor role first.\n",
+        "To report a bug: please use the relevant channel in the Bug Reports section.\n",
     ]
     await message.channel.send("".join(reply))
