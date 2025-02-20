@@ -183,7 +183,7 @@ async def add_og_role_from_firestore_user(member, firestore_user, roles):
     if "registeredOn" in firestore_user:
 
         # A default for firestore user's who are missing registered on for some reason.
-        registered_on = "Fri, 31 Jul 2020 00:00:00 GMT"
+        registered_on = "Sun, 31 Oct 2021 00:00:00 GMT"
 
         # replace with the actual if it exists
         if firestore_user["registeredOn"] is not None:
