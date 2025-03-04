@@ -135,7 +135,10 @@ async def on_message(message):
     message.test_message = test_message
     message.author_roles = author_roles
     message.firestore_user = firestore_user
-    message.user_score = firestore_user["score"]
+    
+    # The standardize_firestore_user function ensures "score" exists, so we can use it directly
+    message.user_score = firestore_user["score"] if firestore_user else 0
+        
     message.gpt_system = f"You are {long_name}"
     message.id_of_user_being_replied_to = await get_user_id(message)
     message.mentions_cuomputer = get_mentions_a_user(message, cuomputer_id)

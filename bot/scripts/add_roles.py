@@ -154,8 +154,63 @@ def get_firestore_user_by_id(member_id):
     if not users or len(users) == 0:
         return None
     
-    # Convert Firestore document to dict
-    return users[0].to_dict()
+    # Convert Firestore document to dict and standardize fields
+    user_dict = users[0].to_dict()
+    user_dict["id"] = users[0].id
+    return standardize_firestore_user(user_dict)
+
+
+def standardize_firestore_user(user):
+    """
+    Standardizes a Firestore user dictionary by ensuring all expected fields exist
+    with default values if they're missing.
+    
+    Parameters:
+    user (dict): The original user dictionary from Firestore
+    
+    Returns:
+    dict: A standardized user dictionary with all expected fields
+    """
+    # List of roles that contribute to the user's score
+    roles_for_score = [
+        'Manager', 'boss', 'Archivist', 'Tour Guide', 'Librarian', 'Translator',
+        'Curator', 'Promoter', 'Parental Advisory', 'Graphic Design', 'Data Scientist',
+        'Welcome Committee', 'Creative Director', 'Discordian', 'Broadway Producer',
+        'Weezler', 'Assistant Engineer', 'Recording Engineer', 'Show Producer', 'iPhone',
+        'Android', 'Stage Manager', 'Casting Director', 'tik-tok', 'Biographical Researcher',
+        'Cameraman', 'Night Watchman', 'Champion', 'Supporter', '1000+', '400+', '100+',
+        'Setlist Expert', 'Eagle Brain', 'Eagle Eyes', 'Eagle Ears', 'Camp Counselor',
+    ]
+    
+    # Build a score based on badges and bundles
+    def build_score(user_data):
+        score = 0
+        if "badges" in user_data and user_data["badges"]:
+            service_badges = [x for x in user_data["badges"] if x in roles_for_score]
+            score = len(service_badges)
+        if "bundleIds" in user_data and user_data["bundleIds"]:
+            score += len(user_data["bundleIds"])
+        return score
+    
+    # Create standardized user with default values
+    standardized_user = {
+        "id": user["id"] if "id" in user else "",
+        "discordId": user["discordId"].strip() if "discordId" in user else "",
+        "bundleIds": user["bundleIds"] if "bundleIds" in user else [],
+        "badges": user["badges"] if "badges" in user and user["badges"] else [],
+        "banned": user["banned"] if "banned" in user else False,
+        "email": user["email"] if "email" in user else "",
+        "lastSeen": user["lastSeen"] if "lastSeen" in user else None,
+        "profileImageUrl": user["profileImageUrl"] if "profileImageUrl" in user else "",
+        "registeredOn": user["registeredOn"] if "registeredOn" in user else None,
+        "username": user["username"] if "username" in user else "",
+        "discordConnected": user["discordConnected"] if "discordConnected" in user else False,
+    }
+    
+    # Calculate and add score
+    standardized_user["score"] = build_score(user) if "score" not in user else user["score"]
+    
+    return standardized_user
 
 
 async def check_firestore_and_add_roles_and_nick(member, roles):
@@ -288,6 +343,7 @@ async def add_roles_from_firestore_badges(member, firestore_user, roles):
     #     return
     # print(f"this firestore_user has at least 1 badge: {firestore_user}")
 
+    # The standardize_firestore_user function ensures "badges" exists, so we don't need to check here
     badges = [x for x in firestore_user["badges"] if x != "Visitor"]
     # print(badges)
 
