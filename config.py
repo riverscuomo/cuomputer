@@ -80,6 +80,15 @@ channels = {
     "lounge": 890210073308172347,
     "lounge2": 1059229073466998854,
     "jamroom": 890210073308172348,
+
+    # BUG REPORTS
+    "bug-report-main": 892881079424397343,
+    "this-discord-server": 901578650145681408,
+    "survey-app": 924354089641467934,
+    "syncing-discord-with-my-website": 907636600501071913,
+    "weezify-android": 909810178755559465,
+    "weezify-ios": 926527092789768264,
+    "weezify-web-app": 909809785912827924,
 }
 
 # all_response_channels = []
@@ -117,6 +126,16 @@ all_response_channels = list(
         + foreign_channels
     )
 )
+
+bug_report_channels = {
+    "bug-report-main",
+    "this-discord-server",
+    "survey-app",
+    "syncing-discord-with-my-website",
+    "weezify-android",
+    "weezify-ios",
+    "weezify-web-app",
+}
 
 
 """ Members """
