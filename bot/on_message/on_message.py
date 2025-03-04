@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from rich import print
 from bot.on_message.bots.response_handlers import *
@@ -24,7 +23,6 @@ from bot.scripts.is_message_from_another_guild import is_message_from_other_guil
 from bot.scripts.is_request_for_server_time import is_request_for_server_time
 from bot.scripts.is_request_for_replicate import is_request_for_image
 from bot.scripts.message_is_a_skipper import message_is_a_skipper
-from rivertils.rivertils import get_test_message_and_language as get_test_message
 from bot.scripts.connect_to_mrn import connect_to_mrn
 from bot.db.fetch_data import fetch_roles
 from bot.setup.discord_bot import client
@@ -38,6 +36,33 @@ sys.path.append("...")  # Adds higher directory to python modules path.
 
 @client.event
 async def on_message(message):
+    """
+    Processes all messages sent in the Discord server.
+    
+    This function handles the core message processing logic, including
+    the Discord-Weezify connection flow:
+    
+    Discord-Weezify Connection Related Tasks:
+    1. When a message is sent in the #connect-to-mrn channel:
+       - Calls connect_to_mrn() to process the connection request
+       - This is where users send their Weezify username to connect accounts
+    
+    2. For messages in other channels:
+       - Checks if the user has a connected Weezify account via assert_old_users_have_connected()
+       - If not connected, deletes the message and sends connection instructions
+    
+    The connection flow is:
+    1. User receives snowflake ID from on_member_join
+    2. User enters ID on Weezify profile
+    3. User sends username in #connect-to-mrn channel (handled here)
+    4. Bot verifies and completes connection
+    
+    Parameters:
+    message (Message): The Discord message object
+    
+    Returns:
+    None
+    """
 
     author = message.author
     channel = message.channel
@@ -71,10 +96,11 @@ async def on_message(message):
     # Add time-based roles so they can access more channels I MOVED THIS UP
     await add_time_based_roles(author, roles)
 
-    test_message, _ = get_test_message(
-        message.content)
-
+    test_message = message.content
+    
     if channel.id == channels["connect"] and len(message.content) < 30:
+        # This is where the Discord-Weezify connection happens when a user types
+        # their Weezify username in the connect channel
         await connect_to_mrn(message, author, author.name)
         return
 
