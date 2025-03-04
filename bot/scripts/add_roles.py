@@ -48,7 +48,7 @@ async def add_time_based_roles(member, roles):
     # print(member_roles)
     # print(time_based_roles)
 
-    if hours >= config.neighbor_threshold:
+    if hours >= config.neighbor_role_waiting_period:
         if "Visitor" in member_roles:
             print(f"Removing Visitor from {member.name}")
             role = next((x for x in roles if x.name == "Visitor"), None)
@@ -131,18 +131,68 @@ async def add_remove_roles_for_specific_users(author, roles):
         await author.remove_roles(next(x for x in roles if x.name == "Librarian"))
 
 
+def get_firestore_user_by_id(member_id):
+    """
+    Directly queries Firestore for a single user by Discord ID.
+    
+    This is more efficient than fetching all users when we only need one.
+    
+    Parameters:
+    member_id (int): The Discord ID to query for
+    
+    Returns:
+    dict: The user data if found, None otherwise
+    """
+    print(f"Querying Firestore directly for user with Discord ID: {member_id}")
+    
+    # Convert to string for Firestore query
+    discord_id = str(member_id)
+    
+    db = get_firestore_db()
+    users = db.collection("users").where("discordId", "==", discord_id).limit(1).get()
+    
+    if not users or len(users) == 0:
+        return None
+    
+    # Convert Firestore document to dict
+    return users[0].to_dict()
+
+
 async def check_firestore_and_add_roles_and_nick(member, roles):
     """
-    Checks if this discord member is also an MRN member with a firestore record.
-
-    If so, add the roles and nick.
+    Assigns roles and nicknames based on Weezify account connection status.
+    
+    This function is crucial in the Discord-Weezify integration:
+    1. Checks if a Discord member has a connected Weezify account
+    2. If connected, assigns appropriate roles based on:
+       - Registration date (OG status)
+       - Purchased bundles (bundle-specific roles)
+       - Badges earned in Weezify
+    3. Sets the user's Discord nickname to match their Weezify username
+    
+    Role Assignment Flow:
+    1. Retrieve the user's Firestore record directly by Discord ID
+    2. If found, assign roles based on Weezify data
+    3. If not found, fix their nickname and return None for firestore_user
+    
+    Known Issues:
+    - Users who receive the Neighbor role before connecting can enter a "limbo" state
+    - Some role assignments depend on time-based conditions
+    
+    Parameters:
+    member (Member): The Discord member object
+    roles (list): List of available roles in the Discord server
+    
+    Returns:
+    tuple: (member, nickname, firestore_user) where:
+           - member is the updated member object
+           - nickname is the user's new nickname
+           - firestore_user is the user's data from Firestore or None if not connected
     """
     print('check_firestore_and_add_roles_and_nick')
-    firestore_users = fetch_users()
-
-    firestore_user = get_firestore_user(member.id, firestore_users)
-
-    # print(next(x for x in roles if x.name == "Neighbor").id)
+    
+    # Get user directly from Firestore instead of the cached list of all users
+    firestore_user = get_firestore_user_by_id(member.id)
 
     # ROUTINES TO RUN ON FIRESTORE USERS
     if firestore_user is not None:
@@ -183,18 +233,25 @@ async def add_og_role_from_firestore_user(member, firestore_user, roles):
     if "registeredOn" in firestore_user:
 
         # A default for firestore user's who are missing registered on for some reason.
-        registered_on = "Sun, 31 Oct 2021 00:00:00 GMT"
+        registered_on = datetime.strptime("Sun, 31 Oct 2021 00:00:00 GMT", config.firestore_time_format)
 
         # replace with the actual if it exists
         if firestore_user["registeredOn"] is not None:
-            registered_on = firestore_user["registeredOn"]
-
-        # registered_on = datetime.strptime("Jun 1 2005  1:33PM", "%b %d %Y %I:%M%p")
-        registered_on = datetime.strptime(
-            registered_on, config.firestore_time_format)
+            # Check if registeredOn is already a datetime object (DatetimeWithNanoseconds)
+            if hasattr(firestore_user["registeredOn"], 'timestamp'):
+                # It's already a datetime object from Firestore, use it directly
+                registered_on = firestore_user["registeredOn"]
+                # Make sure to convert to naive datetime for comparison with og_cutoff
+                if registered_on.tzinfo is not None:
+                    registered_on = registered_on.replace(tzinfo=None)
+            else:
+                # It's a string that needs to be parsed
+                registered_on = datetime.strptime(
+                    firestore_user["registeredOn"], config.firestore_time_format)
+        
         # Sat, 12 Jun 2021 07:00:06 GMT
 
-        if registered_on < config.og_cutoff:
+        if registered_on < config.og_cutoff.replace(tzinfo=None):
 
             await member.add_roles(next(x for x in roles if x.name == "OG"))
 

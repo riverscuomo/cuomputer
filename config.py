@@ -29,14 +29,14 @@ OAUTH2_URL = f"https://discord.com/api/oauth2/authorize?client_id={CLIENT_ID}&pe
 GENERAL_ID = 890292832198344724
 GUILD_ID = 890210072381247548
 
-# different possible wait periods for the neighbor role assignment
-neighbor_threshold_options = {
-    "instant":0, # no wait period
-    "delayed24": 1 * 24 * 1 # 24 hour wait period
+# Different possible wait periods for the neighbor role assignment (values in hours)
+neighbor_role_waiting_period_options = {
+    "instant": 0,            # 0 hours = immediate role assignment
+    "delayed24": 1 * 24 * 1  # 24 hours = 1 day waiting period
 }
 
-# set the wait period by changing to the appropriate neighbor_threshold_options key 
-neighbor_threshold = neighbor_threshold_options["instant"] 
+# Set the waiting period (in hours) by changing to the appropriate neighbor_role_waiting_period_options key 
+neighbor_role_waiting_period = neighbor_role_waiting_period_options["instant"] 
 
 image_threshold = 2  # user_score
 gpt_threshold = 4  # user_score

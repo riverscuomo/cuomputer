@@ -7,17 +7,13 @@ from bot.setup.discord_bot import (
     client,
 
 )
-from bot.scripts.get_firestore_user import get_firestore_user
-from bot.db.fetch_data import fetch_users
-import sys
+from bot.scripts.add_roles import get_firestore_user_by_id
 from bot.setup.services.google_services import get_google_drive_service
+import sys
 
 from gspreader import get_sheet
 
 sys.path.append("...")  # Adds higher directory to python modules path.
-
-
-# from bot.db.fbdb import db
 
 
 @client.event
@@ -53,9 +49,10 @@ async def on_member_update(before, after):
     else:
         return
 
-    firestore_users = fetch_users()
-    if firestore_user := get_firestore_user(before.id, firestore_users):
-
+    # Query for just this user instead of fetching all users
+    firestore_user = get_firestore_user_by_id(before.id)
+    
+    if firestore_user:
         roles_sheet_data = load_roles_sheet()
 
         # Get the matching role row from the roles sheet data

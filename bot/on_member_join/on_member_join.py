@@ -7,6 +7,36 @@ import random
 
 @client.event
 async def on_member_join(member):
+    """
+    Handles new members joining the Discord server.
+    
+    This function is triggered when a user joins the server. It performs several important tasks:
+    
+    1. Discord-Weezify Connection Flow (Step 1):
+       - Assigns the "Visitor" role to new members
+       - Sends a welcome message in the welcome channel
+       - DMs the user with instructions and their Discord snowflake ID
+    
+    The Discord snowflake ID is critical for users to connect their Discord account to Weezify.
+    Users will need this ID to enter on their Weezify profile at https://www.weezify.web.app.
+    
+    Connection Process Overview:
+    1. THIS FUNCTION: User joins server, gets DM with snowflake ID
+    2. User enters snowflake ID on Weezify profile page
+    3. User goes to #connect-to-mrn channel and types their Weezify username
+    4. Bot confirms connection (handled by connect_to_mrn function)
+    
+    Known Issues:
+    - Users with restrictive DM privacy settings won't receive the welcome DM
+      Solution: They need to temporarily enable "Allow direct messages from server members"
+      or get their snowflake ID through other means
+    
+    Parameters:
+    member (Member): The Discord member object representing the user who joined
+    
+    Returns:
+    None
+    """
 
     channel = client.get_channel(channels["welcome"])
 
@@ -26,25 +56,25 @@ async def on_member_join(member):
             "wilkommen aus Herr Rivers Neighborhood.",
             "top of the mornin' to ya.",
             "Hi!",
-            "How’s it going?",
-            "What’s happening?",
-            "What’s the story?",
+            "How's it going?",
+            "What's happening?",
+            "What's the story?",
             "Yo!",
             "Hello!",
             "Hi there",
             "Good morning",
             "Good afternoon",
             "Good evening",
-            "It’s nice to meet you",
+            "It's nice to meet you",
             "Hey, Heya or Hey there!",
-            "It’s a pleasure to meet you",
+            "It's a pleasure to meet you",
             "Morning!",
             "How are things?",
-            "What’s new?",
-            "It’s good to see you",
-            "G’day!",
+            "What's new?",
+            "It's good to see you",
+            "G'day!",
             "Howdy!",
-            "What’s up?",
+            "What's up?",
         ]
     )
 
@@ -58,7 +88,12 @@ async def on_member_join(member):
     snowflake = str(snowflake)
 
     await channel.send(
-        f"Thanks for joining my server. Please follow the instructions in this doc to get started: {INSTRUCTIONS_LINK}"
-        + "\n\n"
-        + f"And here is your discord snowflake id: {snowflake}. You're going to need it to continue.\n\nSee you in the hood."
+        f"Thanks for joining my server. To get started, please:\n\n"
+        + f"1. Create an account at https://www.weezify.web.app if you don't already have one\n"
+        + f"2. Go to your profile screen on Weezify\n" 
+        + f"3. Enter your discord snowflake id: {snowflake}\n"
+        + f"4. Come to the #connect-to-mrn channel in the Discord server\n"
+        + f"5. Type your Weezify username (case-sensitive)\n\n"
+        + f"For more detailed instructions: {INSTRUCTIONS_LINK}\n\n"
+        + f"See you in the hood!"
     )
