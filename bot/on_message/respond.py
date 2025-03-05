@@ -15,6 +15,9 @@ async def respond(message: CustomMessage, channel):
 
     message.log()
 
+    if channel.category_id == channels["bug_reports"]:
+        return 
+
     if await handle_lounge_channel(message, channel):
         return
 
