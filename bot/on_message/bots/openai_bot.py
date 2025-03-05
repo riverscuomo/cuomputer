@@ -238,9 +238,9 @@ class OpenAIBot:
                 return response_text
 
         except openai.APIError as e:
-            response_text = f"An error occurred: {e}"
+            response_text = f"_get_response_or_weezerpedia_function_call_results An error occurred: {e}"
         except Exception as e:
-            response_text = f"An error occurred: {e}"
+            response_text = f"_get_response_or_weezerpedia_function_call_results An error occurred: {e}"
         return response_text
 
     async def fetch_openai_completion(self, prompt_params: PromptParams):
