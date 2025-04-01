@@ -36,6 +36,8 @@ else:
     creds_path = os.path.join(os.environ.get("CRED_PATH", ""), "rivers-public-service-account.json")
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = creds_path
     print(f"Using local credentials file at: {creds_path}")
+
+print('the creds path is', creds_path)    
 GOOGLE_DRIVE_CREDFILE = os.environ.get("GOOGLE_DRIVE_CREDFILE")
 VOICE_API_KEY = os.environ.get("VOICE_API_KEY")
 
