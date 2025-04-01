@@ -1,6 +1,6 @@
 from google.cloud import dialogflow
 import os
-from config import all_response_channels, GOOGLE_APPLICATION_CREDENTIALS
+from config import all_response_channels
 from dotenv import load_dotenv
 load_dotenv()
 
