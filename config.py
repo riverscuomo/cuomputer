@@ -11,8 +11,31 @@ TOKEN = os.environ.get("TOKEN")
 
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-GOOGLE_APPLICATION_CREDENTIALS = os.environ.get(
-    "GOOGLE_APPLICATION_CREDENTIALS")
+import os
+import json
+
+import os
+import json
+
+# Check if we're running on Heroku with JSON credentials
+if 'GOOGLE_CREDENTIALS' in os.environ:
+    # Heroku environment - use the JSON config var
+    creds_json = os.environ.get('GOOGLE_CREDENTIALS')
+    creds_path = '/tmp/google-credentials.json'
+    
+    # Write the credentials to a temporary file
+    with open(creds_path, 'w') as f:
+        f.write(creds_json)
+    
+    # Set the environment variable to point to this file
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds_path
+    print(f"Using Heroku credentials configuration")
+    
+else:
+    # Local environment - use the file path approach
+    creds_path = os.path.join(os.environ.get("CRED_PATH", ""), "rivers-public-service-account.json")
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = creds_path
+    print(f"Using local credentials file at: {creds_path}")
 GOOGLE_DRIVE_CREDFILE = os.environ.get("GOOGLE_DRIVE_CREDFILE")
 VOICE_API_KEY = os.environ.get("VOICE_API_KEY")
 
