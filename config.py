@@ -38,6 +38,16 @@ else:
     print(f"Using local credentials file at: {creds_path}")
 
 print('the creds path is', creds_path)    
+
+# Add verification for Firestore connection
+try:
+    from google.cloud import firestore
+    db = firestore.Client()
+    print(f"Successfully initialized Firestore client for project: {db.project}")
+except Exception as e:
+    print(f"ERROR connecting to Firestore: {str(e)}")
+
+    
 GOOGLE_DRIVE_CREDFILE = os.environ.get("GOOGLE_DRIVE_CREDFILE")
 VOICE_API_KEY = os.environ.get("VOICE_API_KEY")
 
