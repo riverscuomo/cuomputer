@@ -210,9 +210,8 @@ class OpenAIBot:
         # Remove emojis
         text_no_emoji = emoji_pattern.sub(r'', text)
 
-        # Replace exclamation marks with periods
-        text_no_exclam = text_no_emoji.replace('!', '.')
-
+        # Replace one or more consecutive exclamation marks with a single period
+        text_no_exclam = re.sub(r'!+', '.', text_no_emoji)
         return text_no_exclam
 
     async def build_ai_response(self, message, system: str):
