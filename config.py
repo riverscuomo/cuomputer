@@ -80,9 +80,11 @@ channels = {
     "lounge": 890210073308172347,
     "lounge2": 1059229073466998854,
     "jamroom": 890210073308172348,
+}
 
-    # BUG REPORTS
-    "bug_reports": 892881079424397343, # Category ID
+""" Categories """
+categories = {
+    "bug_reports": 892881079424397343,
 }
 
 # all_response_channels = []
