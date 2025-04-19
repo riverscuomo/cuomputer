@@ -206,7 +206,7 @@ if testing:
 
 
 """ MESSAGES """
-negativity_threshold = -0.4 # -0.6
+negativity_threshold = -0.5 # -0.6
 never_respond = 10  # t has to be higher
 threshold_for_not_mentioning_rivers = 97  # if no 'river', t has to be higher
 threshold_for_non_questions = 97  # if no '?', t has to be higher

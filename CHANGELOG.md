@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.4.0 (2025-04-18)
+
+### Features
+
+- Added user-based rate limiting for ElevenLabs voice generation (10 responses per user per day)
+- Added message length limiting (200 character max) for voice responses to conserve credits
+- Switched from GPT-4o to GPT-4o-mini to reduce costs
+
+### Bug Fixes
+
+- Fixed issue with ElevenLabs quota being depleted too quickly
+
 ## 1.3.0 (2025-01-15)
 
 Changed python buildpack to use .python-version file.

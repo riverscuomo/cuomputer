@@ -86,9 +86,9 @@ async def on_message(message):
     if await message_is_too_negative(message, role_names):
         return
     
-    # If the message contains a link, delete it
-    if message.content.startswith("https://") or message.content.startswith("http://"):
-        await message.delete()
+    # # If the message contains a link, delete it
+    # if message.content.startswith("https://") or message.content.startswith("http://"):
+    #     await message.delete()
 
     # 4 represents Friday
     if now.weekday() != 4 and await message_is_forbidden(message, role_names):

@@ -13,9 +13,18 @@ from bot.on_message.bots.weezerpedia import WeezerpediaAPI
 from elevenlabs import ElevenLabs
 from rich import print
 import random
+import time
+from datetime import datetime, timedelta
 
 DEFAULT_MESSAGE_LOOKBACK_COUNT = 15
 DEFAULT_MAX_TOKENS = 100
+
+# Dictionary to track user voice usage: {user_id: {'count': int, 'last_reset': timestamp}}
+user_voice_usage = {}
+# Maximum daily voice interactions per user
+MAX_DAILY_VOICE_USES = 10
+# Maximum message length for voice generation to save credits
+MAX_VOICE_MESSAGE_LENGTH = 200
 
 @dataclass(frozen=True)
 class PromptParams:
@@ -26,8 +35,46 @@ class PromptParams:
     max_tokens: Optional[int]
     lookback_count: int
 
+def check_user_voice_limit(user_id):
+    """Check if a user has exceeded their daily voice usage limit"""
+    current_time = time.time()
+    
+    # If user not in tracking dict, initialize them
+    if user_id not in user_voice_usage:
+        user_voice_usage[user_id] = {
+            'count': 0,
+            'last_reset': current_time
+        }
+    
+    # Check if we need to reset the counter (one day has passed)
+    if current_time - user_voice_usage[user_id]['last_reset'] >= 86400:  # 24 hours in seconds
+        user_voice_usage[user_id] = {
+            'count': 0,
+            'last_reset': current_time
+        }
+    
+    # Check if user is under the limit
+    return user_voice_usage[user_id]['count'] < MAX_DAILY_VOICE_USES
+
+def increment_user_voice_usage(user_id):
+    """Increment the user's voice usage counter"""
+    if user_id in user_voice_usage:
+        user_voice_usage[user_id]['count'] += 1
+        print(f"User {user_id} has used {user_voice_usage[user_id]['count']} out of {MAX_DAILY_VOICE_USES} daily voice responses")
+
 async def reply_with_voice(message, reply: str):
     try:
+        # Check if user has exceeded their daily limit
+        user_id = message.author.id
+        if not check_user_voice_limit(user_id):
+            print(f"User {user_id} has reached their daily voice limit of {MAX_DAILY_VOICE_USES}")
+            # Still send the text message, just no voice
+            return False
+        
+        # Trim long messages to save credits
+        if len(reply) > MAX_VOICE_MESSAGE_LENGTH:
+            reply = reply[:MAX_VOICE_MESSAGE_LENGTH] + "..."
+        
         channel = discord.utils.get(message.guild.voice_channels, name="RC-talk")
         if not channel:
             print("Could not find RC-talk voice channel")
@@ -57,6 +104,9 @@ async def reply_with_voice(message, reply: str):
             temp_audio_path = temp_audio_file.name
 
         vc.play(discord.FFmpegPCMAudio(temp_audio_path))
+
+        # Increment the user's usage counter only after successful generation
+        increment_user_voice_usage(user_id)
 
         while vc.is_playing():
             await asyncio.sleep(1)
@@ -200,7 +250,7 @@ class OpenAIBot:
             completion = openai.chat.completions.create(
                 temperature=0.7,
                 max_tokens=max_tokens,
-                model="gpt-4o",
+                model = "gpt-4o-mini",  # Use GPT‑4o‑mini: a cost‑efficient multimodal (“Omni”) model at $0.15 input / $0.60 output per 1 M tokens; Omni variants are required to process image inputs, since only they include the vision pipeline and can “see” attachment URLs.  
                 messages=messages,
                 functions=[
                     {

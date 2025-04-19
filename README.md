@@ -16,6 +16,8 @@ The bot for my Discord server.
     - [API Keys](#api-keys)
     - [Service Account Credentials](#service-account-credentials)
 - [Running the Bot](#running-the-bot)
+- [Features](#features)
+  - [Voice Response Rate Limiting](#voice-response-rate-limiting)
 - [Debugging](#debugging)
 - [Testing](#testing)
   - [Unit Tests](#unit-tests)
@@ -118,6 +120,25 @@ Execute the following command in the root directory:
 
 ```bash
 python main.py
+```
+
+## Features
+
+### Voice Response Rate Limiting
+
+The bot includes a rate limiting system for ElevenLabs voice responses to prevent overconsumption of the monthly voice credit allocation:
+
+- **User Daily Limit**: Each user is limited to 10 voice responses per day in the RC-talk channel
+- **Message Length Limit**: Voice responses are capped at 200 characters to conserve credits
+- **Model Optimization**: Using GPT-4o-mini for cost efficiency
+
+These limits can be adjusted in the `openai_bot.py` file by modifying the following constants:
+
+```python
+# Maximum daily voice interactions per user
+MAX_DAILY_VOICE_USES = 10
+# Maximum message length for voice generation to save credits
+MAX_VOICE_MESSAGE_LENGTH = 200
 ```
 
 ## Debugging
