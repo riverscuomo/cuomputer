@@ -117,6 +117,11 @@ channels = {
     "jamroom": 890210073308172348,
 }
 
+""" Categories """
+categories = {
+    "bug_reports": 892881079424397343,
+}
+
 # all_response_channels = []
 
 
