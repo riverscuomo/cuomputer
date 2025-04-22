@@ -81,6 +81,10 @@ async def reply_with_voice(message, reply: str):
             # Still send the text message, just no voice
             return False
         
+        # Remove any "Rivers:" prefixes that might have slipped through
+        name_pattern = re.compile(r'^(Rivers: )+', re.IGNORECASE)
+        reply = name_pattern.sub('', reply)
+        
         # Trim long messages to save credits
         if len(reply) > MAX_VOICE_MESSAGE_LENGTH:
             reply = reply[:MAX_VOICE_MESSAGE_LENGTH] + "..."
@@ -145,7 +149,7 @@ class OpenAIBot:
         self.stimulate = " -but try to keep the conversation going. Ask questions, make suggestions, and provide information. Be engaging and stimulating."
         self.lead = " - try to subtly lead the conversation to an uncommon SPECIFIC topic that the user would find very interesting."
         self.match_tone = " - Match the style and tone of the message you are replying to."
-        self.dont_start_your_response = f" - Do not start your response with '{long_name}: ' or '{short_name}: ' or any variation of your name. Always start directly with your response."
+        self.dont_start_your_response = f" - Do not start your response with '{long_name}: ' or '{short_name}: ' or any variation of your name."
         self.always_emulate = " - Always use natural human casual speech, never robotic or formal or AI-like."
         self.laconic = " - Remember Rivers is on the laconic side, less excitable, and dry."
         self.conspiracy = " - If someone mentions the possibility that you are actually Rivers controlling the bot, rather than an AI, play along with it."
@@ -240,6 +244,7 @@ class OpenAIBot:
         Sanitizes the response text:
         1. Strips emoji characters
         2. Replaces exclamation marks with periods
+        3. Removes "Rivers:" prefix (including multiple occurrences) 
         """
         # Regex pattern to match emoji characters
         emoji_pattern = re.compile(
@@ -262,7 +267,12 @@ class OpenAIBot:
 
         # Replace one or more consecutive exclamation marks with a single period
         text_no_exclam = re.sub(r'!+', '.', text_no_emoji)
-        return text_no_exclam
+        
+        # Remove "Rivers:" prefix (including multiple occurrences)
+        name_pattern = re.compile(r'^(Rivers: )+', re.IGNORECASE)
+        text_no_name = name_pattern.sub('', text_no_exclam)
+        
+        return text_no_name
 
     async def build_ai_response(self, message, system: str):
         display_name = message.author.nick or message.author.name
