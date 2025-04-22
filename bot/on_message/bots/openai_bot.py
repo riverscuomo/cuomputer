@@ -240,6 +240,7 @@ class OpenAIBot:
         Sanitizes the response text:
         1. Strips emoji characters
         2. Replaces exclamation marks with periods
+        3. Strips "Rivers:" prefix
         """
         # Regex pattern to match emoji characters
         emoji_pattern = re.compile(
@@ -262,8 +263,12 @@ class OpenAIBot:
 
         # Replace one or more consecutive exclamation marks with a single period
         text_no_exclam = re.sub(r'!+', '.', text_no_emoji)
-        return text_no_exclam
-
+            
+        # Remove Rivers: prefix
+        text_no_prefix = re.sub(r'^\s*Rivers\s*[:\-]\s*', '', text_no_exclam, flags=re.IGNORECASE)
+        
+        return text_no_prefix
+        
     async def build_ai_response(self, message, system: str):
         display_name = message.author.nick or message.author.name
         content = f"{display_name}: {message.content}"
