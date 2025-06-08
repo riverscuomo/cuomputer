@@ -2,6 +2,27 @@ import re
 import urllib.parse
 
 
+def _remove_templates(text: str) -> str:
+    """Remove wiki templates enclosed in double curly braces, handling nested
+    templates gracefully."""
+    result = []
+    depth = 0
+    i = 0
+    while i < len(text):
+        if text.startswith("{{", i):
+            depth += 1
+            i += 2
+            continue
+        if text.startswith("}}", i) and depth:
+            depth -= 1
+            i += 2
+            continue
+        if depth == 0:
+            result.append(text[i])
+        i += 1
+    return "".join(result)
+
+
 def wiki_to_markdown(text, remove_urls, wiki_url_prefix='https://www.weezerpedia.com/wiki/'):
 
     # Remove everything from "See also" or "References" downward
@@ -9,8 +30,9 @@ def wiki_to_markdown(text, remove_urls, wiki_url_prefix='https://www.weezerpedia
     # Remove Wikipedia-style image placeholders entirely
     text = re.sub(r"\[\[Image:.+?\]\]", "", text)
 
-    # Remove wiki formatting for templates (e.g., {{Infobox}})
-    text = re.sub(r"\{\{.*?\}\}", "", text, flags=re.DOTALL)
+    # Remove wiki formatting for templates (e.g., {{Infobox}}), handling nested
+    # templates so citation and footnote markers don't leak into the text.
+    text = _remove_templates(text)
 
     # Convert '''bold''' to **bold**, ensuring no extra spaces between words
     text = re.sub(r"'''(\S.*?\S)'''", r"**\1**", text)
@@ -36,6 +58,8 @@ def wiki_to_markdown(text, remove_urls, wiki_url_prefix='https://www.weezerpedia
 
     # Remove <ref> tags, <references />, and any other unsupported HTML-like tags
     text = re.sub(r"<.*?>", "", text)
+    # Strip out footnote markers like [1], [a], etc.
+    text = re.sub(r"\[\s*[0-9a-zA-Z]+\s*\]", "", text)
 
     # Remove Category tags [[Category:Something]] entirely
     text = re.sub(r"\[\[Category:.+?\]\]", "", text)
