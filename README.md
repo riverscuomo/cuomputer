@@ -39,7 +39,7 @@ It's recommended to use a virtual environment to manage dependencies. For detail
 1. **Create Virtual Environment:**
 
    ```bash
-   python -m venv venv_name
+   py -3.11 -m venv venv_name
    ```
 
    Replace `venv_name` with a name appropriate for your machine (e.g., `desktop`, `laptop`).
@@ -47,10 +47,13 @@ It's recommended to use a virtual environment to manage dependencies. For detail
 2. **Activate Virtual Environment:**
 
    - **Windows:**
+
      ```bash
      venv_name\Scripts\activate
      ```
+
    - **macOS/Linux:**
+
      ```bash
      source venv_name/bin/activate
      ```
@@ -58,11 +61,11 @@ It's recommended to use a virtual environment to manage dependencies. For detail
 #### Install Dependencies
 
 1. **Activate Virtual Environment:**
-   
+
    Ensure your virtual environment is activated (see above).
 
 2. **Install Required Packages:**
-   
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -159,10 +162,13 @@ Unit tests are located in the `tests/unit_tests` directory.
    Ensure that `PYTHONPATH` is set to the root directory. This allows `pytest` to locate your modules correctly.
 
    - **Windows:**
+
      ```bash
      set PYTHONPATH=%cd%
      ```
+
    - **macOS/Linux:**
+
      ```bash
      export PYTHONPATH=.
      ```
@@ -174,6 +180,7 @@ Unit tests are located in the `tests/unit_tests` directory.
    ```
 
    *If you do not have `pytest` installed, you can install it using:*
+
    ```bash
    pip install pytest
    ```
@@ -215,6 +222,7 @@ Environment variables need to be set on Heroku to ensure the bot functions corre
    - Add the following variables:
 
      ##### Discord Credentials
+
      ```
      CLIENT_ID=your_discord_client_id
      CLIENT_SECRET=your_discord_client_secret
@@ -222,6 +230,7 @@ Environment variables need to be set on Heroku to ensure the bot functions corre
      ```
 
      ##### API Keys
+
      ```
      REPLICATE_API_TOKEN=your_replicate_api_token
      OPENAI_API_KEY=your_openai_api_key
@@ -230,11 +239,13 @@ Environment variables need to be set on Heroku to ensure the bot functions corre
      ##### Service Account Credentials
 
      - **gspreader [Service Account]:**
+
        ```
        GSPREADER_GOOGLE_CREDS={"your": "json_content"}
        ```
-     
+
      - **Firestore and Google Drive [Service Account]:**
+
        ```
        GOOGLE_CREDENTIALS={"your": "json_content"}
        ```
@@ -246,11 +257,13 @@ Environment variables need to be set on Heroku to ensure the bot functions corre
 This project is configured to automatically deploy to Heroku when you push to the `main` branch.
 
 1. **Ensure Heroku Remote is Set:**
+
    ```bash
    git remote add heroku https://git.heroku.com/your-heroku-app.git
    ```
 
 2. **Push to Heroku:**
+
    ```bash
    git push heroku main
    ```
@@ -265,9 +278,11 @@ This project is configured to automatically deploy to Heroku when you push to th
 
 2. **Authorize the Bot:**
    - Use the following URL template to authorize your bot:
+
      ```
      https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&scope=bot&permissions=PERMISSIONS_INT
      ```
+
    - Replace `YOUR_BOT_CLIENT_ID` with your bot's client ID.
    - Set `PERMISSIONS_INT` to the desired permissions integer (e.g., `8` for admin).
 

@@ -33,7 +33,7 @@ if 'GOOGLE_CREDENTIALS' in os.environ:
     
 else:
     # Local environment - use the file path approach
-    creds_path = os.path.join(os.environ.get("CRED_PATH", ""), "rivers-public-service-account.json")
+    creds_path = os.path.join(os.environ.get("CRED_PATH", ""), "firebase_key_weezify.json")
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = creds_path
     print(f"Using local credentials file at: {creds_path}")
 

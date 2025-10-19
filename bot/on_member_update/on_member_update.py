@@ -32,100 +32,88 @@ async def on_member_update(before, after):
         # print(f"skipping <{member_name} {member.id}>")
         return
 
-    added_role = None
-    removed_role = None
+    added_roles = [role for role in after.roles if role not in before.roles]
+    removed_roles = [role for role in before.roles if role not in after.roles]
 
-    # If you've just given them a new role
-    if len(after.roles) > len(before.roles):
-        added_role = [x.name for x in after.roles if x not in before.roles][0]
-        print(f"added_role: {added_role}")
-
-    # If you've just taken away one of their roles
-    elif len(before.roles) > len(after.roles):
-        removed_role = [
-            x.name for x in before.roles if x not in after.roles][0]
-        print(f"removed_role: {removed_role}")
-
-    else:
+    if not added_roles and not removed_roles:
         return
 
     # Query for just this user instead of fetching all users
     firestore_user = get_firestore_user_by_id(before.id)
     
     if firestore_user:
-        roles_sheet_data = load_roles_sheet()
-
-        # Get the matching role row from the roles sheet data
-        role_object = next(
-            (
-                row
-                for row in roles_sheet_data
-                if row["role"] in [added_role, removed_role]
-                and "folder_id" in row
-            ),
-            None,
-        )
+        _, roles_sheet_data, _ = load_roles_sheet()
+        role_metadata_by_name = {
+            row.get("role"): row for row in (roles_sheet_data or []) if row.get("role")
+        }
 
         db = get_firestore_db()
 
         # gET actual firestore record
-        user = db.collection("users").where(
-            "discordId", "==", str(before.id)).get()[0]
+        user_query = db.collection("users").where(
+            "discordId", "==", str(before.id)).limit(1).get()
+
+        if not user_query:
+            print(f"No Firestore document found for discordId {before.id}")
+            return
+
+        user = user_query[0]
 
         email = firestore_user["email"]
         print("email", email)
 
-        if added_role:
+        for added_role in added_roles:
+            role_name = added_role.name
+            print(f"added_role: {role_name}")
+            role_object = role_metadata_by_name.get(role_name)
 
-            message = f"You've been given the {added_role} role on my server."
+            message = f"You've been given the {role_name} role on my server."
 
             user.reference.update(
-                {"badges": firestore.ArrayUnion([added_role])})
+                {"badges": firestore.ArrayUnion([role_name])})
 
             if _is_valid_email(email):
-
-                response = add_drive_access_to_role(
-                    added_role, email, role_object)
+                response = "success"
+                if role_object and role_object.get("folder_id"):
+                    response = add_drive_access_to_role(
+                        role_name, email, role_object)
 
                 if response != "success":
                     message += f"\n\n{response}"
 
-                if added_role == "Android":
+                if role_name == "Android":
                     additional_add_android_role_tasks(email, "Android")
 
-                elif added_role == "iPhone":
+                elif role_name == "iPhone":
                     additional_add_android_role_tasks(email, "iPhone")
 
-                message = f"{message}"
+                if role_object:
+                    description = role_object.get("description", "")
+                    if description:
+                        message = message + "\n\n" + description
 
-                # print(message)
+                    role_type = role_object.get("type", "")
+                    if role_type in ["1. service", "4.5: role-assigner"]:
+                        message = message + "\n\n" + service_message
 
-                if len(role_object["description"]) > 0:
-                    message = message + "\n\n" + role_object["description"]
-
-                if role_object["type"] in ["1. service", "4.5: role-assigner"]:
-                    message = message + "\n\n" + service_message
-
-                # if "type" in role
                 channel = await after.create_dm()
-
                 await channel.send(message)
 
-        elif removed_role:
-
-            # message = f"You've been removed from the {removed_role} role on my server."
+        for removed_role in removed_roles:
+            role_name = removed_role.name
+            print(f"removed_role: {role_name}")
+            role_object = role_metadata_by_name.get(role_name)
 
             user.reference.update(
-                {"badges": firestore.ArrayRemove([removed_role])})
+                {"badges": firestore.ArrayRemove([role_name])})
 
-            if _is_valid_email(email):
+            if _is_valid_email(email) and role_object and role_object.get("folder_id"):
+                remove_drive_access_for_role(role_name, email, role_object)
 
-                remove_drive_access_for_role(added_role, email, role_object)
-
-                # if removed_role == "Android":
-                #     additional_message = remove_android_role(email, "Android")
-                # if removed_role == "iPhone":
-                #     additional_message = remove_android_role(email, "iPhone")
+            # if role_name == "Android":
+            #     additional_message = remove_android_role(email, "Android")
+            # if role_name == "iPhone":
+            #     additional_message = remove_android_role(email, "iPhone")
 
     else:
         print(f"There is no firestore_user for {before.name}")
