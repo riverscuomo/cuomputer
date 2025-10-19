@@ -259,16 +259,15 @@ This project is configured to automatically deploy to Heroku when you push to th
 1. **Ensure Heroku Remote is Set:**
 
    ```bash
-   git remote add heroku https://git.heroku.com/your-heroku-app.git
+   git remote add heroku https://git.heroku.com/cuomoputer.git
    ```
 
 2. **Push to Heroku:**
 
    ```bash
+   heroku login
    git push heroku main
    ```
-
-*Note: Replace `your-heroku-app` with your actual Heroku app name.*
 
 ### Discord Bot Setup
 
