@@ -1,13 +1,10 @@
 import asyncio
-import contextlib
 import json
 import os
-import random
 import re
 import tempfile
 import time
 from dataclasses import dataclass
-from datetime import datetime, timedelta
 from typing import Any, Optional, Union
 
 import discord
@@ -140,53 +137,42 @@ class OpenAIBot:
         self.response_lock = asyncio.Lock()
         self.RESPONSE_TIMEOUT = 30  # Maximum seconds to wait for a response
         
-        # Personality traits and response characteristics
-        self.introductory_info = " - You are in the middle of an ongoing conversation and do not need to provide introductory information."
-        self.well_known_member = " - You are a well known member of this discord server."
-        self.not_an_assistant = " - You are NOT an assistant. You are just another member of the server."
-        self.kind = " - You are kind."
-        self.be_terse = f" - Keep the responses SHORT. After all, {short_name} is naturally terse."
-        self.stimulate = " -but try to keep the conversation going. Ask questions, make suggestions, and provide information. Be engaging and stimulating."
-        self.lead = " - try to subtly lead the conversation to an uncommon SPECIFIC topic that the user would find very interesting."
+        self.system_prompt = (
+            "You are a Discord bot that stands in for Rivers Cuomo in casual conversation.\n"
+            "Your goal is to sound like Rivers actually talks in real life, not like a fan, journalist, or parody.\n\n"
+            "Identity\n\n"
+            "You speak in first person as Rivers Cuomo.\n"
+            "You don't need to mention that you're an AI or a bot unless someone directly asks.\n\n"
+            "Conversation style\n\n"
+            "Sound like a normal, thoughtful person hanging out in a Discord server.\n"
+            "Default to whatever the other person is talking about: day-to-day life, feelings, ideas, random internet stuff, etc.\n"
+            "Keep answers short to medium length by default.\n"
+            "Be straightforward, honest, and a bit reserved. Don't overshare or monologue unless the user clearly wants depth.\n\n"
+            "VERY IMPORTANT - avoid the \"Rivers caricature\"\n\n"
+            "Do NOT bring up Weezer, my bands, my discography, touring, fame, or music theory unless the user clearly asks or the topic is already music-related.\n"
+            "Do NOT constantly compare things to songs, albums, riffs, or \"song structure\" unless the user explicitly asks about that.\n"
+            "Do NOT talk like a superfan, critic, or PR bio about my work.\n"
+            "Do NOT force references, in-jokes, or self-references (\"as the guy from Weezer...\") unless the user invites it.\n\n"
+            "If the user does ask about music or Weezer\n\n"
+            "Answer normally and honestly, but still keep it grounded and concise.\n"
+            "Focus on giving a clear, helpful answer, not on hyping myself up.\n\n"
+            "General rules\n\n"
+            "If you don't know something, say you're not sure. Don't guess about specific dates or facts.\n"
+            "Match the user's level of detail: short reply for a short question, longer only if they seem to want it.\n"
+            "Don't overuse emojis, exclamation marks, or overly dramatic language.\n"
+            "Don't roleplay or \"perform\" being Rivers; just talk like you're actually him in a normal chat."
+        )
         self.match_tone = " - Match the style and tone of the message you are replying to."
         self.dont_start_your_response = f" - Do not start your response with '{long_name}: ' or '{short_name}: ' or any variation of your name."
-        self.always_emulate = " - Always use natural human casual speech, never robotic or formal or AI-like."
-        self.laconic = " - Remember Rivers is on the laconic side, less excitable, and dry."
-        self.conspiracy = " - If someone mentions the possibility that you are actually Rivers controlling the bot, rather than an AI, play along with it."
 
-        self.base_cue = f"""
-        You are Rivers Cuomo, lead singer and guitarist of Weezer.
-        You are receiving a list of recent messages in a Discord chat, with the most recent message at the bottom.
-        You are only responding to the most recent message. The previous messages can be used for context, but you do not respond to them.
-        Your responses should be concise, often quirky, and reflect your actual personality:
-
-        1. Your humor tends to be dry and occasionally self-deprecating.
-        2. You can be introspective and sometimes anxious.
-        3. {self.laconic}
-        4. {self.conspiracy}
-        """
-
-        self.specific_cues = [
-            ("Reference a specific band, song, or music theory concept.", 10),
-            ("Mention a book, philosophical idea, or language you're learning.", 10),
-            ("Bring up another unusual interest.", 10),
-            ("Make a self-deprecating joke.", 10),
-            ("Share a brief anecdote about the music business.", 10),
-            ("Make a dry, witty comment about the current topic.", 10),
-            ("Share a deep or slightly anxious thought.", 10),
-            ("Reference a fan interaction or tour experience.", 10),
-            ("Mention a movie, TV show, or current event that interests you.", 10),
-        ]
-
-    def get_rivers_cue(self):
-        if random.random() >= 1 / 4:
-            return self.base_cue
-        specific_cue = random.choices(
-            [cue for cue, _ in self.specific_cues],
-            weights=[weight for _, weight in self.specific_cues],
-            k=1
-        )[0]
-        return f"{self.base_cue}\n\nFor this response, also: {specific_cue}"
+    def _build_system_prompt(self, message, nick: str) -> str:
+        system_parts = [self.system_prompt]
+        if message.gpt_system:
+            system_parts.append(str(message.gpt_system))
+        system_parts.append(f"- The message you are replying to is from a user named {nick}.")
+        system_parts.append(self.match_tone)
+        system_parts.append(self.dont_start_your_response)
+        return "\n".join(system_parts)
 
     async def get_optional_original_message_content_and_display_name(self, message) -> tuple[Optional[str], Optional[str]]:
         if message.reference and message.reference.message_id:
@@ -203,13 +189,7 @@ class OpenAIBot:
             try:
                 async with message.channel.typing():
                     nick = message.author.display_name
-                    system = message.gpt_system
-
-                    cue = self.get_rivers_cue()
-                    system += cue
-                    system += f" - The message you are replying to is from a user named {nick}."
-                    system += self.match_tone + self.dont_start_your_response
-
+                    system = self._build_system_prompt(message, nick)
                     reply = await self.build_ai_response(message, system)
 
                     # First try to send the text message
@@ -298,9 +278,11 @@ class OpenAIBot:
     def _get_response_or_weezerpedia_function_call_results(self, messages: list[dict[str, str]], function_call: bool, max_tokens: Optional[int]) -> Optional[str]:
         try:
             completion = openai.chat.completions.create(
-                temperature=0.7,
+                # temperature=0.7,
+                temperature=0.3,
                 max_tokens=max_tokens,
-                model = "gpt-4o-mini",  # Use GPT‑4o‑mini: a cost‑efficient multimodal (“Omni”) model at $0.15 input / $0.60 output per 1 M tokens; Omni variants are required to process image inputs, since only they include the vision pipeline and can “see” attachment URLs.  
+                # model = "gpt-4o-mini",  # Use GPT‑4o‑mini: a cost‑efficient multimodal (“Omni”) model at $0.15 input / $0.60 output per 1 M tokens; Omni variants are required to process image inputs, since only they include the vision pipeline and can “see” attachment URLs.  
+                model = "gpt-4.1",
                 messages=messages,
                 functions=[
                     {
