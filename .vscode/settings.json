@@ -24,6 +24,5 @@
     "peacock.color": "#832561",
     "python.terminal.activateEnvironment": true,
     "dotenv.enableAutocloaking": false,
-    
-
+    "python.languageServer": "None",
 }

@@ -337,6 +337,9 @@ class OpenAIBot:
     async def _create_message_prompt(prompt_params: PromptParams) -> list[dict[str, str]]:
         messages = []
         async for msg in prompt_params.channel.history(limit=prompt_params.lookback_count, oldest_first=False):
+            # Skip messages with empty content (e.g., server announcements, embed-only messages)
+            if not msg.content or not msg.content.strip():
+                continue
             messages.append({
                 "role": "user",
                 "content": f"{msg.author.nick or msg.author.name}: {msg.content}"

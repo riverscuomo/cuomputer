@@ -39,32 +39,18 @@ It's recommended to use a virtual environment to manage dependencies. For detail
 1. **Create Virtual Environment:**
 
    ```bash
-   py -3.11 -m venv venv_name
+   py -3.11 -m venv .venv
    ```
-
-   Replace `venv_name` with a name appropriate for your machine (e.g., `desktop`, `laptop`).
 
 2. **Activate Virtual Environment:**
 
    - **Windows:**
 
      ```bash
-     venv_name\Scripts\activate
-     ```
-
-   - **macOS/Linux:**
-
-     ```bash
-     source venv_name/bin/activate
+     .venv\Scripts\activate
      ```
 
 #### Install Dependencies
-
-1. **Activate Virtual Environment:**
-
-   Ensure your virtual environment is activated (see above).
-
-2. **Install Required Packages:**
 
    ```bash
    pip install -r requirements.txt
