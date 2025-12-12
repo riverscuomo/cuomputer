@@ -86,18 +86,15 @@ async def respond(message: CustomMessage, channel):
     elif await handle_language_channels(message, channel):
         return
 
-    elif message.die_roll == 97:
-        await openai_bot.post_ai_response(message)
-
+    # Set sarcastic mode for high rolls (separate from response logic)
     if message.die_roll >= 0.98:
         message.gpt_system = " but actually you are a sarcastic bot who loves to roast people. (all in good fun of course)"
 
-    elif message.is_newbie and message.die_roll > .8:
+    # Fallback response conditions for unhandled channels
+    if message.is_newbie and message.die_roll > .8:
         await openai_bot.post_ai_response(message)
         return
 
-    elif message.mentions_the_bot_who_is_responding and message.die_roll > .6:
+    if message.mentions_the_bot_who_is_responding and message.die_roll > .6:
         await openai_bot.post_ai_response(message)
         return
-    
-

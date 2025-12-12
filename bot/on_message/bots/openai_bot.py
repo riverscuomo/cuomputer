@@ -177,7 +177,7 @@ class OpenAIBot:
     async def get_optional_original_message_content_and_display_name(self, message) -> tuple[Optional[str], Optional[str]]:
         if message.reference and message.reference.message_id:
             original_message = await message.channel.fetch_message(message.reference.message_id)
-            original_display_name = original_message.author.nick or original_message.author.name
+            original_display_name = getattr(original_message.author, 'nick', None) or original_message.author.name
             return original_message.content, original_display_name
         return None, None
 
@@ -255,7 +255,7 @@ class OpenAIBot:
         return text_no_name
 
     async def build_ai_response(self, message, system: str):
-        display_name = message.author.nick or message.author.name
+        display_name = getattr(message.author, 'nick', None) or message.author.name
         content = f"{display_name}: {message.content}"
 
         original_content, original_display_name = await self.get_optional_original_message_content_and_display_name(message)
@@ -272,6 +272,8 @@ class OpenAIBot:
         )
 
         reply = await self.fetch_openai_completion(prompt_params)
+        if reply is None:
+            return ""
         sanitized_reply = self._sanitize_response(reply.strip())
         return sanitized_reply
 
@@ -337,12 +339,12 @@ class OpenAIBot:
     async def _create_message_prompt(prompt_params: PromptParams) -> list[dict[str, str]]:
         messages = []
         async for msg in prompt_params.channel.history(limit=prompt_params.lookback_count, oldest_first=False):
-            # Skip messages with empty content (e.g., server announcements, embed-only messages)
+            # Skip messages with empty content (e.g., embed-only messages)
             if not msg.content or not msg.content.strip():
                 continue
             messages.append({
                 "role": "user",
-                "content": f"{msg.author.nick or msg.author.name}: {msg.content}"
+                "content": f"{getattr(msg.author, 'nick', None) or msg.author.name}: {msg.content}"
             })
             attachment_urls = [attachment.url for attachment in msg.attachments]
             OpenAIBot._append_any_images(attachment_urls, messages)
