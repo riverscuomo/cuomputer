@@ -1,0 +1,21 @@
+#!/bin/sh
+# Pre-push hook: Run unit tests before pushing
+
+echo "Running unit tests before push..."
+
+# Run pytest on the tests directory
+python -m pytest tests/unit_tests/ -v
+
+# Capture the exit code
+exit_code=$?
+
+if [ $exit_code -ne 0 ]; then
+    echo ""
+    echo "❌ Tests failed. Push aborted."
+    echo "Fix the failing tests before pushing."
+    exit 1
+fi
+
+echo ""
+echo "✅ All tests passed. Proceeding with push."
+exit 0
